@@ -14,7 +14,7 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
-/* YWIG FONT ICONS */
+/* YWIG FONT ICONS - (create more by putting fontawesome svgs through icomoon.io app)  */
 @font-face {
   font-family: 'ywig-icon';
   src: url('../fonts/ywig-icon.eot?77zyzo');

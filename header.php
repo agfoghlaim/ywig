@@ -73,37 +73,19 @@ $socials = array($twitter, $facebook, $youtube);
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
+        <?php
+        wp_nav_menu(array(
+          'theme_location'  => 'main',
+          'depth'           => 2, // 1 = no dropdowns, 2 = with dropdowns.
+          'container'       => 'div',
+          'container_class' => 'collapse navbar-collapse',
+          'container_id'    => 'navbarSupportedContent',
+          'menu_class'      => 'navbar-nav mx-auto',
+          'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
+          'walker'          => new WP_Bootstrap_Navwalker(),
+        ));
+        ?>
 
-          <?php
-          // wp_nav_menu( array(
-          //   'theme_location' => 'main',
-          //   'container'      => false,
-          //   'menu_class'     => 'navbar-nav mx-auto'
-          // ) );
-          wp_nav_menu( array(
-            'theme_location'  => 'main',
-            'depth'           => 2, // 1 = no dropdowns, 2 = with dropdowns.
-            'container'       => 'div',
-            'container_class' => 'collapse navbar-collapse',
-            'container_id'    => 'navbarSupportedContent',
-            'menu_class'      => 'navbar-nav mx-auto',
-            'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
-            'walker'          => new WP_Bootstrap_Navwalker(),
-        ) );
-          ?>
-          <!-- <ul class="navbar-nav mx-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">A Very Long Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-          </ul> -->
-        <!-- </div> -->
       </div>
     </nav>
 
@@ -151,42 +133,57 @@ $socials = array($twitter, $facebook, $youtube);
         <h2>About</h2>
       </div>
 
+      <?php
+      $mission_h = get_theme_mod('ywig-about-section-mission-h');
+      $mission_p = get_theme_mod('ywig-about-section-mission-p');
+      $box_1_h = get_theme_mod('ywig-about-section-box-1-h');
+      $box_1_p = get_theme_mod('ywig-about-section-box-1-p');
+      $box_2_h = get_theme_mod('ywig-about-section-box-2-h');
+      $box_2_p = get_theme_mod('ywig-about-section-box-2-p');
+      $box_3_h = get_theme_mod('ywig-about-section-box-3-h');
+      $box_3_p = get_theme_mod('ywig-about-section-box-3-p');
+      $img_url = wp_get_attachment_url(get_theme_mod('ywig-about-section-image'));
+
+      ?>
       <div class="row ywig-mission-row">
         <div class="offset-lg-3 col-lg-6 offset-md-3 col-md-6">
-          <h3>Our Mission</h3>
-          <blockquote class="ywig-blockquote">Youth Work Ireland Galway is a voluntary organisation committed to delivering quality youth services within local communities, to empower young people to identify and realise their potential in a safe and supportive environment. </blockquote>
+          <h3><?php echo $mission_h; ?></h3>
+          <blockquote class="ywig-blockquote"><?php echo $mission_p; ?></blockquote>
         </div>
       </div>
 
       <div class="row ywig-about-row ywig-about-row-1">
 
         <div class="col col-lg-6 col-md-6 col-sm-12 col-xs-12 ywig-about-box-1">
-          <h3 class="ywig-about-h3">Who We Are</h3>
-          <p class="ywig-about-p">We are a voluntary organisation governed by a volunteer Board of Directors. From our centers in Galway City, Tuam, Loughrea and Ballinasloe, we provide and coordinate community based services and support to young people in a safe environment. Youth Work Ireland Galway is led by the principle and practice of community development. We recognise the right of all people regardless of gender, religion, sexual orientation, age, ability, marital status, race, culture or ethnic origin to participate fully in their community.</p>
+          <h3 class="ywig-about-h3"><?php echo $box_1_h; ?></h3>
+
+          <!-- TODO - php/wp has some function that will put these into paragraphs as per paragraphs in textarea of customizer -->
+          <p class="ywig-about-p"><?php echo $box_1_p; ?></p>
         </div>
 
         <div class="col col-lg-6 col-md-6">
           <div class="ywig-about-box-2">
-            <img src="http://youthworkgalway.ie/wp-content/uploads/2018/06/Youth_Work_Ireland_Galway_Galway2020.jpg">
+            <img src="<?php echo $img_url; ?>">
           </div>
         </div>
-      </div><!-- .ywig-about-row-1 -->
+      </div>
 
       <div class="row ywig-about-row ywig-about-row-2">
         <div class="col col-lg-6 col-md-6 col-sm-12 col-xs-12 ywig-about-box-3">
-          <h3 class="ywig-about-h3">What We Do</h3>
-          <p class="ywig-about-p">Our core services are organised into 12 staff led projects. Each project has a trained leader and it’s own aims, meetings and activities. We also provide a range of other programmes, activities and services. These include Youth Cafes, After School Clubs, Summer Camps and In-school Workshops. You can browse our projects and programs by location below.</p>
+          <h3 class="ywig-about-h3"><?php $box_2_h; ?></h3>
+          <p class="ywig-about-p"><?php echo $box_2_p; ?></p>
         </div>
 
         <div class="col col-lg-6 col-md-6 col-sm-12 col-xs-12 ywig-about-box-4">
-          <h3 class="ywig-about-h3">How We Do It</h3>
-          <p class="ywig-about-feature">Youth Work Ireland Galway is a registered charity. We are resourced by a combination of government funding, philanthropic fundraising and donations.</p>
+          <h3 class="ywig-about-h3"><?php echo $box_3_h; ?></h3>
+          <p class="ywig-about-p"><?php echo $box_3_p; ?></p>
           <div class="ywig-about-btn-group">
             <button class="btn btn-info">Learn More</button>
             <button class="btn btn-info">Donate</button>
             <button class="btn btn-info">Get Involved</button>
           </div>
         </div>
+
       </div><!-- .ywig-about-row-2 -->
 
     </div> <!-- .container-fluid-->
