@@ -56,26 +56,22 @@ function ywig_theme_settings_page()
 }
 
 function ywig_custom_settings()
-{ register_setting('ywig-settings-group', 'logo');
-  register_setting('ywig-settings-group', 'first_name');
+{
+  register_setting('ywig-settings-group', 'logo');
+  // register_setting('ywig-settings-group', 'first_name');
   register_setting('ywig-settings-group', 'twitter_link', 'ywig_sanitize_url');
+  register_setting('ywig-settings-group', 'facebook_link', 'ywig_sanitize_url');
+  register_setting('ywig-settings-group', 'youtube_link', 'ywig_sanitize_url');
 
   add_settings_section('ywig-sidebar-options', 'Sidebar Options', 'ywig_sidebar_options', 'moh_ywig');
 
-  add_settings_field(
-    'sidebar-name',
-    'First Name',
-    'ywig_sidebar_name',
-    'moh_ywig',
-    'ywig-sidebar-options'
-  );
-  add_settings_field(
-    'sidebar-twitter',
-    'Twitter',
-    'ywig_sidebar_twitter',
-    'moh_ywig',
-    'ywig-sidebar-options'
-  );
+  // add_settings_field(
+  //   'sidebar-name',
+  //   'First Name',
+  //   'ywig_sidebar_name',
+  //   'moh_ywig',
+  //   'ywig-sidebar-options'
+  // );
 
   add_settings_field(
     'sidebar-logo',
@@ -84,28 +80,64 @@ function ywig_custom_settings()
     'moh_ywig',
     'ywig-sidebar-options'
   );
+
+  add_settings_field(
+    'twitter-links',
+    'Twitter Link',
+    'ywig_twitter_link',
+    'moh_ywig',
+    'ywig-sidebar-options'
+  );
+  add_settings_field(
+    'facebook-link',
+    'Facebook',
+    'ywig_facebook_link',
+    'moh_ywig',
+    'ywig-sidebar-options'
+  );
+  add_settings_field(
+    'youtube-link',
+    'Youtube',
+    'ywig_youtube_link',
+    'moh_ywig',
+    'ywig-sidebar-options'
+  );
 }
 
-function ywig_sidebar_options() {
+function ywig_sidebar_options()
+{
   echo '<p>site info edit</p>';
 }
 
-function ywig_sidebar_logo() {
+function ywig_sidebar_logo()
+{
   $logo = esc_attr(get_option('logo'));
   echo '<input type="button" class="button-secondary" value="Upload Logo" id="upload-button" /><input type="hidden" id="logo-input" name="logo" value="' . $logo . '" />';
 }
 
-function ywig_sidebar_name() {
-  $first_name = esc_attr(get_option('first_name'));
-  echo '<input type="text" name="first_name" value="' . $first_name . '" placeholder="First Name" />';
-}
+// function ywig_sidebar_name()
+// {
+//   $first_name = esc_attr(get_option('first_name'));
+//   echo '<input type="text" name="first_name" value="' . $first_name . '" placeholder="First Name" />';
+// }
 
-function ywig_sidebar_twitter() {
+function ywig_twitter_link()
+{
   $twitter = esc_attr(get_option('twitter_link'));
-  echo '<input type="text" name="twitter_link" value="' . $twitter . '" placeholder="Twitter link" /><p class="description">Enter your Twitter url</p>';
+  echo '<p class="description">Enter your Twitter url</p><input type="text" name="twitter_link" value="' . $twitter . '" placeholder="Twitter link" />';
+}
+function ywig_facebook_link(){
+  $facebook = esc_attr(get_option('facebook_link'));
+  echo '<p class="description">Enter your Facebook url</p><input type="text" name="facebook_link" value="' . $facebook . '" placeholder="Facebook link" />';
 }
 
-function ywig_sanitize_url($url) {
+function ywig_youtube_link(){
+  $youtube = esc_attr(get_option('youtube_link'));
+  echo '<p class="description">Enter your Youtube url</p><input type="text" name="youtube_link" value="' . $youtube . '" placeholder="Youtube link" />';
+}
+
+function ywig_sanitize_url($url)
+{
   $output = esc_url_raw($url);
   return $output;
 }

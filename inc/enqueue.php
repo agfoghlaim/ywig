@@ -36,6 +36,9 @@ function ywig_load_scripts() {
 
   wp_enqueue_style('ywig-theme', get_template_directory_uri() . '/css/ywig-theme.css', array(), '1.0.0', 'all' );
  
+  // fonts 
+  wp_enqueue_style( 'montserrat_lato', '<link href="https://fonts.googleapis.com/css?family=Lato:300i,400,400i,700|Montserrat:400,500,600,700,800,900&display=swap" rel="stylesheet"> ');
+
   wp_enqueue_script('bootstrap', get_template_directory_uri() . './js/bootstrap.min.js', array( 'jquery' ), '4.4.1', true );
 }
 add_action( 'wp_enqueue_scripts', 'ywig_load_scripts' );

@@ -3,6 +3,11 @@
   The Header Template
  @package ywig-theme
   */
+
+$twitter = esc_attr(get_option('twitter_link'));
+$facebook = esc_attr(get_option('facebook_link'));
+$youtube = esc_attr(get_option('youtube_link'));
+$socials = array($twitter, $facebook, $youtube);
 ?>
 
 <!DOCTYPE html>
@@ -16,8 +21,10 @@
     </link>
   <?php endif; ?>
   <?php wp_head(); ?>
-  <meta name="description" content="<?php bloginfo('description'); ?>"></meta>
-  <title><?php bloginfo('name'); wp_title(); ?></title>
+  <meta name="description" content="<?php bloginfo('description'); ?>">
+  </meta>
+  <title><?php bloginfo('name');
+          wp_title(); ?></title>
 </head>
 
 <body <?php body_class(); ?>>
@@ -27,7 +34,25 @@
     <div class="container-fluid top-line">
       <div class="row">
         <div class="navbar-socials col-sm" style="background:yellow">
-          <a href="#" target="_blank" class="ywig-social-btn" id="ywig-facebook-btn">F<span class="sr-only">Visit our Facebook</span></a>
+
+          <?php
+          if (!empty($twitter)) : ?>
+            <a href="<?php echo $twitter; ?>" target="_blank" class="ywig-social-btn">
+              <span class="ywig-icon-sidebar ywig-icon ywig-twitter"></span>
+              <span class="sr-only">Visit our Twitter</span></a>
+          <?php endif;
+          if (!empty($facebook)) : ?>
+            <a href="<?php echo $facebook; ?>" target="_blank" class="ywig-social-btn">
+              <span class="ywig-icon-sidebar ywig-icon ywig-facebook"></span>
+              <span class="sr-only">Visit our Facebook</span></a>
+          <?php endif;
+          if (!empty($youtube)) : ?>
+            <a href="<?php echo $youtube; ?>" target="_blank" class="ywig-social-btn">
+              <span class="ywig-icon-sidebar ywig-icon ywig-youtube"></span>
+              <span class="sr-only">Visit our Youtube</span></a>
+          <?php endif;
+          ?>
+
         </div>
         <div class="navbar-brand col-sm">
           <a href="#" class="custom-logo-link" rel="home">
@@ -48,8 +73,26 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mx-auto">
+        <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
+
+          <?php
+          // wp_nav_menu( array(
+          //   'theme_location' => 'main',
+          //   'container'      => false,
+          //   'menu_class'     => 'navbar-nav mx-auto'
+          // ) );
+          wp_nav_menu( array(
+            'theme_location'  => 'main',
+            'depth'           => 2, // 1 = no dropdowns, 2 = with dropdowns.
+            'container'       => 'div',
+            'container_class' => 'collapse navbar-collapse',
+            'container_id'    => 'navbarSupportedContent',
+            'menu_class'      => 'navbar-nav mx-auto',
+            'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
+            'walker'          => new WP_Bootstrap_Navwalker(),
+        ) );
+          ?>
+          <!-- <ul class="navbar-nav mx-auto">
             <li class="nav-item active">
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
@@ -59,8 +102,8 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
             </li>
-          </ul>
-        </div>
+          </ul> -->
+        <!-- </div> -->
       </div>
     </nav>
 
@@ -107,7 +150,7 @@
       <div class="row">
         <h2>About</h2>
       </div>
-   
+
       <div class="row ywig-mission-row">
         <div class="offset-lg-3 col-lg-6 offset-md-3 col-md-6">
           <h3>Our Mission</h3>
@@ -115,45 +158,47 @@
         </div>
       </div>
 
-        <div class="row ywig-about-row ywig-about-row-1">
+      <div class="row ywig-about-row ywig-about-row-1">
 
-          <div class="col col-lg-6 col-md-6 col-sm-12 col-xs-12 ywig-about-box-1">
-            <h3 class="ywig-about-h3">Who We Are</h3>
-            <p class="ywig-about-p">We are a voluntary organisation governed by a volunteer Board of Directors. From our centers in Galway City, Tuam, Loughrea and Ballinasloe, we provide and coordinate community based services and support to young people in a safe environment. Youth Work Ireland Galway is led by the principle and practice of community development. We recognise the right of all people regardless of gender, religion, sexual orientation, age, ability, marital status, race, culture or ethnic origin to participate fully in their community.</p>
-          </div>
+        <div class="col col-lg-6 col-md-6 col-sm-12 col-xs-12 ywig-about-box-1">
+          <h3 class="ywig-about-h3">Who We Are</h3>
+          <p class="ywig-about-p">We are a voluntary organisation governed by a volunteer Board of Directors. From our centers in Galway City, Tuam, Loughrea and Ballinasloe, we provide and coordinate community based services and support to young people in a safe environment. Youth Work Ireland Galway is led by the principle and practice of community development. We recognise the right of all people regardless of gender, religion, sexual orientation, age, ability, marital status, race, culture or ethnic origin to participate fully in their community.</p>
+        </div>
 
-          <div class="col col-lg-6 col-md-6">
-            <div class="ywig-about-box-2">
+        <div class="col col-lg-6 col-md-6">
+          <div class="ywig-about-box-2">
             <img src="http://youthworkgalway.ie/wp-content/uploads/2018/06/Youth_Work_Ireland_Galway_Galway2020.jpg">
-            </div>
           </div>
-        </div><!-- .ywig-about-row-1 -->
-        
-        <div class="row ywig-about-row ywig-about-row-2">
-          <div class="col col-lg-6 col-md-6 col-sm-12 col-xs-12 ywig-about-box-3">
-            <h3 class="ywig-about-h3">What We Do</h3>
-            <p class="ywig-about-p">Our core services are organised into 12 staff led projects. Each project has a trained leader and it’s own aims, meetings and activities. We also provide a range of other programmes, activities and services. These include Youth Cafes, After School Clubs, Summer Camps and In-school Workshops. You can browse our projects and programs by location below.</p>
-          </div>
+        </div>
+      </div><!-- .ywig-about-row-1 -->
 
-          <div class="col col-lg-6 col-md-6 col-sm-12 col-xs-12 ywig-about-box-4">
-            <h3 class="ywig-about-h3">How We Do It</h3>
-            <p class="ywig-about-feature">Youth Work Ireland Galway is a registered charity. We are resourced by a combination of government funding, philanthropic fundraising and donations.</p>
-            <div class="ywig-about-btn-group">
-              <button class="btn btn-info">Learn More</button>
-              <button class="btn btn-info">Donate</button>
-              <button class="btn btn-info">Get Involved</button>
-            </div>
+      <div class="row ywig-about-row ywig-about-row-2">
+        <div class="col col-lg-6 col-md-6 col-sm-12 col-xs-12 ywig-about-box-3">
+          <h3 class="ywig-about-h3">What We Do</h3>
+          <p class="ywig-about-p">Our core services are organised into 12 staff led projects. Each project has a trained leader and it’s own aims, meetings and activities. We also provide a range of other programmes, activities and services. These include Youth Cafes, After School Clubs, Summer Camps and In-school Workshops. You can browse our projects and programs by location below.</p>
+        </div>
+
+        <div class="col col-lg-6 col-md-6 col-sm-12 col-xs-12 ywig-about-box-4">
+          <h3 class="ywig-about-h3">How We Do It</h3>
+          <p class="ywig-about-feature">Youth Work Ireland Galway is a registered charity. We are resourced by a combination of government funding, philanthropic fundraising and donations.</p>
+          <div class="ywig-about-btn-group">
+            <button class="btn btn-info">Learn More</button>
+            <button class="btn btn-info">Donate</button>
+            <button class="btn btn-info">Get Involved</button>
           </div>
-        </div><!-- .ywig-about-row-2 -->
+        </div>
+      </div><!-- .ywig-about-row-2 -->
 
     </div> <!-- .container-fluid-->
   </section>
 
   <section class="locations" id="locations">
-  <div class="section-title-wrap">
-    <div class="row ywig-section-title-row">
-          <img src="http://youthworkgalway.ie/wp-content/uploads/2018/06/ywig_tiny_colour.png" >
-		</div>
-    <div class="row ywig-section-title-row"><h2 class="dark-text">Locations &amp; Projects</h2></div>
-		</div>
+    <div class="section-title-wrap">
+      <div class="row ywig-section-title-row">
+        <img src="http://youthworkgalway.ie/wp-content/uploads/2018/06/ywig_tiny_colour.png">
+      </div>
+      <div class="row ywig-section-title-row">
+        <h2 class="dark-text">Locations &amp; Projects</h2>
+      </div>
+    </div>
   </section>
