@@ -129,10 +129,6 @@ $socials = array($twitter, $facebook, $youtube);
 
     <div class="container-fluid">
 
-      <div class="row">
-        <h2>About</h2>
-      </div>
-
       <?php
       $mission_h = get_theme_mod('ywig-about-section-mission-h');
       $mission_p = get_theme_mod('ywig-about-section-mission-p');
@@ -198,4 +194,13 @@ $socials = array($twitter, $facebook, $youtube);
         <h2 class="dark-text">Locations &amp; Projects</h2>
       </div>
     </div>
+
+    <div class="row">
+      <div class="offset-lg-3 col-lg-6 offset-md-3 col-md-6">
+        <p class="text-center">This needs to be editable in the theme customizer under 'Locations Section'.</p>
+      </div>
+    </div>
+    
+    <?php require_once( get_template_directory() . '/ywig-frontpage-sections/locations.php'); ?>
+
   </section>

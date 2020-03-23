@@ -5,6 +5,8 @@ require get_template_directory() . '/inc/function-admin.php';
 require get_template_directory() . '/inc/enqueue.php';
 require get_template_directory() . '/inc/theme-support.php';
 require get_template_directory() . '/inc/customizer/about-section.php';
+require get_template_directory() . '/inc/cpt/locations-cpt.php';
+require get_template_directory() . '/inc/cpt/projects-cpt.php';
 /**
  * Register Custom Navigation Walker
  */
