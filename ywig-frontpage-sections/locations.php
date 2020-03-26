@@ -36,7 +36,7 @@ YWIG Front Page - Locations section
 <div class="tab-content" id="pills-tabContent">
   <?php
   foreach ($allLocations as $location => $value) {
-
+    
     $html_id = sprintf('pills-%s-tab', $value->slug);
     $href = sprintf('#pills-%s', $value->slug);
     $aria = sprintf('pills-%s', $value->slug);
@@ -46,7 +46,12 @@ YWIG Front Page - Locations section
     $mapLink = get_term_meta($value->term_id, sprintf('ywig_location_%s_metadata', 'mapLink', true));
     $phone = get_term_meta($value->term_id, sprintf('ywig_location_%s_metadata', 'phone', true));
   ?>
-    <div class="tab-pane fade show" id="<?php echo $aria; ?>" role="tabpanel" aria-labelledby="<?php echo $html_id; ?>">
+  
+    <div 
+      class="tab-pane fade <?php echo $location === 0 ? 'show active' : ''; ?>" id="<?php echo $aria; ?>" 
+      role="tabpanel" 
+      aria-labelledby="<?php echo $html_id; ?>"
+    >
       <div class="row">
         <div class="col col-sm-3"><a href="#" target="_blank">
             <img style="max-width:100%;" src="https://maps.googleapis.com/maps/api/staticmap?&amp;zoom=15&amp;size=300x300&amp;markers=youth+work+galway+ireland&amp;key=AIzaSyAMy60iJGjTU1DzZaO0x1f7KMx4qVoZhHM"></a>
