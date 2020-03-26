@@ -16,7 +16,7 @@ function register_navwalker(){
 add_action( 'after_setup_theme', 'register_navwalker' );
 
 
-
+add_theme_support( 'post-thumbnails' );
 
 
 
