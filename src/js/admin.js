@@ -1,23 +1,3 @@
-// jQuery(document).ready(function($) {
-//   console.log("ok");
-//   var mediaUploader;
-//   $('#upload-button').on('click', function(e) {
-//     e.preventDefault();
-//     console.log("clicked")
-//     if(mediaUploader) {
-//       mediaUploader.open();
-//       return;  
-//     }
-
-//     mediaUploader = wp.media.frames.file_frame = wp.media({
-//       title: 'Upload Logo',
-//       button: {text: 'Choose Logo'},
-//       multiple: false
-//     });
-//   });
-
-// });
-
 window.addEventListener('DOMContentLoaded', function onDomContentLoaded() {
 
   var mediaUploader;

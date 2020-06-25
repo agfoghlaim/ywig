@@ -12,7 +12,8 @@ function ywig_load_admin_scripts( $hook ) {
  // echo $hook; => 'toplevel_page_moh_ywig'
  echo '--------------------------------------------------------------------------------' . $hook;
  if ( 'toplevel_page_moh_ywig' == $hook ) {
-  wp_register_style('ywig_admin', get_template_directory_uri() . '/css/ywig.admin.css', array(), '1.0.0', 'all');
+  // wp_register_style('ywig_admin', get_template_directory_uri() . '/css/ywig.admin.css', array(), '1.0.0', 'all');
+  wp_register_style('ywig_admin', get_template_directory_uri() . '/dist/css/ywig.admin.css', array(), '1.0.0', 'all');
 
   wp_enqueue_style('ywig_admin');
 
@@ -34,7 +35,8 @@ function ywig_load_scripts() {
 
   wp_enqueue_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '4.4.1', 'all' );
 
-  wp_enqueue_style('ywig-theme', get_template_directory_uri() . '/css/ywig-theme.css', array(), '1.0.0', 'all' );
+  // wp_enqueue_style('ywig-theme', get_template_directory_uri() . '/css/ywig-theme.css', array(), '1.0.0', 'all' );
+  wp_enqueue_style('ywig-theme', get_template_directory_uri() . '/dist/css/app.css', array(), '1.0.0', 'all' );
  
   // fonts 
   wp_enqueue_style( 'montserrat_lato', '<link href="https://fonts.googleapis.com/css?family=Lato:300i,400,400i,700|Montserrat:400,500,600,700,800,900&display=swap" rel="stylesheet"> ');

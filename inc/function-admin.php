@@ -57,6 +57,7 @@ function ywig_theme_settings_page()
 
 function ywig_custom_settings()
 {
+
   register_setting('ywig-settings-group', 'logo');
   // register_setting('ywig-settings-group', 'first_name');
   register_setting('ywig-settings-group', 'twitter_link', 'ywig_sanitize_url');
@@ -72,7 +73,7 @@ function ywig_custom_settings()
   //   'moh_ywig',
   //   'ywig-sidebar-options'
   // );
-
+// add_settings_field( $id:string, $title:string, $callback:callable, $page:string, $section:string, $args:array )
   add_settings_field(
     'sidebar-logo',
     'Logo',
