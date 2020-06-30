@@ -6,6 +6,8 @@
 ?>
 <?php wp_footer(); ?>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap.native/3.0.0/bootstrap-native.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap.native/3.0.0/bootstrap-native.min.js"></script> -->
+</div> 
+<!-- end .container-fluid -->
 </body>
 </html>

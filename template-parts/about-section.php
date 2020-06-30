@@ -5,6 +5,7 @@
  * @package ywig
  */
 ?>
+	<div class="container-fluid">
   <section class="about" id="about">
 
 <div class="container-fluid">

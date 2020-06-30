@@ -15,8 +15,8 @@
   <img src="<?php echo $logo; ?>" alt="">
   </div>
 </div>
-<form method="post" action="options.php ">
+<form method="post" action="options.php" class="ywig-settings-form">
   <?php settings_fields( 'ywig-settings-group' ); ?>
   <?php do_settings_sections( 'moh_ywig' ); ?> 
-  <?php submit_button(); ?>
+  <?php submit_button( 'Save Changes', 'primary', 'submit-settings' ); ?>
 </form>

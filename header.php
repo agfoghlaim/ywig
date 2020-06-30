@@ -3,7 +3,7 @@
   The Header Template
  @package ywig-theme
   */
-
+$logo     = esc_attr( get_option( 'logo' ) );
 $twitter  = esc_attr( get_option( 'twitter_link' ) );
 $facebook = esc_attr( get_option( 'facebook_link' ) );
 $youtube  = esc_attr( get_option( 'youtube_link' ) );
@@ -37,7 +37,7 @@ $socials  = array( $twitter, $facebook, $youtube );
 
   <header id="home" class="header">
 
-	<div class="container-fluid top-line">
+	<div class="top-line">
 	  <div class="row align-items-center">
 		<div class="navbar-socials col-sm">
 
@@ -66,19 +66,20 @@ $socials  = array( $twitter, $facebook, $youtube );
 			?>
 
 		</div>
-		<div class="navbar-brand col-sm">
+		<div class="navbar-brand col-sm d-flex justify-content-center">
 		  <a href="#" class="custom-logo-link" rel="home">
-			<img width="200" height="67" src="http://youthworkgalway.ie/wp-content/uploads/2018/06/ywig_new_logo-_op.png" />
+			<!-- <img width="200" height="67" src="http://youthworkgalway.ie/wp-content/uploads/2018/06/ywig_new_logo-_op.png" /> -->
+			<img height="67" src="<?php print $logo; ?>" />
 		  </a>
 		</div> <!-- /.navbar-brand -->
-		<div class="navbar-donate col-sm">
+		<div class="navbar-donate col-sm d-flex justify-content-md-end">
 		  <a href="#" target="_blank" class="btn btn-danger">Donate</a>
 		</div>
 	  </div>
 
 	</div>
 
-	<nav class="navbar nav-fill w-100 navbar-expand-sm navbar-light bg-light">
+	<nav class="navbar nav-fill w-100 navbar-expand-sm navbar-light">
 	  <div class="container">
 
 		<button class="navbar-toggler" type="button" data-toggle="collapse" style="border:2px solid blue;" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,6 +103,9 @@ $socials  = array( $twitter, $facebook, $youtube );
 
 	  </div>
 	</nav>
+
+
+
   </header>
 
 

@@ -4,13 +4,19 @@
 
 // ywig-theme
 @import 'header/header';
-@import 'heroine/heroine';
+@import 'sections/locations';
+@import 'sections/youth-clubs';
+@import 'sections/about-alt';
+@import 'sections/heroine';
 @import 'variables';
 
 $theme-colors: (
-  'primary': #0074d9,
+  'primary': #0dc5ea,
   'danger': green,
 );
+$border-radius: 0;
+
+
 // Bootstrap - Required
 @import '../../node_modules/bootstrap/scss/functions';
 @import '../../node_modules/bootstrap/scss/variables';
@@ -61,18 +67,21 @@ $theme-colors: (
 
 body {
   font-family: 'Lato', sans-serif;
+  overflow-x: hidden;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
   :root {
     font-size: 14px;
   }
 }
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 768px) {
   :root {
     font-size: 12px;
   }
 }
-
+section {
+  min-height: 100vh;
+}
 // CSS Grid classes
 .acc {
   display: grid;
@@ -149,4 +158,13 @@ h4,
 h5,
 h6 {
   font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6, p {
+  color: $black;
 }

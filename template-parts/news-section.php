@@ -6,6 +6,7 @@
  */
 ?>
   <section class="news" id="news">
+
 	<div class="section-title-wrap">
 	  <div class="row ywig-section-title-row">
 		<img src="http://youthworkgalway.ie/wp-content/uploads/2018/06/ywig_tiny_colour.png">

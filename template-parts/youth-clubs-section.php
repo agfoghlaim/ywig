@@ -7,6 +7,7 @@
 
 ?>
    <section class="youth-clubs" id="youth-clubs">
+	
 	<div class="section-title-wrap">
 	  <div class="row ywig-section-title-row">
 		<img src="http://youthworkgalway.ie/wp-content/uploads/2018/06/ywig_tiny_colour.png">
