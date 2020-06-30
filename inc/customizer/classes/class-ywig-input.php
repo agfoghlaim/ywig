@@ -30,7 +30,7 @@ class YWIG_Input {
 	 */
 	public function register( $wp_customize ) {
 		$wp_customize->add_setting(
-			$this->section . '-' . $this->id,
+			$this->section . '_' . $this->id,
 			array(
 				'default'           => $this->default,
 				'type'              => $this->type,
@@ -40,12 +40,12 @@ class YWIG_Input {
 		);
 
 		$wp_customize->add_control(
-			$this->section . '-' . $this->id,
+			$this->section . '_' . $this->id,
 			array(
 				'label'    => $this->label,
 				'section'  => $this->section,
 				'type'     => $this->field_type,
-				'settings' => $this->section . '-' . $this->id,
+				'settings' => $this->section . '_' . $this->id,
 			)
 		);
 	}

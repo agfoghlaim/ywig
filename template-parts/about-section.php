@@ -1,67 +1,36 @@
 <?php
 /**
- * About
+ * About Section
  *
- * @package ywig
+ * @package ywig-theme
  */
+
+$title_1  = get_theme_mod( 'about_title_1' );
+$text_1   = get_theme_mod( 'about_text_1' );
+$title_2  = get_theme_mod( 'about_title_2' );
+$text_2   = get_theme_mod( 'about_text_2' );
+$title_3  = get_theme_mod( 'about_title_3' );
+$text_3   = get_theme_mod( 'about_text_3' );
+$btn_link = get_theme_mod( 'about_link' );
+$img_url  = wp_get_attachment_url( get_theme_mod( 'about_main_image' ) );
 ?>
-	<div class="container-fluid">
-  <section class="about" id="about">
-
-<div class="container-fluid">
-
-  <?php
-	$mission_h = get_theme_mod( 'ywig-about-section-mission-h' );
-	$mission_p = get_theme_mod( 'ywig-about-section-mission-p' );
-	$box_1_h   = get_theme_mod( 'ywig-about-section-box-1-h' );
-	$box_1_p   = get_theme_mod( 'ywig-about-section-box-1-p' );
-	$box_2_h   = get_theme_mod( 'ywig-about-section-box-2-h' );
-	$box_2_p   = get_theme_mod( 'ywig-about-section-box-2-p' );
-	$box_3_h   = get_theme_mod( 'ywig-about-section-box-3-h' );
-	$box_3_p   = get_theme_mod( 'ywig-about-section-box-3-p' );
-	$img_url   = wp_get_attachment_url( get_theme_mod( 'ywig-about-section-image' ) );
-
-	?>
-  <div class="row ywig-mission-row">
-  <div class="offset-lg-3 col-lg-6 offset-md-3 col-md-6">
-	<h3><?php echo $mission_h; ?></h3>
-	<blockquote class="ywig-blockquote"><?php echo $mission_p; ?></blockquote>
-  </div>
-  </div>
-
-  <div class="row ywig-about-row ywig-about-row-1">
-
-  <div class="col col-lg-6 col-md-6 col-sm-12 col-xs-12 ywig-about-box-1">
-	<h3 class="ywig-about-h3"><?php echo $box_1_h; ?></h3>
-
-	<!-- TODO - php/wp has some function that will put these into paragraphs as per paragraphs in textarea of customizer -->
-	<p class="ywig-about-p"><?php echo $box_1_p; ?></p>
-  </div>
-
-  <div class="col col-lg-6 col-md-6">
-	<div class="ywig-about-box-2">
-	<img src="<?php echo $img_url; ?>">
+<section class="about" id="about">
+	<?php get_template_part( 'template-parts/svg-triangle' ); ?>
+	<div class="about-text-wrap">
+			<h3><?php echo esc_html( $title_1 ); ?></h3>
+			<blockquote class="ywig-blockquote"><?php echo esc_html( $text_1 ); ?></blockquote>
 	</div>
-  </div>
-  </div>
-
-  <div class="row ywig-about-row ywig-about-row-2">
-  <div class="col col-lg-6 col-md-6 col-sm-12 col-xs-12 ywig-about-box-3">
-	<h3 class="ywig-about-h3"><?php $box_2_h; ?></h3>
-	<p class="ywig-about-p"><?php echo $box_2_p; ?></p>
-  </div>
-
-  <div class="col col-lg-6 col-md-6 col-sm-12 col-xs-12 ywig-about-box-4">
-	<h3 class="ywig-about-h3"><?php echo $box_3_h; ?></h3>
-	<p class="ywig-about-p"><?php echo $box_3_p; ?></p>
-	<div class="ywig-about-btn-group">
-	<button class="btn btn-info">Learn More</button>
-	<button class="btn btn-info">Donate</button>
-	<button class="btn btn-info">Get Involved</button>
+	<div class="about-img-wrap">
+			<img src="<?php echo esc_url( $img_url ); ?>">
 	</div>
-  </div>
-
-  </div><!-- .ywig-about-row-2 -->
-
-</div> <!-- .container-fluid-->
+	<div class="about-who">
+		<div class="overlay"></div>
+		<h3><?php echo esc_html( $title_2 ); ?></h3>
+		<p> <?php echo esc_html( $text_2 ); ?></p>
+	</div>
+	<div class="about-what">
+		<h3><?php echo esc_html( $title_3 ); ?></h3>
+		<p> <?php echo esc_html( $text_3 ); ?></p>
+		<a href="<?php echo esc_url( $btn_link ); ?>" class="btn-link btn-outline cw">More About Us</a>
+	</div>
 </section>

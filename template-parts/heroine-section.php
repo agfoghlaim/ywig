@@ -8,49 +8,41 @@
 ?>
 <?php
 // Tagline.
-$tagline_1 = get_theme_mod( 'heroine-section-tagline-1' );
-$tagline_2 = get_theme_mod( 'heroine-section-tagline-2' );
+$tagline_1 = get_theme_mod( 'heroine_tagline_1' );
+$tagline_2 = get_theme_mod( 'heroine_tagline_2' );
 $tagline_3 = get_theme_mod( 'heroine-section-tagline-3' );
 $img_url   = wp_get_attachment_url( get_theme_mod( 'heroine-section-sepia-image' ) );
-$show_logo = get_theme_mod( 'heroine-section-show-logo' );
+$show_logo = get_theme_mod( 'heroine_show_logo' );
 
 // Section 1.
-$title_1 = get_theme_mod( 'heroine-section-title-1' );
-$text_1  = get_theme_mod( 'heroine-section-text-1' );
-$link_1  = get_theme_mod( 'heroine-section-link-1' );
-$tick_1  = get_theme_mod( 'heroine-section-1-tick' );
-$image_1 = wp_get_attachment_url( get_theme_mod( 'heroine-section-image-1' ) );
+$title_1 = get_theme_mod( 'heroine_title_1' );
+$text_1  = get_theme_mod( 'heroine_text_1' );
+$link_1  = get_theme_mod( 'heroine_link_1' );
+$tick_1  = get_theme_mod( 'heroine_tick_1' );
+$image_1 = wp_get_attachment_url( get_theme_mod( 'heroine_image_1' ) );
 
 // Section 2
-$title_2 = get_theme_mod( 'heroine-section-title-2' );
-$text_2  = get_theme_mod( 'heroine-section-text-2' );
-$link_2  = get_theme_mod( 'heroine-section-link-2' );
+$title_2 = get_theme_mod( 'heroine_title_2' );
+$text_2  = get_theme_mod( 'heroine_text_2' );
+$link_2  = get_theme_mod( 'heroine_link_2' );
 
 // Section 3
-$title_3 = get_theme_mod( 'heroine-section-title-3' );
-$text_3  = get_theme_mod( 'heroine-section-text-3' );
-$link_3  = get_theme_mod( 'heroine-section-link-3' );
+$title_3 = get_theme_mod( 'heroine_title_3' );
+$text_3  = get_theme_mod( 'heroine_text_3' );
+$link_3  = get_theme_mod( 'heroine_link_3' );
 
-// $heading_1 = get_theme_mod( 'ywig-heroine-section-heroine-1-h' );
-// $text_1 = get_theme_mod( 'ywig-heroine-section-heroine-1-p' );
-// $link_1    = get_theme_mod( 'ywig-heroine-section-heroine-1-link' );
-// $tick_1 = get_theme_mod( 'ywig-heroine-section-heroine-1-tick' );
-// $img_url   = wp_get_attachment_url( get_theme_mod( 'ywig-heroine-section-heroine-1-image' ) );
-// $box_1_h   = get_theme_mod( 'ywig-about-section-box-1-h' );
-// $box_1_p   = get_theme_mod( 'ywig-about-section-box-1-p' );
-// $box_2_h   = get_theme_mod( 'ywig-about-section-box-2-h' );
-// $box_2_p   = get_theme_mod( 'ywig-about-section-box-2-p' );
-// $box_3_h   = get_theme_mod( 'ywig-about-section-box-3-h' );
-// $box_3_p   = get_theme_mod( 'ywig-about-section-box-3-p' );
-// $img_url   = wp_get_attachment_url( get_theme_mod( 'ywig-about-section-image' ) );
 
 ?>
 <div class="heroine"> 
 	<div class="heroine-l-one">
-		<div class="heroine-l-one-box-one heroine-box" style="background: linear-gradient(45deg, #0ba4c303, #0ba4c314),
-		url(<?php echo esc_url( $img_url ); ?>);background-size: cover;
+		<div 
+		class="heroine-l-one-box-one heroine-box" 
+		style="background: linear-gradient(45deg, #0ba4c303, #0ba4c314),
+		url(<?php echo esc_url( $img_url ); ?>);
+		background-size: cover;
 	  background-position: left center;
-	  background-repeat: no-repeat;">
+		background-repeat: no-repeat;"
+		>
 			</div>
 		
 		<div class="heroine-l-one-box-two heroine-box">
@@ -83,7 +75,7 @@ $link_3  = get_theme_mod( 'heroine-section-link-3' );
 		</div>
 		<div class="heroine-l-two-box-two heroine-box">
 		<?php
-		echo $tick_1 ?
+		echo true === $tick_1 ?
 			'<div class="heroine-feature-label">Featured Project</div> '
 		 : null;
 		?>

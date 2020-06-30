@@ -13,7 +13,7 @@ class YWIG_Cropped_Image {
 
 	public function register( $wp_customize ) {
 		$wp_customize->add_setting(
-			$this->section . '-' . $this->id,
+			$this->section . '_' . $this->id,
 			array(
 				'type'       => $this->type,
 				'capability' => $this->capability,
@@ -23,11 +23,11 @@ class YWIG_Cropped_Image {
 		$wp_customize->add_control(
 			new WP_Customize_Cropped_Image_Control(
 				$wp_customize,
-				$this->section . '-' . $this->id,
+				$this->section . '_' . $this->id,
 				array(
 					'label'    => $this->label,
 					'section'  => $this->section,
-					'settings' => $this->section . '-' . $this->id,
+					'settings' => $this->section . '_' . $this->id,
 					'width'    => $this->width,
 					'height'   => $this->height,
 				)
