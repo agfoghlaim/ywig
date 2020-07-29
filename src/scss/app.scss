@@ -154,8 +154,13 @@ a:not([href]):hover {
     font-size: 14px;
   }
 }
+
+
 section {
-  min-height: 100vh;
+  /*
+  Header is 7rem for large devices, TODO media query
+  */
+  min-height: calc(100vh - 7rem);
 }
 
 .sr-only {

@@ -4,6 +4,9 @@ import {
   handleShowDropdownMenus,
   handleHideDropdownMenus,
 } from './handle-dropdowns';
+//import scrollTo from './scroll-to';
+
+//scrollTo(); 
 
 ywigToggleTabs();
 
@@ -73,3 +76,4 @@ function handleAria() {}
 
 //   }
 // });
+

@@ -20,7 +20,7 @@ if ( is_array( $term_obj_list ) || is_object( $term_obj_list ) ) {
 		class="project-info-all show-proj fade <?php echo esc_attr( $terms_string ); ?>" 
 		data-locations="<?php echo esc_attr( $terms_string ); ?>"
 		>
-		<div class="overlay"></div>
+		<!-- <div class="overlay"></div> -->
 		<?php the_post_thumbnail(); ?>
 
 		<div class="project-info-all-text">

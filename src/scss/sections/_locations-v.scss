@@ -1,10 +1,10 @@
 @import 'variables';
 @import 'mixins';
+
 .locations-v {
   // margin: 2rem 0;
   padding-right: 1rem;
   padding-bottom: 2rem;
-  min-height: 100vh;
   position: relative;
   background: linear-gradient(to right, rgb(11 164 195), rgb(11 164 195 / 65%));
   .temp {
@@ -22,6 +22,12 @@
   .locations-v-wrap {
     display: grid;
     grid-template-columns: 12rem 1fr;
+    // .sticky {
+    //   position: sticky;
+    //   top: 7rem;
+    //   height: 19rem;
+    //   background: red;
+    // }
 
     .locations-v-left {
       display: grid;
@@ -41,7 +47,7 @@
         // background: orange;
 
         .nav-link {
-          color: $white;
+          color: $other-blue-lighter;
           width: 100%;
           font-weight: bold;
           text-transform: uppercase;
@@ -53,9 +59,10 @@
           width: 90%;
           transition: all 300ms ease;
           border: 0.2rem solid transparent;
+      
         }
         .nav-link.active {
-          background: $white;
+          background: $other-blue-lighter;
           color: $black;
           border: 0.2rem solid $black;
           margin-right: 0;
@@ -64,16 +71,17 @@
         }
         .nav-link.active::after {
           content: '';
-          background: white;
+          background: $other-blue-lighter;
           width: 0.2rem;
           height: 100%;
           position: absolute;
           right: -0.2rem;
           top: 0;
         }
+
         .nav-link:hover,
         .nav-link:focus {
-          background: $white;
+          background: $other-blue-lighter;
           outline: none;
           color: black;
           border: 0.2rem solid $black;
@@ -128,10 +136,12 @@
       opacity: 1;
     }
   }
+
   .projects-wrap {
     padding: 1rem;
     display: grid;
-    background: $white;
+    background: $other-blue-lighter;
+    //background: $other-blue;
     border: 0.2rem solid $black;
     // background: $lighter-green;
     // min-height: 100vh;
@@ -140,11 +150,7 @@
     //min-height: tbc
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 1rem;
-    img {
-      // max-width: 100px;
-      // height: 100px;
-      // object-fit: cover;
-    }
+
     h4 {
       font-size: 1.1rem;
       line-height: 1.1rem;
@@ -179,13 +185,13 @@
       grid-template-rows: 8rem 1fr 4rem 4rem;
       opacity: 0;
       transition: all 300ms ease;
-      box-shadow: 2px 3px 2px #c9c7c7;
+      // box-shadow: 2px 3px 2px #c9c7c7;
       align-items: center;
       justify-items: flex-start;
 
-      .overlay {
-        @include overlay-triangle;
-      }
+      // .overlay {
+      //   @include overlay-triangle;
+      // }
       h4 {
         color: $white;
       }
@@ -220,14 +226,18 @@
           padding: 0.2rem 0.4rem !important;
           align-content: center;
           line-height: 0.8rem;
-          display: grid;
-          padding: 0.5rem;
+          // display: grid;
+          padding: 0.4rem;
           align-items: center;
           white-space: nowrap;
-          font-size: 0.8rem;
+         
           background: $orange;
+
           a {
             color: $darker-black;
+            font-weight: 600;
+            font-size: 0.75rem;
+    
           }
         }
         span:hover,
@@ -243,7 +253,7 @@
     .project-info-all:hover,
     .project-info-all:focus,
     .project-info-all:focus-within {
-      box-shadow: 6px 6px 2px #c9c7c7;
+      box-shadow: 3px 3px 1px rgba(51,45,45,0.64);
       transform: scale(1.01);
     }
     .project-info-all:hover img,
@@ -261,7 +271,6 @@
 }
 
 @media only screen and (max-width: 567px) {
-
   #locations-v div.locations-v-wrap {
     grid-template-columns: 1fr;
     grid-gap: 1rem;
@@ -275,7 +284,7 @@
       // padding: 0;
       grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
     }
-    .nav-link{ 
+    .nav-link {
       margin-right: 0;
       width: 100%;
       box-sizing: border-box;

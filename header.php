@@ -67,19 +67,19 @@ $socials  = array( $twitter, $facebook, $youtube );
 			<?php
 	  endif;
 		?>
-	  </div>
-  </div>
+ </div>
+ </div>
 
 	<div class="header-right">
 	<nav class="navbar navbar-expand-sm navbar-light">
 
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" style="border:2px solid blue;" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+ <button class="navbar-toggler" type="button" data-toggle="collapse" style="border:2px solid blue;" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<div class="line"></div>
 		<div class="line"></div>
 		<div class="line"></div>
-	  </button>
+ </button>
   
-	  <?php
+ <?php
 		wp_nav_menu(
 			array(
 
