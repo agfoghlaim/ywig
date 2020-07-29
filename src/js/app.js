@@ -1,35 +1,75 @@
-// This handles toggable tabs and is most likely temporary. bootstrap.native should be doing this.
+import selectLocation from './select-location';
+import ywigToggleTabs from './toggle-tabs';
+import {
+  handleShowDropdownMenus,
+  handleHideDropdownMenus,
+} from './handle-dropdowns';
 
-const locationTabs = document.querySelectorAll('#pills-tab li a');
-const locationContents = document.querySelectorAll(
-  '#pills-tabContent .tab-pane'
-);
+ywigToggleTabs();
 
-locationTabs.forEach((tab) =>
-  tab.addEventListener('click', function(e) {
-    e.preventDefault();
-    const ans = findCorrespondingContentById(e.target.id);
+selectLocation();
 
-    removeClass();
+handleShowDropdownMenus();
 
-    ans.classList.add('show', 'active');
+handleHideDropdownMenus();
+
+
+
+// Handle Small Screen Nav Toggle
+const navToggle = document.querySelector('.navbar-toggler');
+navToggle.addEventListener('click', toggleNavBar);
+function toggleNavBar(e) {
+  const menu = document.querySelector('#navbarSupportedContent');
+  if (!menu) return;
+  //menu.classList.toggle('show');
+  if (!menu.classList.contains('show')) {
+    // window.setTimeout(function(){
+    menu.classList.add('show');
+    // },200)
+  } else if (menu.classList.contains('show')) {
+    menu.classList.remove('show');
+  }
+  // console.log(menu)
+  // menu.style.display = 'grid';
+  // menu.style.height = 'auto';
+}
+
+// hide small screen nav when any link clicked
+document.querySelectorAll('.menu-item a').forEach((link) =>
+  link.addEventListener('click', function(e) {
+    const menu = document.querySelector('#navbarSupportedContent');
+    if (!menu || !menu.classList.contains('show')) return;
+    menu.classList.remove('show');
   })
 );
 
-function removeClass() {
-  // remove all show
-  locationContents.forEach((l) => {
-    l.classList.remove('show', 'active');
-  });
-}
+// handle aria-expanded
+function handleAria() {}
+// Smooth Scroll, might as well. Also add .ywig-menu-active to custom links onClick.
+// const menu = jQuery('#menu-main-menu a');
 
-function findCorrespondingContentById(id) {
-  const array = Array.from(locationContents);
-  return array.filter((a) => {
-    if (`${a.id}-tab` === id) {
-      return true;
-    } else {
-      return false;
-    }
-  })[0];
-}
+// menu.on('click', function(e) {
+//   if (this.hash !== '') {
+//     //e.preventDefault();
+
+//     const hash = this.hash;
+//     const allCurrent = document.querySelectorAll('.ywig-menu-active');
+
+//     allCurrent.forEach((withCurrentClass) =>
+//       withCurrentClass.classList.remove('ywig-menu-active')
+//     );
+//     const parent = this.parentElement;
+//     parent.classList.add('ywig-menu-active');
+
+//     const test = jQuery('html, body');
+//     // scroll top will be something like ...
+//     // scrollTop: target.offset().top - headerHeight - navigationHeight + 10
+//     test.animate(
+//       {
+//         scrollTop: jQuery(hash).offset().top,
+//       },
+//       600
+//     );
+
+//   }
+// });

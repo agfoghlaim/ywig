@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', function onDomContentLoaded() {
+window.addEventListener('DOMContentLoaded', function onDomContentLoaded() { 
 
   var mediaUploader;
 
@@ -38,3 +38,4 @@ window.addEventListener('DOMContentLoaded', function onDomContentLoaded() {
     document.querySelector('.ywig-settings-form').submit();
   })
 });
+

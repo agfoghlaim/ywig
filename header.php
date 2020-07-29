@@ -37,75 +37,67 @@ $socials  = array( $twitter, $facebook, $youtube );
 
   <header id="home" class="header">
 
-	<div class="top-line">
-	  <div class="row align-items-center">
-		<div class="navbar-socials col-sm">
-
-		  <?php
-			if ( ! empty( $twitter ) ) :
-				?>
-			<a href="<?php echo $twitter; ?>" target="_blank" class="ywig-social-btn">
-			  <span class="ywig-icon-sidebar ywig-icon ywig-twitter"></span>
-			  <span class="sr-only">Visit our Twitter</span></a>
-				<?php
-		  endif;
-			if ( ! empty( $facebook ) ) :
-				?>
-			<a href="<?php echo $facebook; ?>" target="_blank" class="ywig-social-btn">
-			  <span class="ywig-icon-sidebar ywig-icon ywig-facebook"></span>
-			  <span class="sr-only">Visit our Facebook</span></a>
-				<?php
-		  endif;
-			if ( ! empty( $youtube ) ) :
-				?>
-			<a href="<?php echo $youtube; ?>" target="_blank" class="ywig-social-btn">
-			  <span class="ywig-icon-sidebar ywig-icon ywig-youtube"></span>
-			  <span class="sr-only">Visit our Youtube</span></a>
-				<?php
-		  endif;
+	<div class="header-left">
+	<div class="navbar-brand">
+		<a href="#" class="custom-logo-link" rel="home">
+		<img height="67" src="<?php print $logo; ?>" />
+		</a>
+  </div> <!-- /.navbar-brand -->
+  <div class="navbar-socials">
+	  <?php
+		if ( ! empty( $twitter ) ) :
 			?>
-
-		</div>
-		<div class="navbar-brand col-sm d-flex justify-content-center">
-		  <a href="#" class="custom-logo-link" rel="home">
-			<!-- <img width="200" height="67" src="http://youthworkgalway.ie/wp-content/uploads/2018/06/ywig_new_logo-_op.png" /> -->
-			<img height="67" src="<?php print $logo; ?>" />
-		  </a>
-		</div> <!-- /.navbar-brand -->
-		<div class="navbar-donate col-sm d-flex justify-content-md-end">
-		  <a href="#" target="_blank" class="btn btn-danger">Donate</a>
-		</div>
+	  <a href="<?php echo $twitter; ?>" target="_blank" class="ywig-social-btn">
+		<span class="ywig-icon-sidebar ywig-icon ywig-twitter"></span>
+		<span class="sr-only">Visit our Twitter</span></a>
+			<?php
+	  endif;
+		if ( ! empty( $facebook ) ) :
+			?>
+	  <a href="<?php echo $facebook; ?>" target="_blank" class="ywig-social-btn">
+		<span class="ywig-icon-sidebar ywig-icon ywig-facebook"></span>
+		<span class="sr-only">Visit our Facebook</span></a>
+			<?php
+	  endif;
+		if ( ! empty( $youtube ) ) :
+			?>
+	  <a href="<?php echo $youtube; ?>" target="_blank" class="ywig-social-btn">
+		<span class="ywig-icon-sidebar ywig-icon ywig-youtube"></span>
+		<span class="sr-only">Visit our Youtube</span></a>
+			<?php
+	  endif;
+		?>
 	  </div>
+  </div>
 
-	</div>
+	<div class="header-right">
+	<nav class="navbar navbar-expand-sm navbar-light">
 
-	<nav class="navbar nav-fill w-100 navbar-expand-sm navbar-light">
-	  <div class="container">
-
-		<button class="navbar-toggler" type="button" data-toggle="collapse" style="border:2px solid blue;" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		  <span class="navbar-toggler-icon"></span>
-		</button>
-
-		<?php
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" style="border:2px solid blue;" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+	  </button>
+  
+	  <?php
 		wp_nav_menu(
 			array(
+
 				'theme_location'  => 'main',
 				'depth'           => 2, // 1 = no dropdowns, 2 = with dropdowns.
 				'container'       => 'div',
-				'container_class' => 'collapse navbar-collapse',
+				'container_class' => 'collapse navbar-collapse navbar-fixed-top',
 				'container_id'    => 'navbarSupportedContent',
-				'menu_class'      => 'navbar-nav mx-auto',
-				'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
-				'walker'          => new WP_Bootstrap_Navwalker(),
+				'menu_class'      => 'navbar-nav',
+			// 'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
+				// 'walker'          => new WP_Bootstrap_Navwalker(),
 			)
 		);
-		?>
 
-	  </div>
+		?>
 	</nav>
 
-
-
+  </div>
   </header>
 
 

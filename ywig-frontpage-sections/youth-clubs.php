@@ -1,41 +1,53 @@
 <?php
 
-/*
-@package ywig-theme
+/**
+ * Youth Clubs Section Front Page
+ *
+ * @package ywig-theme
+ */
 
-YWIG Front Page - Youth Clubs section
+	$args = array(
+		'post_type'   => 'youthclub',
+		'post_status' => 'publish',
+	);
 
-*/
-?>
+		$myposts = new WP_Query( $args );
 
-<div class="youth-clubs-wrap">
+	?>
+
+	<div class="<?php echo esc_attr( $args['post_type'] . 's' ); ?>-wrap">
+
 	<?php
-	  $args = array(
-		  'post_type'   => 'youthClub',
-		  'post_status' => 'publish',
-	  );
+	if ( $myposts->have_posts() ) :
 
-	  $clubs = new WP_Query( $args );
-		?>
-  
-		<?php
-		$post_count = 0;
-		if ( $clubs->have_posts() ) :
-			while ( $clubs->have_posts() ) :
-				$post_count += 1;
-				$clubs->the_post();
-				?>
-		  <div class="youth-club-info">
-			  <h4><?php echo the_title(); ?> </h4>
-				<?php echo the_post_thumbnail(); ?>
-				<?php echo the_excerpt(); ?>
-		  </div>
+		while ( $myposts->have_posts() ) :
 
-				<?php
+			$myposts->the_post();
 
+			?>
 
-		  endwhile;
-		endif;
-		?>
-  
-</div><!-- end .tab-content -->
+			<div  class="youthclub-info">
+				<!-- <div class="yc-info-overlay"></div> -->
+						<?php the_post_thumbnail(); ?>
+
+				<div class="youthclub-info-text">
+
+					<h4><?php the_title(); ?></h4>
+
+					<?php esc_html( the_excerpt() ); ?>
+
+				</div>
+
+				<a class="btn btn-outline-light" href="<?php the_permalink(); ?>">More</a>
+
+			</div>
+
+			<?php
+
+		endwhile;
+
+		wp_reset_postdata();
+
+	endif;
+
+	echo '</div>'; // end .XXX-wrap.

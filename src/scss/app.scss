@@ -3,12 +3,17 @@
 */
 
 // ywig-theme
-@import 'header/header';
+// @import 'header/header';
+@import 'header/header-no-bs';
 @import 'sections/locations';
+@import 'sections/locations-v';
 @import 'sections/youth-clubs';
 @import 'sections/about-alt';
 @import 'sections/heroine';
+@import 'pages/project';
+@import 'pages/youthclub';
 @import 'variables';
+@import 'buttons';
 
 $theme-colors: (
   'primary': #0dc5ea,
@@ -16,32 +21,37 @@ $theme-colors: (
 );
 $border-radius: 0;
 
-
 // Bootstrap - Required
-@import '../../node_modules/bootstrap/scss/functions';
-@import '../../node_modules/bootstrap/scss/variables';
-@import '../../node_modules/bootstrap/scss/mixins';
+// @import '../../node_modules/bootstrap/scss/functions';
+// @import '../../node_modules/bootstrap/scss/variables';
+// @import '../../node_modules/bootstrap/scss/mixins';
 
 // Bootstrap - Optional
-@import '../../node_modules/bootstrap/scss/functions';
-@import '../../node_modules/bootstrap/scss/variables';
-@import '../../node_modules/bootstrap/scss/mixins';
-@import '../../node_modules/bootstrap/scss/root';
-@import '../../node_modules/bootstrap/scss/reboot';
-@import '../../node_modules/bootstrap/scss/type';
-@import '../../node_modules/bootstrap/scss/images';
-@import '../../node_modules/bootstrap/scss/code';
-@import '../../node_modules/bootstrap/scss/grid';
-@import '../../node_modules/bootstrap/scss/tables';
-@import '../../node_modules/bootstrap/scss/forms';
-@import '../../node_modules/bootstrap/scss/buttons';
-@import '../../node_modules/bootstrap/scss/transitions';
-@import '../../node_modules/bootstrap/scss/dropdown';
-@import '../../node_modules/bootstrap/scss/button-group';
+// Might need
+// @import '../../node_modules/bootstrap/scss/functions';
+// @import '../../node_modules/bootstrap/scss/variables';
+// @import '../../node_modules/bootstrap/scss/mixins';
+// @import '../../node_modules/bootstrap/scss/root';
+// @import '../../node_modules/bootstrap/scss/reboot';
+// @import '../../node_modules/bootstrap/scss/type';
+// @import '../../node_modules/bootstrap/scss/images';
+// @import '../../node_modules/bootstrap/scss/code';
+// @import '../../node_modules/bootstrap/scss/grid';
+// @import '../../node_modules/bootstrap/scss/forms';
+// @import '../../node_modules/bootstrap/scss/buttons';
+// @import '../../node_modules/bootstrap/scss/transitions';
+// @import '../../node_modules/bootstrap/scss/dropdown';
+// @import '../../node_modules/bootstrap/scss/button-group';
+// @import '../../node_modules/bootstrap/scss/nav';
+// @import '../../node_modules/bootstrap/scss/navbar';
+// @import '../../node_modules/bootstrap/scss/media';
+// @import '../../node_modules/bootstrap/scss/list-group';
+// @import '../../node_modules/bootstrap/scss/utilities'; // nav
+
+// Don't need
 // @import "../../node_modules/bootstrap/scss/input-group";
+// @import '../../node_modules/bootstrap/scss/tables';
 // @import "../../node_modules/bootstrap/scss/custom-forms";
-@import '../../node_modules/bootstrap/scss/nav';
-@import '../../node_modules/bootstrap/scss/navbar';
 // @import "../../node_modules/bootstrap/scss/card";
 // @import "../../node_modules/bootstrap/scss/breadcrumb";
 // @import "../../node_modules/bootstrap/scss/pagination";
@@ -49,8 +59,6 @@ $border-radius: 0;
 // @import "../../node_modules/bootstrap/scss/jumbotron";
 // @import "../../node_modules/bootstrap/scss/alert";
 // @import "../../node_modules/bootstrap/scss/progress";
-@import '../../node_modules/bootstrap/scss/media';
-@import '../../node_modules/bootstrap/scss/list-group';
 // @import "../../node_modules/bootstrap/scss/close";
 // @import "../../node_modules/bootstrap/scss/toasts";
 // @import "../../node_modules/bootstrap/scss/modal";
@@ -58,31 +66,110 @@ $border-radius: 0;
 // @import "../../node_modules/bootstrap/scss/popover";
 // @import "../../node_modules/bootstrap/scss/carousel";
 // @import "../../node_modules/bootstrap/scss/spinners";
-@import '../../node_modules/bootstrap/scss/utilities'; // nav
 // @import "../../node_modules/bootstrap/scss/print";
 
 :root {
   font-size: 16px;
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+}
+
+.ywig-menu-active {
+  // added in app.js for anchor menu items
+  border-bottom: 0.2rem solid $black;
 }
 
 body {
-  font-family: 'Lato', sans-serif;
+  margin-top: 7rem;
   overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-size: 1rem;
 }
-@media only screen and (max-width: 992px) {
-  :root {
-    font-size: 14px;
-  }
+
+// Bootstrap uses system fonts but need something different for hedlines. Is there a more efficient way of doing this.
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  font-weight: 800;
+  color: $black;
 }
+
+p {
+  color: $black;
+}
+
+a {
+  color: $blue;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: $blue;
+  text-decoration: underline;
+}
+
+a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:not([href]):hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.donate-btn {
+  // animation: donate 2s infinite;
+  transform: rotate(-4deg);
+}
+// @keyframes donate {
+//   0% {
+//     border-color: $black;
+//   }
+//   30% {
+//     border-color: $orange;
+//   }
+//   100% {
+//     border-color: $yellow;
+//   }
+// }
+// @media only screen and (max-width: 992px) {
+//   :root {
+//     font-size: 14px;
+//   }
+// }
+
 @media only screen and (max-width: 768px) {
   :root {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 section {
   min-height: 100vh;
 }
-// CSS Grid classes
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+// CSS Grid classes (maybe not used)
 .acc {
   display: grid;
   align-content: center;
@@ -151,20 +238,11 @@ section {
 
 /* END YWIG FONT ICONS */
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
-}
+/* MENU - no bootstrap */
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6, p {
-  color: $black;
+// Small devices (landscape phones, 576px and up)
+// @media (min-width: 576px) { ... }
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 576px) {
 }

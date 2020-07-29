@@ -1,0 +1,10 @@
+@mixin overlay-triangle {
+  position: absolute;
+  background-size: auto;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-size: 0.5rem;
+  opacity: 0.04;
+  background-image: url(/ywig-theme/wp-content/themes/ywig-theme/src/img/black_triangle.svg);
+}

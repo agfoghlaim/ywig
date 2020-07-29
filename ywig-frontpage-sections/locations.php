@@ -10,6 +10,11 @@ YWIG Front Page - Locations section
 ?>
 <div class="row">
 	<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+		<li class="nav-item">
+			<a class="nav-link" id="pills-all-tab" data-toggle="pill" href="#pills-all" role="tab" aria-controls="pills-all" aria-selected="true">
+			All
+			</a>
+		</li>
 	<?php
 
 		$all_locations = get_terms(

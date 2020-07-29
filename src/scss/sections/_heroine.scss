@@ -1,10 +1,9 @@
 @import 'variables';
 
 .heroine {
-  // background: rebeccapurple;
   min-height: calc(100vh - 8rem);
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 22rem 1fr 1fr; // see header grid-template-columns
   grid-template-rows: 1fr 1fr;
   // grid-gap:0.2rem;
   grid-template-areas:
@@ -13,6 +12,11 @@
 
   .heroine-box {
     min-height: 50%;
+  }
+  h3,
+  p,
+  a {
+    position: relative; // over .overlay
   }
   h3 {
     font-weight: 700;
@@ -33,7 +37,6 @@
     }
     .heroine-box {
       background: $light-green;
-      // background: url('/ywig-theme/wp-content/themes/ywig-theme/src/img/greenGradient.png');
       display: grid;
       justify-content: flex-start;
       align-content: center;
@@ -53,11 +56,6 @@
       }
     }
     .heroine-l-one-box-one {
-      // background: linear-gradient(45deg, #0ba4c303, #0ba4c314),
-      //   url(http://localhost/ywig-theme/wp-content/uploads/2020/06/looking_at_the_sea.jpg);
-      // background-size: cover;
-      // background-position: left center;
-      // background-repeat: no-repeat;
       display: grid;
       grid-column: 1 / span 1;
       grid-row: 1 / span 1;
@@ -88,7 +86,7 @@
       background-image: url(/ywig-theme/wp-content/themes/ywig-theme/src/img/black_circle.svg);
     }
     .heroine-box {
-      // background: $counselling-red;
+      position: relative;
       display: grid;
       justify-content: flex-start;
       align-content: center;
@@ -135,17 +133,19 @@
   .heroine-feature-label {
     position: absolute;
     background: $white;
-    color: $dark-green;
-    width: 8rem;
-    height: 2rem;
-    top: -0.1rem;
-    right: 0;
+    color: $black;
+    width: 6rem;
+    height: 1.8rem;
+    top: 0.1rem;
+    right: 0.1rem;
     font-weight: 800;
     text-align: right;
-    padding: 0.6rem;
-    font-size: 0.8rem;
+    padding: 0.4rem;
+    font-size: 0.6rem;
     line-height: 0.8rem;
-    box-shadow: -1px 1px 2px 1px $dark-green;
+    box-shadow: -1px 1px 2px 1px $black;
+    transform: rotate(90deg);
+    transform-origin: 3rem 3rem;
   }
 
   .heroine-l-three-box-one {
@@ -164,7 +164,7 @@
   }
 
   .heroine-l-three-box-two {
-    background: $orange;
+    background: rgb( 255,255,255);
     position: relative;
     .overlay {
       position: absolute;
@@ -173,31 +173,15 @@
       width: 100%;
       height: 100%;
       z-index: 0;
-      background-size: 0.4rem;
-      opacity: 0.05;
-      background-image: url('/ywig-theme/wp-content/themes/ywig-theme/src/img/black_circle.svg');
+      background-size: 16rem;
+      filter: grayscale(0.9);
+      // background-size: 0.4rem;
+      // opacity: 0.2;
+      background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('/ywig-theme/wp-content/themes/ywig-theme/src/img/triangles.svg');
     }
   }
 }
 
-// butotn
-.btn-link {
-  color: $blue;
-  border: 0.2rem solid $blue;
-  padding: 0.3rem 0.8rem;
-  font-size: 1rem;
-  line-height: 1.1rem;
-  text-decoration: none;
-  transition: all 0.2s linear;
-  font-weight: 800;
-
-}
-.btn-link:hover, .btn-link:active {
-  color: $white;
-  border: 0.2rem solid $blue;
-  text-decoration: none;
-  background: $blue;
-}
 @media only screen and (max-width: 992px) {
   .heroine .heroine-l-one .heroine-box h2 {
     font-size: 2rem;
@@ -254,8 +238,6 @@
         // width: 6rem;
         -webkit-filter: drop-shadow(2px 2px 1px #3e4e32);
         filter: drop-shadow(2px 2px 1px #3e4e32);
-        // position: absolute;
-        // left: 1rem;
       }
     }
   }
