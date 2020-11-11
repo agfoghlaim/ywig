@@ -5,15 +5,19 @@
 // ywig-theme
 // @import 'header/header';
 @import 'header/header-no-bs';
-@import 'sections/locations';
+// @import 'sections/locations';
 @import 'sections/locations-v';
 @import 'sections/youth-clubs';
 @import 'sections/about-alt';
 @import 'sections/heroine';
+@import 'sections/feature-1';
+@import 'sections/feature-2';
+@import 'sections/heroine-alt';
 @import 'pages/project';
 @import 'pages/youthclub';
 @import 'variables';
 @import 'buttons';
+// @import 'mixins';
 
 $theme-colors: (
   'primary': #0dc5ea,
@@ -83,12 +87,13 @@ $border-radius: 0;
 }
 
 body {
-  margin-top: 7rem;
+  // margin-top: 7rem;
   overflow-x: hidden;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   font-size: 1rem;
+  margin: 0;
 }
 
 // Bootstrap uses system fonts but need something different for hedlines. Is there a more efficient way of doing this.
@@ -103,6 +108,16 @@ h6 {
   color: $black;
 }
 
+.section-heading {
+    font-size: 2rem;
+    font-size: 1.8rem;
+    letter-spacing: -1px;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin: 3rem 1rem;
+    transform: rotate(-2deg);
+  
+}
 p {
   color: $black;
 }
@@ -155,12 +170,11 @@ a:not([href]):hover {
   }
 }
 
-
 section {
   /*
   Header is 7rem for large devices, TODO media query
   */
-  min-height: calc(100vh - 7rem);
+  // min-height: calc(100vh - 7rem);
 }
 
 .sr-only {
@@ -250,4 +264,13 @@ section {
 
 // Medium devices (tablets, 768px and up)
 @media (max-width: 576px) {
+}
+
+/*
+taxonomy-location
+*/
+.location-tax-project-wrap {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 2rem;
 }

@@ -73,13 +73,14 @@ $all_locations = get_terms(
 			<?php
 			foreach ( $all_locations as $location => $value ) {
 
-				$html_id  = sprintf( 'pills-%s-tab', $value->slug );
-				$href     = sprintf( '#pills-%s', $value->slug );
-				$aria     = sprintf( 'pills-%s', $value->slug );
-				$map_link = get_term_meta( $value->term_id, sprintf( 'ywig_location_%s_metadata', 'mapLink', true ) );
-				$address  = get_term_meta( $value->term_id, sprintf( 'ywig_location_%s_metadata', 'address', true ) );
-				$eircode  = get_term_meta( $value->term_id, sprintf( 'ywig_location_%s_metadata', 'eircode', true ) );
-				$phone    = get_term_meta( $value->term_id, sprintf( 'ywig_location_%s_metadata', 'phone', true ) );
+				$html_id   = sprintf( 'pills-%s-tab', $value->slug );
+				$href      = sprintf( '#pills-%s', $value->slug );
+				$aria      = sprintf( 'pills-%s', $value->slug );
+				$this_term = $value;
+				// $map_link = get_term_meta( $value->term_id, sprintf( 'ywig_location_%s_metadata', 'mapLink', true ) );
+				// $address  = get_term_meta( $value->term_id, sprintf( 'ywig_location_%s_metadata', 'address', true ) );
+				// $eircode  = get_term_meta( $value->term_id, sprintf( 'ywig_location_%s_metadata', 'eircode', true ) );
+				// $phone    = get_term_meta( $value->term_id, sprintf( 'ywig_location_%s_metadata', 'phone', true ) );
 				?>
 
 				<div 
@@ -88,33 +89,11 @@ $all_locations = get_terms(
 					role="tabpanel" 
 					aria-labelledby="<?php echo esc_html( $html_id ); ?>"
 				>
-					<div class="location-info-wrap">
+				<?php
 
-						<div class="location-info-right">
-							<?php
-							if ( isset( $map_link[0] ) ) {
-								// Note need a both map_src & map_link TODO.
-								?>
-										<a 
-										href="<?php echo esc_attr( $map_link[0] ); ?>" 
-										target="_blank" 
-										title="Open Google Maps in new tab."><img style="max-width:6rem" 
-										src="https://maps.googleapis.com/maps/api/staticmap?&amp;zoom=15&amp;size=300x300&amp;markers=youth+work+galway+ireland&amp;key=AIzaSyAMy60iJGjTU1DzZaO0x1f7KMx4qVoZhHM"></a>
-									<?php
-							}
-							?>
+				include locate_template( 'template-parts/ywig-components/location-info.php', false, false );
 
-							<div class="location-info-right-text">
-							<p style="margin: 0"> <?php echo isset( $address[0] ) ? esc_html( $address[0] ) : ''; ?> </p>
-							<p style="margin: 0"> <?php echo isset( $eircode[0] ) ? esc_html( $eircode[0] ) : ''; ?> </p>
-							<p style="margin: 0"> <?php echo isset( $phone[0] ) ? esc_html( $phone[0] ) : ''; ?> </p>
-
-							</div>
-						</div>
-
-					</div>
-
-
+				?>
 				</div><!-- end .tab-pane -->
 				<?php
 			} // end foreach $all_locations
@@ -137,7 +116,10 @@ $all_locations = get_terms(
 					// Because badly named projects-wrap also handles youth clubs... not anymore!!?.
 					set_query_var( 'proj_args', $post_args );
 					set_query_var( 'terms_taxonomy', 'location' );
-
+					?>
+						<div class="projects-wrap">
+					<?php
 					get_template_part( 'template-parts/projects-wrap' );
 					?>
+						</div>
 	</div><!--.locations-v-wrap-->

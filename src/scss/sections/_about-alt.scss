@@ -99,3 +99,72 @@
 
 // Extra large devices (large desktops, 1200px and up)
 // @media (min-width: 1200px) { ... }
+
+
+// new about - anything version
+.about-anything {
+  position: relative; // svg
+  display: grid;
+  justify-content: center;
+  .overlay {
+    background: url(https://static.vecteezy.com/system/resources/previews/000/107/438/original/free-space-seamless-pattern-background-vector.jpg);
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.04;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+  }
+  .about-text-wrap {
+    padding: 1rem;
+    display: grid;
+    align-content: center;
+    grid-template-columns: 10rem 1fr;
+    justify-content: center;
+    img {
+      max-width: 100%;
+    }
+    .text-right {
+      h3 {
+        font-size: 1.8rem;
+        letter-spacing: -1px;
+        background: #9dc27c;
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        /* margin-left: 4rem; */
+        box-shadow: 5px 5px 0px #ffffff;
+        transform: rotate(-2deg);
+        color: #332d2d;
+        margin-left: 2rem;
+      }
+      blockquote {
+        font-weight: lighter;
+        font-size: 1.5rem;
+        max-width: 25rem;
+      }
+      a {
+        margin-left: 2rem;
+      }
+    }
+  }
+  // p,
+  // blockquote {
+  //   max-width: 25rem;
+  //   font-size: 1.5rem;
+  // }
+
+  // blockquote {
+  //   padding-left: 1rem;
+
+  //   // border-left: 0.2rem solid #9dc27c;
+  //   font-weight: lighter;
+  //   font-style: italic;
+  //   // background: yellow;
+  //   position: relative;
+  // }
+
+  }
+
+

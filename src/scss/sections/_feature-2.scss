@@ -1,0 +1,46 @@
+@import 'variables';
+
+.feature-2-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  .feature-2a,
+  .feature-2b {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    justify-items: center;
+    padding: 1rem;
+    grid-gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    min-height: calc(50vh - 6rem);
+  }
+  .feature-2a {
+    background: $blue-alt;
+    h2 {
+
+      background: $yellow-alt;
+      box-shadow: 5px 5px 0px $darkblue-alt;
+    }
+
+    img {
+      filter: grayscale(0.8);
+      border-radius: 50%;
+    }
+  }
+
+  .feature-2b {
+    h2 {
+
+      background: $blue;
+      box-shadow: 5px 5px 0px $darkblue-alt;
+    }
+
+    img {
+      filter: grayscale(0.8);
+      border-radius: 50%;
+    }
+  }
+}
+

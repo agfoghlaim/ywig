@@ -140,6 +140,12 @@ function ywig_heroine_input_fields( $wp_customize ) {
 			'width'      => 400,
 			'height'     => 400,
 		),
+		array(
+			'setting_id' => 'blob_image',
+			'label'      => 'Blog Image Image',
+			'width'      => 900,
+			'height'     => 500,
+		),
 
 	);
 

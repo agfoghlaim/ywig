@@ -23,6 +23,7 @@ function ywig_single_yc_project_address( $post_type = null ) {
 	ob_start();
 	?>
 	<div class="<?php echo esc_attr( $post_type ); ?>-address">
+		<h1>ywig_single_yc_project_address</h1>
 		<p> <?php echo esc_html( $address ); ?></p>		
 		<p> <?php echo esc_html( $eircode ); ?></p>
 	</div>

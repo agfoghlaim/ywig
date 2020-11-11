@@ -11,7 +11,7 @@
 
 ?>
 
-	<div class="<?php echo esc_attr( $post_args['post_type'] . 's' ); ?>-wrap">
+
 
 	<?php
 	if ( $myposts->have_posts() ) :
@@ -29,4 +29,4 @@
 
 	endif;
 
-	echo '</div>'; // end .projects-wrap.
+

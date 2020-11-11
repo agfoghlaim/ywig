@@ -5,6 +5,21 @@ const scrollTo = () => {
   // get element with hashes' corresponding #id
   // scroll there with header offset accounted for.
 
+  // Handle page refresh, avoid 404s
+  // window.addEventListener('beforeunload', function(event) {
+  //   console.log("unloading");
+  //   event.preventDefault();
+  //   // Chrome requires returnValue to be set.
+  //   //history.pushState({}, null, '');
+  //   history.replaceState({}, null, "")
+  //   event.returnValue = '';
+  //   return 'You have unsaved changes!';
+  // })
+
+  window.onpopstate = function(event) {
+  alert(`location: ${document.location}, state: ${JSON.stringify(event.state)}`)
+}
+
   const menuItems = document.querySelectorAll('.menu-item-type-custom');
   if (!menuItems || !menuItems.length) {
     return;
@@ -20,12 +35,25 @@ const scrollTo = () => {
       return;
     }
 
-    // Only prevent default if we have the target #id.
+    // TODO, controversial? test...
+    // what happens on refresh?
+    var temp = targetElementId.substring(1, targetElementId.length);
+    // history.pushState({}, null, temp);
+    // history.replaceState({}, '', temp);
+    history.replaceState({page: temp}, "", `#${temp}`)
+// history.pushState({page: 2}, "title 2", "?page=2")
+// history.replaceState({page: 3}, "title 3", "?page=3")
+//history.back() // alerts "location: http://example.com/example.html?page=1, state: {"page":1}"
+ 
     e.preventDefault();
 
     // Unlikely that main nav is not the first <header>?!
     const headerHeight = document.getElementsByTagName('header')[0]
       .offsetHeight;
+    // if( !targetEl) {
+    //   // window.location =
+    //   return;
+    // }
     const targetEl = document.querySelector(`${targetElementId}`);
     const targetPosition =
       targetEl.getBoundingClientRect().top + window.scrollY; // Note scrollY

@@ -16,6 +16,14 @@
 	  </div>
 	</div>
 
+	<div 
+		id="posts-from-app"
+		style="display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); "
+	>
+	</div>
+
+
+
 	<div class="row">
 	  <div class="offset-lg-3 col-lg-6 offset-md-3 col-md-6">
 		<p class="text-center">This needs to be editable in the theme customizer under 'News Section'.</p>

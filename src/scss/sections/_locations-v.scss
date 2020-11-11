@@ -59,7 +59,6 @@
           width: 90%;
           transition: all 300ms ease;
           border: 0.2rem solid transparent;
-      
         }
         .nav-link.active {
           background: $other-blue-lighter;
@@ -67,7 +66,8 @@
           border: 0.2rem solid $black;
           margin-right: 0;
           position: relative;
-          width: calc(100% - 0.2rem);
+          width: calc(100% - 0.4rem);
+ 
         }
         .nav-link.active::after {
           content: '';
@@ -163,111 +163,32 @@
       color: $black;
       font-weight: lighter;
     }
-    // .project-info {
-    //   grid-gap: 0.5rem;
-    //   display: grid;
-
-    //   background: $white;
-    //   padding: 1rem;
-    //   align-content: baseline;
-    //   justify-content: center;
-    //   height: 100%;
-    // }
-    .project-info-all {
-      display: none;
-      grid-gap: 0.5rem;
-      background: $black;
-
-      padding: 1rem;
-      align-content: baseline;
-      justify-content: flex-start;
-      position: relative;
-      grid-template-rows: 8rem 1fr 4rem 4rem;
-      opacity: 0;
-      transition: all 300ms ease;
-      // box-shadow: 2px 3px 2px #c9c7c7;
-      align-items: center;
-      justify-items: flex-start;
-
-      // .overlay {
-      //   @include overlay-triangle;
-      // }
-      h4 {
-        color: $white;
-      }
-      p {
-        color: $white;
-        font-weight: 500;
-      }
-      img {
-        filter: grayscale(0.8);
-        max-width: 6rem;
-        height: 6rem;
-        object-fit: cover;
-        transform: all 300ms ease;
-      }
-      .location-tags-wrap {
-        grid-auto-flow: column;
-        grid-gap: 1rem;
-        justify-content: right;
-        justify-items: center;
-        position: absolute;
-        bottom: 1rem;
-        left: 1rem;
-        display: grid;
-        justify-self: center;
-        width: calc(100% - 2rem);
-        border-top: 0.1rem solid $light-black;
-        padding-top: 1rem;
-        align-items: center;
-        span {
-          border: 0.05rem solid $orange;
-          border-radius: 0.5rem;
-          padding: 0.2rem 0.4rem !important;
-          align-content: center;
-          line-height: 0.8rem;
-          // display: grid;
-          padding: 0.4rem;
-          align-items: center;
-          white-space: nowrap;
-         
-          background: $orange;
-
-          a {
-            color: $darker-black;
-            font-weight: 600;
-            font-size: 0.75rem;
-    
-          }
-        }
-        span:hover,
-        span:focus {
-          background: $white;
-          a {
-            color: $darker-black;
-            text-decoration: none;
-          }
-        }
-      }
-    }
-    .project-info-all:hover,
-    .project-info-all:focus,
-    .project-info-all:focus-within {
-      box-shadow: 3px 3px 1px rgba(51,45,45,0.64);
-      transform: scale(1.01);
-    }
-    .project-info-all:hover img,
-    .project-info-all:focus img,
-    .project-info-all:focus-within img {
-      filter: grayscale(0);
-    }
-    .project-info-all.show-proj {
-      display: grid;
-    }
-    .project-info-all.show-proj.fade {
-      opacity: 1;
-    }
   }
+}
+
+.project-info-all {
+  @include project-info;
+ 
+}
+
+.project-info-all:hover,
+.project-info-all:focus,
+.project-info-all:focus-within {
+  @include project-info-hover-focus;
+}
+
+.project-info-all:hover img,
+.project-info-all:focus img,
+.project-info-all:focus-within img {
+  @include project-info-hover-focus-img;
+}
+
+.project-info-all.show-proj {
+  @include project-info-all-show-proj;
+}
+
+.project-info-all.show-proj.fade {
+  @include project-info-all-show-proj-fade;
 }
 
 @media only screen and (max-width: 567px) {

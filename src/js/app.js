@@ -6,7 +6,7 @@ import {
 } from './handle-dropdowns';
 //import scrollTo from './scroll-to';
 
-//scrollTo(); 
+//scrollTo();
 
 ywigToggleTabs();
 
@@ -15,8 +15,6 @@ selectLocation();
 handleShowDropdownMenus();
 
 handleHideDropdownMenus();
-
-
 
 // Handle Small Screen Nav Toggle
 const navToggle = document.querySelector('.navbar-toggler');
@@ -77,3 +75,47 @@ function handleAria() {}
 //   }
 // });
 
+// firebase Experiment
+async function getPosts() {
+  const postsUrl = `https://firestore.googleapis.com/v1/projects/wp-app-d5c42/databases/(default)/documents/posts`;
+  const res = await fetch(postsUrl);
+  const posts = await res.json();
+  console.log(posts.documents);
+  const nicePosts = [];
+  posts.documents.forEach((doc) => {
+    console.log(doc.fields);
+    nicePosts.push(doc.fields);
+  });
+  showPosts(nicePosts);
+}
+
+function showPosts(posts) {
+  // const newsSection = document.querySelector('#news');
+  const newsSection = document.querySelector('#posts-from-app');
+  posts.forEach((post) => {
+    console.log('post.........');
+    const postHtml = htmlPosts(post);
+
+    if (newsSection) {
+      //newsSection.innerHTML = postHtml;
+      newsSection.insertAdjacentHTML('beforeend', postHtml);
+    }
+  });
+}
+getPosts();
+
+function htmlPosts(post) {
+  console.log('Post', post);
+  const html = `
+    <a href=${post.link.stringValue}>
+    <div style="border: 1px solid #332d2d;">
+     <img src=${post.imageUrl.stringValue} style="object-fit: fill; width:300px; " />
+     <div style="background:#332d2d;" >
+     <h4 style="color:white;">${post.title.stringValue}</h4>
+     <p style="color:white;">${post.postBody.stringValue}</p>
+     </div>
+    </div>
+    </a>
+  `;
+  return html;
+}

@@ -74,17 +74,18 @@
     display: grid;
     grid-template-columns: 1fr 2fr;
     position: relative;
-    background: $light-green;
-    .overlay {
-      position: absolute;
-      background-size: auto;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      background-size: 0.9rem;
-      opacity: 0.05;
-      background-image: url(/ywig-theme/wp-content/themes/ywig-theme/src/img/black_circle.svg);
-    }
+    // background: $light-green;
+    background: linear-gradient(60deg, rgb(238, 48, 58), rgba(238, 48, 58, 0.92));
+    // .overlay {
+    //   position: absolute;
+    //   background-size: auto;
+    //   width: 100%;
+    //   height: 100%;
+    //   z-index: 0;
+    //   background-size: 0.9rem;
+    //   opacity: 0.05;
+    //   background-image: url(/ywig-theme/wp-content/themes/ywig-theme/src/img/black_circle.svg);
+    // }
     .heroine-box {
       position: relative;
       display: grid;

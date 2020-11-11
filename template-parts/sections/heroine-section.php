@@ -62,7 +62,7 @@ $link_3  = get_theme_mod( 'heroine_link_3' );
 		</div>
 	</div>
 	<div class="heroine-l-two">
-		<div class="overlay"></div>
+		<!-- <div class="overlay"></div> -->
 		<div class="heroine-l-two-box-one heroine-box acc">
 		<img src="<?php echo esc_url( $image_1 ); ?>">
 
