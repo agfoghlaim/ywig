@@ -1,4 +1,9 @@
 <?php
+/**
+ * YWIG Theme functions and definitions
+ *
+ * @package ywig-theme
+ */
 
 require get_template_directory() . '/inc/cleanup.php';
 require get_template_directory() . '/inc/function-admin.php';
@@ -6,7 +11,6 @@ require get_template_directory() . '/inc/enqueue.php';
 require get_template_directory() . '/inc/theme-support.php';
 require get_template_directory() . '/inc/customizer/about-section.php';
 require get_template_directory() . '/inc/template-tags.php';
-// require get_template_directory() . '/inc/customizer/heroine-section.php';
 require get_template_directory() . '/inc/customizer/heroine-section-alt.php';
 require get_template_directory() . '/inc/customizer/counselling.php';
 require get_template_directory() . '/inc/customizer/projects.php';
@@ -23,18 +27,10 @@ require get_template_directory() . '/inc/classes/class-ywig-svg-icons.php';
 require get_template_directory() . '/inc/svg-icons.php';
 
 
-/**
- * Register Custom Navigation Walker
- */
-function register_navwalker() {
-	require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
-}
- add_action( 'after_setup_theme', 'register_navwalker' );
-
  add_theme_support( 'post-thumbnails' );
 
 
 // temp, does this allow editors to upload files via rest-api? yes
-// temp, does it stop admin having capability? No it doesn't
+// temp, does it stop admin having capability? No it doesn't.
 $edit_admin = get_role( 'editor' );
 $edit_admin->add_cap( 'unfiltered_upload' );

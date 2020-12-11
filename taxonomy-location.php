@@ -8,7 +8,7 @@
 	get_header(); ?>
 
 	<main id="main" class="site-main" role="main"> 
-		 <!-- <h1>taxonomy-location.php</h1>  -->
+
 		<?php $this_term = get_queried_object(); ?>
 
 		<section class="section-location-info">
@@ -18,7 +18,7 @@
 		</section>
 
 		<section class="section-location-projects">
-			<h3>Projects @ <?php echo $this_term->name; ?></h3>
+			<h3>Projects @ <?php echo esc_html( $this_term->name ); ?></h3>
 			<?php
 			if ( have_posts() ) :
 				?>

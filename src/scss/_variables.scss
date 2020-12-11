@@ -1,4 +1,3 @@
-  
 /*
 	@package ywig
 */
@@ -36,18 +35,19 @@ $red-alt: #fa7064;
 // $blue-alt: #1482a0;
 $blue-alt: #0ba4c3;
 $darkblue-alt: #27334e;
-$yellow-alt: #efb73e; 
+$yellow-alt: #efb73e;
 $greeny-blue-alt: #58b49e;
 $green-alt: #9dc27c;
 $teal-alt: #10596d;
 
-// $box-shadow-regular: 0px -4px 9px $lighter-black;
-$box-shadow-regular: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
 
-$box-shadow-small: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
-$box-shadow-more: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3);
+$box-shadow-regular: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+  0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 
-
+$box-shadow-small: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+  0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+$box-shadow-more: 0 4px 5px 0 rgba(0, 0, 0, 0.14),
+  0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
 
 // Buttons
 //

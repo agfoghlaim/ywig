@@ -69,7 +69,7 @@ $watermark_url = wp_get_attachment_url( get_theme_mod( 'heroine_watermark_image'
 	</div>
 
 	<div class="heroine-right" > 
-				<div class="heroine-img" style="background: url(<?php  echo esc_url( $img_url ); ?>);"></div>
+				<div class="heroine-img" style="background: url(<?php echo esc_url( $img_url ); ?>);"></div>
 
-	 </div> 
+	</div> 
 </div><!-- .heroine-alt -->

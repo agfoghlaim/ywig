@@ -2,7 +2,8 @@
 /**
  * Displays social icons. Used in footer.
  *
- *   @package ywig-theme
+ * @package ywig-theme
+ * 
  */
 
 

@@ -27,6 +27,7 @@
 	}
 	$what_we_do_output = ob_get_clean();
 	if ( $what_we_do_output ) {
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in template-parts/ywig-components/what-section-item.php .
 		echo $what_we_do_output;
 	}
 

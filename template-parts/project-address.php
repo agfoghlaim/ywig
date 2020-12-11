@@ -4,6 +4,7 @@
  *
  * @package ywig-theme
  */
+
 ?>
 
 <div class="project-address">

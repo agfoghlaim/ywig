@@ -1,10 +1,10 @@
 <?php
-
 /**
  * Standard Post Format
  *
  * @package ywig-theme
  */
+
 ?>
 
 <section class="no-results not-found">

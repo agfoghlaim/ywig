@@ -3,23 +3,19 @@
 */
 
 // ywig-theme
-// @import 'header/header';
 @import 'header/header-no-bs';
 @import 'footer/footer';
-// @import 'sections/locations';
+
+// Front page sections.
 @import 'sections/locations-v';
 @import 'sections/youth-clubs';
 @import 'sections/what';
-// @import 'sections/about-alt';
 @import 'sections/about-2';
-@import 'sections/heroine';
 @import 'sections/heroine-section-3';
-@import 'sections/feature-1';
-@import 'sections/feature-2';
 @import 'sections/quickposts';
 @import 'sections/funders';
 
-// @import 'sections/heroine-alt';
+// Pages.
 @import 'pages/project';
 @import 'pages/youthclub';
 @import 'pages/staff';
@@ -29,7 +25,6 @@
 
 @import 'ywig-components/location-info';
 
-// @import 'mixins';
 @import 'mixins';
 
 $theme-colors: (
@@ -38,56 +33,8 @@ $theme-colors: (
 );
 $border-radius: 0;
 
-// Bootstrap - Required
-// @import '../../node_modules/bootstrap/scss/functions';
-// @import '../../node_modules/bootstrap/scss/variables';
-// @import '../../node_modules/bootstrap/scss/mixins';
-
-// Bootstrap - Optional
-// Might need
-// @import '../../node_modules/bootstrap/scss/functions';
-// @import '../../node_modules/bootstrap/scss/variables';
-// @import '../../node_modules/bootstrap/scss/mixins';
-// @import '../../node_modules/bootstrap/scss/root';
-// @import '../../node_modules/bootstrap/scss/reboot';
-// @import '../../node_modules/bootstrap/scss/type';
-// @import '../../node_modules/bootstrap/scss/images';
-// @import '../../node_modules/bootstrap/scss/code';
-// @import '../../node_modules/bootstrap/scss/grid';
-// @import '../../node_modules/bootstrap/scss/forms';
-// @import '../../node_modules/bootstrap/scss/buttons';
-// @import '../../node_modules/bootstrap/scss/transitions';
-// @import '../../node_modules/bootstrap/scss/dropdown';
-// @import '../../node_modules/bootstrap/scss/button-group';
-// @import '../../node_modules/bootstrap/scss/nav';
-// @import '../../node_modules/bootstrap/scss/navbar';
-// @import '../../node_modules/bootstrap/scss/media';
-// @import '../../node_modules/bootstrap/scss/list-group';
-// @import '../../node_modules/bootstrap/scss/utilities'; // nav
-
-// Don't need
-// @import "../../node_modules/bootstrap/scss/input-group";
-// @import '../../node_modules/bootstrap/scss/tables';
-// @import "../../node_modules/bootstrap/scss/custom-forms";
-// @import "../../node_modules/bootstrap/scss/card";
-// @import "../../node_modules/bootstrap/scss/breadcrumb";
-// @import "../../node_modules/bootstrap/scss/pagination";
-// @import "../../node_modules/bootstrap/scss/badge";
-// @import "../../node_modules/bootstrap/scss/jumbotron";
-// @import "../../node_modules/bootstrap/scss/alert";
-// @import "../../node_modules/bootstrap/scss/progress";
-// @import "../../node_modules/bootstrap/scss/close";
-// @import "../../node_modules/bootstrap/scss/toasts";
-// @import "../../node_modules/bootstrap/scss/modal";
-// @import "../../node_modules/bootstrap/scss/tooltip";
-// @import "../../node_modules/bootstrap/scss/popover";
-// @import "../../node_modules/bootstrap/scss/carousel";
-// @import "../../node_modules/bootstrap/scss/spinners";
-// @import "../../node_modules/bootstrap/scss/print";
-
 :root {
   // font-size: 16px; // let browser handle so text size can be set by users
-
   --font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -105,45 +52,15 @@ Javascript related classes
   border-bottom: 0.2rem solid $black;
 }
 
-// .with-bg-color {
-//   background: $white;
-//   box-shadow: 2px 1px 2px $black;
-// }
-
-// .header.with-bg-color {
-//   height: 5rem;
-//   transition: all 0.2s linear;
-//   .header-left {
-//     img {
-//       width: 6rem;
-//     }
-//   }
-//   .header-left,
-//   .header-right {
-//     align-items: center;
-//   }
-// }
 .header.with-bg-color {
-  // height: 4rem;
   box-shadow: 1px 1px 2px $light-black;
   transition: all 0.2s ease-in-out;
   .header-left {
     padding: 0rem 3rem;
     transition: all 0.2s ease-in-out;
-    // .header-nav {
-    //   align-self: flex-end;
-    //   // #navbarSupportedContent {
-    //   //   // ul {
-    //   //   //   li{
-    //   //   //     padding-bottom: 1rem;
-    //   //   //   }
-    //   //   // }
-    //   // }
-    // }
   }
 }
 body {
-  // margin-top: 7rem;
   overflow-x: hidden;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
@@ -153,21 +70,6 @@ body {
   position: relative;
 }
 
-// body::after {
-//   content: '';
-//   width: 100%;
-//   height: 100%;
-//   position: absolute;
-//   background: red;
-//   top: 0;
-//   left: 0;
-//   z-index: -1;
-//   background: url(http://localhost/ywig-theme/wp-content/uploads/2020/12/leafs.png);
-//   filter: grayscale(1);
-//   opacity: 0.05;
-//   background-repeat: repeat;
-// }
-// Bootstrap uses system fonts but need something different for hedlines. Is there a more efficient way of doing this.
 h1,
 h2,
 h3,
@@ -199,9 +101,6 @@ h4,
 .heading-size-4 {
 }
 
-// h5, .heading-size-5 {
-// font-size: 1rem;
-// }
 .section-heading {
   font-size: 2rem;
   font-size: 1.8rem;
@@ -301,27 +200,6 @@ a:not([href]):hover {
   left: auto;
 }
 
-.donate-btn {
-  // animation: donate 2s infinite;
-  // transform: rotate(-4deg);
-}
-// @keyframes donate {
-//   0% {
-//     border-color: $black;
-//   }
-//   30% {
-//     border-color: $orange;
-//   }
-//   100% {
-//     border-color: $yellow;
-//   }
-// }
-// @media only screen and (max-width: 992px) {
-//   :root {
-//     font-size: 14px;
-//   }
-// }
-
 @media only screen and (max-width: 768px) {
   :root {
     font-size: 14px;
@@ -330,10 +208,6 @@ a:not([href]):hover {
 
 section {
   padding: 0rem 3rem;
-  /*
-  Header is 7rem for large devices, TODO media query
-  */
-  // min-height: calc(100vh - 7rem);
 }
 
 .sr-only {
@@ -485,4 +359,3 @@ h2.twist {
   color: $black;
   padding: 0;
 }
-

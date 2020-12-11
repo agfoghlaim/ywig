@@ -1,6 +1,6 @@
 <?php
 /**
- *   Template Name: All Staff
+ * Template Name: All Staff
  *
  * @package ywig-theme
  */
@@ -12,9 +12,6 @@
 		<div class="page-staff-wrap">
 	<?php
 
-
-
-
 	$terms = get_terms(
 		array(
 			'taxonomy'   => 'staff',
@@ -22,10 +19,7 @@
 			'orderby'    => 'name',
 		)
 	);
-	// echo '<pre>';
-	// var_dump( $terms );
-	// echo '</pre>';
-	// die();
+
 
 	foreach ( $terms as $the_term ) {
 
@@ -45,11 +39,12 @@
 		}
 
 
-		// try to get projects for each staaff
+		// try to get projects for each staff.
 		$projects = get_posts(
 			array(
 				'post_type'   => 'project',
 				'numberposts' => -1,
+				// @codingStandardsIgnoreStart WordPress.VIP.SlowDBQuery.slow_db_query
 				'tax_query'   => array(
 					array(
 						'taxonomy' => 'staff',
@@ -62,10 +57,6 @@
 		if ( is_array( $projects ) || is_object( $projects ) ) {
 
 			$projects_for_this_staff_member = wp_list_pluck( $projects, 'post_title' );
-			// echo '<pre>';
-			// var_dump( $projects_for_this_staff_member );
-
-			// echo '</pre>';
 		}
 
 

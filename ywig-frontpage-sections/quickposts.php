@@ -1,11 +1,11 @@
 <?php
+/**
+ *
+ * YWIG Front Page - Quickposts section
+ *
+ * @package ywig-them
+ */
 
-/*
-@package ywig-theme
-
-YWIG Front Page - Quickposts section
-
-*/
 ?>
 
 
@@ -17,7 +17,6 @@ $args = array(
 	'post_status'    => 'publish',
 	'orderby'        => 'post_date',
 	'order'          => 'ASC',
-	// 'category_name'  => 'front-page-news',
 
 );
 
@@ -38,13 +37,6 @@ $quickposts = new WP_Query( $args );
 			}
 			?>
 		<div class="quickpost-item">
-
-			<?php
-			// if ( ! empty( $proj_title ) ) {
-				// echo '<span class="quickpost-project-span">' . esc_html( $proj_title ) . '</span>';
-				// echo '<span class="quickpost-project-span"> author:' . get_the_author() . '</span>';
-			// }
-			?>
 			<img src="
 			<?php
 			echo esc_url(
@@ -57,10 +49,9 @@ $quickposts = new WP_Query( $args );
 				<?php the_content(); ?>
 			</div>
 			<div class="quickpost-info">
-			
 				<span>
 				<?php echo get_the_date(); ?> By 
-				<!-- <?php // echo get_the_author(); ?></span> -->
+
 				<?php
 				/**
 				 * Note site_url($path, $scheme), change $scheme to 'https' in production
@@ -80,6 +71,4 @@ $quickposts = new WP_Query( $args );
 	endif;
 	?>
 </div><!-- end .projects-wrap -->
-
-  
 

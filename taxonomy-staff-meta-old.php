@@ -71,6 +71,7 @@ get_header(); ?>
 				$post_args = array(
 					'post_type'   => 'project',
 					'post_status' => 'publish',
+					// @codingStandardsIgnoreStart WordPress.VIP.SlowDBQuery.slow_db_query
 					'tax_query'   => array(
 						array(
 							'taxonomy' => 'staff',

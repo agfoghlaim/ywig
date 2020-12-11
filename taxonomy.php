@@ -73,36 +73,34 @@ get_header(); ?>
 
 		</div>
 
-				
+		<?php
 
-				<?php
+		the_post();
+		if ( ! empty( $this_taxonomys_associated_post_type ) && ! empty( $this_terms_taxonomy ) ) {
+			?>
+			<h4><?php echo esc_html( $the_term->name ); ?> works @ <?php echo esc_html( the_title() ); ?></h4>
+			<?php
+			$post_args = array(
+				'post_type'   => $this_taxonomys_associated_post_type,
+				'post_status' => 'publish',
+				// @codingStandardsIgnoreStart WordPress.VIP.SlowDBQuery.slow_db_query
+				'tax_query'   => array(
+					array(
+						'taxonomy' => $this_terms_taxonomy,
+						'field'    => $the_term->term_id,
+						'terms'    => $the_term->term_id,
+					),
+				),
+			);
 
-				the_post();
-				if ( ! empty( $this_taxonomys_associated_post_type ) && ! empty( $this_terms_taxonomy ) ) {
-					?>
-					<h4><?php echo esc_html( $the_term->name ); ?> works @ <?php echo esc_html( the_title() ); ?></h4>
-					<?php
-					$post_args = array(
-						// 'post_type'   => 'project',
-						'post_type'   => $this_taxonomys_associated_post_type,
-						'post_status' => 'publish',
-						'tax_query'   => array(
-							array(
-								'taxonomy' => $this_terms_taxonomy,
-								'field'    => $the_term->term_id,
-								'terms'    => $the_term->term_id,
-							),
-						),
-					);
+			set_query_var( 'proj_args', $post_args );
+			set_query_var( 'terms_taxonomy', $this_terms_taxonomy );
 
-					set_query_var( 'proj_args', $post_args );
-					set_query_var( 'terms_taxonomy', $this_terms_taxonomy );
+			get_template_part( 'template-parts/projects-wrap' );
 
-					get_template_part( 'template-parts/projects-wrap' );
+		}
 
-				}
-
-				?>
+		?>
 
 	</main>
 

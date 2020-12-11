@@ -1,5 +1,4 @@
 <?php
-
 /**
  * YWIG Single Youth Club Page
  *

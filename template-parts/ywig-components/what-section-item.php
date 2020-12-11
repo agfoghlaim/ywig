@@ -7,7 +7,7 @@
 
 if ( true === $what_show ) {
 	?>
-	<div class="what-item  what-item-<?php echo $str; ?>">
+	<div class="what-item  what-item-<?php echo esc_attr( $str ); ?>">
 	<?php
 	if ( $what_image ) {
 		?>
@@ -45,6 +45,6 @@ if ( true === $what_show ) {
 		?>
 		</div> <!-- end .what-feature-text -->
 	</div>
-	
+
 	<?php
 }

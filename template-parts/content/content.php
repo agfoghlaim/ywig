@@ -1,10 +1,10 @@
 <?php
-
 /**
  * Standard Post Format
  *
  * @package ywig-theme
  */
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -14,16 +14,16 @@
 		(content.php)
 	</header>
 	<div class="entry-content">
-			
-			<?php if ( has_post_thumbnail() ) : ?>
-				<div class="standard-featured">
-					<?php the_post_thumbnail(); ?>
-				</div>
-			<?php endif; ?>
 
-			<div class="entry-excerpt">
-				<?php the_excerpt(); ?>
+		<?php if ( has_post_thumbnail() ) : ?>
+			<div class="standard-featured">
+				<?php the_post_thumbnail(); ?>
 			</div>
+		<?php endif; ?>
+
+		<div class="entry-excerpt">
+			<?php the_excerpt(); ?>
+		</div>
 	</div>
 
 	<a href="<?php the_permalink(); ?>" class="btn">
@@ -33,6 +33,4 @@
 	<footer class="entry-footer">
 			footer
 	</footer>
-
-	
 </article>

@@ -14,192 +14,114 @@
   grid-gap: 0.5rem;
   padding: 5.7rem 1rem 5rem 1rem;
   align-content: baseline;
-  /* justify-content: flex-start; */
   position: relative;
-  /* grid-template-rows: 1fr 4rem 4rem; */
   opacity: 0;
-  /* align-items: flex-start; */
   background: #58b49e;
   transition: all 300ms ease;
   box-shadow: $box-shadow-regular;
-  // box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   justify-items: flex-start;
   border-radius: 2px;
   align-items: space-between;
   align-content: space-between;
-
-    // display: none;
-    // grid-gap: 0.5rem;
-    // padding: 5.7rem 1rem;
-    // align-content: baseline;
-    // justify-content: flex-start;
-    // position: relative;
-    // grid-template-rows: 1fr 4rem 4rem;
-    // opacity: 0;
-    // align-items: flex-start;
-    // background: $greeny-blue-alt;
-    // transition: all 300ms ease;
-    // box-shadow: $box-shadow-regular;
-  
-    // justify-items: flex-start;
-    // border-radius: 2px;
-
-    
-    // .project-info-overlay{
-    //    //content: '';
-    //   position: absolute;
-    //   content: '';
-    // background: #58b49e;
-    // width: 5.6rem;
-    // height: 5rem;
-    // position: absolute;
-    // top: -0.9rem;
-    // /* left: 0.2rem; */
-    // border-radius: 2px;
-    // z-index: 0;
-
-    //   // width: 100%;
-    //   // height: 100%;
-    //   // background-size: 40rem;
-    //   // background-repeat: no-repeat;
-    //   // left: 0;
-    //   // background: url(http://localhost/ywig-theme/wp-content/uploads/2020/07/triangles_opaque.png);
-    //   // /* background-size: 60%; */
-    //   // background-repeat: repeat;
-    //   // opacity: 0.3;
-    //   // filter: grayscale(1);
-    //   // z-index: -1;
-    // }
-    .project-info-img-wrap {
-
-      position: absolute;
-      content: '';
+  .project-info-img-wrap {
+    position: absolute;
+    content: '';
     background: #58b49e;
     width: 5.6rem;
     height: 5rem;
     position: absolute;
     top: -0.9rem;
-    /* left: 0.2rem; */
     border-radius: 2px;
+  }
+  .project-info-img-wrap::before {
+    content: '';
+    position: absolute;
+    background: transparent;
+    width: 5.6rem;
+    height: 5rem;
+    z-index: -1;
+    box-shadow: $box-shadow-regular;
+  }
+  .project-info-all-text {
+    h4 {
+      color: $darker-black; // contrast
+    }
+    p {
+      color: $darker-black; // contrast
+    }
+  }
+  img {
+    filter: grayscale(0.9);
+    max-width: 6rem;
+    height: 6rem;
+    object-fit: cover;
+    transition: all 0.1s ease-in-out;
+    background: #ffffff;
+    padding: -1rem;
+    position: absolute;
+    top: 0.3rem;
+    max-width: 5rem;
+    height: 5rem;
+    border-radius: 2px;
+    left: 0.3rem;
+  }
+  .location-tags-wrap {
+    grid-auto-flow: column;
+    grid-gap: 1rem;
+    justify-content: right;
+    justify-items: center;
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    display: grid;
+    justify-self: center;
+    width: calc(100% - 2rem);
+    border-top: 0.1rem solid rgba(255, 255, 255, 0.22);
+    padding-top: 1rem;
+    align-items: center;
+    span {
+      border: 0.05rem solid $yellow-alt;
 
-    }
-    .project-info-img-wrap::before {
-      content: "";
-      position: absolute;
-      background: transparent;
-      width: 5.6rem;
-      height: 5rem;
-      z-index: -1; 
-      box-shadow: $box-shadow-regular;
-    }
-    .project-info-all-text {
-      h4 {
-        color: $darker-black; // contrast
-   
-      }
-      p {
-        color: $darker-black; // contrast
-        // font-weight: 500;
-      }
-    }
-    img {
-      filter: grayscale(0.9);
-      max-width: 6rem;
-      height: 6rem;
-      object-fit: cover;
-      transition: all 0.1s ease-in-out;
-      background: #ffffff;
-      padding: -1rem;
-      /* border-radius: 50%; */
-      position: absolute;
-      top: 0.3rem;
-      /* border-top: 1px solid green; */
-      /* left: calc(50% - 3rem); */
-      max-width: 5rem;
-      height: 5rem;
-      border-radius: 2px;
-      left: 0.3rem;
-    }
-    .location-tags-wrap {
-      grid-auto-flow: column;
-      grid-gap: 1rem;
-      justify-content: right;
-      justify-items: center;
-      position: absolute;
-      bottom: 1rem;
-      left: 1rem;
-      display: grid;
-      justify-self: center;
-      width: calc(100% - 2rem);
-      border-top: 0.1rem solid rgba(255,255,255,0.22);
-      padding-top: 1rem;
+      border-radius: 0.2rem;
+      align-content: center;
+      line-height: 0.65rem;
+      padding: 0.25rem 0.3rem 0.4rem 0.3rem;
       align-items: center;
-      span {
-        border: 0.05rem solid $yellow-alt;
-   
-        border-radius: 0.2rem;
-        align-content: center;
-        line-height: 0.65rem;
-        padding: 0.25rem 0.3rem 0.4rem 0.3rem;
-        align-items: center;
-        white-space: nowrap;
-      
-        background: $yellow-alt;
+      white-space: nowrap;
 
-        a {
-          color: $darker-black;
-          font-weight: 600;
-          font-size: 0.65rem;
-          text-transform: uppercase;
-  
-        }
+      background: $yellow-alt;
+
+      a {
+        color: $darker-black;
+        font-weight: 600;
+        font-size: 0.65rem;
+        text-transform: uppercase;
       }
-      span:hover,
-      span:focus {
-        background: $white;
-        a {
-          color: $darker-black;
-          text-decoration: none;
-        }
+    }
+    span:hover,
+    span:focus {
+      background: $white;
+      a {
+        color: $darker-black;
+        text-decoration: none;
       }
-    
+    }
   }
 }
 @mixin project-info-hover-focus {
-
   box-shadow: $box-shadow-more;
-  // box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);;
   border: none;
   outline: none;
 }
 @mixin project-info-hover-focus-img {
-  // filter: grayscale(0) drop-shadow(1px 5px 9px white);
   filter: grayscale(0) drop-shadow(1px 1px 3px $white);
   transform: scale(1.01);
   transition: all 0.1s ease-in-out;
-  // filter: grayscale(0)
 }
-  // .project-info-all:hover,
-  // .project-info-all:focus,
-  // .project-info-all:focus-within {
-  //   box-shadow: 3px 3px 1px rgba(51,45,45,0.64);
-  //   transform: scale(1.01);
-  // }
 
-  // .project-info-all:hover img,
-  // .project-info-all:focus img,
-  // .project-info-all:focus-within img {
-  //   filter: grayscale(0);
-  // }
-  // .project-info-all.show-proj {
-  //   display: grid;
-  // }
-  @mixin project-info-all-show-proj {
-    display: grid;
-  }
-  @mixin project-info-all-show-proj-fade {
-    opacity: 1;
-  }
-  // .project-info-all.show-proj.fade {
-  //   opacity: 1;
-  // }
+@mixin project-info-all-show-proj {
+  display: grid;
+}
+@mixin project-info-all-show-proj-fade {
+  opacity: 1;
+}

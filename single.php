@@ -1,5 +1,4 @@
 <?php
-
 /**
  * YWIG Single Post
  *
@@ -23,15 +22,15 @@ while ( have_posts() ) :
 	 */
 	get_template_part( 'content', get_post_format() );
 
-	echo the_post_thumbnail();
+	the_post_thumbnail();
 	?>
-	<h1><?php echo the_title(); ?></h1>
+	<h1><?php the_title(); ?></h1>
 	<?php the_content(); ?>
 
-  <h2>This is single.php for regular posts</h2>
+	<h2>This is single.php for regular posts</h2>
 	<?php
 
-	echo the_content();
+	the_content();
 	// Previous/next post navigation.
 	the_post_navigation(
 		array(

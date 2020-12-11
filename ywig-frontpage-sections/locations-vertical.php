@@ -58,7 +58,7 @@ $all_locations = get_terms(
 
 				?>
 		</div><!--.nav nav-pills-->
-	
+
 		<!-- Show corresponding location-info for each pill -->
 		<div class="tab-content" id="pills-tabContent">
 

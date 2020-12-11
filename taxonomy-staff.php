@@ -15,12 +15,9 @@ get_header(); ?>
 		<?php
 
 		$the_term                            = get_queried_object();
-
 		$this_taxonomys_associated_post_type = get_taxonomy( $the_term->taxonomy )->object_type[0];
 		$this_terms_taxonomy                 = $the_term->taxonomy;
-		echo '<pre>';
-		print_r( $the_term );
-		echo '</pre>';
+
 
 		// $the_term->taxonomy will be 'staff' or 'club_contact'
 		$staff_name      = get_field( $the_term->taxonomy . '_first_name', 'term_' . $the_term->term_id );
@@ -77,9 +74,9 @@ get_header(); ?>
 					<h4><?php echo esc_html( $the_term->name ); ?> works @ <?php echo esc_html( the_title() ); ?></h4>
 					<?php
 					$post_args = array(
-						// 'post_type'   => 'project',
 						'post_type'   => $this_taxonomys_associated_post_type,
 						'post_status' => 'publish',
+						// @codingStandardsIgnoreStart WordPress.VIP.SlowDBQuery.slow_db_query
 						'tax_query'   => array(
 							array(
 								'taxonomy' => $this_terms_taxonomy,

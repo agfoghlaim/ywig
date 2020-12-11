@@ -4,6 +4,7 @@
  *
  * @package ywig
  */
+
 ?>
 <section class="quickposts" id="quickposts">
 	<h2 class="twist">Project News</h2>

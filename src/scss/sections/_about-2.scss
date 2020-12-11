@@ -3,13 +3,9 @@
 .about-2 {
   position: relative;
   padding: 0rem 3rem;
-  // min-height: 70vh;
   display: grid;
   align-items: flex-start;
   align-content: flex-start;
-
-  // background: $yellow-alt;
-
   .over {
     position: absolute;
     width: 100%;
@@ -19,30 +15,6 @@
     background-size: 100%;
     background-repeat: repeat-x;
   }
-
-  // h2 {
-  // 	color: $black;
-  // 	display: inline;
-  // 	letter-spacing: -1px;
-  //   display: inline-block;
-  // 	transform: rotate(-2deg);
-  // 	position: relative;
-  // }
-
-  // h2::after {
-  // 	position: absolute;
-  // 	content: '';
-  // 	width: 100%;
-  // 	height: 100%;
-  // 	 background: url(/ywig-theme/wp-content/themes/ywig-theme/src/img/yellow_triangle.svg);
-  // 	 top: 0;
-  // 	 left:0;
-  // 	 background-size: 0.3rem;
-  // 	 background-repeat: repeat;
-  // 	 opacity: 0.8;
-  // 	 padding-left: 1rem;
-  // 	 z-index: -1;
-  //  }
 
   .about-what {
     display: grid;
@@ -63,12 +35,6 @@
   svg {
     max-width: 100%;
     display: grid;
-    // align-self: flex-end;
-    // margin-top: 5rem;
-    // justify-self: flex-end;
-    // 	position: absolute;
-    // top: 0rem;
-    // left: 50rem;
   }
 }
 
@@ -77,34 +43,11 @@
   width: 100%;
   height: 100%;
   position: absolute;
-  // transform: skewY(-2deg);
   top: 0;
   left: 0;
   background: url(/ywig-theme/wp-content/themes/ywig-theme/src/img/torn.jpg);
-  // opacity: 0.15;
   background-repeat: repeat;
   background-size: 100%;
   background-position: top;
   z-index: -1;
-  // background: url(/ywig-theme/wp-content/themes/ywig-theme/src/img/triangle_outlines.svg);
-  // background-size: contain;
-  // background-repeat: no-repeat;
-  // width: 100%;
-  // background-position: top;
 }
-
-// .about-2::after {
-//   content: '';
-//   width: 100%;
-//   height: 100%;
-//   position: absolute;
-//   background: red;
-//   top: 0;
-//   left: 0;
-//   z-index: -1;
-//   background: url(http://localhost/ywig-theme/wp-content/uploads/2020/12/leafs.png);
-//   -webkit-filter: grayscale(1);
-//   filter: grayscale(1);
-//   opacity: 0.06;
-//   background-repeat: repeat;
-// }

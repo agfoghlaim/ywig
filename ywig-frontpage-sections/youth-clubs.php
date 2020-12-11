@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Youth Clubs Section Front Page
  *
