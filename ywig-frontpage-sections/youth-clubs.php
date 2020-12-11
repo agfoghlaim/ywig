@@ -16,7 +16,7 @@
 	?>
 
 	<div class="<?php echo esc_attr( $args['post_type'] . 's' ); ?>-wrap">
-
+	<div class="over-yellow"></div>
 	<?php
 	if ( $myposts->have_posts() ) :
 
@@ -38,7 +38,7 @@
 
 				</div>
 
-				<a class="btn btn-outline-light" href="<?php the_permalink(); ?>">More</a>
+				<a class="btn btn-outline-dark" href="<?php the_permalink(); ?>">More</a>
 
 			</div>
 

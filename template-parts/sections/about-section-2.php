@@ -1,0 +1,44 @@
+<?php
+/**
+ * About Section
+ *
+ * @package ywig-theme
+ */
+
+// $section_title  = get_theme_mod( 'about_title_1' );
+$section_title = get_theme_mod( 'about_section_title' );
+$text_1        = get_theme_mod( 'about_text_1' );
+$title_2       = get_theme_mod( 'about_title_2' );
+$text_2        = get_theme_mod( 'about_text_2' );
+$title_3       = get_theme_mod( 'about_title_3' );
+$text_3        = get_theme_mod( 'about_text_3' );
+$btn_link      = get_theme_mod( 'about_link' );
+$img_url       = wp_get_attachment_url( get_theme_mod( 'about_main_image' ) );
+?>
+<section class="about-2" id="about">
+		<div class="over"></div>
+		<div class="about-what">
+			<div class="item">
+
+				<h2 class="twist"><?php echo esc_html( $section_title ); ?></h2>
+				<h3><?php echo esc_html( $title_2 ); ?></h3>
+				<p> <?php echo esc_html( $text_2 ); ?></p>
+				<h3><?php echo esc_html( $title_3 ); ?></h3>
+				<p> <?php echo esc_html( $text_3 ); ?></p>
+				<a href="<?php echo esc_url( $btn_link ); ?>" class="btn btn-outline-dark">More About Us</a>
+			</div>
+			<?php // get_template_part( 'template-parts/svgs/svg-map' ); ?>
+			<img src="<?php echo esc_url( $img_url ); ?>" />
+				
+
+		</div>
+	
+
+<!-- 		
+		</div> -->
+
+		<!-- <h2><?php // echo esc_html( $title_3 ); ?></h2>
+		<p> <?php // echo esc_html( $text_3 ); ?></p>
+		 -->
+		 <?php get_template_part( 'template-parts/sections/what-section' ); ?>
+</section>

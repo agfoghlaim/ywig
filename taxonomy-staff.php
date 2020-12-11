@@ -15,10 +15,11 @@ get_header(); ?>
 		<?php
 
 		$the_term                            = get_queried_object();
+
 		$this_taxonomys_associated_post_type = get_taxonomy( $the_term->taxonomy )->object_type[0];
 		$this_terms_taxonomy                 = $the_term->taxonomy;
 		echo '<pre>';
-		print_r( $the_term->taxonomy );
+		print_r( $the_term );
 		echo '</pre>';
 
 		// $the_term->taxonomy will be 'staff' or 'club_contact'
@@ -54,7 +55,7 @@ get_header(); ?>
 
 				} else {
 
-					get_template_part( 'template-parts/svg/svg-user' );
+					get_template_part( 'template-parts/svgs/svg-user' );
 
 				}
 

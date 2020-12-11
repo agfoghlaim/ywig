@@ -10,7 +10,7 @@
 <div class="location-info-wrap">
 
 <div class="location-info-right">
-	<pre>location-info.php</pre>
+	<!-- <pre>location-info.php</pre> -->
 	<?php
 		$address  = get_term_meta( $this_term->term_id, sprintf( 'ywig_location_%s_metadata', 'address', true ) );
 		$eircode  = get_term_meta( $this_term->term_id, sprintf( 'ywig_location_%s_metadata', 'eircode', true ) );

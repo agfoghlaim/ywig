@@ -9,7 +9,7 @@ ADMIN ENQUEUE
 
 function ywig_load_admin_scripts( $hook ) {
 	// echo $hook; => 'toplevel_page_moh_ywig'
-	echo '--------------------------------------------------------------------------------' . $hook;
+	echo '(enqueue.php)--------------------------------------------------------------------------------' . $hook;
 	if ( 'toplevel_page_moh_ywig' == $hook ) {
 
 		wp_register_style( 'ywig_admin', get_template_directory_uri() . '/dist/css/admin.css', array(), '1.0.0', 'all' );

@@ -1,10 +1,10 @@
 const scrollTo = () => {
-  // If is front page...
-  // Listen to menu items with urls to home page (.menu-item-type-custom)
-  // Get hashes on click
-  // get element with hashes' corresponding #id
-  // scroll there with header offset accounted for.
-
+  /** If is front page...
+   - Listen to menu items with urls to home page (.menu-item-type-custom)
+   - Get hashes on click
+   - get element with hashes' corresponding #id
+   - scroll there with header offset accounted for.
+*/
   // Handle page refresh, avoid 404s
   // window.addEventListener('beforeunload', function(event) {
   //   console.log("unloading");
@@ -16,9 +16,11 @@ const scrollTo = () => {
   //   return 'You have unsaved changes!';
   // })
 
-  window.onpopstate = function(event) {
-  alert(`location: ${document.location}, state: ${JSON.stringify(event.state)}`)
-}
+  // window.onpopstate = function(event) {
+  //   alert(
+  //     `location: ${document.location}, state: ${JSON.stringify(event.state)}`
+  //   );
+  // };
 
   const menuItems = document.querySelectorAll('.menu-item-type-custom');
   if (!menuItems || !menuItems.length) {
@@ -35,26 +37,48 @@ const scrollTo = () => {
       return;
     }
 
+    // add active class to menu item > a when clicked
+    // todo need to enqueue script that checks slug or something on non front page pages (or move this) so it doesn't only work on the front page.
+    menuItems.forEach((menuItem) => {
+      if (
+        menuItem.firstElementChild.tagName === 'A' &&
+        menuItem.firstElementChild.classList.contains('nav-active')
+      ) {
+        menuItem.firstElementChild.classList.remove('nav-active');
+      }
+    });
+    
+    // if target is <a>, add .nav-active class to target
+    if (e.target.tagName === 'A') {
+      e.target.classList.add('nav-active');
+      
+    // if target is <li> add .nav-active class link to it's child <a>
+    } else if (
+      e.target.tagName === 'LI' &&
+      e.target.classList.contains('menu-item') &&
+      e.target.firstElementChild.tagName === 'A'
+    ) {
+      e.target.firstElementChild.classList.add('nav-active');
+    }
+    // const targetEl = document.querySelector(`#${tar}`)
+    // targetElementId.classList.add('nav-active');
     // TODO, controversial? test...
-    // what happens on refresh?
+    // what happens on refresh? Is this needed??
+    // Update: it's been months and this seems to work okay...
     var temp = targetElementId.substring(1, targetElementId.length);
-    // history.pushState({}, null, temp);
-    // history.replaceState({}, '', temp);
-    history.replaceState({page: temp}, "", `#${temp}`)
-// history.pushState({page: 2}, "title 2", "?page=2")
-// history.replaceState({page: 3}, "title 3", "?page=3")
-//history.back() // alerts "location: http://example.com/example.html?page=1, state: {"page":1}"
- 
+    history.replaceState({ page: temp }, '', `#${temp}`);
+
     e.preventDefault();
 
     // Unlikely that main nav is not the first <header>?!
     const headerHeight = document.getElementsByTagName('header')[0]
       .offsetHeight;
-    // if( !targetEl) {
-    //   // window.location =
-    //   return;
-    // }
+
     const targetEl = document.querySelector(`${targetElementId}`);
+
+    // return if there is no target element. The nav item will just not work...
+    if (!targetEl) return;
+
     const targetPosition =
       targetEl.getBoundingClientRect().top + window.scrollY; // Note scrollY
     const startPosition = window.pageYOffset;
@@ -74,6 +98,7 @@ const scrollTo = () => {
       }
     }
 
+    // util function
     function getTargetElementIdFromHash(e) {
       if (e.target.tagName === 'A') {
         return e.target.hash;
@@ -84,15 +109,36 @@ const scrollTo = () => {
       }
     }
 
+    // util function (taken from http://www.gizma.com/easing/)
     function easy(t, b, c, d) {
-      // http://www.gizma.com/easing/
       t /= d / 2;
       if (t < 1) return (c / 2) * t * t * t * t + b;
       t -= 2;
       return (-c / 2) * (t * t * t * t - 2) + b;
     }
+
     requestAnimationFrame(animation);
   }
 };
 scrollTo();
 // export default scrollTo;
+
+/*
+
+Header -add bg color on scroll
+
+*/
+
+document.addEventListener('scroll', handleHeaderBgColor);
+
+const header = document.getElementById('home');
+const headerHeight = document.getElementsByTagName('header')[0].offsetHeight;
+
+// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function handleHeaderBgColor() {
+  if (window.pageYOffset > headerHeight) {
+    header.classList.add('with-bg-color');
+  } else {
+    header.classList.remove('with-bg-color');
+  }
+}

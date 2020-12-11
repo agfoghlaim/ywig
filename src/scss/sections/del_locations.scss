@@ -71,7 +71,7 @@
   display: grid;
   // background: #d1e0c4;
   //min-height: tbc
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   grid-gap: 1rem;
   img {
     max-width: 100px;
@@ -108,7 +108,7 @@
     align-content: baseline;
     justify-content: center;
     position: relative;
-    grid-template-rows: 8rem 1fr 4rem 4rem;
+    grid-template-rows: 6rem 1fr 4rem 4rem;
     opacity: 0;
     transition: opacity 300ms linear;
     .location-tags-wrap {

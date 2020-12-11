@@ -33,10 +33,10 @@ function ywig_about_input_fields( $wp_customize ) {
 
 		// Heroine Tagline Section.
 				array(
-					'setting_id' => 'title_1',
+					'setting_id' => 'section_title',
 					'field_type' => 'text',
-					'label'      => 'Title 1',
-					'default'    => 'Title 1...',
+					'label'      => 'Section Title',
+					'default'    => 'About Us',
 				),
 		array(
 			'setting_id' => 'text_1',
@@ -84,7 +84,7 @@ function ywig_about_input_fields( $wp_customize ) {
 			'setting_id' => 'main_image',
 			'label'      => 'About Section Image Image',
 			'width'      => 900,
-			'height'     => 500,
+			'height'     => 900,
 		),
 
 	);

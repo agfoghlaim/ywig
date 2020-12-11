@@ -9,6 +9,6 @@
 
 <section class="locations-v" id="locations-v">
 	<div class="temp"></div>
-	<h2>Projects, Programmes & Services</h2>
+	<h2 class="twist">Project Finder</h2>
 	<?php require_once get_template_directory() . '/ywig-frontpage-sections/locations-vertical.php'; ?>
 </section>

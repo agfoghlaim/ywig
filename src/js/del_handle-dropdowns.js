@@ -10,7 +10,7 @@ export const handleShowDropdownMenus = () => {
 
   function handleShowItemsDropdown(e) {
     if (!e.target) return;
-
+    console.log("show")
     Array.from(e.target.children).forEach((childElement) => {
       if (
         childElement.tagName === 'UL' &&
@@ -22,8 +22,8 @@ export const handleShowDropdownMenus = () => {
   }
 };
 
+// Handle Hide Dropdown menu.
 export const handleHideDropdownMenus = () => {
-  // Handle Hide Dropdown menu.
   const allDropdownMenus = document.querySelectorAll('.dropdown-menu');
   allDropdownMenus.forEach((menu) =>
     menu.addEventListener('mouseleave', handleHideDropdownMenus)

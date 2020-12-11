@@ -68,6 +68,12 @@ function ywig_heroine_input_fields( $wp_customize ) {
 			'width'      => 900,
 			'height'     => 500,
 		),
+		array(
+			'setting_id' => 'watermark_image',
+			'label'      => 'Watermark Image Image',
+			'width'      => 400,
+			'height'     => 400,
+		),
 
 	);
 

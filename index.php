@@ -10,13 +10,16 @@ get_header(); ?>
 
 <div id="primary" class="content-area">
 
-	<main id="main" class="site-main" role="main"> <h1>index.php</h1>
+	<main id="main main-content"  class="site-main" role="main"> 
+		<h1>index.php</h1>
+
 	<?php
 	if ( have_posts() ) {
 
 		while ( have_posts() ) {
 			the_post();
-			get_template_part( 'template-parts/content/content', 'page' );
+			 //get_template_part( 'template-parts/content/content', 'page' );
+			get_template_part( 'template-parts/content/content', get_post_type() );
 		}
 	} else {
 
@@ -31,6 +34,3 @@ get_header(); ?>
 
 <?php
 get_footer();
-
-
-

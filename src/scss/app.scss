@@ -5,19 +5,32 @@
 // ywig-theme
 // @import 'header/header';
 @import 'header/header-no-bs';
+@import 'footer/footer';
 // @import 'sections/locations';
 @import 'sections/locations-v';
 @import 'sections/youth-clubs';
-@import 'sections/about-alt';
+@import 'sections/what';
+// @import 'sections/about-alt';
+@import 'sections/about-2';
 @import 'sections/heroine';
+@import 'sections/heroine-section-3';
 @import 'sections/feature-1';
 @import 'sections/feature-2';
-@import 'sections/heroine-alt';
+@import 'sections/quickposts';
+@import 'sections/funders';
+
+// @import 'sections/heroine-alt';
 @import 'pages/project';
 @import 'pages/youthclub';
+@import 'pages/staff';
+@import 'pages/resources';
 @import 'variables';
 @import 'buttons';
+
+@import 'ywig-components/location-info';
+
 // @import 'mixins';
+@import 'mixins';
 
 $theme-colors: (
   'primary': #0dc5ea,
@@ -73,7 +86,8 @@ $border-radius: 0;
 // @import "../../node_modules/bootstrap/scss/print";
 
 :root {
-  font-size: 16px;
+  // font-size: 16px; // let browser handle so text size can be set by users
+
   --font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -81,11 +95,53 @@ $border-radius: 0;
     'Liberation Mono', 'Courier New', monospace;
 }
 
+/*
+
+Javascript related classes
+
+*/
 .ywig-menu-active {
   // added in app.js for anchor menu items
   border-bottom: 0.2rem solid $black;
 }
 
+// .with-bg-color {
+//   background: $white;
+//   box-shadow: 2px 1px 2px $black;
+// }
+
+// .header.with-bg-color {
+//   height: 5rem;
+//   transition: all 0.2s linear;
+//   .header-left {
+//     img {
+//       width: 6rem;
+//     }
+//   }
+//   .header-left,
+//   .header-right {
+//     align-items: center;
+//   }
+// }
+.header.with-bg-color {
+  // height: 4rem;
+  box-shadow: 1px 1px 2px $light-black;
+  transition: all 0.2s ease-in-out;
+  .header-left {
+    padding: 0rem 3rem;
+    transition: all 0.2s ease-in-out;
+    // .header-nav {
+    //   align-self: flex-end;
+    //   // #navbarSupportedContent {
+    //   //   // ul {
+    //   //   //   li{
+    //   //   //     padding-bottom: 1rem;
+    //   //   //   }
+    //   //   // }
+    //   // }
+    // }
+  }
+}
 body {
   // margin-top: 7rem;
   overflow-x: hidden;
@@ -94,8 +150,23 @@ body {
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   font-size: 1rem;
   margin: 0;
+  position: relative;
 }
 
+// body::after {
+//   content: '';
+//   width: 100%;
+//   height: 100%;
+//   position: absolute;
+//   background: red;
+//   top: 0;
+//   left: 0;
+//   z-index: -1;
+//   background: url(http://localhost/ywig-theme/wp-content/uploads/2020/12/leafs.png);
+//   filter: grayscale(1);
+//   opacity: 0.05;
+//   background-repeat: repeat;
+// }
 // Bootstrap uses system fonts but need something different for hedlines. Is there a more efficient way of doing this.
 h1,
 h2,
@@ -104,26 +175,53 @@ h4,
 h5,
 h6 {
   font-family: 'Montserrat', Helvetica, Arial, sans-serif;
-  font-weight: 800;
+  font-weight: 600;
   color: $black;
+  margin: 1rem 0;
+  padding: 0;
+  line-height: 1.5;
 }
 
+h1 {
+  font-weight: 800;
+}
+
+h2,
+.heading-size-2 {
+  // font-size: 2.4rem;
+}
+
+h3,
+.heading-size-3 {
+  font-size: 1.2rem;
+}
+h4,
+.heading-size-4 {
+}
+
+// h5, .heading-size-5 {
+// font-size: 1rem;
+// }
 .section-heading {
-    font-size: 2rem;
-    font-size: 1.8rem;
-    letter-spacing: -1px;
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    margin: 3rem 1rem;
-    transform: rotate(-2deg);
-  
+  font-size: 2rem;
+  font-size: 1.8rem;
+  letter-spacing: -1px;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin: 3rem 1rem;
+  transform: rotate(-2deg);
 }
 p {
   color: $black;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin: 1rem 0;
+  padding: 0;
+  line-height: 150%;
 }
 
 a {
-  color: $blue;
+  color: $blue-alt;
   background-color: transparent;
   text-decoration: none;
 }
@@ -143,9 +241,69 @@ a:not([href]):hover {
   text-decoration: none;
 }
 
+/* Screen Reader Text ------------------------ */
+
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+  word-break: normal;
+}
+
+.screen-reader-text:focus {
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  clip: auto !important;
+  -webkit-clip-path: none;
+  clip-path: none;
+  color: $blue-alt;
+  display: block;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 0.5rem;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+}
+
+/* Skip Link --------------------------------- */
+
+.skip-link {
+  right: -9999rem;
+  top: 2.5rem;
+  z-index: 999999999;
+  text-decoration: underline;
+}
+
+.skip-link:focus {
+  display: block;
+  right: 6px;
+  top: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  line-height: normal;
+  padding: 0.5rem;
+  z-index: 100000;
+  left: auto;
+}
+
 .donate-btn {
   // animation: donate 2s infinite;
-  transform: rotate(-4deg);
+  // transform: rotate(-4deg);
 }
 // @keyframes donate {
 //   0% {
@@ -171,6 +329,7 @@ a:not([href]):hover {
 }
 
 section {
+  padding: 0rem 3rem;
   /*
   Header is 7rem for large devices, TODO media query
   */
@@ -274,3 +433,56 @@ taxonomy-location
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 2rem;
 }
+
+// index.php
+main {
+  min-height: calc(100vh - 9rem);
+  margin-top: 9rem;
+  display: block;
+  // background: yellow;
+}
+
+main::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: url(http://localhost/ywig-theme/wp-content/uploads/2020/12/leafs.png);
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+  opacity: 0.06;
+  background-repeat: repeat;
+}
+
+article.type-project {
+  background: orange;
+  @include project-info;
+  opacity: 1;
+  display: grid;
+  h2 a {
+    color: $black;
+  }
+}
+
+article.youthclub {
+  display: grid;
+  margin: 2rem 3rem;
+  justify-content: flex-start;
+  background: pink;
+  h2.entry-title {
+    color: red;
+  }
+}
+
+h2.twist {
+  letter-spacing: -1px;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  transform: rotate(-2deg);
+  color: $black;
+  padding: 0;
+}
+

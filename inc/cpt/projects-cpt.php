@@ -113,7 +113,7 @@ function ywig_projects_cpt_meta_callback( $post ) {
 		?>
 
 	<div>
-		<p><?php echo esc_attr( $value ); ?></p>
+		<label><?php echo 'wtf'; ?></label>
 		<input type="text" name="<?php echo esc_attr( $meta_field ); ?>" value="<?php echo esc_attr( $this_meta_field ); ?>" />
 	</div>
 

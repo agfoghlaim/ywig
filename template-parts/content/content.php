@@ -8,16 +8,12 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-<h1>content.php</h1>
+
 	<header class="entry-header">
-
-		<?php the_title( '<h1 class="entry-title>', '</h1>' ); ?>
-
-		<div class="entry-meta">
-	
-		</div>
-		</header>
-		<div class="entry-content">
+		<?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
+		(content.php)
+	</header>
+	<div class="entry-content">
 			
 			<?php if ( has_post_thumbnail() ) : ?>
 				<div class="standard-featured">
@@ -28,15 +24,15 @@
 			<div class="entry-excerpt">
 				<?php the_excerpt(); ?>
 			</div>
-		</div>
+	</div>
 
-		<a href="<?php the_permalink(); ?>" class="btn">
-				<?php esc_html_e( 'Read More' ); ?>
-		</a>
+	<a href="<?php the_permalink(); ?>" class="btn">
+			<?php esc_html_e( 'Read More' ); ?>
+	</a>
 
-		<footer class="entry-footer">
-
-		</footer>
+	<footer class="entry-footer">
+			footer
+	</footer>
 
 	
 </article>

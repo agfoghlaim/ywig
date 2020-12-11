@@ -47,7 +47,7 @@ get_header(); ?>
 
 			} else {
 
-				get_template_part( 'template-parts/svg/svg-user' );
+				get_template_part( 'template-parts/svgs/svg-user' );
 
 			}
 			?>

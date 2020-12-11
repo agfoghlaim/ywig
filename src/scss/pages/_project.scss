@@ -1,102 +1,139 @@
 @import 'variables';
-@import 'variables';
+
+.project-content {
+  margin-top: 7rem;
+  position: relative;
+}
 
 .project-intro {
-  padding-top: 4rem;
+  position: relative;
+  background: linear-gradient(90deg, #9dc27c, #1482a0);
   display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: 200px 1fr;
-  grid-gap: 3rem;
-  // background: $light-green;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding: 0rem 2rem 2rem 16rem;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 14rem;
 
-  .project-intro-left {
+  h1 {
     display: grid;
-    align-items: flex-start;
-    justify-items: flex-start;
+    justify-self: flex-start;
 
-    img {
-      max-width: 100%;
+    font-size: 2rem;
+    background-size: 0.3rem;
+    color: $white;
+    font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+    margin: 0;
+  }
+  p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: $darkblue-alt;
+  }
+
+  img {
+    position: absolute;
+    width: 14rem;
+    height: 14rem;
+    z-index: 0;
+    filter: grayscale(1);
+    top: 0;
+    left: 0;
+  }
+}
+
+.project-content-container {
+  background: $white;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  position: relative;
+  padding: 0rem 2rem;
+
+  .torn-white {
+    position: absolute;
+    width: 100%;
+    height: 4rem;
+    top: -4rem;
+    background: url(/ywig-theme/wp-content/themes/ywig-theme/src/img/torn_white.svg);
+    background-size: 100%;
+    background-repeat: repeat-x;
+    z-index: 1;
+  }
+}
+
+.project-main {
+  display: grid;
+  justify-content: center;
+  justify-items: flex-start;
+}
+
+.project-right {
+  display: grid;
+  grid-gap: 1rem;
+  align-content: flex-start;
+
+  .project-address,
+  .project-socials,
+  .project-staff {
+    border-radius: 2px;
+    box-shadow: $box-shadow-regular;
+    h4 {
+      color: $yellow-alt;
+      font-size: 1.1rem;
     }
   }
-  .project-intro-right {
-    h1 {
-      font-weight: bolder;
-    }
+  .project-address {
+    background: $blue-alt;
     display: grid;
-    grid-auto-flow: row;
-    grid-gap: 1rem;
-    .project-address {
-      padding: 0 0.5rem;
-     
+    padding: 1rem;
+
+    p {
+      color: $white;
     }
-    .project-intro-socials-wrap {
+
+    svg {
+      color: $yellow-alt;
+      max-width: 1.2rem;
+    }
+  }
+
+  .project-socials {
+    background: $blue-alt;
+    padding: 1rem;
+    display: grid;
+    // justify-content: space-around;
+    grid-auto-flow: row;
+
+    div {
       display: grid;
       grid-auto-flow: column;
       justify-content: flex-start;
-      grid-gap: 1.5rem;
-      .ywig-social-btn {
-        font-size: 1.5rem;
-      }
+      grid-gap: 2rem;
+      margin-top: 1rem;
     }
-    
+    a {
+      color: white;
+      font-size: 1.4rem;
+    }
   }
 }
-
-.project-intro {
-  h1 {
-    font-size: 1.8rem;
-  }
-}
-.project-content-container {
-  padding: 2rem 1rem;
-  width: 100%;
-
-  display: grid;
-  grid-gap: 2rem;
-  h2,
-  p,
-  div {
-    margin: 0;
-  }
-}
-
-
-
-// tableish exp
 
 .project-staff {
-	.headish {
-		border-bottom: 0.1rem solid $light-black;
-		margin-bottom: 0.5rem;
-		h6 {
-			margin-left: 4.5rem; //.bodyish first column + grid-gap
-		}
-	}
-  .bodyish {
+  display: grid;
+  grid-gap: 1rem;
+  grid-auto-flow: row;
+  background: $blue-alt;
+  padding: 1rem;
+
+  div {
     display: grid;
-    grid-auto-flow: row;
-    grid-gap: 0.5rem;
-    font-size: 0.8rem;
-    .grid-item {
-      display: grid;
-
-      grid-auto-flow: column;
-      grid-template-columns: 4rem 5rem 6rem 8rem;
-      grid-gap: 0.5rem;
-      div,
-      img,
-      svg {
-        align-items: center;
-        display: grid;
-
-        // justify-content: flex-start;
-        // justify-items: flex-start;
-      }
-      img,
-      svg {
-        max-width: 90%;
+    grid-gap: 1rem;
+    div.project-staff-item {
+      background: $darkblue-alt;
+      padding: 1rem;
+      p {
+        color: $white;
       }
     }
   }

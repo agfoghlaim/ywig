@@ -1,0 +1,45 @@
+@import 'variables';
+
+footer.site-footer {
+	background: $black;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	padding: 2rem;
+	
+	.footer-left {
+		display: grid;
+		justify-content: center;
+		align-content: center;
+		align-items: center;
+		ul {
+			// background: blue;
+			list-style-type: none;
+			li {
+				a {
+					color: $white;
+					text-transform: uppercase;
+					font-weight: 500;
+				}
+			}
+		}
+	}
+	.footer-center {
+
+		display: grid;
+		justify-content: center;
+		align-content: center;
+		align-items: center;
+	}
+	.footer-right {
+		display: grid;
+		justify-content: center;
+		align-content: center;
+		align-items: center;
+	
+		p{
+			color: $white;
+			margin: 0;
+
+		}
+	}
+}

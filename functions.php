@@ -11,19 +11,30 @@ require get_template_directory() . '/inc/customizer/heroine-section-alt.php';
 require get_template_directory() . '/inc/customizer/counselling.php';
 require get_template_directory() . '/inc/customizer/projects.php';
 require get_template_directory() . '/inc/customizer/clubs.php';
+require get_template_directory() . '/inc/customizer/programmes.php';
 require get_template_directory() . '/inc/customizer/about-section-alt.php';
 require get_template_directory() . '/inc/customizer/test-section.php';
 require get_template_directory() . '/inc/cpt/youth-clubs-cpt.php';
 require get_template_directory() . '/inc/cpt/projects-cpt.php';
+require get_template_directory() . '/inc/cpt/quickposts-cpt.php';
+
+// Handle SVG icons.
+require get_template_directory() . '/inc/classes/class-ywig-svg-icons.php';
+require get_template_directory() . '/inc/svg-icons.php';
+
+
 /**
  * Register Custom Navigation Walker
  */
 function register_navwalker() {
 	require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
 }
-// add_action( 'after_setup_theme', 'register_navwalker' );
+ add_action( 'after_setup_theme', 'register_navwalker' );
 
-add_theme_support( 'post-thumbnails' );
+ add_theme_support( 'post-thumbnails' );
 
 
-
+// temp, does this allow editors to upload files via rest-api? yes
+// temp, does it stop admin having capability? No it doesn't
+$edit_admin = get_role( 'editor' );
+$edit_admin->add_cap( 'unfiltered_upload' );

@@ -31,21 +31,22 @@ $image_2 = wp_get_attachment_url( get_theme_mod( 'clubs_section_image' ) );
 
 
 	<div class="feature-2a">
-		<div class="feature-2a-text">
+
+	<?php
+
+	if ( $image_1 ) {
+
+		?>
+
+<img src="<?php echo esc_url( $image_1 ); ?>">
 
 		<?php
 
-		if ( $image_1 ) {
+	}
 
-			?>
+	?>
 
-			<img src="<?php echo esc_url( $image_1 ); ?>">
-
-			<?php
-
-		}
-
-		?>
+		<div class="feature-2a-text">
 
 		<?php
 
@@ -53,7 +54,7 @@ $image_2 = wp_get_attachment_url( get_theme_mod( 'clubs_section_image' ) );
 
 			?>
 
-				<h2 class="section-heading"><?php echo esc_html( $title_1 ); ?></h2>
+				<h2 class="section-heading" ><?php echo esc_html( $title_1 ); ?></h2>
 
 			<?php
 		}
@@ -90,25 +91,30 @@ $image_2 = wp_get_attachment_url( get_theme_mod( 'clubs_section_image' ) );
 		?>
 
 		</div>
+
+
 	</div>
 
 
 	<div class="feature-2b">
-		<div class="feature-2b-text">
+
+		<div class="feature-2b-overlay"></div>
+	<?php
+
+	if ( $image_2 ) {
+
+		?>
+
+	<img src="<?php echo esc_url( $image_2 ); ?>">
 
 		<?php
 
-		if ( $image_2 ) {
+	}
 
-			?>
+	?>
 
-			<img src="<?php echo esc_url( $image_2 ); ?>">
 
-			<?php
-
-		}
-
-		?>
+		<div class="feature-2b-text">
 
 		<?php
 

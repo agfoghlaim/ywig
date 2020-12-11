@@ -16,16 +16,21 @@ if ( is_array( $term_obj_list ) || is_object( $term_obj_list ) ) {
 ?>
 
 	<div 
-		tabindex="0"
+	
 		class="project-info-all show-proj fade <?php echo esc_attr( $terms_string ); ?>" 
 		data-locations="<?php echo esc_attr( $terms_string ); ?>"
 		>
+		<!-- <div class="project-info-overlay"></div> -->
 		<!-- <div class="overlay"></div> -->
-		<?php the_post_thumbnail(); ?>
+		<div class="project-info-img-wrap">
+
+			<?php the_post_thumbnail(); ?>
+		</div>
+
 
 		<div class="project-info-all-text">
 
-			<h4><?php the_title(); ?></h4>
+			<h3><?php the_title(); ?></h3>
 
 			<?php the_excerpt(); ?>
 
