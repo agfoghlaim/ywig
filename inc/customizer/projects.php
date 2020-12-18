@@ -45,7 +45,7 @@ function ywig_projects_input_fields( $wp_customize ) {
 		array(
 			'setting_id' => 'section_link',
 			'field_type' => 'text',
-			'label'      => 'Link',
+			'label'      => 'Link (url or /#target-id)',
 			'default'    => '',
 			'sanitize'   => 'esc_url_raw',
 		),

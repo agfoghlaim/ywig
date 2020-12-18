@@ -1,4 +1,12 @@
 @import 'variables';
+
+button:focus, .btn:focus, a:focus {
+  outline: 2px dotted;
+    outline-color: $black;
+    outline-style: dotted;
+    outline-width: 2px; 
+}
+
 .btn {
   display: inline-block;
   font-weight: 600;
@@ -32,8 +40,8 @@
 
 .btn:focus,
 .btn.focus {
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  // outline: 0;
+  // box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
 .btn.disabled,

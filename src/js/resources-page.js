@@ -14,14 +14,21 @@ const resourcesAccordian = () => {
 			if(!targetEl) return;
 
 			// show/hide list of files
-			targetEl.classList.toggle('show');
+			if(targetEl.classList.contains('show')) {
+				targetEl.classList.remove('show');
+
+				// set aria-expanded on the button
+				e.target.setAttribute('aria-expanded', false);
+			} else {
+				targetEl.classList.add('show');
+				e.target.setAttribute('aria-expanded', true)
+			}
 
 			const targetSection = document.querySelector(`.section-${targetId}`);
 			if(!targetSection) return;
 
-			//	handle + - icon on button
+			// add .show to parent <section> so it's easier to handle + - icon on button
 			targetSection.classList.toggle('show');
-			
     });
 
   });

@@ -10,6 +10,7 @@ THEME SUPPORT
 function ywig_register_nav_menu() {
 	// register_nav_menu('social', 'Social Media Menu');
 	register_nav_menu( 'main', 'YWIG Main Menu' );
+	register_nav_menu( 'primary', 'Primary 2020' );
 	register_nav_menu( 'secondary', 'YWIG Footer Menu' );
 }
 add_action( 'after_setup_theme', 'ywig_register_nav_menu' );

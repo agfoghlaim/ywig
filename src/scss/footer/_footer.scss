@@ -6,6 +6,13 @@ footer.site-footer {
   grid-template-columns: 1fr 1fr 1fr;
   padding: 2rem;
 
+  *:focus {
+    outline: 2px dotted;
+    outline-color: $white;
+    outline-style: dotted;
+    outline-width: 2px; 
+  }
+
   .footer-left {
     display: grid;
     justify-content: center;

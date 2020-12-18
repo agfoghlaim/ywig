@@ -1,5 +1,7 @@
 @import 'variables';
+@import 'mixins';
 
+// Front Page
 section.quickposts {
   position: relative;
   padding: 4rem 3rem;
@@ -9,59 +11,20 @@ section.quickposts {
     grid-gap: 1rem;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 
-    .quickpost-item {
-      display: grid;
-      background: $white;
-      border-radius: 2px;
-      align-content: flex-start;
-      align-items: flex-start;
-      position: relative;
-      transition: all 300ms ease;
-      box-shadow: $box-shadow-regular;
-      position: relative;
-      grid-template-rows: 20rem 1fr 3rem;
-      .quickpost-project-span {
-        position: absolute;
-        top: 0.5rem;
-        left: 0.5rem;
-        background: $white;
-        color: $black;
-        font-weight: 500;
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        line-height: 0.8rem;
-        padding: 0.25rem 0.5rem;
-      }
-      .quickpost-text {
-        padding: 1rem;
+    .quickpost-item{
 
-        p,
-        h3 {
-          margin: 0;
-          padding: 0;
-          display: grid;
-          align-items: flex-start;
-          align-content: flex-start;
-        }
-      }
-
-      img {
-        max-width: 100%;
-        border-radius: 2px;
-      }
-      .quickpost-info {
-        display: grid;
-        border-top: 0.1rem solid $dark-white;
-        padding: 0.5rem 1rem;
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        font-weight: 500;
-        color: $light-black;
-        justify-content: flex-start;
-        align-items: flex-end;
-
-        align-content: center;
-      }
+      @include quickpost-item;
+      
     }
+
   }
 }
+
+// In the loop
+.quickpost-item{
+
+  @include quickpost-item;
+  max-width: 300px;
+  margin: 1rem auto;
+}
+

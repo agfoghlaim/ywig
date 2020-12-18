@@ -7,8 +7,17 @@
 
 ?>
 <?php get_header(); ?>
-	<main>
+<article  id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		
 		<h1>page-staff.php</h1>
+	<?php get_template_part( 'template-parts/content/content-page-entry-header' ); ?>
+	<section class="staff-page-intro">
+			<?php
+				the_content();
+				the_post_thumbnail();
+			?>
+		</section>
+
 		<div class="page-staff-wrap">
 	<?php
 
@@ -39,8 +48,8 @@
 		}
 
 
-		// try to get projects for each staff.
-		$projects = get_posts(
+		// Get projects that each staff member works at.
+		$projects_for_this_staff_member = get_posts(
 			array(
 				'post_type'   => 'project',
 				'numberposts' => -1,
@@ -54,12 +63,6 @@
 				),
 			)
 		);
-		if ( is_array( $projects ) || is_object( $projects ) ) {
-
-			$projects_for_this_staff_member = wp_list_pluck( $projects, 'post_title' );
-		}
-
-
 		?>
 	
 		<div class="page-staff-item">
@@ -78,8 +81,8 @@
 					<?php
 
 				} else {
-
-					get_template_part( 'template-parts/svgs/svg-user' );
+					echo ywig_get_theme_svg( 'user' );
+					//get_template_part( 'template-parts/svgs/svg-user' );
 
 				}
 
@@ -89,20 +92,25 @@
 			<?php echo isset( $job ) ? '<p class="ywig-staff-subtext">' . esc_html( $job ) . '<p>' : null; ?> 
 			<?php echo isset( $email ) ? '<span>' . esc_html( $email ) . '</span>' : null; ?> 
 			<?php echo isset( $phone ) ? '<span>' . esc_html( $phone ) . '</span>' : null; ?> 
-			<?php echo isset( $about ) ? '<p>' . esc_html( $about ) . '</p>' : null; ?> 
+			<?php echo isset( $about ) ? '<p class="ywig-staff-bio">' . esc_html( $about ) . '</p>' : null; ?> 
 
 
-			<?php echo isset( $staff_fname ) && ! empty( $projects_for_this_staff_member ) ? '<p class="ywig-staff-bio">' . esc_html( $staff_fname ) . ' works at ' : null; ?> 
+			<?php echo isset( $staff_fname ) && ! empty( $projects_for_this_staff_member ) ? '<p class="ywig-staff-projects">' . esc_html( $staff_fname ) . ' works at ' : null; ?> 
 			<?php
 			if ( isset( $projects_for_this_staff_member ) ) {
 				foreach ( $projects_for_this_staff_member as $key => $value ) {
 					if ( 0 === $key ) {
-						echo esc_html( $value );
+						echo '<a href="' . $value->guid . '">';
+						echo esc_html( $value->post_title );
+						echo '</a>';
 					} else {
-						echo esc_html( ', ' . $value );
+						echo '<a href="' . $value->guid . '">';
+						echo esc_html( ', ' . $value->post_title );
+						echo '</a>';
 					}
 				}
 			}
+
 			?>
 		</p> 
 
@@ -112,5 +120,5 @@
 
 	?>
 	</div><!-- .page-staff-wrap -->
-	</main>
+</article>
 <?php get_footer(); ?>

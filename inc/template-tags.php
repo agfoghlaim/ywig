@@ -69,21 +69,21 @@ function ywig_single_yc_project_socials( $post_id = null ) {
 
 			if ( $facebook ) {
 				?>
-				<a href="<?php echo esc_url( $facebook ); ?>"target="_blank" class="ywig-social-btn">
+				<a href="<?php echo esc_url( $facebook ); ?>"target="_blank" rel="noopener noreferrer" title="Facebook" class="ywig-social-btn">
 					<span class="ywig-icon-sidebar ywig-icon ywig-facebook"></span>
 					<span class="sr-only">Visit <?php echo esc_html( get_the_title() ); ?>'s Facebook</span></a>
 				<?php
 			}
 			if ( $twitter ) {
 				?>
-				<a href="<?php echo esc_url( $twitter ); ?>"target="_blank" class="ywig-social-btn">
+				<a href="<?php echo esc_url( $twitter ); ?>"target="_blank" rel="noopener noreferrer" title="Twitter" class="ywig-social-btn">
 					<span class="ywig-icon-sidebar ywig-icon ywig-twitter"></span>
 					<span class="sr-only">Visit <?php echo esc_html( get_the_title() ); ?>'s Twitter</span></a>
 				<?php
 			}
 			if ( $instagram ) {
 				?>
-				<a href="<?php echo esc_url( $instagram ); ?>"target="_blank" class="ywig-social-btn">
+				<a href="<?php echo esc_url( $instagram ); ?>"target="_blank" rel="noopener noreferrer" title="Instagram" class="ywig-social-btn">
 					<span class="ywig-icon-sidebar ywig-icon ywig-instagram"></span>
 					<span class="sr-only">Visit <?php echo esc_html( get_the_title() ); ?>'s Instagram</span></a>
 				<?php
@@ -158,18 +158,18 @@ function ywig_single_yc_project_staff( $post_id = null, $post_type ) {
 						}
 
 						?>
-				<div class="<?php echo esc_attr( $post_type ); ?>-staff-item">
-					<div>
+				<div class="<?php echo esc_attr( $post_type ); ?>-staff-item">	
 						<?php
 						if ( $is_staff_pic ) {
 							?>
-								<img  src="<?php echo esc_url( $staff_image_url ); ?>" alt="<?php echo esc_attr( $staff_image['alt'] ); ?>" description="<?php echo esc_html( $staff_image['description'] ); ?>" />
+							<img  src="<?php echo esc_url( $staff_image_url ); ?>" alt="<?php echo esc_attr( $staff_image['alt'] ); ?>" description="<?php echo esc_html( $staff_image['description'] ); ?>" />
 							<?php
 						} else {
-							get_template_part( 'template-parts/svgs/svg-user' );
+							echo ywig_get_theme_svg( 'user' );
+							// get_template_part( 'template-parts/svgs/svg-user' );
 						}
 						?>
-					</div>
+
 
 					<a href="<?php echo esc_url( get_term_link( $value->term_id ) ); ?>">
 						<?php echo esc_html( $f_name ); ?> (<?php echo isset( $job_title ) ? esc_html( $job_title ) : ''; ?>)
@@ -213,7 +213,7 @@ function ywig_single_yc_project_acfs( $post_id = null, $post_type ) {
 		?>
 		<div class="<?php echo esc_attr( $post_type ); ?>-row">
 		<?php
-		echo '<h2>About ' . esc_html( get_the_title() ) . '</h2>';
+		echo '<h2 class="heading-size-4">About ' . esc_html( get_the_title() ) . '</h2>';
 		echo wp_kses_post( get_field( 'about_the_project', $post_id ) );
 		?>
 		</div>
@@ -224,7 +224,7 @@ function ywig_single_yc_project_acfs( $post_id = null, $post_type ) {
 		?>
 		<div class="<?php echo esc_attr( $post_type ); ?>-row">
 		<?php
-		echo '<h2>' . esc_html( get_field( 'section_1_heading', $post_id ) ) . '</h2>';
+		echo '<h2 class="heading-size-4">' . esc_html( get_field( 'section_1_heading', $post_id ) ) . '</h2>';
 		echo wp_kses_post( get_field( 'section_1_content', $post_id ) );
 		?>
 		</div>
@@ -235,7 +235,7 @@ function ywig_single_yc_project_acfs( $post_id = null, $post_type ) {
 		?>
 		<div class="<?php echo esc_attr( $post_type ); ?>-row">
 		<?php
-		echo '<h2>' . esc_html( get_field( 'section_2_heading', $post_id ) ) . '</h2>';
+		echo '<h2 class="heading-size-4">' . esc_html( get_field( 'section_2_heading', $post_id ) ) . '</h2>';
 		echo wp_kses_post( get_field( 'section_2_content', $post_id ) );
 		?>
 		</div>
@@ -329,21 +329,21 @@ function ywig_render_socials( $twitter, $facebook, $youtube ) {
 
 	if ( ! empty( $twitter ) ) :
 		?>
-	<a href="<?php echo esc_url( $twitter ); ?>" target="_blank" class="ywig-social-btn">
+	<a href="<?php echo esc_url( $twitter ); ?>" target="_blank" rel="noopener noreferrer" title="Twitter" class="ywig-social-btn">
 	<span class="ywig-icon-sidebar ywig-icon ywig-twitter"></span>
 	<span class="sr-only">Visit our Twitter</span></a>
 		<?php
 	endif;
 	if ( ! empty( $facebook ) ) :
 		?>
-	<a href="<?php echo esc_url( $facebook ); ?>" target="_blank" class="ywig-social-btn">
+	<a href="<?php echo esc_url( $facebook ); ?>" target="_blank" rel="noopener noreferrer" title="Facebook" class="ywig-social-btn">
 	<span class="ywig-icon-sidebar ywig-icon ywig-facebook"></span>
 	<span class="sr-only">Visit our Facebook</span></a>
 		<?php
 	endif;
 	if ( ! empty( $youtube ) ) :
 		?>
-	<a href="<?php echo esc_url( $youtube ); ?>" target="_blank" class="ywig-social-btn">
+	<a href="<?php echo esc_url( $youtube ); ?>" target="_blank" rel="noopener noreferrer" title="YouTube" class="ywig-social-btn">
 	<span class="ywig-icon-sidebar ywig-icon ywig-youtube"></span>
 	<span class="sr-only">Visit our Youtube</span></a>
 		<?php
@@ -355,3 +355,31 @@ function ywig_render_socials( $twitter, $facebook, $youtube ) {
 		return $social_output;
 	}
 }
+
+
+/**
+ * Util function for array_map, wraps string and returns
+ *
+ * @param string $str text to be wrapped.
+ *
+ * @return string $str. Original $str with pills- prepended & -tab appended.
+ */
+function ywig_do_stuff( $str ) {
+	return sprintf( 'pills-%s-tab', $str );
+}
+
+/**
+ * Converts string of locations to array, operates and returns new string.
+ *
+ * @param string $terms_str String of location terms seperated by a space ' '.
+ *
+ * @return string $ans. Original $terms_string with pills- prepended & -tab appended.
+ */
+function ywig_get_aria_labelledby_str( $terms_str ) {
+	$terms_array             = explode( ' ', $terms_str );
+	$aria_labelled_by_string = array_map( 'ywig_do_stuff', $terms_array );
+	$ans                     = join( ' ', $aria_labelled_by_string );
+	return $ans;
+}
+
+

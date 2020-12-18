@@ -1,41 +1,33 @@
 const scrollTo = () => {
   /** If is front page...
-   - Listen to menu items with urls to home page (.menu-item-type-custom)
+   - Listen to menu items with #anchor links to home page (.menu-item-type-custom)
+   - Also listen to a.ywig-maybe-custom-link (used in what-section)
    - Get hashes on click
    - get element with hashes' corresponding #id
    - scroll there with header offset accounted for.
 */
-  // Handle page refresh, avoid 404s
-  // window.addEventListener('beforeunload', function(event) {
-  //   console.log("unloading");
-  //   event.preventDefault();
-  //   // Chrome requires returnValue to be set.
-  //   //history.pushState({}, null, '');
-  //   history.replaceState({}, null, "")
-  //   event.returnValue = '';
-  //   return 'You have unsaved changes!';
-  // })
-
-  // window.onpopstate = function(event) {
-  //   alert(
-  //     `location: ${document.location}, state: ${JSON.stringify(event.state)}`
-  //   );
-  // };
-
   const menuItems = document.querySelectorAll('.menu-item-type-custom');
-  if (!menuItems || !menuItems.length) {
-    return;
+  if (menuItems && menuItems.length) {
+    menuItems.forEach((menuItem) =>
+      menuItem.addEventListener('click', handleScrollTo)
+    );
   }
-  menuItems.forEach((menuItem) =>
-    menuItem.addEventListener('click', handleScrollTo)
-  );
+  
+  const whatSectionLinks = document.querySelectorAll('.ywig-maybe-custom-link');
+  if (whatSectionLinks && whatSectionLinks.length) {
+    whatSectionLinks.forEach((linkItem) =>
+      linkItem.addEventListener('click', handleScrollTo)
+    );
+  }
 
   function handleScrollTo(e) {
     const DURATION = 300;
+
     const targetElementId = getTargetElementIdFromHash(e);
     if (!targetElementId) {
       return;
     }
+    e.stopPropagation();
 
     // add active class to menu item > a when clicked
     // todo need to enqueue script that checks slug or something on non front page pages (or move this) so it doesn't only work on the front page.
@@ -45,20 +37,42 @@ const scrollTo = () => {
         menuItem.firstElementChild.classList.contains('nav-active')
       ) {
         menuItem.firstElementChild.classList.remove('nav-active');
+        // maybeRemoveGrandparentActive(menuItem);
       }
     });
-    
-    // if target is <a>, add .nav-active class to target
-    if (e.target.tagName === 'A') {
-      e.target.classList.add('nav-active');
-      
-    // if target is <li> add .nav-active class link to it's child <a>
-    } else if (
-      e.target.tagName === 'LI' &&
-      e.target.classList.contains('menu-item') &&
-      e.target.firstElementChild.tagName === 'A'
-    ) {
-      e.target.firstElementChild.classList.add('nav-active');
+
+    // just use currentTarget!!
+    if (e.currentTarget.tagName === 'LI') {
+      // e.target.classList.add('nav-active'); // e.target will be <a>
+    }
+
+    // if current target (li) has parent ul.sub-menu there is no point changing appearance of just the link because it may not be visible, add 'nav-active' to both the link and the parent (li) of the parent ul.sub-menu.
+    //maybeMakeGranparentActive(e.currentTarget);
+
+    function maybeMakeGranparentActive(li) {
+      console.log(li, '...current targetarget');
+
+      const mum = li.parentElement;
+      const gran = mum.parentElement;
+      console.log('mum', mum);
+      console.log('gran', gran);
+      if (mum.tagName === 'UL' && mum.classList.contains('sub-menu')) {
+        if (
+          gran.tagName === 'LI' &&
+          gran.classList.contains('menu-item-has-children')
+        ) {
+          gran.classList.add('nav-active');
+        }
+      }
+    }
+    function maybeRemoveGrandparentActive(el) {
+      const mum = el.parentElement;
+      const gran = mum.parentElement;
+      if (mum.tagName === 'UL' && mum.classList.contains('sub-menu')) {
+        if (gran.tagName === 'LI' && gran.classList.contains('nav-active')) {
+          gran.classList.remove('nav-active');
+        }
+      }
     }
     // const targetEl = document.querySelector(`#${tar}`)
     // targetElementId.classList.add('nav-active');
@@ -132,10 +146,12 @@ Header -add bg color on scroll
 document.addEventListener('scroll', handleHeaderBgColor);
 
 const header = document.getElementById('home');
+
 const headerHeight = document.getElementsByTagName('header')[0].offsetHeight;
 
 // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
 function handleHeaderBgColor() {
+  if (!header) return;
   if (window.pageYOffset > headerHeight) {
     header.classList.add('with-bg-color');
   } else {

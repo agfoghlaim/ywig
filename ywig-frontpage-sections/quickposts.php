@@ -10,9 +10,11 @@
 
 
 <?php
-
-$args = array(
-	'posts_per_page' => 30,
+ $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+//$paged = get_query_var( 'paged' );
+$args  = array(
+	'posts_per_page' => 2, // NOTE. if this is changed button.load-more-quickposts data attribute must also be updated
+	'paged'          => $paged,
 	'post_type'      => 'quickpost',
 	'post_status'    => 'publish',
 	'orderby'        => 'post_date',
@@ -29,46 +31,36 @@ $quickposts = new WP_Query( $args );
 	if ( $quickposts->have_posts() ) :
 		while ( $quickposts->have_posts() ) :
 			$quickposts->the_post();
-
+			get_template_part( 'template-parts/content/content', 'quickpost' );
 			// Get id (&title) of related project from meta.
-			$stored_id = get_post_meta( $post->ID, 'related_project_id', true );
-			if ( '' !== $stored_id ) {
-				$proj_title = get_the_title( $stored_id );
-			}
-			?>
-		<div class="quickpost-item">
-			<img src="
-			<?php
-			echo esc_url(
-				get_the_post_thumbnail_url()
-			);
-			?>
-						" />
-			<div class="quickpost-text">
-				<h3 class="heading-size-5"><?php the_title(); ?> </h3>
-				<?php the_content(); ?>
-			</div>
-			<div class="quickpost-info">
-				<span>
-				<?php echo get_the_date(); ?> By 
 
-				<?php
-				/**
-				 * Note site_url($path, $scheme), change $scheme to 'https' in production
-				 * Also note this is dependent on the author name being the same as the project cpt title
-				 * Ultimately wp users need to have the same name as project cpt titles.
-				 */
-				?>
-				<a href="<?php echo esc_url( site_url( '/project/', 'http' ) ) . get_the_author(); ?>"><?php echo get_the_author(); ?></a>
-				</span>
-			</div>
-		</div>
-
-			<?php
 
 
 		endwhile;
+		?>
+
+		<?php
+
 	endif;
 	?>
 </div><!-- end .projects-wrap -->
-
+<?php 
+//	next_posts_link( 'Next', $quickposts->max_num_pages );
+		if( is_front_page(  )) {
+			?>
+			<a href="<?php echo esc_url( site_url( '/project-news/', 'http' ) ); ?>" class="btn btn-dark">More</a>
+			<?php
+			echo 'front page - load more button will link to /project-news';
+		}else {
+			// project-news page
+			?>
+			<button 
+			class="btn btn-dark load-more-quickposts" 
+			data-current-page="<?php echo esc_attr( $paged ); ?>"
+			data-posts-per-page="2"
+			data-max-pages="<?php echo esc_attr( $quickposts->max_num_pages ); ?>"
+			>Load More </button>
+			<?php
+			//	echo paginate_links( array( 'total' => $quickposts->max_num_pages ) );
+		}
+		

@@ -1,6 +1,8 @@
 <?php
 /**
- * YWIG Single Project Page
+ * YWIG Single Project Template.
+ * Displays all information about CPT Projects.
+ * Different from project-intros which show summary information.
  *
  * @package ywig-theme
  */
@@ -8,27 +10,15 @@
 ?>
 <?php
 get_header();
+
 ?>
+<article  id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-<main class="<?php echo esc_attr( $post->post_type ); ?>-content">
+	<?php get_template_part('template-parts/single/project-header'); ?>
 
-	<div class="<?php echo esc_attr( $post->post_type ); ?>-intro">
-		<?php echo esc_html( the_post_thumbnail( 'medium' ) ); ?>
-		<h1 class="<?php echo esc_attr( $post->post_type ); ?>-title"><?php echo esc_html( get_the_title() ); ?></h1>
-		<?php
-		if ( get_field( 'project_tagline', get_the_ID() ) ) {
-			?>
-			<?php
-			echo '<p>' . esc_html( get_field( 'project_tagline', get_the_ID() ) ) . '</p>';
-			?>
-			<?php
-		}
-		?>
-	</div><!--.project-intro -->
-
-	<div class="container <?php echo esc_attr( $post->post_type ); ?>-content-container">
-		<div class="torn-white"></div>
-		<div class="project-main">
+	<div class="<?php echo esc_attr( $post->post_type ); ?>-content-container">
+		<!-- <div class="torn-white"></div> -->
+		<div class="project-content">
 			<?php
 			//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in template-tags.php.
 			echo ywig_single_yc_project_acfs( get_the_ID(), $post->post_type );
@@ -50,7 +40,7 @@ get_header();
 				?>
 			</div>
 		</div>
-		<div class="project-right">
+		<aside class="project-aside">
 			<?php
 					//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in template-tags.php.
 					echo ywig_single_yc_project_address( $post->post_type );
@@ -61,10 +51,9 @@ get_header();
 					//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in template-tags.php.
 					echo ywig_single_yc_project_show_project_news( get_the_ID(), $post->post_title );
 			?>
-		</div>
+		</aside>
 	</div>
-</main>
-
+</article>
 <?php
 get_footer();
 

@@ -58,7 +58,7 @@ get_header(); ?>
 
 				?>
 
-			<h1 style="display:block;">This Staff Member Dets - <?php echo esc_html( $the_term->name ); ?></h1>
+			<h1 style="display:block;">This Staff Member Dets (taxonomy-staff.php) - <?php echo esc_html( $the_term->name ); ?></h1>
 			<p style="display:block;">Name:  <?php echo isset( $name ) ? esc_html( $staff_name ) : ''; ?> </p>
 			<p style="display:block;">Email:  <?php echo isset( $email ) ? esc_html( $email ) : ''; ?> </p>
 			<p style="display:block;">Phone:  <?php echo isset( $phone ) ? esc_html( $phone ) : ''; ?> </p>

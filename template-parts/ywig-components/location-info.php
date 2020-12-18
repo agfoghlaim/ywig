@@ -22,6 +22,7 @@
 				<a 
 				href="<?php echo esc_attr( $map_link[0] ); ?>" 
 				target="_blank" 
+				rel="noopener noreferrer"
 				title="Open Google Maps in new tab."><img style="max-width:6rem" 
 				src="https://maps.googleapis.com/maps/api/staticmap?&amp;zoom=15&amp;size=300x300&amp;markers=youth+work+galway+ireland&amp;key=AIzaSyAMy60iJGjTU1DzZaO0x1f7KMx4qVoZhHM"></a>
 			<?php

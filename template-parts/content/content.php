@@ -11,7 +11,7 @@
 
 	<header class="entry-header">
 		<?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
-		(content.php)
+		(content.phddp)
 	</header>
 	<div class="entry-content">
 

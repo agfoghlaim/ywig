@@ -39,7 +39,7 @@ if ( true === $what_show ) {
 		<?php
 		if ( $what_link && $what_link_text ) {
 			?>
-			<a href='<?php echo esc_url( $what_link ); ?>' class="btn btn-dark btn-block"><?php echo esc_html( $what_link_text ); ?></a>
+			<a href='<?php echo esc_url( $what_link ); ?>' class="btn btn-dark btn-block ywig-maybe-custom-link"><?php echo esc_html( $what_link_text ); ?></a>
 			<?php
 		}
 		?>

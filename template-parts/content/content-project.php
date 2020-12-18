@@ -1,7 +1,8 @@
 <?php
 
 /**
- * Project CPT
+ * Related to Project CPT ('/project'). This is ~the same as content.php and should be imporved or deleted. 
+ * Displays project-intros whereas single-project displays all info about projects
  *
  * @package ywig-theme
  */

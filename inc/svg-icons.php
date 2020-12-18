@@ -15,7 +15,7 @@ if ( ! function_exists( 'ywig_the_theme_svg' ) ) {
 	 * @param string $color Color code.
 	 */
 	function ywig_the_theme_svg( $svg_name, $group = 'ui', $color = '' ) {
-		echo ywig_get_theme_svg( $svg_name, $group, $color ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in twentytwenty_get_theme_svg();.
+		echo ywig_get_theme_svg( $svg_name, $group, $color ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in ywig_get_theme_svg();.
 	}
 }
 

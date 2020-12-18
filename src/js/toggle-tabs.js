@@ -15,10 +15,11 @@ const ywigToggleTabs = () => {
     tab.addEventListener('click', function(e) {
       e.preventDefault();
 
-			// return early if id missing or incorrect
-      if (!e.target.id || !e.target.id.includes('-tab')) return;
-
-      const tabContent = findCorrespondingContentById(e.target.id);
+      // return early if id missing or incorrect
+      if (!e.currentTarget.id || !e.currentTarget.id.includes('-tab')) return;
+    
+   
+      const tabContent = findCorrespondingContentById(e.currentTarget.id);
 
       if (!tabContent) return;
 
@@ -30,10 +31,11 @@ const ywigToggleTabs = () => {
         tabContent.classList.add('fade');
       }, 12);
 
-      removeActiveClassFromTabs(e.target);
+      removeActiveClassFromTabs(e.currentTarget);
 
-			e.target.classList.add('active');
-			e.target.setAttribute('aria-selected', true);
+			e.currentTarget.classList.add('active');
+      e.currentTarget.setAttribute('aria-selected', true);
+      
     })
   );
 

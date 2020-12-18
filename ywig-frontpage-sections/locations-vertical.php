@@ -14,6 +14,17 @@ $all_locations = get_terms(
 	)
 );
 
+// The first pill (All Projects) controls every .project-info-all
+// Get a string something like ('pills-whateverid, pills-whateverid ...') to use for aria-controls.
+// The other pills will just have aria-controls="pills-whatever".
+// NOTE There is an accessibility issue here because the pills control two things - the location-info and the list of projects. The location-infos have an aria-labeled by but the pills do not refer to the location-info (only the projecty-info).
+$all_ids = wp_list_pluck( $all_locations, 'slug' );
+$arr     = array();
+foreach ( $all_ids as $id ) {
+	array_push( $arr, sprintf( 'pills-%s', $id ) );
+}
+$all_ids_for_aria = join( ' ', $arr );
+
 ?>
 <div class="locations-v-wrap">
 
@@ -29,10 +40,11 @@ $all_locations = get_terms(
 				data-toggle="pill" 
 				title="Show All Projects"
 				href="#pills-all"
-				role="tab" 
-				aria-controls="aria-all" 
+				role="tab"
+				aria-controls="<?php echo esc_attr( $all_ids_for_aria ); ?>" 
 				aria-selected="true">
-					All Projects
+					<span class="sr-only">Show youth projects in all locations</span>
+					<span>All Projects</span>
 				</a>
 				<?php
 
@@ -120,7 +132,7 @@ $all_locations = get_terms(
 		set_query_var( 'proj_args', $post_args );
 		set_query_var( 'terms_taxonomy', 'location' );
 		?>
-		<div class="projects-wrap">
+		<div class="projects-wrap" id="projects-wrap-all">
 			<?php
 			get_template_part( 'template-parts/projects-wrap' );
 			?>

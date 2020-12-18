@@ -86,7 +86,15 @@
           background: $greeny-blue-alt;
           outline: none;
           color: $white;
-          // border: 0.2rem solid $teal-alt;
+
+        }
+        .nav-link:focus {
+        
+            outline: 2px dotted;
+            outline-color: $black;
+            outline-style: dotted;
+            outline-width: 2px; 
+         
         }
       }
       // move this to locations-info.scss because it's used in multiple locations

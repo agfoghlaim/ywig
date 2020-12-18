@@ -20,7 +20,7 @@ $facebook = esc_url( get_option( 'facebook_link' ) );
 $youtube  = esc_url( get_option( 'youtube_link' ) );
 ?>
 
-
+</main> <!-- end #main -->
 		<footer class="site-footer">
 			<div class="footer-left item">
 				<?php

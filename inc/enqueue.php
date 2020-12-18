@@ -50,6 +50,16 @@ function ywig_load_scripts() {
 
 	}
 
+	// Dec 2020 for rest endpoint (load more quickposts)
+	wp_localize_script(
+		'main',
+		'rest_object',
+		array(
+			'api_nonce' => wp_create_nonce( 'wp_rest' ),
+			'api_url'   => site_url( '/wp-json/ywig/v1/' ),
+		)
+	);
+
 }
 add_action( 'wp_enqueue_scripts', 'ywig_load_scripts' );
 

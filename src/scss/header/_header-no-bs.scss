@@ -1,6 +1,5 @@
 @import 'variables';
 // for no bootstrap
-
 .header {
   display: grid;
   position: fixed;
@@ -9,6 +8,20 @@
   z-index: 999;
   background: $white;
   width: 100%;
+  // .nav-active {
+  //   background: red;
+  // }
+  .current-menu-item {
+    a {
+      color: $greeny-blue-alt;
+      border-bottom: 0.2rem solid $greeny-blue-alt;
+    }
+  }
+  .current-menu-ancestor {
+    // background: $greeny-blue-alt;
+    border-bottom: 0.2rem solid $greeny-blue-alt;
+  }
+
   .ywig-social-btn {
     font-size: 1.5rem;
     text-decoration: none;
@@ -34,20 +47,23 @@
     display: grid;
     grid-auto-flow: column;
     list-style: none;
-    padding: 0;
+    padding: 1rem;
     margin: 0;
     grid-gap: 3rem;
+
     li {
       position: relative;
-      position: relative;
-      padding-bottom: 1rem;
+      // padding-bottom: 1rem;
       height: 100%;
+      // overflow: hidden;
+      // text-overflow: ellipsis;
+      // white-space: nowrap;
       a {
         text-decoration: none;
         padding-left: 0;
         color: $black;
         text-transform: uppercase;
-        font-weight: 400;
+        font-weight: 600;
         font-size: 1rem;
         white-space: -moz-pre-wrap;
         white-space: -o-pre-wrap;
@@ -55,29 +71,34 @@
         word-wrap: break-word;
         white-space: nowrap;
       }
-      a.nav-active {
-        color: red;
+
+      a:hover {
+        border-bottom: 0.2rem solid $greeny-blue-alt;
       }
-  
 
       ul.sub-menu {
-       
         display: none;
         position: absolute;
         li {
-          padding: 0.5rem 1rem;
+          // padding: 0.5rem 1rem;
           word-break: keep-all;
         }
       }
     }
+
     li.donate-btn {
       a {
         background: $greeny-blue-alt;
         padding: 0.5rem 0.75rem;
+        box-shadow: $box-shadow-small;
       }
     }
-  
   }
+  ul#menu-main-menu > li {
+    // padding-bottom: 1rem;
+    white-space: nowrap;
+  }
+
   .header-left {
     display: grid;
     grid-auto-flow: column;
@@ -85,45 +106,45 @@
     transition: all 0.2s ease-in-out;
     padding: 1rem 3rem;
     height: 5rem;
-    padding-bottom: 0rem;
+    // padding-bottom: 0rem;
     .navbar-toggler {
-      display: none;
+      grid-column-start: 1; // needs to be directly before the <nav> in DOM for accessibility, keep it left visually.
       background-color: transparent;
       border: 1px solid transparent;
       align-items: center;
       justify-content: center;
-      width: 3rem;
-      height: 2.5rem;
+      width: 4rem;
+      height: 3rem;
       background: $white;
       cursor: pointer;
-      // display: none;
+      padding-bottom: 4px;
 
-      .navbar-toggler:focus,
-      .navbar-toggler:hover,
-      .navbar-toggler:active {
-        // border: none;
-        // outline: none;
-        // background: red;
+      span.dropdown-icon.open {
+        display: block;
+        svg {
+          width: 2.5rem;
+        }
       }
 
-      .line {
-        width: 2rem;
-        height: 3px;
-        background: $black;
-        margin: 5px 0rem;
-        transition: all 0.1s linear;
+      span.dropdown-icon.close {
+        display: none;
+        svg {
+          width: 2.5rem;
+        }
       }
     }
-    .navbar-toggler.nav-open {
-      // background: red;
-      transition: all 0.1s linear;
+
+    .navbar-toggler[aria-expanded='true'] {
       display: block;
-      .line {
-        margin: 0rem 0rem;
-        height: 0.075rem;
-        transition: all 0.1s linear;
+      span.dropdown-icon.open {
+        display: none;
+      }
+
+      span.dropdown-icon.close {
+        display: block;
       }
     }
+
     .custom-logo-link {
       display: grid;
       align-self: center;
@@ -151,6 +172,13 @@
     position: relative;
     // justify-items: center;
     align-self: flex-end;
+    .sub-menu-toggle {
+      background: none;
+      border: none;
+      svg {
+        fill: $black;
+      }
+    }
   }
 }
 
@@ -163,68 +191,96 @@
       .navbar-toggler.nav-open {
         display: none;
       }
-    }
 
-    // target the first ul.sub-menu, use 'left:0', level with main <li> item
-    li.menu-item:hover > ul:nth-of-type(1),
-    li.menu-item:focus > ul:nth-of-type(1),
-    li.menu-item:focus-within > ul:nth-of-type(1) {
-      display: grid;
-      opacity: 1;
-      left:0;
-      grid-auto-flow: row;
-      grid-gap: 1rem;
-      position: absolute;
-      min-width: 10rem;
-      background: $white;
-      box-shadow: 1px 1px 2px $light-black;
-      transition: all 0.1s ease-in-out;
-      box-sizing: border-box;
-      z-index: 10;
-
-      // target all but the first nested ul.sub-menu, use 'left:90%', 'top:0' levelY with it's parent <li> item and slightly overlapping (X). 
-      li.menu-item:hover > ul.sub-menu,
-      li.menu-item:focus > ul.sub-menu,
-      li.menu-item:focus-within > ul.sub-menu {
-        // color: blue;
-        // background: orange;
-        left: 90%;
-        top: 0;
-      }
-      li {
-        padding: 0.5rem 1rem;
-        word-break: keep-all;
-        position: relative;
-        height: 100%;
-      }
-      li a:hover {
-        color: $darker-black;
-        text-decoration: underline;
-      }
-    }
-    // ul.menu-main-menu > li.menu-item > ul.sub-menu:not(:first-child) {
-    //   left: 100%;
-    // }
-    // hover effects on large screens only
-     ul {
       ul.sub-menu {
-
+        display: none;
+        opacity: 1;
+        background: yellow;
+        // left: 90%;
+        // top: 0;
+        grid-auto-flow: row;
+        grid-gap: 1rem;
+        position: absolute;
+        min-width: 10rem;
+        background: $white;
+        box-shadow: 1px 1px 2px $light-black;
+        transition: all 0.1s ease-in-out;
+        box-sizing: border-box;
+        z-index: 10;
       }
 
-      // ul.sub-menu li a:hover + ul.sub-menu {
-      //   display: grid;
-      //   opacity: 1;
-      //   grid-auto-flow: row;
-      //   grid-gap: 1rem;
-      //   position: absolute;
-      //   top: 0;
-      //   left: 100%;
-      //   min-width: 10rem;
-      //   background: $white;
-      //   box-shadow: 1px 1px 2px $light-black;
-      //   transition: all 0.1s ease-in-out;
-      //   box-sizing: border-box;
-      // }
+      // js adds .submenu-reposition-right if submenu runs out of horizontal space.
+      ul.sub-menu.submenu-reposition-right {
+        right: 0;
+        left: auto !important; // :(
+        top: 100% !important; // :(
+      }
+      // nested sub menus
+      li.menu-item-has-children {
+        ul {
+          display: none;
+          opacity: 1;
+
+          // left: 90%;
+          // top: 0;
+          grid-auto-flow: row;
+          grid-gap: 1rem;
+          position: absolute;
+          min-width: 10rem;
+          background: $white;
+          box-shadow: 1px 1px 2px $light-black;
+          transition: all 0.1s ease-in-out;
+          box-sizing: border-box;
+          z-index: 10;
+          li.menu-item-has-children {
+            ul {
+              display: none;
+              opacity: 1;
+
+              left: 100%;
+              top: 0;
+              grid-auto-flow: row;
+              grid-gap: 1rem;
+              position: absolute;
+              min-width: 10rem;
+              background: $white;
+              box-shadow: 1px 1px 2px $light-black;
+              transition: all 0.1s ease-in-out;
+              box-sizing: border-box;
+              z-index: 10;
+            }
+          }
+        }
+      }
+    }
+
+    .sub-menu-toggle[aria-expanded='true'] ~ ul.sub-menu {
+      display: grid;
+    }
+    li.menu-item-has-children {
+      .sub-menu-toggle[aria-expanded='true'] ~ ul.sub-menu {
+        display: grid;
+      }
+    }
+    .sub-menu-toggle[aria-expanded='true'] > span.icon-plus {
+      display: none;
+    }
+    .sub-menu-toggle[aria-expanded='false'] > span.icon-minus {
+      display: none;
+    }
+
+    .icon-minus,
+    .icon-plus {
+      svg {
+        width: 0.8rem;
+        height: 0.8rem;
+        // background: yellow;
+        margin-bottom: 1px;
+        vertical-align: top;
+        path {
+          fill: $black;
+        }
+      }
     }
   }
 }
@@ -232,7 +288,6 @@
 // between 900px and 1300px
 @media only screen and (max-width: 1300px) {
   .header {
-    // justify-items: center;
     padding: 1rem 0rem;
     .header-left {
       grid-gap: 1rem;
@@ -253,97 +308,147 @@
 // screens smaller than 900px
 @media only screen and (max-width: 900px) {
   .header {
-    .navbar {
+    ul#menu-main-menu {
+      padding: 0rem 3rem;
+      grid-gap: 0;
+
+      li {
+        padding: 0.75rem 0rem;
+
+        display: grid;
+        align-items: center;
+        align-content: center;
+      }
+      li::before {
+        content: '';
+        width: 100%;
+        height: 0.1rem;
+        background: $dark-white;
+        position: absolute;
+        top: 0.75rem;
+        left: 0rem;
+      }
+    }
+    ul.sub-menu {
+      padding: 0rem 1rem;
+      grid-gap: 0;
+
+      li {
+        padding: 0.75rem 0rem;
+
+        display: grid;
+        align-items: center;
+        align-content: center;
+      }
+      li::before {
+        content: '';
+        width: 100%;
+        height: 0.1rem;
+        background: $dark-white;
+        position: absolute;
+        top: 0.75rem;
+        left: 0rem;
+      }
+    }
+    li {
+      display: grid;
+      align-items: center;
+      align-content: center;
     }
     .header-left {
       grid-auto-flow: column;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
-      padding: 1rem 3rem;
+      padding: 1rem 3rem 1rem 3rem;
       .navbar-toggler {
         display: block;
+        position: absolute;
+        left: 3rem;
       }
       .navbar-socials {
-        position: relative;
-      }
-      .navbar-toggler.nav-open {
-        transition: all 0.1s linear;
-        .line {
-          margin: 0rem 0rem;
-          height: 0.075rem;
-          transition: all 0.1s linear;
-        }
+        // position: relative;
+        display: none;
       }
     }
-    // .header-nav {
-    //   position: absolute;
-    //   top: 5rem;
-    //   width: 100%;
 
     #navbarSupportedContent {
       position: absolute;
-      top: 5rem;
+      top: 32%;
       width: 100%;
-      box-shadow: 1px 1px 2px $light-black;
-      // transform: translateX(-400vw);
-      // visibility: hidden;
-      padding: 1rem 2.5rem;
-      width: 100%;
-      // transition: transform 0.4s ease-in-out;
-      overflow: hidden;
-      background: $white;
-      // position: absolute;
-      // animation-duration: 0.3s;
-      // animation-name: slideout;
-      // animation-iteration-count: infinite;
-      -webkit-transform: translateX(-300vw);
-      transform: translateX(-300vw);
-      -webkit-transition: -webkit-transform 0.2s ease-in-out !important;
-      transition: -webkit-transform 0.2s ease-in-out !important;
-      transition: transform 0.2s ease-in-out !important;
-      transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out !important;
-
-      top: 5rem;
-
+      z-index: 99;
+      height: 2.6rem;
       ul {
-        margin: 0rem 1rem;
+        visibility: hidden;
+      }
+      ul#menu-main-menu {
+        // padding: 3rem 3rem;
+        background: $white;
+        margin-top: 4rem;
+        display: grid;
         grid-auto-flow: row;
-        grid-gap: 0;
+        padding-bottom: 1rem;
+
         li {
           a {
             font-size: 1.1rem;
             color: $black;
           }
+          a:hover {
+            border-bottom: 0rem solid $greeny-blue-alt;
+            color: $greeny-blue-alt;
+          }
+        }
+
+        .current-menu-item {
+          a {
+            border-bottom: 0rem solid $greeny-blue-alt;
+          }
+        }
+        li.donate-btn {
+          // padding: 0;
+          a {
+            background: none;
+            box-shadow: none;
+            padding: 0;
+          }
         }
       }
+      // button.sub-menu-toggle[aria-expanded=true] ~ ul.sub-menu{
+      //   visibility: visible;
+      // }
+      button.sub-menu-toggle {
+        display: none;
+      }
+
+      // leave sub-menus open on small screens
       ul.sub-menu {
         display: grid;
-        padding-left: 1rem;
+        visibility: hidden;
+        // padding-left: 1rem;
         position: relative;
+
+        grid-auto-flow: row;
         width: 100%;
         li {
           border-bottom: none;
         }
       }
     }
-
-    #navbarSupportedContent.show {
-      // // transform: translateX(0);
-      // visibility: visible;
-      // // transition: transform 0.4s ease-in-out;
-      // max-height: 800px;
-      // // animation-duration: 3s;
-      // animation-duration: 0.3s;
-      // animation-name: slidein;
-      -webkit-transform: translateX(0vw);
-      transform: translateX(0vw);
-      // -webkit-transition: -webkit-transform .2s !important;
-      // transition: -webkit-transform .2s !important;
-      // transition: transform .2s !important;
-      // transition: transform .2s, -webkit-transform .2s !important;
+    .navbar-toggler[aria-expanded='true'] ~ ul#menu-main-menu {
+      visibility: visible;
     }
+    .navbar-toggler[aria-expanded='true'] ~ ul#menu-main-menu ul.sub-menu {
+      visibility: visible;
+    }
+    // #navbarSupportedContent .show {
+    //   // -webkit-transform: translateX(0vw);
+    //   // transform: translateX(0vw);
+
+    //   ul {
+    //     visibility: hidden;
+    //   }
+    // }
   }
-  //}
 }
 
 @keyframes slidein {
@@ -362,11 +467,3 @@
     transform: translateX(-400vw);
   }
 }
-// .navbar-toggler {
-//   padding: 0.25rem 0.75rem;
-//   font-size: 1.25rem;
-//   line-height: 1;
-//   background-color: transparent;
-//   border: 1px solid transparent;
-//   border-radius: 0.25rem;
-// }

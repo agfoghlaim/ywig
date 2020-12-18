@@ -9,9 +9,6 @@ get_header(); ?>
 
 <div id="primary" class="content-area">
 
-	<main id="main main-content"  class="site-main" role="main"> 
-		<h1>index.php</h1>
-
 	<?php
 	if ( have_posts() ) {
 
@@ -26,9 +23,8 @@ get_header(); ?>
 
 	}
 	?>
-	</main>
-
 </div>
 
+<h1>index.php</h1>
 <?php
 get_footer();

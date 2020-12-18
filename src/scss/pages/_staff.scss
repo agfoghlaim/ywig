@@ -1,6 +1,6 @@
 .page-staff-wrap {
 	display: grid;
-	background: $yellow-alt;
+	
 	padding: 5rem 2rem;
 	grid-gap: 1rem;
 	grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -31,6 +31,19 @@
 		}
 		p.ywig-staff-bio {
 			margin: 1rem 0rem;
+		}
+		img {
+			width: 10rem;
+			border-radius: 2px;
+		}
+		svg {
+			background: $yellow-alt;
+			padding: 3rem;
+			border-radius:2px;
+			width: 10rem;
+			height: 10rem;
+			box-sizing: border-box;
+			
 		}
 	}
 }
