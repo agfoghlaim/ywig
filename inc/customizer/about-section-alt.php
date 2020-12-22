@@ -9,7 +9,7 @@
  */
 
 require_once __DIR__ . '/classes/class-ywig-input.php';
-require_once __DIR__ . '/classes/cropped-image.php';
+require_once __DIR__ . '/classes/class-ywig-cropped-image.php';
 
 /**
  * Create About section & define inputs for theme Customizer.

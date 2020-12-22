@@ -16,6 +16,7 @@ require get_template_directory() . '/inc/customizer/counselling.php';
 require get_template_directory() . '/inc/customizer/projects.php';
 require get_template_directory() . '/inc/customizer/clubs.php';
 require get_template_directory() . '/inc/customizer/programmes.php';
+require get_template_directory() . '/inc/customizer/funders-section.php';
 require get_template_directory() . '/inc/customizer/about-section-alt.php';
 require get_template_directory() . '/inc/customizer/test-section.php';
 require get_template_directory() . '/inc/cpt/youth-clubs-cpt.php';

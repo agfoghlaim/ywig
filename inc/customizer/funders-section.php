@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Add Feature 1 section to Customizer.
+ * Add Funders Section to Theme Customizer.
  *
- * CUSTOMIZER - Testing
+ * CUSTOMIZER
  *
  *  @package ywig-theme
  */
@@ -17,14 +17,14 @@ require_once __DIR__ . '/classes/class-ywig-cropped-image.php';
  *
  * @param \WP_Customize_Manager $wp_customize Customizer Manager.
  */
-function ywig_feature_one_input_fields( $wp_customize ) {
+function ywig_funders_input_fields( $wp_customize ) {
 
-	$section = 'counselling';
+	$section = 'funders';
 	$wp_customize->add_section(
 		$section,
 		array(
-			'title'       => 'Counselling Section',
-			'description' => __( 'Edit Counselling Section.' ),
+			'title'       => 'Funders Section',
+			'description' => __( 'Edit Funders Section.' ),
 		)
 	);
 
@@ -34,25 +34,12 @@ function ywig_feature_one_input_fields( $wp_customize ) {
 			'setting_id' => 'section_title',
 			'field_type' => 'text',
 			'label'      => 'Section Title',
-			'default'    => 'Counselling',
+			'default'    => 'Funders',
 		),
 		array(
 			'setting_id' => 'section_p',
 			'field_type' => 'textarea',
 			'label'      => 'Section Text',
-			'default'    => '',
-		),
-		array(
-			'setting_id' => 'section_link',
-			'field_type' => 'text',
-			'label'      => 'Link (url or /#target-id)',
-			'default'    => '',
-			'sanitize'   => 'esc_url_raw',
-		),
-		array(
-			'setting_id' => 'section_link_text',
-			'field_type' => 'text',
-			'label'      => 'Button/Link Text',
 			'default'    => '',
 		),
 		array(
@@ -68,8 +55,10 @@ function ywig_feature_one_input_fields( $wp_customize ) {
 	$img_args = array(
 		array(
 			'setting_id' => 'section_image',
-			'label'      => 'Counselling Section Image',
-			'width'      => 400,
+			'label'      => 'Funders Section Image',
+			'flex_width'  => false, // Allow any width, making the specified value recommended. False by default.
+			'flex_height' => true,
+			'width'      => 1700,
 			'height'     => 400,
 		),
 	);
@@ -86,4 +75,4 @@ function ywig_feature_one_input_fields( $wp_customize ) {
 	}
 
 }
-add_action( 'customize_register', 'ywig_feature_one_input_fields' );
+add_action( 'customize_register', 'ywig_funders_input_fields' );
