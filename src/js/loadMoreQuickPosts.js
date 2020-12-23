@@ -1,11 +1,12 @@
 const loadMoreQuickPosts = () => {
+  
   async function theAjaxWay(e) {
     const quickPostsWrap = document.querySelector('.quickpost-wrap');
     const page = quickBtn.dataset.currentPage;
     const postsPerPage = quickBtn.dataset.postsPerPage;
     const maxPages = quickBtn.dataset.maxPages;
     const currentPage = quickBtn.dataset.currentPage;
-    console.log(page, '=page', postsPerPage, maxPages);
+    // console.log(page, '=page', postsPerPage, maxPages);
     //const url = `http://localhost/ywig-theme/wp-json/wp/v2/quickpost`;
     // const url = `/wp-admin/admin-ajax.php`;
     const url = `http://localhost:3000/ywig-theme/wp-admin/admin-ajax.php`;

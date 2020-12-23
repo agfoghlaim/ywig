@@ -71,7 +71,7 @@ function ywig_add_sub_menu_toggle( $output, $item, $depth, $args ) {
 add_filter( 'walker_nav_menu_start_el', 'ywig_add_sub_menu_toggle', 10, 4 );
 
 /**
- * Check if an item exists out there in the "ether". Should be in some sort of util file.
+ * Check if an item exists. Should be in some sort of util file.
  *
  * @param string $url - preferably a fully qualified URL
  * @return boolean - true if it is out there somewhere
