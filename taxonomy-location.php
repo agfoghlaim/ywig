@@ -1,6 +1,6 @@
 <?php
 /**
- * Location Taxonomy
+ * Location Taxonomy (eg '<site-url>/location/galway-city')
  *
  * @package ywig-theme
  */
@@ -10,17 +10,10 @@
 
 <article  id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<?php $this_term = get_queried_object(); ?>
-		<?php 
-		
+		<?php
 		set_query_var( 'taxonomy_loc_term', $this_term );
-		 get_template_part( 'template-parts/content/content-taxonomy-entry-header' );
-
-		// echo '<pre>';
-		// var_dump($this_term);
-		// echo '</pre>';
-		// die();
+		get_template_part( 'template-parts/content/content-taxonomy-entry-header' );
 		?>
-<?php //echo '<h1>' . $this_term->name . '</h1>'; ?> 
 		<section class="section-location-info">
 			<?php
 			require locate_template( 'template-parts/ywig-components/location-info.php', false, false );

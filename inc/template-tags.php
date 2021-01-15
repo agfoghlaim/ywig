@@ -277,12 +277,9 @@ function ywig_single_yc_project_show_project_news( $post_id, $author_name ) {
 		'author_name' => $author_name,
 
 	);
-	// echo ' template-tags.php, author_name is... ' . $author_name;
-	$quickposts = new WP_Query( $q_args );
 
-	// echo '<pre>';
-	// var_dump( $quickposts);
-	// echo '</pre>';
+	$quickposts = new WP_Query( $q_args );
+	
 	ob_start();
 	?>
 

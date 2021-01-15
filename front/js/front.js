@@ -173,7 +173,7 @@ var scrollTo = function scrollTo() {
   function scrollToTargetAdjusted(e) {
     console.log('okay');
     e.preventDefault();
-    var element = document.getElementById('locations-v');
+    var element = document.getElementById('ywig-finder');
     var headerOffset = 16 * 7; // var elementPosition = element.getBoundingClientRect().top;
     // var offsetPosition = elementPosition - headerOffset;
 
@@ -188,13 +188,13 @@ var scrollTo = function scrollTo() {
   }
 
   function scrollToTarget() {
-    var element = document.getElementById('locations-v');
+    var element = document.getElementById('ywig-finder');
     element.scrollIntoView({
       block: 'start',
       behavior: 'smooth'
     });
   } // function scrollToTargetAdjusted() {
-  //     var element = document.getElementById('locations-v');
+  //     var element = document.getElementById('ywig-finder');
   //     var headerOffset = 16*7;
   //     var elementPosition = element.getBoundingClientRect().top;
   //     var offsetPosition = elementPosition - headerOffset;

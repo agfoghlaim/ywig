@@ -1,13 +1,13 @@
 @import 'variables';
 @import 'mixins';
 
-.locations-v {
+.ywig-finder {
   // margin: 2rem 0;
   padding: 0rem 3rem 8rem 3rem;
   position: relative;
   min-height: calc(100vh - 7rem);
 
-  .locations-v-wrap {
+  .ywig-finder-wrap {
     grid-gap: 1rem;
     display: grid;
     grid-template-columns: 16rem 1fr;
@@ -17,7 +17,7 @@
     z-index: 0;
     box-shadow: $box-shadow-regular;
 
-    .locations-v-left {
+    .ywig-finder-left {
       padding: 1rem 0rem 2rem 0rem;
       display: grid;
       grid-auto-flow: row;
@@ -178,7 +178,7 @@
 }
 
 @media only screen and (max-width: 567px) {
-  #locations-v div.locations-v-wrap {
+  #ywig-finder div.ywig-finder-wrap {
     grid-template-columns: 1fr;
     grid-gap: 1rem;
     .projects-wrap {
@@ -189,7 +189,7 @@
       padding: 0;
       margin: 0;
     }
-    .locations-v-left {
+    .ywig-finder-left {
       justify-content: unset;
       justify-items: unset;
     }
@@ -213,7 +213,7 @@
   }
 }
 @media only screen and (max-width: 900px) {
-  .locations-v {
+  .ywig-finder {
     padding-left: 0;
     padding-right: 0;
 

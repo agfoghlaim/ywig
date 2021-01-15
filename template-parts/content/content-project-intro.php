@@ -11,7 +11,7 @@ if ( is_array( $term_obj_list ) || is_object( $term_obj_list ) ) {
 	$terms_string = join( ' ', wp_list_pluck( $term_obj_list, 'slug' ) );
 
 	/**
-	 * Attr aria-labelledby corresponds to the tab ids in locations-vertical.php.
+	 * Attr aria-labelledby corresponds to the tab ids in ywig-finder.php.
 	 * where $terms_string is "somewhere somewhere-else", $aria_string will be "pills-somewhere-tab pills-somewhere-else-tab".
 	 * */
 	$aria_string = ywig_get_aria_labelledby_str( $terms_string );

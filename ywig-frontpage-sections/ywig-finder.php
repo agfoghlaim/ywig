@@ -1,10 +1,11 @@
 <?php
 /**
- * Locations Section Front Page (Project Finder)
+ * YWIG Project Finder Section for Front Page
+ *
+ * Locations are a taxonomy for cpt Projects.
+ * Contains some bootstrap classes for 'toggable tabs' but no longer uses Bootstrap.
  *
  * @package ywig-theme
- * Locations are a taxonomy for cpt Projects.
- * Contains bootstrap classes for 'toggable tabs' but no longer uses Bootstrap.
  */
 
 $all_locations = get_terms(
@@ -17,7 +18,7 @@ $all_locations = get_terms(
 // The first pill (All Projects) controls every .project-info-all
 // Get a string something like ('pills-whateverid, pills-whateverid ...') to use for aria-controls.
 // The other pills will just have aria-controls="pills-whatever".
-// NOTE There is an accessibility issue here because the pills control two things - the location-info and the list of projects. The location-infos have an aria-labeled by but the pills do not refer to the location-info (only the projecty-info).
+// NOTE TODO There is an accessibility issue here because the pills control two things - the location-info and the list of projects. The location-infos have an aria-labeled-by but the pills do not refer to the location-info (only the project-info).
 $all_ids = wp_list_pluck( $all_locations, 'slug' );
 $arr     = array();
 foreach ( $all_ids as $id ) {
@@ -26,9 +27,9 @@ foreach ( $all_ids as $id ) {
 $all_ids_for_aria = join( ' ', $arr );
 
 ?>
-<div class="locations-v-wrap">
+<div class="ywig-finder-wrap">
 
-	<div class="locations-v-left">
+	<div class="ywig-finder-left">
 
 		<!-- pills -->
 		<div class="nav nav-pills ywig-location-pills locations-nav" id="pills-tab" role="tablist" >
@@ -118,7 +119,7 @@ $all_ids_for_aria = join( ' ', $arr );
 			?>
 		</div><!-- .tab-content -->
 
-	</div><!--.locations-v-left -->
+	</div><!--.ywig-finder-left -->
 
 
 	<?php
@@ -138,4 +139,4 @@ $all_ids_for_aria = join( ' ', $arr );
 			?>
 		</div>
 
-	</div><!--.locations-v-wrap-->
+	</div><!--.ywig-finder-wrap-->
