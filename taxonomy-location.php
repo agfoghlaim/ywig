@@ -7,10 +7,20 @@
 
 	get_header(); ?>
 
-	<main id="main" class="site-main" role="main"> 
 
+<article  id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<?php $this_term = get_queried_object(); ?>
+		<?php 
+		
+		set_query_var( 'taxonomy_loc_term', $this_term );
+		 get_template_part( 'template-parts/content/content-taxonomy-entry-header' );
 
+		// echo '<pre>';
+		// var_dump($this_term);
+		// echo '</pre>';
+		// die();
+		?>
+<?php //echo '<h1>' . $this_term->name . '</h1>'; ?> 
 		<section class="section-location-info">
 			<?php
 			require locate_template( 'template-parts/ywig-components/location-info.php', false, false );
@@ -42,6 +52,6 @@
 
 			?>
 		</section>
-	</main>
+</article>
 <?php
 get_footer();

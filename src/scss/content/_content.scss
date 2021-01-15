@@ -1,8 +1,8 @@
 @import 'variables';
 
 // generic page, index.php > content.php
-article.type-page {
-	min-height: calc( 100vh + 18rem ); // main mav = 7rem, entry-header=18rem
+article.type-page, article.type-project {
+	//min-height: calc( 100vh - 18rem ); // main mav = 7rem, entry-header=18rem
   .entry-header {
     height: 18rem;
     display: grid;

@@ -20,6 +20,7 @@
 @import 'pages/youthclub';
 @import 'pages/staff';
 @import 'pages/resources';
+@import 'pages/locations';
 @import 'content/content';
 @import 'variables';
 @import 'buttons';
@@ -28,6 +29,99 @@
 
 @import 'mixins';
 
+// * {
+//   background:black !important;
+//   border-color: white !important;
+//   box-shadow: white !important;
+// }
+// h1, h2, h3,h4,h5,h6,p, a,button{
+//   color: white !important;
+//   border-color: white !important;
+// }
+
+// most likely single.php, standard posts
+.type-post.format-standard {
+  // background: blue;
+ // min-height: calc( 100vh + 18rem ); // main mav = 7rem, entry-header=18rem
+  display: grid;
+  padding: 3rem;
+
+    // .entry-header {
+  //   height: 18rem;
+  //   display: grid;
+  //   align-content: space-between;
+  //   padding: 2rem 3rem 0rem 3rem;
+  //   position: relative;
+	// 	z-index: 1;
+	// 	justify-content: flex-start;
+  //   padding: 2rem 3rem 4rem 3rem;
+  // }
+}
+
+.entry-header {
+  height: 18rem;
+  display: grid;
+  align-content: space-between;
+  padding: 2rem 3rem 0rem 3rem;
+  position: relative;
+  z-index: 1;
+  justify-content: flex-start;
+  padding: 2rem 3rem 4rem 3rem;
+
+  .header-img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: grayscale(0.2) sepia(0.5);
+  }
+  h1 {
+    margin-bottom: 2rem;
+    // z-index: 1;
+    color: $dark-white;
+  }
+
+}
+
+.torn-white {
+  position: absolute;
+  width: 100%;
+  height: 4rem;
+  bottom: -1rem;
+  // -webkit-transform: scaleY(-1);
+  // transform: scaleY(-1);
+  background: url(/ywig-theme/wp-content/themes/ywig-theme/src/img/torn_white.svg);
+  background-size: 100%;
+  background-repeat: repeat-x;
+  z-index: 0;
+}
+.haze-overlay {
+  background: rgb(85 81 72 / 90%);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.entry-page-thumbnail {
+  width: 100%;
+  padding-top: 5rem;
+  img {
+    // width: 100%;
+    // object-fit: contain;
+    // object-position: left;
+    clip-path: url(/ywig-theme/wp-content/themes/ywig-theme/src/img/torn_clip.svg);
+  }
+}
+// .entry-header {
+//   height: 18rem;
+//   display: grid;
+//   align-content: space-between;
+//   padding: 2rem 3rem 0rem 3rem;
+//   position: relative;
+//   z-index: 1;
+//   justify-content: flex-start;
+//   padding: 2rem 3rem 4rem 3rem;
+// }
 
 $theme-colors: (
   'primary': #0dc5ea,
@@ -325,7 +419,8 @@ taxonomy-location
 
 // index.php
 main {
-  min-height: calc(100vh - 7rem);
+  //min-height: calc(100vh - 7rem);
+  min-height: calc( 100vh + 18rem );
   margin-top: 7rem;
   display: block;
   // background: yellow;
@@ -342,10 +437,19 @@ main::after {
   background: url(http://localhost/ywig-theme/wp-content/uploads/2020/12/leafs.png);
   -webkit-filter: grayscale(1);
   filter: grayscale(1);
+  box-shadow: 0px 500px 118px -35px $white inset;
   opacity: 0.06;
   background-repeat: repeat;
 }
 
+// Fade down background watermark. Allow for taller header on home page.
+body.page-template-page-frontpage {
+  main::after {
+
+    box-shadow: 0px 900px 118px -35px $white inset;
+   
+  }
+}
 // easy '/project' page
 // specify body class to distinguish from '/project/specific-project' (single-project.php)
 body.post-type-archive {
@@ -366,7 +470,7 @@ article.youthclub {
   justify-content: flex-start;
   background: pink;
   h2.entry-title {
-    color: red;
+    // color: red;
   }
 }
 
@@ -420,3 +524,4 @@ h2.twist {
     text-transform: uppercase;
   }
 }
+

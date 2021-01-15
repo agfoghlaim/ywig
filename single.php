@@ -8,29 +8,26 @@
 ?>
 <?php get_header(); ?>
 
-<main id="site-content" role="main">
+	<?php get_template_part( 'template-parts/content/content-page-entry-header' ); ?>
+	<h2>This is single.php for regular posts</h2>
 <?php
 
 		// Start the loop.
 while ( have_posts() ) :
 	the_post();
-
-	/*
-	 * Include the post format-specific template for the content. If you want to
-	 * use this in a child theme, then include a file called called content-___.php
-	 * (where ___ is the post format) and that will be used instead.
-	 */
-	get_template_part( 'content', get_post_format() );
-
-	the_post_thumbnail();
 	?>
-	<h1><?php the_title(); ?></h1>
-	<?php the_content(); ?>
+	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<?php
+	get_template_part( 'template-parts/content/content-single');
 
-	<h2>This is single.php for regular posts</h2>
+
+
+	?>
+
+	</article>
+	
 	<?php
 
-	the_content();
 	// Previous/next post navigation.
 	the_post_navigation(
 		array(
@@ -46,7 +43,7 @@ while ( have_posts() ) :
 	// End the loop.
 		endwhile;
 ?>
-</main>
+
 <?php
 get_footer();
 

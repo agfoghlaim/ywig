@@ -209,6 +209,21 @@ function ywig_single_yc_project_acfs( $post_id = null, $post_type ) {
 	}
 
 	ob_start();
+	if ( get_field( 'funders_logos', $post_id ) ) {
+		$funders = get_field( 'funders_logos', $post_id );
+		?>
+		<div class="<?php echo esc_attr( $post_type ); ?>-row">
+		<?php
+
+		$image_thumbnail = $funders['sizes']['medium_large'];
+
+		$image_alt = $funders['alt'];
+
+		?>
+		<img src="<?php echo esc_url( $image_thumbnail ); ?>" alt="<?php echo esc_attr( $image_alt ); ?>">	
+		</div>
+		<?php
+	}
 	if ( get_field( 'about_the_project', $post_id ) ) {
 		?>
 		<div class="<?php echo esc_attr( $post_type ); ?>-row">
@@ -262,9 +277,12 @@ function ywig_single_yc_project_show_project_news( $post_id, $author_name ) {
 		'author_name' => $author_name,
 
 	);
-
+	// echo ' template-tags.php, author_name is... ' . $author_name;
 	$quickposts = new WP_Query( $q_args );
 
+	// echo '<pre>';
+	// var_dump( $quickposts);
+	// echo '</pre>';
 	ob_start();
 	?>
 
@@ -274,7 +292,6 @@ function ywig_single_yc_project_show_project_news( $post_id, $author_name ) {
 		if ( $quickposts->have_posts() ) :
 			while ( $quickposts->have_posts() ) :
 				$quickposts->the_post();
-
 				// Get id (&title) of related project from meta.
 				// $stored_id = get_post_meta( $post_id, 'related_project_id', true );
 				// if ( '' !== $stored_id ) {

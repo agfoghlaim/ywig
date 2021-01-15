@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Standard Post Format
+ * Standard Post Format (eg <site-url>/category/uncategorised/ via index.php)
  *
  * @package ywig-theme
  */
@@ -11,6 +11,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 <header class="entry-header">
 	<h1>content-post.php</h1>
+	
 
 		<?php the_title( '<h1 class="entry-title>', '</h1>' ); ?>
 		<div class="entry-meta">

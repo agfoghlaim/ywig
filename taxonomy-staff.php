@@ -13,7 +13,9 @@ get_header(); ?>
 		<h6>taxonomy-staff.php</h6>
 
 		<?php
-
+		$this_term = get_queried_object();
+		set_query_var( 'taxonomy_loc_term', $this_term );
+		get_template_part( 'template-parts/content/content-taxonomy-entry-header' );
 		$the_term                            = get_queried_object();
 		$this_taxonomys_associated_post_type = get_taxonomy( $the_term->taxonomy )->object_type[0];
 		$this_terms_taxonomy                 = $the_term->taxonomy;

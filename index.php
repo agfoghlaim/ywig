@@ -8,7 +8,7 @@
 get_header(); ?>
 
 <div id="primary" class="content-area">
-
+<?php get_template_part( 'template-parts/content/content-page-entry-header' ); ?>
 	<?php
 	if ( have_posts() ) {
 

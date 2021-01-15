@@ -1,0 +1,9 @@
+.page-locations-wrap {
+	display: grid;
+	
+	padding: 5rem 2rem;
+	grid-gap: 1rem;
+	grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+
+
+}

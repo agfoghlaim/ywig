@@ -14,7 +14,7 @@ get_header();
 ?>
 <article  id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<?php get_template_part('template-parts/single/project-header'); ?>
+	<?php get_template_part( 'template-parts/single/project-header' ); ?>
 
 	<div class="<?php echo esc_attr( $post->post_type ); ?>-content-container">
 		<!-- <div class="torn-white"></div> -->
@@ -49,7 +49,10 @@ get_header();
 					//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in template-tags.php.
 					echo ywig_single_yc_project_staff( get_the_ID(), $post->post_type );
 					//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in template-tags.php.
+
+					// TODO, the id is never used. See template-tags.php and fix.
 					echo ywig_single_yc_project_show_project_news( get_the_ID(), $post->post_title );
+					// echo '(single-project.php) ' . $post->post_title . '...was title, id is ' . get_the_ID();
 			?>
 		</aside>
 	</div>

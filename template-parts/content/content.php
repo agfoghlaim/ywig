@@ -11,12 +11,13 @@
 
 	<header class="entry-header">
 		<?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
-		(content.phddp)
+		(content.php)
 	</header>
 	<div class="entry-content">
 
 		<?php if ( has_post_thumbnail() ) : ?>
 			<div class="standard-featured">
+				
 				<?php the_post_thumbnail(); ?>
 			</div>
 		<?php endif; ?>

@@ -92,62 +92,108 @@ function urlExists( $url ) {
 /*
 =============================================
 =            BREADCRUMBS			            =
-=============================================*/
-function util_wrap_in_span( $text, $class ) {
-	// return '<span class="$class">' . $text . '</span>';
-	$t = printf( '<span class="%s">', $class );
-	return $t . $text . '</span>';
-}
-// to include in functions.php
+=============================================
+*/
+
+/**
+ * Show Breadcrumbs. TODO move somewhere sensible.
+ */
 function the_breadcrumb() {
 	$span      = '<span class="crumb-seperator">';
 	$end_span  = '</span>';
 	$seperator = $span . ' / ' . $end_span;
+
+	// for wp_kses.
+	$seperator_allowed_html = array(
+		'span' => array(
+			'class' => array(),
+			'title' => array(),
+		),
+	);
 
 	if ( ! is_front_page() ) {
 		echo '<div class="breadcrumbs">';
 		echo '<a href="';
 		echo esc_url( get_option( 'home' ) );
 		echo '">';
-		bloginfo( 'name' );
+		echo 'HOME';
 		echo '</a>';
-		if ( 'project' === get_post_type() ) {
 
-			echo $seperator;
+		// new.
+		$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+		if ( $term ) {
+
+			$taxonomy_name  = $term->taxonomy; // eg 'location'.
+			$this_term_name = $term->name; // eg 'Galway City'.
+
+			echo wp_kses( $seperator, $seperator_allowed_html );
+			$link_to_parent_tax_page             = site_url( $taxonomy_name, 'http' ); // TODO https.
+			$link_to_parent_taxonomy_page_exists = urlExists( $link_to_parent_tax_page );
+
+			// check that parent link exists. eg for url <site-url>/location/galway, check <site-url>/location exists.
+			if ( $link_to_parent_taxonomy_page_exists ) {
+				// render link if it exists.
+				?>
+				<a href="<?php echo esc_url( $link_to_parent_tax_page ); ?>"><?php echo esc_html( $taxonomy_name ); ?></a> 
+				<?php
+			} else {
+				// else just render the parent taxonomy name.
+				echo '<span>' . esc_html( $taxonomy_name ) . '</span>';
+			}
+
+			echo wp_kses( $seperator, $seperator_allowed_html );
+			echo $span . esc_html( $this_term_name ) . $end_span;
+			$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+
+		}
+				// end new.
+
+		if ( 'project' === get_post_type() && ( ! $term ) ) {
+
+			echo wp_kses( $seperator, $seperator_allowed_html );
 			echo '<a href="';
 			echo esc_url( get_option( 'home' ) ) . '/projects';
+
 			echo '">';
-			echo $span . 'projects' . $end_span;
+			echo $span . esc_html( 'projects' ) . $end_span;
 
 		}
 		echo '</a>';
 
 		// Check if the current page is a category, an archive or a single page. If so show the category or archive name.
 		if ( is_category() || is_single() ) {
+		//	echo wp_kses( $seperator, $seperator_allowed_html );
 			the_category( 'title_li=' );
-		} elseif ( is_archive() || is_single() ) {
-			if ( is_day() ) {
-				printf( __( '%s', 'text_domain' ), get_the_date() );
-			} elseif ( is_month() ) {
-				printf( __( '%s', 'text_domain' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'text_domain' ) ) );
-			} elseif ( is_year() ) {
-				printf( __( '%s', 'text_domain' ), get_the_date( _x( 'Y', 'yearly archives date format', 'text_domain' ) ) );
-			} else {
-				_e( 'Blog Archives', 'text_domain' );
-			}
+
+			// } elseif ( is_archive() || is_single() ) {
+			// if ( is_day() ) {
+			// printf( __( '%s', 'text_domain' ), get_the_date() );
+			// } elseif ( is_month() ) {
+			// printf( __( '%s', 'text_domain' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'text_domain' ) ) );
+			// } elseif ( is_year() ) {
+			// printf( __( '%s', 'text_domain' ), get_the_date( _x( 'Y', 'yearly archives date format', 'text_domain' ) ) );
+			// } else {
+			// _e( 'Blog Archives', 'text_domain' );
+			// }
 		}
-		// If the current page is a single post, show its title with the separator
+		// If the current page is a single post, show its title.
 		if ( is_single() ) {
-			echo $seperator;
+
+			// TODO this shows second seperator for ..? (maybe specific cpts)
+			//if( 'project' !== get_post_type()) {
+
+				echo wp_kses( $seperator, $seperator_allowed_html );
+			//}
 			echo '<span class="crumb">';
-			the_title();
+
+		the_title();
 			echo '</span>';
-			// echo util_wrap_in_span( the_title(), 'crumb' );
+
 		}
 
 		// If the current page is a static page, show its title.
 		if ( is_page() ) {
-			echo $seperator;
+			echo wp_kses( $seperator, $seperator_allowed_html );
 			echo $span;
 			the_title();
 			echo $end_span;

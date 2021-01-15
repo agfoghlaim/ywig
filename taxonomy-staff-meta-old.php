@@ -10,9 +10,12 @@ get_header(); ?>
 <div id="primary" class="content-area">
 
 	<main id="main" class="site-main" role="main">
+
 		<h6>taxonomy-staff.php</h6>
+		
 
 		<?php
+		
 
 		$the_term        = get_queried_object();
 		$staff_name      = get_term_meta( $the_term->term_id, sprintf( 'ywig_staff_%s_metadata', 'name', true ) );
@@ -82,7 +85,7 @@ get_header(); ?>
 				);
 
 				set_query_var( 'proj_args', $post_args );
-
+	
 				get_template_part( 'template-parts/projects-wrap' );
 
 				?>

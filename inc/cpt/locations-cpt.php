@@ -5,6 +5,8 @@
 
 CUSTOM POST TYPE - Locations
 
+This is not used...
+
 */
 
 function ywig_locations_cpt() {
@@ -100,6 +102,8 @@ function ywig_util_list_used_meta_text_fields() {
 		'eircode'       => 'Eircode',
 		'phone'         => 'Phone Number',
 		'map_link'      => 'Map Link',
+		'latitude'      => 'Latitude',
+		'longitude'     => 'Longitude',
 	);
 }
 
