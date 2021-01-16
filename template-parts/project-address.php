@@ -28,8 +28,10 @@ $instagram = get_field( 'youth_club_instagram' );
 if ( $facebook ) {
 	?>
 	<a href="<?php echo esc_url( $facebook ); ?>"target="_blank" rel="noopener noreferrer" title="Facebook" class="ywig-social-btn">
+
 		<span class="ywig-icon-sidebar ywig-icon ywig-facebook"></span>
-		<span class="sr-only">Visit <?php echo esc_html( get_the_title() ); ?>'s Facebook</span></a>
+		<span class="sr-only">Visit <?php echo esc_html( get_the_title() ); ?>'s Facebook</span>
+	</a>
 	<?php
 }
 if ( $twitter ) {

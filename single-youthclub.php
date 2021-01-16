@@ -13,6 +13,7 @@ get_header();
 ?>
 
 <main class="<?php echo esc_attr( $post->post_type ); ?>-content">
+
 	<div class="<?php echo esc_attr( $post->post_type ); ?>-intro">
 		<div class="<?php echo esc_attr( $post->post_type ); ?>-intro-left">
 

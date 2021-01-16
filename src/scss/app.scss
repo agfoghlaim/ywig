@@ -348,55 +348,19 @@ img {
   justify-items: center;
 }
 
-/* YWIG FONT ICONS - (create more by putting fontawesome svgs through icomoon.io app)  */
-
-// RED_FLAG | See urls
-@font-face {
-  font-family: 'ywig-icon';
-  src: url('/ywig-theme/wp-content/themes/ywig-theme/src/fonts/ywig-icon.eot?77zyzo');
-  src: url('/ywig-theme/wp-content/themes/ywig-theme/src/fonts/ywig-icon.eot?77zyzo#iefix')
-      format('embedded-opentype'),
-    url('/ywig-theme/wp-content/themes/ywig-theme/src/fonts/ywig-icon.ttf?77zyzo')
-      format('truetype'),
-    url('/ywig-theme/wp-content/themes/ywig-theme/src/fonts/ywig-icon.woff?77zyzo')
-      format('woff'),
-    url('/ywig-theme/wp-content/themes/ywig-theme/src/fonts/ywig-icon.svg?77zyzo#ywig-icon')
-      format('svg');
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
+.navbar-socials, .ywig-socials-wrap{
+  a {
+    text-decoration: none;
+    .ywig-svg-icon {
+      svg {
+        fill: $blue-alt;
+      }
+    }
+  }
+  a:hover svg, a:focus svg {
+    fill: $blue;
+  }
 }
-
-.ywig-icon {
-  font-family: 'ywig-icon' !important;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.ywig-facebook:before {
-  content: '\e900';
-}
-.ywig-instagram:before {
-  content: '\e901';
-}
-.ywig-left:before {
-  content: '\e902';
-}
-.ywig-right:before {
-  content: '\e903';
-}
-.ywig-twitter:before {
-  content: '\e904';
-}
-.ywig-youtube:before {
-  content: '\e905';
-}
-
 /* END YWIG FONT ICONS */
 
 /* MENU - no bootstrap */
@@ -478,7 +442,7 @@ h2.twist {
   letter-spacing: -1px;
   display: inline-block;
   padding: 0.5rem 1rem;
-  transform: rotate(-2deg);
+  // transform: rotate(-2deg);
   color: $black;
   padding: 0;
 }
@@ -486,9 +450,10 @@ h2.twist {
   letter-spacing: -1px;
   display: inline-block;
   padding: 0.5rem 1rem;
-  transform: rotate(-2deg);
+  // transform: rotate(-2deg);
   color: $black;
   padding: 0;
+  z-index: 99;
 }
 
 .breadcrumbs {

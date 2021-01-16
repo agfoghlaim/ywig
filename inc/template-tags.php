@@ -70,21 +70,30 @@ function ywig_single_yc_project_socials( $post_id = null ) {
 			if ( $facebook ) {
 				?>
 				<a href="<?php echo esc_url( $facebook ); ?>"target="_blank" rel="noopener noreferrer" title="Facebook" class="ywig-social-btn">
-					<span class="ywig-icon-sidebar ywig-icon ywig-facebook"></span>
+					<!-- <span class="ywig-icon-sidebar ywig-icon ywig-facebook"></span> -->
+					<span class="ywig-icon-sidebar ywig-svg-icon">
+					<?php echo ywig_get_theme_svg( 'facebook', 'social' ); ?>
+					</span>
 					<span class="sr-only">Visit <?php echo esc_html( get_the_title() ); ?>'s Facebook</span></a>
 				<?php
 			}
 			if ( $twitter ) {
 				?>
 				<a href="<?php echo esc_url( $twitter ); ?>"target="_blank" rel="noopener noreferrer" title="Twitter" class="ywig-social-btn">
-					<span class="ywig-icon-sidebar ywig-icon ywig-twitter"></span>
+					<!-- <span class="ywig-icon-sidebar ywig-icon ywig-twitter"></span> -->
+					<span class="ywig-icon-sidebar ywig-svg-icon">
+					<?php echo ywig_get_theme_svg( 'twitter', 'social' ); ?>
+					</span>
 					<span class="sr-only">Visit <?php echo esc_html( get_the_title() ); ?>'s Twitter</span></a>
 				<?php
 			}
 			if ( $instagram ) {
 				?>
 				<a href="<?php echo esc_url( $instagram ); ?>"target="_blank" rel="noopener noreferrer" title="Instagram" class="ywig-social-btn">
-					<span class="ywig-icon-sidebar ywig-icon ywig-instagram"></span>
+					<!-- <span class="ywig-icon-sidebar ywig-icon ywig-instagram"></span> -->
+					<span class="ywig-icon-sidebar ywig-svg-icon">
+					<?php echo ywig_get_theme_svg( 'instagram', 'social' ); ?>
+					</span>
 					<span class="sr-only">Visit <?php echo esc_html( get_the_title() ); ?>'s Instagram</span></a>
 				<?php
 			}
@@ -279,7 +288,7 @@ function ywig_single_yc_project_show_project_news( $post_id, $author_name ) {
 	);
 
 	$quickposts = new WP_Query( $q_args );
-	
+
 	ob_start();
 	?>
 
@@ -344,21 +353,30 @@ function ywig_render_socials( $twitter, $facebook, $youtube ) {
 	if ( ! empty( $twitter ) ) :
 		?>
 	<a href="<?php echo esc_url( $twitter ); ?>" target="_blank" rel="noopener noreferrer" title="Twitter" class="ywig-social-btn">
-	<span class="ywig-icon-sidebar ywig-icon ywig-twitter"></span>
+	<!-- <span class="ywig-icon-sidebar ywig-icon ywig-twitter"></span> -->
+	<span class="ywig-icon-sidebar ywig-svg-icon">
+		<?php echo ywig_get_theme_svg( 'twitter', 'social' ); ?>
+	</span>
 	<span class="sr-only">Visit our Twitter</span></a>
 		<?php
 	endif;
 	if ( ! empty( $facebook ) ) :
 		?>
 	<a href="<?php echo esc_url( $facebook ); ?>" target="_blank" rel="noopener noreferrer" title="Facebook" class="ywig-social-btn">
-	<span class="ywig-icon-sidebar ywig-icon ywig-facebook"></span>
+	<!-- <span class="ywig-icon-sidebar ywig-icon ywig-facebook"></span> -->
+	<span class="ywig-icon-sidebar ywig-svg-icon">
+		<?php echo ywig_get_theme_svg( 'facebook', 'social' ); ?>
+	</span>
 	<span class="sr-only">Visit our Facebook</span></a>
 		<?php
 	endif;
 	if ( ! empty( $youtube ) ) :
 		?>
 	<a href="<?php echo esc_url( $youtube ); ?>" target="_blank" rel="noopener noreferrer" title="YouTube" class="ywig-social-btn">
-	<span class="ywig-icon-sidebar ywig-icon ywig-youtube"></span>
+	<!-- <span class="ywig-icon-sidebar ywig-icon ywig-youtube"></span> -->
+	<span class="ywig-icon-sidebar ywig-svg-icon">
+		<?php echo ywig_get_theme_svg( 'youtube', 'social' ); ?>
+	</span>
 	<span class="sr-only">Visit our Youtube</span></a>
 		<?php
 	endif;

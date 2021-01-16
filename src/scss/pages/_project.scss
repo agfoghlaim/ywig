@@ -7,7 +7,8 @@
 
 .project-header {
   position: relative;
-  background: linear-gradient(90deg, #9dc27c, #1482a0);
+  // background: linear-gradient(90deg, #9dc27c, #1482a0);
+  background: $greeny-blue-alt;
   display: grid;
   padding: 0rem 2rem 4rem 22rem;
   align-content: space-between;
@@ -23,15 +24,16 @@
     h1 {
       display: grid;
       justify-self: flex-start;
-      color: $darker-black;
+      color: $black;
       margin: 0;
+      font-size: 2.5rem;
     }
     p {
+      // margin: 1rem 0;
       margin: 0;
-      font-size: 1rem;
       font-weight: 500;
       color: $black;
-      font-size: 0.9rem;
+      font-size: 1rem;
     }
   }
 
@@ -40,7 +42,7 @@
     width: 20rem;
     height: 20rem;
     z-index: 0;
-    filter: grayscale(1);
+    filter: grayscale(0.9);
     top: 0;
     left: 0;
   }
@@ -91,29 +93,29 @@
   .project-socials,
   .project-staff {
     border-radius: 2px;
-    box-shadow: $box-shadow-regular;
+    box-shadow: $box-shadow-small;
     h4 {
-      color: $yellow-alt;
+      color: $light-black;
       font-size: 1.1rem;
     }
   }
   .project-address {
-    background: $blue-alt;
+    background: $dark-white;
     display: grid;
     padding: 1rem;
 
     p {
-      color: $white;
+      color: $black;
     }
 
     svg {
-      color: $yellow-alt;
+      color: $dark-white;
       max-width: 1.2rem;
     }
   }
 
   .project-socials {
-    background: $blue-alt;
+    background: $dark-white;
     padding: 1rem;
     display: grid;
     // justify-content: space-around;
@@ -125,11 +127,26 @@
       justify-content: flex-start;
       grid-gap: 2rem;
       margin-top: 1rem;
+
+      a {
+        .ywig-svg-icon {
+          svg {
+            fill: $blue-alt;
+          }
+        }
+      }
+      a:hover svg, a:focus svg {
+        fill: $yellow-alt;
+      }
     }
-    a {
-      color: white;
-      font-size: 1.4rem;
-    }
+    
+    // a {
+    //   color: white;
+    //   span {
+    //     width: 2rem;
+    //   }
+    //   // font-size: 1.4rem;
+    // }
   }
 }
 
@@ -137,14 +154,14 @@
   display: grid;
   grid-gap: 1rem;
   grid-auto-flow: row;
-  background: $blue-alt;
+  background: $dark-white;
   padding: 1rem;
 
   div {
     display: grid;
     grid-gap: 1rem;
     div.project-staff-item {
-      background: $darkblue-alt;
+      background: $black;
       padding: 1rem;
       p {
         color: $white;
