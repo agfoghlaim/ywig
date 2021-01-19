@@ -1,0 +1,28 @@
+@import 'variables';
+
+.search-content-wrap {
+  display: grid;
+  padding: 2rem;
+  grid-gap: 2rem;
+
+  .search-result-wrap {
+    background: $dark-white;
+    box-shadow: $box-shadow-regular;
+    padding: 2rem;
+    h2 {
+      a {
+        color: $black;
+      }
+    }
+    .search-result {
+      display: grid;
+      grid-auto-flow: row;
+      display: grid;
+      justify-content: flex-start;
+      align-items: flex-start;
+      a {
+        justify-self: flex-start;
+      }
+    }
+  }
+}

@@ -20,6 +20,7 @@
 @import 'pages/youthclub';
 @import 'pages/staff';
 @import 'pages/resources';
+@import 'pages/search';
 @import 'pages/locations';
 @import 'content/content';
 @import 'variables';
@@ -419,7 +420,7 @@ body.page-template-page-frontpage {
 
 
 // .index-content-wrap wraps index.php content.
-.index-content-wrap {
+.index-content-wrap, .four04-content-wrap {
   display: grid;
   grid-gap: 3rem;
    padding: 2rem;

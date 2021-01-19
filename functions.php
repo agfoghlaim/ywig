@@ -168,17 +168,24 @@ function the_breadcrumb() {
 			echo $span . esc_html( 'youthclub' ) . $end_span;
 
 		}
+		if ( true === is_search() ) {
+
+			echo wp_kses( $seperator, $seperator_allowed_html );
+
+			echo $span . esc_html( 'search results' ) . $end_span;
+
+		}
 		echo '</a>';
 
 		// Check if the current page is a category, an archive or a single page. If so show the category or archive name.
 		if ( is_category() || is_single() ) {
-			//echo 'cat' . is_category(  );
+			// echo 'cat' . is_category(  );
 			// echo 'sin' . is_single(  );
-			if ( is_category()  ) {
+			if ( is_category() ) {
 
 				echo wp_kses( $seperator, $seperator_allowed_html );
 			}
-			//the_category( '/' );
+			// the_category( '/' );
 			the_category( 'title_li=' );
 			// echo 'wh0';
 			// } elseif ( is_archive() || is_single() ) {
@@ -196,13 +203,13 @@ function the_breadcrumb() {
 		if ( is_single() ) {
 
 			// TODO this shows second seperator for ..? (maybe specific cpts)
-			//if( 'project' !== get_post_type()) {
-// echo 'wh1';
+			// if( 'project' !== get_post_type()) {
+			// echo 'wh1';
 				echo wp_kses( $seperator, $seperator_allowed_html );
-			//}
+			// }
 			echo '<span class="crumb">';
 
-		the_title();
+			the_title();
 			echo '</span>';
 
 		}
