@@ -11,8 +11,8 @@
 
 <?php
  $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-//$paged = get_query_var( 'paged' );
-$args  = array(
+// $paged = get_query_var( 'paged' );
+$args = array(
 	'posts_per_page' => 2, // NOTE. if this is changed button.load-more-quickposts data attribute must also be updated
 	'paged'          => $paged,
 	'post_type'      => 'quickpost',
@@ -25,6 +25,11 @@ $args  = array(
 $quickposts = new WP_Query( $args );
 
 ?>
+<section class="quickposts" id="quickposts">
+	<h2 class="twist">Project News</h2>
+
+
+
 <div class="quickpost-wrap">
 	<?php
 
@@ -44,16 +49,17 @@ $quickposts = new WP_Query( $args );
 	endif;
 	?>
 </div><!-- end .projects-wrap -->
-<?php 
-//	next_posts_link( 'Next', $quickposts->max_num_pages );
-		if( is_front_page(  )) {
-			?>
+<?php
+
+// next_posts_link( 'Next', $quickposts->max_num_pages );
+if ( is_front_page() ) {
+	?>
 			<a href="<?php echo esc_url( site_url( '/project-news/', 'http' ) ); ?>" class="btn btn-dark">More</a>
 			<?php
 			echo 'front page - load more button will link to /project-news';
-		}else {
-			// project-news page
-			?>
+} else {
+	// project-news page
+	?>
 			<button 
 			class="btn btn-dark load-more-quickposts" 
 			data-current-page="<?php echo esc_attr( $paged ); ?>"
@@ -61,6 +67,7 @@ $quickposts = new WP_Query( $args );
 			data-max-pages="<?php echo esc_attr( $quickposts->max_num_pages ); ?>"
 			>Load More </button>
 			<?php
-			//	echo paginate_links( array( 'total' => $quickposts->max_num_pages ) );
-		}
-		
+			// echo paginate_links( array( 'total' => $quickposts->max_num_pages ) );
+}
+?>
+</section>		

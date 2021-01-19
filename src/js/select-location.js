@@ -1,5 +1,7 @@
 const selectLocation = () => {
-  const locations = document.querySelectorAll('.locations-nav');
+
+  // Listen to each location button (including 'all projects' btn).
+  const locations = document.querySelectorAll('.ywig-finder-loc');
   if (locations && locations.length) {
     locations.forEach((location) =>
       location.addEventListener('click', handleSelectLocation)
@@ -8,12 +10,13 @@ const selectLocation = () => {
   }
 
   function handleSelectLocation(e) {
-    if (!e.target.dataset.location) return;
+
+     if (!e.currentTarget.dataset.location) return;
 
     const allProjects = document.querySelectorAll('.project-info-all');
 
     // Show All Projects
-    if (e.target.dataset.location === 'all') {
+    if (e.currentTarget.dataset.location === 'all') {
       allProjects.forEach((proj) => {
         if (!proj.classList.contains('show-proj')) {
           proj.classList.add('show-proj');
@@ -35,7 +38,8 @@ const selectLocation = () => {
       });
 
       allProjects.forEach((proj) => {
-        if (proj.dataset.locations.includes(e.target.dataset.location)) {
+        if (proj.dataset.locations.includes(e.currentTarget.dataset.location)) {
+        // if (proj.dataset.locations.includes(e.target.dataset.location)) {
           proj.classList.add('show-proj');
           window.setTimeout(function() {
             proj.classList.add('fade');

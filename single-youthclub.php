@@ -12,7 +12,8 @@
 get_header();
 ?>
 
-<main class="<?php echo esc_attr( $post->post_type ); ?>-content">
+<article class="<?php echo esc_attr( $post->post_type ); ?>-content">
+<?php get_template_part( 'template-parts/single/project-header' ); ?>
 
 	<div class="<?php echo esc_attr( $post->post_type ); ?>-intro">
 		<div class="<?php echo esc_attr( $post->post_type ); ?>-intro-left">
@@ -63,7 +64,7 @@ get_header();
 		?>
 	</div>
 	</div>
-</main>
+</article>
 
 <?php
 get_footer();

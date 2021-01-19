@@ -11,12 +11,14 @@
 
 <?php get_template_part( 'template-parts/content/content-page-entry-header' ); ?>
 	<section class="projects-page-intro">
+
 		<?php
 	
 			the_content();
 			//the_post_thumbnail();
 		?>
 	</section>
-		<?php get_template_part( 'template-parts/sections/locations-section' ); ?>
+
+		<?php get_template_part( 'ywig-frontpage-sections/ywig-finder' ); ?>
 </article>
 <?php get_footer(); ?>

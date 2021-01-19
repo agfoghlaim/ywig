@@ -6,12 +6,6 @@ import loadMoreQuickPosts from './loadMoreQuickPosts';
 
 navigation();
 
-// import {
-//   handleShowDropdownMenus,
-//   handleHideDropdownMenus,
-// } from './handle-dropdowns';
-//import scrollTo from './scroll-to';
-
 //scrollTo();
 
 // Resources page.
@@ -25,4 +19,3 @@ selectLocation();
 
 // TODO... this is incomplete
 loadMoreQuickPosts();
-

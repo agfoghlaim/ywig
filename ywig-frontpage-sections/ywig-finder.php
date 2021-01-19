@@ -1,6 +1,6 @@
 <?php
 /**
- * YWIG Project Finder Section for Front Page
+ * YWIG Project Finder Section for Front Page & Projects page
  *
  * Locations are a taxonomy for cpt Projects.
  * Contains some bootstrap classes for 'toggable tabs' but no longer uses Bootstrap.
@@ -27,7 +27,14 @@ foreach ( $all_ids as $id ) {
 $all_ids_for_aria = join( ' ', $arr );
 
 ?>
-<div class="ywig-finder-wrap">
+
+<section class="ywig-finder" id="ywig-finder">
+	<div class="temp"></div>
+	<h2 class="twist">Project Finder</h2>
+
+
+
+	<div class="ywig-finder-wrap">
 
 	<div class="ywig-finder-left">
 
@@ -35,7 +42,7 @@ $all_ids_for_aria = join( ' ', $arr );
 		<div class="nav nav-pills ywig-location-pills locations-nav" id="pills-tab" role="tablist" >
 
 			<a 
-				class="nav-link active" 
+				class="nav-link ywig-finder-loc active" 
 				id="pills-all-tab" 
 				data-location="all"
 				data-toggle="pill" 
@@ -55,7 +62,7 @@ $all_ids_for_aria = join( ' ', $arr );
 					$aria    = sprintf( 'pills-%s', $value->slug );
 					?>
 					<a 
-						class="nav-link" 
+						class="nav-link ywig-finder-loc" 
 						id="<?php echo esc_attr( $html_id ); ?>" 
 						data-location="<?php echo esc_attr( $value->slug ); ?>"
 						data-toggle="pill" 
@@ -140,3 +147,4 @@ $all_ids_for_aria = join( ' ', $arr );
 		</div>
 
 	</div><!--.ywig-finder-wrap-->
+</section>

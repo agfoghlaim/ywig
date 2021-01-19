@@ -1,6 +1,57 @@
 @import 'variables';
-@import 'variables';
 
+.youthclub-header {
+  position: relative;
+  // background: linear-gradient(90deg, #9dc27c, #1482a0);
+  background: $yellow-alt;
+  display: grid;
+  padding: 0rem 2rem 4rem 22rem;
+  align-content: space-between;
+  // align-items: space-between;
+  justify-content: flex-start;
+  justify-items: flex-start;
+  min-height: 18rem;
+  
+
+
+  .youthclub-header-text {
+    padding-top:5rem;
+    h1 {
+      display: grid;
+      justify-self: flex-start;
+      color: $black;
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    p {
+      // margin: 1rem 0;
+      margin: 0;
+      font-weight: 500;
+      color: $black;
+      font-size: 1rem;
+    }
+  }
+
+  img {
+    position: absolute;
+    width: 20rem;
+    height: 20rem;
+    z-index: 0;
+    filter: grayscale(1);
+    top: 0;
+    left: 0;
+  }
+  .torn-white-up {
+    position: absolute;
+    width: 100%;
+    height: 4rem;
+    bottom: 0rem;
+    background: url(/ywig-theme/wp-content/themes/ywig-theme/src/img/torn_white.svg);
+    background-size: 100%;
+    background-repeat: repeat-x;
+    z-index: 1;
+  }
+}
 .youthclub-intro {
   padding-top: 4rem;
   display: grid;

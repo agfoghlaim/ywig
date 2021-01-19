@@ -18,7 +18,6 @@ const ywigToggleTabs = () => {
       // return early if id missing or incorrect
       if (!e.currentTarget.id || !e.currentTarget.id.includes('-tab')) return;
     
-   
       const tabContent = findCorrespondingContentById(e.currentTarget.id);
 
       if (!tabContent) return;
