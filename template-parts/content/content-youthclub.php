@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Related to Project CPT ('/project'). This is ~the same as content.php and should be imporved or deleted. 
+ * Related to Youthclub CPT ('/youthclub').
  * Displays project-intros whereas single-project displays all info about projects
  *
  * @package ywig-theme
@@ -13,9 +13,17 @@
 <!-- (content-project.php) -->
 
 
-<?php 
-set_query_var( 'terms_taxonomy', 'location' );
-get_template_part( 'template-parts/content/content', 'project-intro' );
-?>
 
+	<?php // get_template_part( 'ywig-frontpage-sections/youthclubs' ); ?>
+	<div class="youthclubs-wrap">
+
+		<?php  get_template_part( 'template-parts/content/content', 'youthclub-intro' ); ?>
+	</div>
+	
+
+	
+
+
+
+	
 </article>

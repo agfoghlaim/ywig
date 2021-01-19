@@ -1,6 +1,8 @@
 <?php
 /**
+ * Single Project Excerpt.
  * For Project Finder - Project  Excerpt, Thumbnail, More Btn and Location Tags
+ * For /project via index.php and content-project.php
  *
  * @package ywig-theme
  */

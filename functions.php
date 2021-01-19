@@ -162,7 +162,7 @@ function the_breadcrumb() {
 
 			echo wp_kses( $seperator, $seperator_allowed_html );
 			echo '<a href="';
-			echo esc_url( get_option( 'home' ) ) . '/youthclubs';
+			echo esc_url( get_option( 'home' ) ) . '/youthclub';
 
 			echo '">';
 			echo $span . esc_html( 'youthclub' ) . $end_span;

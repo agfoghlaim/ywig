@@ -9,33 +9,34 @@
 
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-<header class="entry-header">
-	<h1>content-post.php</h1>
-	
 
-		<?php the_title( '<h1 class="entry-title>', '</h1>' ); ?>
-		<div class="entry-meta">
-			
-			</div>
-		</header>
-		<div class="entry-content">
-			
-			<?php if ( has_post_thumbnail() ) : ?>
-				<div class="standard-featured">
-					<?php the_post_thumbnail(); ?>
-				</div>
-				<?php endif; ?>
+
+
+<?php the_title( '<h2>', '</h2>' ); ?>
+<div class="entry-meta">
+By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?>  in <?php the_category(', '); ?> 
+	</div>
+	
+	<div class="entry-content">
+		
+		<?php if ( has_post_thumbnail() ) : ?>
+			<div class="standard-featured">
+				<?php the_post_thumbnail( 'medium' ); ?>
 				
-				<div class="entry-excerpt">
-					<?php the_content(); ?>
-				</div>
+			</div>
+			<?php endif; ?>
+			
+			<div class="entry-excerpt">
+				<?php the_content(); ?>
+				<h6>(content-post.php)</h6>
+			</div>
 		</div>
 
-		<a href="<?php the_permalink(); ?>" class="btn">
-				<?php esc_html_e( 'Read More' ); ?>
-		</a>
-
+		
 		<footer class="entry-footer">
+			<a href="<?php the_permalink(); ?>" class="btn btn-dark">
+					<?php esc_html_e( 'Read More' ); ?>
+			</a>
 
 		</footer>
 
