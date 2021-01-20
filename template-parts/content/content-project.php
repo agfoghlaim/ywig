@@ -1,21 +1,18 @@
 <?php
-
 /**
- * Related to Project CPT ('/project'). This is ~the same as content.php and should be imporved or deleted. 
+ * Related to Project CPT ('/project'). This is ~the same as content.php and should be imporved or deleted.
  * Displays project-intros whereas single-project displays all info about projects
  *
  * @package ywig-theme
  */
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-<!-- <h1>content-project.php</h1> -->
-<!-- (content-project.php) -->
 
-
-<?php 
-set_query_var( 'terms_taxonomy', 'location' );
-get_template_part( 'template-parts/content/content', 'project-intro' );
-?>
+	<?php
+	set_query_var( 'terms_taxonomy', 'location' );
+	get_template_part( 'template-parts/content/content', 'project-intro' );
+	?>
 
 </article>

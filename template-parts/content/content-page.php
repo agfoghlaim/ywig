@@ -1,26 +1,21 @@
 <?php
-
 /**
  * Standard Page Format
  *
  * @package ywig-theme
  */
+
+if ( is_singular() ) {
+	$ywig_class = 'ywig-single';
+} else {
+	$ywig_class = 'ywig-non-single';
+}
+
 ?>
+<article  id="post-<?php the_ID(); ?>" <?php post_class( $ywig_class ); ?>>
 
-<article  id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
-	<?php // get_template_part( 'template-parts/content/content-page-entry-header' ); ?>
-
-
-		
-		<div class="entry-content">
+	<div class="entry-content">
 			<?php the_content(); ?>
-		
-	
+			content-page.php
 	</div>
-
-
-	<footer class="entry-footer">
-
-	</footer>
 </article>

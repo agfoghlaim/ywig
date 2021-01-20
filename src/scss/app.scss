@@ -40,26 +40,10 @@
 //   border-color: white !important;
 // }
 
-// most likely single.php, standard posts
-.type-post.format-standard {
-  // background: blue;
- // min-height: calc( 100vh + 18rem ); // main mav = 7rem, entry-header=18rem
-  display: grid;
-  padding: 3rem;
 
-    // .entry-header {
-  //   height: 18rem;
-  //   display: grid;
-  //   align-content: space-between;
-  //   padding: 2rem 3rem 0rem 3rem;
-  //   position: relative;
-	// 	z-index: 1;
-	// 	justify-content: flex-start;
-  //   padding: 2rem 3rem 4rem 3rem;
-  // }
-}
 
-.entry-header {
+// page header with breadcrumbs
+.ywig-entry-header {
   height: 18rem;
   display: grid;
   align-content: space-between;
@@ -82,7 +66,6 @@
     // z-index: 1;
     color: $dark-white;
   }
-
 }
 
 .torn-white {
@@ -107,22 +90,9 @@
   width: 100%;
   padding-top: 5rem;
   img {
-    // width: 100%;
-    // object-fit: contain;
-    // object-position: left;
     clip-path: url(/ywig-theme/wp-content/themes/ywig-theme/src/img/torn_clip.svg);
   }
 }
-// .entry-header {
-//   height: 18rem;
-//   display: grid;
-//   align-content: space-between;
-//   padding: 2rem 3rem 0rem 3rem;
-//   position: relative;
-//   z-index: 1;
-//   justify-content: flex-start;
-//   padding: 2rem 3rem 4rem 3rem;
-// }
 
 $theme-colors: (
   'primary': #0dc5ea,
@@ -349,7 +319,8 @@ img {
   justify-items: center;
 }
 
-.navbar-socials, .ywig-socials-wrap{
+.navbar-socials,
+.ywig-socials-wrap {
   a {
     text-decoration: none;
     .ywig-svg-icon {
@@ -358,20 +329,12 @@ img {
       }
     }
   }
-  a:hover svg, a:focus svg {
+  a:hover svg,
+  a:focus svg {
     fill: $blue;
   }
 }
-/* END YWIG FONT ICONS */
 
-/* MENU - no bootstrap */
-
-// Small devices (landscape phones, 576px and up)
-// @media (min-width: 576px) { ... }
-
-// Medium devices (tablets, 768px and up)
-@media (max-width: 576px) {
-}
 
 /*
 taxonomy-location
@@ -382,15 +345,12 @@ taxonomy-location
   grid-gap: 2rem;
 }
 
-// index.php
 main {
   //min-height: calc(100vh - 7rem);
-  min-height: calc( 100vh + 18rem );
+  // min-height: calc(100vh + 18rem);
+  min-height: calc(100vh);
   margin-top: 7rem;
   display: block;
-  margin-bottom: 2rem;
-
-  // background: yellow;
 }
 
 main::after {
@@ -412,48 +372,96 @@ main::after {
 // Fade down background watermark. Allow for taller header on home page.
 body.page-template-page-frontpage {
   main::after {
-
     box-shadow: 0px 900px 118px -35px $white inset;
-   
+  }
+}
+
+// so lines of text are never extremely long
+article {
+  .entry-excerpt, .entry-content {
+    p{
+      max-width: 1200px;
+    }
+  }
+}
+// .index-content-wrap wraps index.php content.
+// ie. non-single lists of posts show on card.
+.index-content-wrap,
+.four04-content-wrap,
+.category-content-wrap {
+
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  display: grid;
+  grid-gap: 2rem;
+  padding: 2rem;
+
+  article.ywig-non-single {
+    background: $white;
+    box-shadow: $box-shadow-regular;
+    display: grid;
+    padding: 2rem;
+    grid-gap: 1rem;
+    justify-content: center;
+    .entry-wrap {
+      display: grid;
+      justify-content: flex-start;
+    }
+    .entry-footer {
+      border-top: 1px solid $lighter-black;
+      display: grid;
+      grid-gap: 1rem;
+      justify-content: flex-start;
+      align-items: flex-end;
+      justify-items: flex-start;
+    }
   }
 }
 
 
-// .index-content-wrap wraps index.php content.
-.index-content-wrap, .four04-content-wrap {
-  display: grid;
-  grid-gap: 3rem;
-   padding: 2rem;
-  align-items: flex-start;
-  align-content: flex-start;
-  justify-content: flex-start;
-  // justify-items: flex-start;
-
+.single-content-wrap {
+  article.ywig-single {
+    display: grid;
+    padding: 3rem;
+    grid-gap: 1rem;
+    .entry-wrap {
+      display: grid;
+      justify-content: flex-start;
+    }
+  
+    .entry-footer {
+      border-top: 1px solid $lighter-black;
+      display: grid;
+      grid-gap: 1rem;
+      justify-content: flex-start;
+      align-items: flex-end;
+      justify-items: flex-start;
+    }
+  }
+}
+figure.post-thumbnail {
+  margin-left: 0;
+  margin-right: 0;
+  figcaption {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: $light-black;
+  }
 }
 
-// easy '/project' page
-// specify body class to distinguish from '/project/specific-project' (single-project.php)
-// body.post-type-archive {
-//   article.type-project {
-//     background: orange;
-//     @include project-info;
-//     opacity: 1;
-//     display: grid;
-//     h2 a {
-//       color: $black;
-//     }
-//   }
-// }
+.category-content-wrap {
+  max-width: 1800px;
+}
 
-// article.youthclub {
-//   display: grid;
-//   margin: 2rem 3rem;
-//   justify-content: flex-start;
-//   background: pink;
-//   h2.entry-title {
-//     // color: red;
-//   }
-// }
+
+.entry-meta {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: $light-black;
+  font-weight: 600;
+}
+
 
 h2.twist {
   letter-spacing: -1px;
@@ -462,6 +470,15 @@ h2.twist {
   // transform: rotate(-2deg);
   color: $black;
   padding: 0;
+}
+h2.twist-smaller {
+  letter-spacing: -1px;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  // transform: rotate(-2deg);
+  color: $black;
+  padding: 0;
+  font-size: 1.5rem;
 }
 .twist {
   letter-spacing: -1px;
@@ -485,16 +502,12 @@ h2.twist {
   border-radius: 2px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  // height: 1.5rem;
-  // padding: 0.2rem 0.5rem;
-  // box-sizing: border-box;
   display: grid;
   grid-auto-flow: column;
   justify-content: flex-start;
   grid-gap: 1rem;
   align-items: center;
   align-content: center;
-  // padding-bottom: 0.4rem;
 
   a {
     color: $yellow-alt;
@@ -506,4 +519,3 @@ h2.twist {
     text-transform: uppercase;
   }
 }
-

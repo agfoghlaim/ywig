@@ -11,6 +11,7 @@ require get_template_directory() . '/inc/enqueue.php';
 require get_template_directory() . '/inc/theme-support.php';
 require get_template_directory() . '/inc/customizer/about-section.php';
 require get_template_directory() . '/inc/template-tags.php';
+require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer/heroine-section-alt.php';
 require get_template_directory() . '/inc/customizer/counselling.php';
 require get_template_directory() . '/inc/customizer/projects.php';

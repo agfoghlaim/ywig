@@ -337,9 +337,9 @@ function ywig_single_yc_project_show_project_news( $post_id, $author_name ) {
 	}
 }
 
- /**
-  * Social Icons
-  */
+/**
+ * Social Icons
+ */
 /**
  * Renders individual social icons  & links.
  *
@@ -413,5 +413,3 @@ function ywig_get_aria_labelledby_str( $terms_str ) {
 	$ans                     = join( ' ', $aria_labelled_by_string );
 	return $ans;
 }
-
-

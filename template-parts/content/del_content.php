@@ -7,10 +7,19 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<?php
+if ( is_singular() ) {
+ $ywig_class = 'ywig-single';
+} else {
+	$ywig_class = 'ywig-non-single';
+}
+
+?>
+<article  id="post-<?php the_ID(); ?>" <?php post_class( $ywig_class ); ?>>
 
 	<header class="entry-header">
 		<?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
+		<?php ywig_post_thumbnail( 'full' ); ?>
 		(content.php)
 	</header>
 	<div class="entry-content">

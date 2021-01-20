@@ -1,44 +1,78 @@
 <?php
-
 /**
- * Standard Post Format (eg <site-url>/category/uncategorised/ via index.php)
+ * Standard Post Format. Shows excerpt for non-singular pages.
+ * (See content-single.php single posts).
+ * eg <site-url>/category/uncategorised/ via index.php.
  *
  * @package ywig-theme
  */
+
 ?>
 
+<?php
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+// .ywig-single where we want to show the_content();
+// .ywig-non-single where we want to show the_excerpt();
+if ( is_singular() ) {
+	$ywig_class = 'ywig-single';
+} else {
+	$ywig_class = 'ywig-non-single';
+}
 
+?>
+<article  id="post-<?php the_ID(); ?>" <?php post_class( $ywig_class ); ?>>
+	<div class="entry-wrap">
 
+		<div class="entry-header">
 
-<?php the_title( '<h2>', '</h2>' ); ?>
-<div class="entry-meta">
-By <?php the_author_posts_link(); ?> on <?php the_time('F jS, Y'); ?>  in <?php the_category(', '); ?> 
-	</div>
-	
-	<div class="entry-content">
-		
-		<?php if ( has_post_thumbnail() ) : ?>
-			<div class="standard-featured">
-				<?php the_post_thumbnail( 'medium' ); ?>
-				
-			</div>
-			<?php endif; ?>
-			
-			<div class="entry-excerpt">
-				<?php the_content(); ?>
-				<h6>(content-post.php)</h6>
-			</div>
+			<?php the_title( '<h2 class="twist-smaller">', '</h2>' ); ?>
+
+			<?php
+			if ( has_post_thumbnail() ) {
+					ywig_post_thumbnail( 'medium' );
+			} else {
+				?>
+					<img src="<?php bloginfo( 'template_directory' ); ?>/src/img/looking_at_the_sea.jpg" alt="<?php the_title(); ?>" />
+					<?php
+			}
+			?>
 		</div>
 
-		
-		<footer class="entry-footer">
-			<a href="<?php the_permalink(); ?>" class="btn btn-dark">
-					<?php esc_html_e( 'Read More' ); ?>
-			</a>
+		<div class="entry-content">
 
-		</footer>
+			<?php the_excerpt(); ?>
 
-	
+			<h6>(content-post.php)</h6>
+
+		</div>
+	</div>
+
+	<footer class="entry-footer">
+		<div class="entry-meta">
+
+			<span class="entry-meta-date">
+				<?php the_time( 'F jS, Y' ); ?>
+			</span>
+
+			<span class="entry-meta-category">
+				<?php the_category( ', ' ); ?>
+			</span>
+
+		</div>
+
+		<a 
+			href="<?php the_permalink(); ?>" 
+			class="btn btn-dark"
+		>
+
+			<span class="sr-only">
+				Read More about <?php echo esc_html( get_the_title() ); ?>
+			</span>
+
+			<span><?php esc_html_e( 'More' ); ?></span>
+
+		</a>
+
+	</footer>
+
 </article>
