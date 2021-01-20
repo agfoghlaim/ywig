@@ -26,7 +26,9 @@
 @import 'variables';
 @import 'buttons';
 
+// Ywig Components
 @import 'ywig-components/location-info';
+@import 'ywig-components/post-nav-preview';
 
 @import 'mixins';
 
@@ -416,6 +418,7 @@ article {
     }
   }
 }
+
 
 
 .single-content-wrap {

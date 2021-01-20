@@ -413,3 +413,83 @@ function ywig_get_aria_labelledby_str( $terms_str ) {
 	$ans                     = join( ' ', $aria_labelled_by_string );
 	return $ans;
 }
+
+
+/**
+ * Render preview of next/previous post.
+ *
+ * @param WP_POST $ywig_post String of location terms seperated by a space ' '.
+ *
+ * @return string $output. html to show post preview.
+ */
+function ywig_get_post_nav_preview( $ywig_post ) {
+	$ywig_post_title     = $ywig_post->post_title;
+	$ywig_post_id        = $ywig_post->ID;
+	$ywig_post_excerpt   = $ywig_post->post_excerpt;
+	$ywig_post_permalink = get_the_permalink( $ywig_post_id );
+	ob_start();
+	?>
+
+	<article  id="post-<?php echo esc_attr( $ywig_post_id ); ?>" <?php post_class( 'ywig-post-nav-article' ); ?>>
+		<div class="entry-wrap">
+
+			<div class="entry-header">
+
+				<h2 class="twist-smaller"><?php echo esc_html( $ywig_post_title ); ?></h2>
+
+				<?php
+				if ( has_post_thumbnail( $ywig_post_id ) ) {
+					echo get_the_post_thumbnail( $ywig_post_id, 'thumb' );
+
+				} else {
+					?>
+						<img style="max-width: 300px;" src="<?php bloginfo( 'template_directory' ); ?>/src/img/looking_at_the_sea.jpg" alt="<?php echo esc_attr( $ywig_post_title ); ?>" />
+						<?php
+				}
+				?>
+			</div>
+
+			<div class="entry-content">
+				<?php echo esc_html( $ywig_post_excerpt ); ?>	
+			</div>
+
+		</div>
+
+		<footer class="entry-footer">
+			<div class="entry-meta">
+
+				<span class="entry-meta-date">
+					<?php the_time( 'F jS, Y' ); ?>
+				</span>
+
+				<span class="entry-meta-category">
+					<?php the_category( ', ' ); ?>
+				</span>
+
+			</div>
+
+			<a 
+				href="<?php echo esc_url( $ywig_post_permalink ); ?>" 
+				class="btn btn-dark"
+			>
+
+				<span class="sr-only">
+					Read More about <?php echo esc_html( $ywig_post_title ); ?>
+				</span>
+
+				<span><?php esc_html_e( 'More' ); ?></span>
+
+		</a>
+
+		</footer>
+
+	</article>
+	<?php
+		$output = ob_get_clean();
+
+	if ( $output ) {
+		return $output;
+	}
+}
+
+
