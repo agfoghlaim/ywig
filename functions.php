@@ -241,7 +241,7 @@ if ( ! function_exists( 'ywig_breadcrumbs' ) ) {
 	/**
 	 * Echo Breadcrumbs
 	 *
-	 * A lot of the logic is based on https://github.com/rachelbaker/bootstrapwp-Twitter-Bootstrap-for-WordPress/blob/master/functions.php
+	 * A lot of the logic is based on Breadcrumbs in https://github.com/rachelbaker/bootstrapwp-Twitter-Bootstrap-for-WordPress/blob/master/functions.php
 	 */
 	function ywig_breadcrumbs() {
 			global $post, $paged;

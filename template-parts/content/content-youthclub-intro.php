@@ -2,8 +2,9 @@
 /**
  * Single Youth Club excerpt
  * For Project Finder - Project  Excerpt, Thumbnail, More Btn and Location Tags
- * For /youthclub via index.php and content-youthclub.php
+ * For '/youthclub' via index.php and content-youthclub.php
  * For front page via ywig-frontpage-sections/youthclubs.php
+ * For youthclubs Page '/youth-clubs' page-youth-club.php
  *
  * @package ywig-theme
  */

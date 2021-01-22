@@ -28,8 +28,7 @@
 				$myposts->the_post();
 
 				?>
-		<?php  get_template_part( 'template-parts/content/content', 'youthclub-intro' ); ?>
-	
+		<?php get_template_part( 'template-parts/content/content', 'youthclub-intro' ); ?>
 
 				<?php
 

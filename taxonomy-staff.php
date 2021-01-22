@@ -37,7 +37,7 @@ get_header(); ?>
 
 		?>
 
-		<div style="background: gray;">
+		<div>
 				<?php
 
 				if ( $is_staff_pic ) {
@@ -67,6 +67,57 @@ get_header(); ?>
 			<p style="display:block;">Job:  <?php echo isset( $job ) ? esc_html( $job ) : ''; ?> </p>
 
 		</div>
+
+		<div class="page-staff-item">
+				<?php
+
+				if ( $is_staff_pic ) {
+
+					?>
+	
+				<img  
+					src="<?php echo esc_html( $staff_image_url ); ?>" 
+					alt="<?php echo esc_html( $staff_image['alt'] ); ?>" 
+					description="<?php echo esc_html( $staff_image['description'] ); ?>" 
+				/>
+	
+					<?php
+
+				} else {
+					echo ywig_get_theme_svg( 'user' );
+					//get_template_part( 'template-parts/svgs/svg-user' );
+
+				}
+
+				?>
+
+			<h3><?php echo isset( $staff_fname ) ? esc_html( $staff_fname ) : ''; ?> <?php echo isset( $staff_lname ) ? esc_html( $staff_lname ) : ''; ?> </h3> 
+			<?php echo isset( $job ) ? '<p class="ywig-staff-subtext">' . esc_html( $job ) . '<p>' : null; ?> 
+			<?php echo isset( $email ) ? '<span>' . esc_html( $email ) . '</span>' : null; ?> 
+			<?php echo isset( $phone ) ? '<span>' . esc_html( $phone ) . '</span>' : null; ?> 
+			<?php echo isset( $about ) ? '<p class="ywig-staff-bio">' . esc_html( $about ) . '</p>' : null; ?> 
+
+
+			<?php echo isset( $staff_fname ) && ! empty( $projects_for_this_staff_member ) ? '<p class="ywig-staff-projects">' . esc_html( $staff_fname ) . ' works at ' : null; ?> 
+			<?php
+			if ( isset( $projects_for_this_staff_member ) ) {
+				foreach ( $projects_for_this_staff_member as $key => $value ) {
+					if ( 0 === $key ) {
+						echo '<a href="' . $value->guid . '">';
+						echo esc_html( $value->post_title );
+						echo '</a>';
+					} else {
+						echo '<a href="' . $value->guid . '">';
+						echo esc_html( ', ' . $value->post_title );
+						echo '</a>';
+					}
+				}
+			}
+
+			?>
+		</p> 
+
+		</div>	
 
 				<?php
 
