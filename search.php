@@ -55,6 +55,9 @@ get_template_part( 'template-parts/content/content-page-entry-header-any' );
 
 	?>
 </div>
+<div class="ywig-pagination">
+	<?php echo paginate_links(); ?>
+</div>
 <h1>search.php</h1>
 
 <?php

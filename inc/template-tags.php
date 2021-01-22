@@ -423,6 +423,9 @@ function ywig_get_aria_labelledby_str( $terms_str ) {
  * @return string $output. html to show post preview.
  */
 function ywig_get_post_nav_preview( $ywig_post ) {
+	if( ! $ywig_post ) {
+		return;
+	}
 	$ywig_post_title     = $ywig_post->post_title;
 	$ywig_post_id        = $ywig_post->ID;
 	$ywig_post_excerpt   = $ywig_post->post_excerpt;
@@ -443,7 +446,7 @@ function ywig_get_post_nav_preview( $ywig_post ) {
 
 				} else {
 					?>
-						<img style="max-width: 300px;" src="<?php bloginfo( 'template_directory' ); ?>/src/img/looking_at_the_sea.jpg" alt="<?php echo esc_attr( $ywig_post_title ); ?>" />
+						<img style="max-width: 150px;" src="<?php bloginfo( 'template_directory' ); ?>/src/img/looking_at_the_sea.jpg" alt="<?php echo esc_attr( $ywig_post_title ); ?>" />
 						<?php
 				}
 				?>

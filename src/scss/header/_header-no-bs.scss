@@ -13,7 +13,7 @@
   // }
   .current-menu-item {
     a {
-       color: $greeny-blue-alt;
+      color: $greeny-blue-alt;
       border-bottom: 0.2rem solid $greeny-blue-alt;
     }
   }
@@ -401,8 +401,14 @@
 
         .current-menu-item {
           a {
-            border-bottom: 0rem solid $greeny-blue-alt;
+            color: $greeny-blue-alt;
+            // border-bottom: 0rem solid $greeny-blue-alt;
+            border-bottom: none;
           }
+        }
+        .current-menu-ancestor {
+          // background: $greeny-blue-alt;
+          border-bottom: none;
         }
         li.donate-btn {
           // padding: 0;

@@ -12,5 +12,5 @@
 	<div class="haze-overlay"></div>
 	<div class="torn-white"></div>
 	<?php the_title( '<h1 class="entry-title twist">', '</h1>' ); ?>
-	<?php the_breadcrumb(); ?>
+	<?php ywig_breadcrumbs(); ?>
 </header>

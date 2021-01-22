@@ -42,8 +42,6 @@
 //   border-color: white !important;
 // }
 
-
-
 // page header with breadcrumbs
 .ywig-entry-header {
   height: 18rem;
@@ -337,7 +335,6 @@ img {
   }
 }
 
-
 /*
 taxonomy-location
 */
@@ -353,6 +350,7 @@ main {
   min-height: calc(100vh);
   margin-top: 7rem;
   display: block;
+  margin-bottom: 3rem;
 }
 
 main::after {
@@ -380,8 +378,9 @@ body.page-template-page-frontpage {
 
 // so lines of text are never extremely long
 article {
-  .entry-excerpt, .entry-content {
-    p{
+  .entry-excerpt,
+  .entry-content {
+    p {
       max-width: 1200px;
     }
   }
@@ -391,7 +390,6 @@ article {
 .index-content-wrap,
 .four04-content-wrap,
 .category-content-wrap {
-
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   display: grid;
   grid-gap: 2rem;
@@ -419,8 +417,6 @@ article {
   }
 }
 
-
-
 .single-content-wrap {
   article.ywig-single {
     display: grid;
@@ -430,7 +426,7 @@ article {
       display: grid;
       justify-content: flex-start;
     }
-  
+
     .entry-footer {
       border-top: 1px solid $lighter-black;
       display: grid;
@@ -456,15 +452,14 @@ figure.post-thumbnail {
   max-width: 1800px;
 }
 
-
 .entry-meta {
   display: block;
   font-size: 0.8rem;
   text-transform: uppercase;
   color: $light-black;
   font-weight: 600;
+  padding-top: 0.5rem;
 }
-
 
 h2.twist {
   letter-spacing: -1px;
@@ -493,12 +488,25 @@ h2.twist-smaller {
   z-index: 99;
 }
 
+.ywig-pagination {
+  margin-left: 2rem;
+  .page-numbers {
+    background: $black;
+    color: $white;
+    padding: 0.5rem 1rem;
+    border-radius: 2px;
+  }
+  .page-numbers.current {
+    background: $blue-alt;
+  }
+}
 .breadcrumbs {
   font-weight: 600;
   color: $white;
   // text-transform: uppercase;
   font-size: 0.9rem;
   z-index: 1;
+  height: 1.6rem;
   margin-top: 1rem;
   margin-bottom: 2rem;
   background: $black;
@@ -515,10 +523,25 @@ h2.twist-smaller {
   a {
     color: $yellow-alt;
   }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 0.5rem;
+
+    li + li:before {
+      padding: 0.5rem;
+      color: $white;
+      content: '/\00a0';
+    }
+  }
   a,
   span {
     transform: translateY(-0.9px);
     font-size: 0.8rem;
     text-transform: uppercase;
+    line-height: 2rem;
   }
 }

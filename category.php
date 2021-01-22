@@ -31,6 +31,7 @@ get_header(); ?>
 
 				get_template_part( 'template-parts/content/content', get_post_type() );
 			}
+
 		} else {
 
 			// If no content, include the "No posts found" template.
@@ -41,7 +42,9 @@ get_header(); ?>
 		?>
 	</div>
 </div>
-
+<div class="ywig-pagination">
+	<?php echo paginate_links(); ?>
+</div>
 <h1>category.php</h1>
 <?php
 get_footer();

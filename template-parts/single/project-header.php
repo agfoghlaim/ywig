@@ -16,7 +16,9 @@
 			}
 			?>
 		</div>
-	<?php the_breadcrumb(); ?>
+
+
+	<?php ywig_breadcrumbs(); ?>
+
 	<div class="torn-white-up"></div>
 </header><!--.project-header -->
- 

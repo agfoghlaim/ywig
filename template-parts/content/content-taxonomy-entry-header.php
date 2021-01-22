@@ -14,6 +14,5 @@ $this_term = get_query_var( 'taxonomy_loc_term' );
 	<div class="haze-overlay"></div>
 	<div class="torn-white"></div>
 	<h1 class="entry-title twist"><?php echo esc_html( $this_term->name ); ?></h1>
-
-	<?php the_breadcrumb(); ?>
+	<?php ywig_breadcrumbs(); ?>
 </header>

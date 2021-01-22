@@ -90,162 +90,6 @@ function urlExists( $url ) {
 
 
 
-/*
-=============================================
-=            BREADCRUMBS			            =
-=============================================
-*/
-
-/**
- * Show Breadcrumbs. TODO move somewhere sensible.
- */
-function the_breadcrumb() {
-	$span      = '<span class="crumb-seperator">';
-	$end_span  = '</span>';
-	$seperator = $span . ' / ' . $end_span;
-
-	// for wp_kses.
-	$seperator_allowed_html = array(
-		'span' => array(
-			'class' => array(),
-			'title' => array(),
-		),
-	);
-
-	if ( ! is_front_page() ) {
-		echo '<div class="breadcrumbs">';
-		echo '<a href="';
-		echo esc_url( get_option( 'home' ) );
-		echo '">';
-		echo 'HOME';
-		echo '</a>';
-
-		// new.
-		$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
-		if ( $term ) {
-
-			$taxonomy_name  = $term->taxonomy; // eg 'location'.
-			$this_term_name = $term->name; // eg 'Galway City'.
-
-			echo wp_kses( $seperator, $seperator_allowed_html );
-			$link_to_parent_tax_page             = site_url( $taxonomy_name, 'http' ); // TODO https.
-			$link_to_parent_taxonomy_page_exists = urlExists( $link_to_parent_tax_page );
-
-			// check that parent link exists. eg for url <site-url>/location/galway, check <site-url>/location exists.
-			if ( $link_to_parent_taxonomy_page_exists ) {
-				// render link if it exists.
-				?>
-				<a href="<?php echo esc_url( $link_to_parent_tax_page ); ?>"><?php echo esc_html( $taxonomy_name ); ?></a> 
-				<?php
-			} else {
-				// else just render the parent taxonomy name.
-				echo '<span>' . esc_html( $taxonomy_name ) . '</span>';
-			}
-
-			echo wp_kses( $seperator, $seperator_allowed_html );
-			echo $span . esc_html( $this_term_name ) . $end_span;
-			$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
-
-		}
-				// end new.
-
-		if ( 'project' === get_post_type() && ( ! $term ) ) {
-
-			echo wp_kses( $seperator, $seperator_allowed_html );
-			echo '<a href="';
-			echo esc_url( get_option( 'home' ) ) . '/projects';
-
-			echo '">';
-			echo $span . esc_html( 'projects' ) . $end_span;
-
-		}
-		if ( 'youthclub' === get_post_type() && ( ! $term ) ) {
-
-			echo wp_kses( $seperator, $seperator_allowed_html );
-			echo '<a href="';
-			echo esc_url( get_option( 'home' ) ) . '/youthclub';
-
-			echo '">';
-			echo $span . esc_html( 'youthclub' ) . $end_span;
-
-		}
-		if ( true === is_search() ) {
-
-			echo wp_kses( $seperator, $seperator_allowed_html );
-
-			echo $span . esc_html( 'search results' ) . $end_span;
-
-		}
-		echo '</a>';
-
-		// Check if the current page is a category, an archive or a single page. If so show the category or archive name.
-		if ( is_category() || is_single() ) {
-			// echo 'cat' . is_category(  );
-			// echo 'sin' . is_single(  );
-			if ( is_category() ) {
-
-				echo wp_kses( $seperator, $seperator_allowed_html );
-			}
-			// the_category( '/' );
-			the_category( 'title_li=' );
-			// echo 'wh0';
-			// } elseif ( is_archive() || is_single() ) {
-			// if ( is_day() ) {
-			// printf( __( '%s', 'text_domain' ), get_the_date() );
-			// } elseif ( is_month() ) {
-			// printf( __( '%s', 'text_domain' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'text_domain' ) ) );
-			// } elseif ( is_year() ) {
-			// printf( __( '%s', 'text_domain' ), get_the_date( _x( 'Y', 'yearly archives date format', 'text_domain' ) ) );
-			// } else {
-			// _e( 'Blog Archives', 'text_domain' );
-			// }
-		}
-		// If the current page is a single post, show its title.
-		if ( is_single() ) {
-
-			// TODO this shows second seperator for ..? (maybe specific cpts)
-			// if( 'project' !== get_post_type()) {
-			// echo 'wh1';
-				echo wp_kses( $seperator, $seperator_allowed_html );
-			// }
-			echo '<span class="crumb">';
-
-			the_title();
-			echo '</span>';
-
-		}
-
-		// If the current page is a static page, show its title.
-		if ( is_page() ) {
-			echo wp_kses( $seperator, $seperator_allowed_html );
-			echo $span;
-			the_title();
-			echo $end_span;
-		}
-
-		// if you have a static page assigned to be you posts list page. It will find the title of the static page and display it. i.e Home >> Blog
-		if ( is_home() ) {
-			global $post;
-			$page_for_posts_id = get_option( 'page_for_posts' );
-			if ( $page_for_posts_id ) {
-				$post = get_page( $page_for_posts_id );
-				setup_postdata( $post );
-				echo $span;
-				the_title();
-				echo $end_span;
-				rewind_posts();
-			}
-		}
-
-		echo '</div>';
-	}
-	/*
-	* Credit: http://www.thatweblook.co.uk/blog/tutorials/tutorial-wordpress-breadcrumb-function/ (https://gist.github.com/tinotriste/5387124)
-	*/
-}
-
-
-
 // Load more quickposts ajax
 
 function load_more_posts() {
@@ -324,3 +168,273 @@ add_action(
 		);
 	}
 );
+
+
+
+/**
+ * ====================================================================
+ * Breadcrumbs
+ * ====================================================================
+ */
+
+/**
+ * Util for ywig_breadcrumbs(). Renders crumb markup.
+ *
+ * Note: Tried to get structured data for seo here but couldn't get it to pass the google test rich results. I tried microdata & RDFa. Checked Yoast docs for clues and they use JSON... so for future reference try using JSON (https://developers.google.com/search/docs/data-types/breadcrumb#json-ld).
+ *
+ * @param string $active Active page or not. Render <a> tag and aria-current if !== ''.
+ * @param string $link Url of page.
+ * @param string $txt Text to render in span tag (ie the name of the crumb).
+ */
+function ywig_wrap_in_li_span( $active = '', $link = '', $txt ) {
+
+	// If $active is set, add 'class="active" as well as 'aria-current="page"' to the <li> attributes.
+	if ( '' !== $active ) {
+		$active = ' class="' . $active . '"' . ' aria-current="page"';
+	}
+
+	$open_li_span  = '<li itemtype="https://schema.org/ListItem"' . $active . '><span>';
+	$close_li_span = '</span><meta></li>';
+
+	if ( '' !== $link ) {
+
+		$new_ans = '<li itemtype="https://schema.org/ListItem"' . $active . '><a href="' . $link . '"><span>' . $txt . '</span></a><meta></li>';
+
+	} else {
+
+		// If $link is NOT set, only the $txt will be wrapped in the <li><span>.
+		$new_ans = $open_li_span . $txt . $close_li_span;
+	}
+
+	// for wp_kses.
+	$ans_allowed_html = array(
+		'span' => array(
+			'class' => array(),
+			'title' => array(),
+		),
+		'li'   => array(
+			'class'        => array(),
+			'itemtype'     => array(),
+			'aria-current' => array(),
+
+		),
+		'a'    => array(
+			'href' => array(),
+			'id'   => array(),
+		),
+		'meta' => array(
+			'content'  => array(),
+			'property' => array(),
+		),
+	);
+
+	echo wp_kses( $new_ans, $ans_allowed_html );
+}
+
+/**
+ * Echo Breadcrumbs.
+ *
+ * @package ywig-theme
+ */
+if ( ! function_exists( 'ywig_breadcrumbs' ) ) {
+
+	/**
+	 * Echo Breadcrumbs
+	 *
+	 * A lot of the logic is based on https://github.com/rachelbaker/bootstrapwp-Twitter-Bootstrap-for-WordPress/blob/master/functions.php
+	 */
+	function ywig_breadcrumbs() {
+			global $post, $paged;
+			ob_start();
+			echo '<nav class="breadcrumbs" aria-label="Breadcrumb">';
+			echo '<ul itemtype="https://schema.org/BreadcrumbList" aria-label="breadcrumbs">';
+
+		if ( ! is_home() || ! is_front_page() || ! is_paged() ) {
+
+			ywig_wrap_in_li_span( '', esc_url( get_home_url() ), 'Home' );
+
+			// Custom Taxonomies eg '/staff/marie', '/location/prospect-hill'.
+			$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+
+			// Check Custom Taxonomy First.
+			if ( $term ) {
+				$taxonomy_name  = $term->taxonomy; // eg 'location'.
+				$this_term_name = $term->name; // eg 'Galway City'.
+
+				$link_to_parent_tax_page             = site_url( $taxonomy_name, 'http' ); // TODO https.
+				$link_to_parent_taxonomy_page_exists = urlExists( $link_to_parent_tax_page );
+
+				// check that parent link exists. eg for url <site-url>/location/galway, check <site-url>/location exists. Don't think this is necesserary though.
+				if ( $link_to_parent_taxonomy_page_exists ) {
+
+					// render link if it exists. eg /location.
+					ywig_wrap_in_li_span( '', esc_url( $link_to_parent_tax_page ), esc_html( $taxonomy_name ) );
+					?>
+
+					<?php
+				} else {
+
+					// else just render the parent taxonomy name.
+					ywig_wrap_in_li_span( 'active', '', esc_html( $taxonomy_name ) );
+
+				}
+
+				ywig_wrap_in_li_span( 'active', '', esc_html( $this_term_name ) );
+				$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+
+			} elseif ( is_category() ) {
+				ywig_wrap_in_li_span( 'active', '', single_cat_title( '', false ) );
+
+			} elseif ( is_day() ) {
+
+				// For posts from 23rd November 2020... 'home/2020/11/23'.
+					$year_link  = get_year_link( get_the_time( 'Y' ) );
+					$month_link = get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) );
+
+					// Eg '/<a>2020<a>'.
+					ywig_wrap_in_li_span( '', $year_link, get_the_time( 'Y' ) );
+
+					// Eg '/<a>November<a>'.
+					ywig_wrap_in_li_span( '', $month_link, get_the_time( 'F' ) );
+
+					// Eg '/23'.
+					ywig_wrap_in_li_span( 'active', '', get_the_time( 'd' ) );
+			} elseif ( is_month() ) {
+
+					// For posts from November 2020... 'home/2020/11'.
+
+					// Eg  '/2020.
+					ywig_wrap_in_li_span( '', get_year_link( get_the_time( 'Y' ) ), get_the_time( 'Y' ) );
+
+					// Eg'/november'.
+					ywig_wrap_in_li_span( 'active', '', get_the_time( 'F' ) );
+
+			} elseif ( is_year() ) {
+					ywig_wrap_in_li_span( 'active', '', get_the_time( 'Y' ) );
+			} elseif ( is_single() && ! is_attachment() ) {
+
+				if ( get_post_type() != 'post' ) {
+
+					// Eg. 'home/project(cpt)/shout. Because no categories for cpts.
+					$post_type      = get_post_type_object( get_post_type() );
+					$slug           = $post_type->rewrite;
+					$link_to_parent = home_url() . '/' . $slug['slug'];
+
+					// Eg. '/<a>project</a>'.
+					ywig_wrap_in_li_span( '', $link_to_parent, $post_type->name );
+
+					// Eg. '/shout'.
+					ywig_wrap_in_li_span( 'active', '', get_the_title() );
+
+				} else {
+						$category = get_the_category();
+
+					if ( is_array( $category ) ) {
+
+						if ( count( $category ) > 0 ) {
+							// Just use the first category even though some posts will be in more than one.
+							ywig_wrap_in_li_span( '', get_category_link( $category[0]->term_id ), $category[0]->name );
+						}
+					}
+
+						ywig_wrap_in_li_span( 'active', '', get_the_title() );
+
+				}
+			} elseif ( is_home() ) {
+
+				if ( is_paged() ) {
+					$blog_page_link = get_permalink( get_option( 'page_for_posts' ) );
+
+					// ie. We need an <a> tag on Home on paged results...  'Home / <a>News</a> / Page 2'.
+					ywig_wrap_in_li_span( '', esc_url( $blog_page_link ), 'News' );
+
+				} else {
+
+					// ie. No <a> tag on News page... 'Home / News'.
+					ywig_wrap_in_li_span( 'active', '', 'News' );
+				}
+			} elseif ( ! is_single() && ! is_page() && get_post_type() != 'post' && ! is_404() && ! is_search() ) {
+
+					// This one is a post type archive. Eg. '/project(cpt)', '/youthclub(cpt)'.
+					$post_type = get_post_type_object( get_post_type() );
+					ywig_wrap_in_li_span( 'active', '', $post_type->labels->singular_name );
+			} elseif ( is_attachment() ) {
+
+				// ywig does not use this.
+				$parent   = get_post( $post->post_parent );
+				$category = get_the_category( $parent->ID );
+				if ( $category ) {
+					foreach ( $category as $category ) {
+						ywig_wrap_in_li_span( '', get_category_link( $category->term_id ), $category->name );
+					}
+				}
+					echo '<li class="active" aria-current="page"><span>' . get_the_title() . '</span></li>';
+			} elseif ( is_page() && ! $post->post_parent ) {
+
+				// Regular page with no parent. Eg. '/resources'.
+					ywig_wrap_in_li_span( 'active', '', get_the_title() );
+			} elseif ( is_page() && $post->post_parent ) {
+				$parent_id = $post->post_parent;
+				$page      = get_post( $parent_id );
+
+				// For pages with a parent page.
+
+				// Eg. '/resources/vacancies', this renders <a>resources</a>.
+				ywig_wrap_in_li_span( '', get_permalink( $page->ID ), get_the_title( $page->ID ) );
+
+				// Eg. '/resources/vacancies', this renders <span>vacancies<span>.
+				ywig_wrap_in_li_span( 'active', '', get_the_title() );
+			} elseif ( is_search() ) {
+
+				/* translators: %s: search term. */
+				$txt = sprintf( __( 'Search results for <q>"%s"</q>', 'ywig' ), esc_attr( get_search_query() ) );
+
+				// Eg. 'home/search results for whatever' (Page 1 of results).
+				ywig_wrap_in_li_span( 'active', '', $txt );
+
+			} elseif ( is_tag() ) {
+
+				// Eg. /tag/test-tag.
+
+				/* translators: %s: name of current tag. */
+				$txt = sprintf( __( 'Posts tagged <q>"%s"</q>', 'ywig' ), single_tag_title( '', false ) );
+				ywig_wrap_in_li_span( 'active', '', $txt );
+			} elseif ( is_author() ) {
+				global $author;
+
+				/* translators: %s: author name. */
+				$txt = sprintf( __( 'All posts by %s', 'ywig' ), get_the_author_meta( 'display_name', $author ) );
+
+				// Eg. 'home/all posts by whoever' (Page 1 of results).
+				ywig_wrap_in_li_span( 'active', '', $txt );
+			} elseif ( is_404() ) {
+				ywig_wrap_in_li_span( 'active', '', 'Page not found' );
+			}
+		}
+
+		// Paged results.
+		if ( is_paged() ) {
+
+			if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) {
+
+				/* translators: %s: current page of results. */
+					$txt = sprintf( __( 'Page %s', 'ywig' ), esc_attr( $paged ) );
+					ywig_wrap_in_li_span( 'active', '', $txt );
+			} else {
+
+				/* translators: %s: current page of results. */
+				$txt = sprintf( __( 'Page %s', 'ywig' ), esc_attr( $paged ) );
+				ywig_wrap_in_li_span( 'active', '', esc_attr( $txt ) );
+			}
+		}
+
+			echo '</ul>';
+			echo '</nav>';
+			$ans = ob_get_clean();
+		if ( $ans ) {
+			// phpcs:ignore WordPress.Security.EscapeOutput --escaped above.
+			echo $ans;
+		}
+
+	}
+}

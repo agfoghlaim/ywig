@@ -23,17 +23,19 @@
 			background: $white;
 			box-shadow: $box-shadow-regular;
 			display: grid;
-			padding: 2rem;
+			padding: 2rem 1rem;
 			grid-gap: 1rem;
 			justify-content: center;
 			width: 350px;
 			.entry-header {
 				display: grid;
 				grid-auto-flow: row;
+				grid-gap: 1rem;
 			}
 			.entry-wrap {
 				display: grid;
 				justify-content: flex-start;
+				grid-gap: 1rem;
 			}
 			.entry-footer {
 				border-top: 1px solid $lighter-black;

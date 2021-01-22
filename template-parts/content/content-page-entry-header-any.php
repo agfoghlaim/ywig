@@ -15,7 +15,8 @@ if ( ! empty( $use_title ) ) {
 	<div class="haze-overlay"></div>
 	<div class="torn-white"></div>
 	<h1 class="entry-title twist"> <?php echo esc_html( $use_title ); ?></h1>
-	<?php the_breadcrumb(); ?>
+		<?php ywig_breadcrumbs(); ?>
+
 </header>
 	<?php
 }
