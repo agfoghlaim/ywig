@@ -10,7 +10,7 @@ get_header(); ?>
 <div id="primary" class="content-area">
 
 	<main id="main" class="site-main" role="main">
-		<h6>taxonomy-staff.php</h6>
+		<h6>taxonomy.php</h6>
 
 		<?php
 

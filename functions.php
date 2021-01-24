@@ -283,6 +283,42 @@ if ( ! function_exists( 'ywig_breadcrumbs' ) ) {
 				$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
 
 			} elseif ( is_category() ) {
+
+				// ie we are on something like /news/category/category.
+
+				// 1. Definitely show link to /<a>News</a>.
+				$blog_page_link = get_permalink( get_option( 'page_for_posts' ) );
+				ywig_wrap_in_li_span( '', esc_url( $blog_page_link ), 'News' );
+				// end new.
+
+				// 2. Check parent cat
+
+				// Use the name of whatever category we are on to get it's id.
+				$this_cat_id = get_cat_ID( single_cat_title( '', false ) );
+
+				// Use id of whatever category we are on to get category ancestors. Note this just returns an array of category ids.
+				$gran = get_ancestors( $this_cat_id, 'category' );
+
+				// Reverse the array because we display them from the top down.
+				$gran_reversed = array_reverse( $gran );
+
+				// Loop through the ancestor category ids.
+				$num_ancestor_cats = count( $gran );
+				for ( $i = 0;  $i < $num_ancestor_cats; $i++ ) {
+
+					if ( isset( $gran_reversed[ $i ] ) ) {
+
+						// Get ancestor category name and link.
+						$related_cat  = get_category( $gran_reversed[ $i ] );
+						$related_name = $related_cat->name;
+						$related_link = get_category_link( $related_cat->term_id );
+
+						// Display each ancestor <a>category</a>.
+						ywig_wrap_in_li_span( '', esc_url( $related_link ), $related_name );
+					}
+				}
+
+				// 3. Finally display the name of the current category.
 				ywig_wrap_in_li_span( 'active', '', single_cat_title( '', false ) );
 
 			} elseif ( is_day() ) {
@@ -327,16 +363,24 @@ if ( ! function_exists( 'ywig_breadcrumbs' ) ) {
 					ywig_wrap_in_li_span( 'active', '', get_the_title() );
 
 				} else {
-						$category = get_the_category();
+						// Single post page. eg 'home / news / category / post name'.
+						$category       = get_the_category();
+						$blog_page_link = get_permalink( get_option( 'page_for_posts' ) );
+
+						// new.
+						ywig_wrap_in_li_span( '', esc_url( $blog_page_link ), 'News' );
+						// end new.
 
 					if ( is_array( $category ) ) {
 
 						if ( count( $category ) > 0 ) {
 							// Just use the first category even though some posts will be in more than one.
+							// If post is in sub-categories breadcrumb will still only show 'home / news / category / post name'.
 							ywig_wrap_in_li_span( '', get_category_link( $category[0]->term_id ), $category[0]->name );
 						}
 					}
 
+						// Finally show post title.
 						ywig_wrap_in_li_span( 'active', '', get_the_title() );
 
 				}
@@ -368,6 +412,7 @@ if ( ! function_exists( 'ywig_breadcrumbs' ) ) {
 						ywig_wrap_in_li_span( '', get_category_link( $category->term_id ), $category->name );
 					}
 				}
+
 					echo '<li class="active" aria-current="page"><span>' . get_the_title() . '</span></li>';
 			} elseif ( is_page() && ! $post->post_parent ) {
 

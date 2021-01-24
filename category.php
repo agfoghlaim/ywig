@@ -1,6 +1,7 @@
 <?php
 /**
  * YWIG Theme Categories. Eg. /category/uncategorised
+ * Very similar to index.php.
  * Show header with category name (if we have it) and breadcrumbs.
  * Show excerpts of posts in this category.
  *
@@ -11,15 +12,16 @@ get_header(); ?>
 
 <div id="primary" class="content-area">
 	<?php
-	$the_cat = get_the_category();
+	$the_cat = ( single_cat_title( '', false ) );
 
 	if ( ! empty( $the_cat ) ) {
-		$use_title = $the_cat[0]->name;
 
-		set_query_var( 'use_title', $use_title );
+		// set_query_var( 'use_title', $the_cat);
+		$t = 'News - ' . $the_cat;
+		set_query_var( 'use_title', $t );
 		get_template_part( 'template-parts/content/content-page-entry-header-any' );
 	}
-
+	get_template_part( 'template-parts/ywig-components/category-links' );
 	?>
 	<div class="category-content-wrap">
 		<?php
@@ -31,7 +33,6 @@ get_header(); ?>
 
 				get_template_part( 'template-parts/content/content', get_post_type() );
 			}
-
 		} else {
 
 			// If no content, include the "No posts found" template.

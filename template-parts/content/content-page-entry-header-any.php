@@ -8,6 +8,7 @@
 $use_title = get_query_var( 'use_title' );
 
 
+
 if ( ! empty( $use_title ) ) {
 	?>
 <header class="ywig-entry-header">

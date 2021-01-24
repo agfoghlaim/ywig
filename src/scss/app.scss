@@ -32,6 +32,7 @@
 
 @import 'mixins';
 
+
 // * {
 //   background:black !important;
 //   border-color: white !important;
@@ -44,7 +45,7 @@
 
 // page header with breadcrumbs
 .ywig-entry-header {
-  height: 18rem;
+  height: 12rem;
   display: grid;
   align-content: space-between;
   padding: 2rem 3rem 0rem 3rem;
@@ -138,6 +139,8 @@ body {
   box-sizing: border-box;
 }
 
+// Fonts ----------------------------------------------------
+
 h1,
 h2,
 h3,
@@ -152,24 +155,24 @@ h6 {
   line-height: 1.5;
 }
 
-h1 {
-  font-weight: 900;
-  font-size: 3rem;
-}
+// h1 {
+//   font-weight: 900;
+//   font-size: 3rem;
+// }
 
-h2,
-.heading-size-2 {
-  font-size: 2.4rem;
-}
+// h2,
+// .heading-size-2 {
+//   font-size: 2.4rem;
+// }
 
-h3,
-.heading-size-3 {
-  font-size: 1.4rem;
-}
-h4,
-.heading-size-4 {
-  font-size: 1.2rem;
-}
+// h3,
+// .heading-size-3 {
+//   font-size: 1.4rem;
+// }
+// h4,
+// .heading-size-4 {
+//   font-size: 1.2rem;
+// }
 
 .section-heading {
   font-size: 2rem;
@@ -189,6 +192,44 @@ p {
   line-height: 150%;
 }
 
+// end fonts ----------------------------------
+/* Font Sizes */
+$baseFontSize: 1rem;
+$baseNavSize: 0.64rem;
+$smallFontSize: 0.8rem;
+$smallestFontSize: 0.512rem;
+
+$heading-biggest: 3.052rem;
+$heading-big: 2.441rem;
+$heading-1: 1.953rem;
+$heading-2: 1.563rem;
+$heading-3: 1.25rem;
+$heading-4: $baseFontSize;
+$heading-5: $smallFontSize;
+$heading-6: 0.64rem;
+$heading-7: $smallestFontSize;
+// font exp ----------------------------------
+h1 {
+  font-weight: 900;
+  font-size: $heading-1;
+}
+h1.twist {
+   font-size: $heading-big;
+}
+h2,
+.heading-size-2 {
+  font-size: $heading-2;
+}
+
+h3,
+.heading-size-3 {
+  font-size: $heading-3;
+}
+h4,
+.heading-size-4 {
+  font-size: $heading-4;
+}
+// end font exp ------------------------------
 a {
   color: $blue-alt;
   background-color: transparent;
@@ -280,6 +321,7 @@ a:not([href]):hover {
     font-size: 14px;
   }
 }
+
 
 section {
   padding: 0rem 3rem;
@@ -543,5 +585,63 @@ h2.twist-smaller {
     font-size: 0.8rem;
     text-transform: uppercase;
     line-height: 2rem;
+  }
+}
+
+// see template-parts/ywig-components/category-links.
+.category-links-wrap {
+  display: flex;
+  visibility: visible;
+  margin: 4rem 2rem 2rem 2rem;
+  flex-wrap: wrap;
+  //grid-template-columns: repeat(auto-fill, minmax(min(12rem, 100%), 1fr));
+
+  grid-gap: 1rem;
+  a {
+    padding: 0rem 0.2rem;
+    text-transform: uppercase;
+    line-height: 2rem;
+    word-wrap: none;
+    font-weight: 700;
+    // box-shadow: $box-shadow-regular;
+    white-space: nowrap;
+    flex-grow: 3;
+  }
+}
+
+.category-links-wrap-mobile {
+ display: none;
+
+  margin: 1rem;
+  select {
+    width: 100%;
+    height: 4rem;
+    // visibility: hidden;
+    
+    font-size: 1.2rem;
+    // text-transform: uppercase;
+    background: $yellow-alt;
+    border-radius: 2px;
+    border: none;
+    padding: 1rem;
+    font-weight: 600;
+    color: $black;
+ 
+    option {
+      text-transform: uppercase;
+      background: $white;
+      color: $black;
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .category-links-wrap-mobile {
+    visibility: visible;
+    display: block;
+    display: grid;
+  }
+  .category-links-wrap{
+    // visibility: hidden;
+    display: none;
   }
 }

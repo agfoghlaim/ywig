@@ -58,10 +58,7 @@ fieldset:disabled a.btn {
   pointer-events: none;
 }
 
-// a.btn-dark {
-  
-//   color: $white;
-// }
+// .btn-dark
 .btn-dark {
   color: $white;
   background-color: $black;
@@ -103,6 +100,49 @@ fieldset:disabled a.btn {
   box-shadow: 0 0 0 0.2rem rgba(82, 88, 93, 0.5);
 }
 
+// .btn primary
+.btn-primary {
+  color: $black;
+  background-color:$yellow-alt;
+  border-color:$yellow-alt;
+}
+
+.btn-primary:hover {
+  color: $black;
+  background-color: $yellow;
+  border-color: $yellow;
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
+  color: $black;
+  background-color: $yellow;
+  border-color: $yellow;
+  box-shadow: 0 0 0 0.2rem rgba(82, 88, 93, 0.5);
+}
+
+.btn-primary.disabled,
+.btn-primary:disabled {
+  color: $black;
+  background-color:$yellow-alt;
+  border-color:$yellow-alt;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: $black;
+  background-color: $yellow-alt;
+  border-color: $yellow-alt;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(82, 88, 93, 0.5);
+}
+
+// .btn-outline
 .btn-outline-light {
   color: $white;
   border-color: $white;
