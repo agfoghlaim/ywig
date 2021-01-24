@@ -258,7 +258,14 @@ if ( ! function_exists( 'ywig_breadcrumbs' ) ) {
 
 			// Check Custom Taxonomy First.
 			if ( $term ) {
-				$taxonomy_name  = $term->taxonomy; // eg 'location'.
+				$taxonomy_name = $term->taxonomy; // eg 'location'.
+
+				// use this term's taxonomy name (eg club_contact, staff) to get all details for custom taxonomy.
+				$taxonomy_dets = get_taxonomy( $term->taxonomy );
+
+				// Get the taxonomy['label']. While $term->taxonomy is fine for 'staff' and 'locations', 'club_contacts' would have an underscore on the frontend.
+				$taxonomy_label = $taxonomy_dets->label;
+
 				$this_term_name = $term->name; // eg 'Galway City'.
 
 				$link_to_parent_tax_page             = site_url( $taxonomy_name, 'http' ); // TODO https.
@@ -268,14 +275,14 @@ if ( ! function_exists( 'ywig_breadcrumbs' ) ) {
 				if ( $link_to_parent_taxonomy_page_exists ) {
 
 					// render link if it exists. eg /location.
-					ywig_wrap_in_li_span( '', esc_url( $link_to_parent_tax_page ), esc_html( $taxonomy_name ) );
+					ywig_wrap_in_li_span( '', esc_url( $link_to_parent_tax_page ), esc_html( $taxonomy_label ) );
 					?>
 
 					<?php
 				} else {
 
 					// else just render the parent taxonomy name.
-					ywig_wrap_in_li_span( 'active', '', esc_html( $taxonomy_name ) );
+					ywig_wrap_in_li_span( 'active', '', esc_html( $taxonomy_label ) );
 
 				}
 
