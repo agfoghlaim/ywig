@@ -2,7 +2,7 @@
 /**
  * YWIG Single Youth Club Page
  *
- * NOTE This is a copy of single-project.php and should be removed.
+ * NOTE This is a copy of single-project.php but I like the clarity.
  *
  * @package ywig-theme
  */
@@ -12,20 +12,35 @@
 get_header();
 ?>
 
-<article class="<?php echo esc_attr( $post->post_type ); ?>-content">
-<?php get_template_part( 'template-parts/single/project-header' ); ?>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<?php get_template_part( 'template-parts/single/project-header' ); ?>
+		<div class="<?php echo esc_attr( $post->post_type ); ?>-content-container">
+			<div class="<?php echo esc_attr( $post->post_type ); ?>-content">
 
-	<div class="<?php echo esc_attr( $post->post_type ); ?>-intro">
-		<div class="<?php echo esc_attr( $post->post_type ); ?>-intro-left">
+			<?php
+			// afcs
+			//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in template-tags.php.
+			echo ywig_single_yc_project_acfs( get_the_ID(), $post->post_type );
+	?>
+			<div class="<?php echo esc_attr( $post->post_type ); ?>-row">
+				<?php
+				// Any content from editor.
+				if ( have_posts() ) {
 
-			<?php echo esc_html( the_post_thumbnail() ); ?>
+					while ( have_posts() ) {
 
-		</div>
+						the_post();
 
-		<div class="<?php echo esc_attr( $post->post_type ); ?>-intro-right">
+						the_content();
 
-			<h1 class="<?php echo esc_attr( $post->post_type ); ?>-title"><?php echo esc_html( get_the_title() ); ?></h1>
+					}
+				}
+				?>
+			</div>
+			</div>
 
+	
+			<aside class="<?php echo esc_attr( $post->post_type ); ?>-aside">
 			<?php
 			//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in template-tags.php.
 			echo ywig_single_yc_project_address( $post->post_type );
@@ -34,36 +49,10 @@ get_header();
 			//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in template-tags.php.
 			echo ywig_single_yc_project_staff( get_the_ID(), $post->post_type );
 			?>
+			</aside>
+	
 
-		</div><!--.project-intro-right -->
-
-	</div><!--.project-intro -->
-
-
-	<div class="container <?php echo esc_attr( $post->post_type ); ?>-content-container">
-	<?php
-	//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in template-tags.php.
-	echo ywig_single_yc_project_acfs( get_the_ID(), $post->post_type );
-
-	?>
-		<div class="<?php echo esc_attr( $post->post_type ); ?>-row">
-		<?php
-		// Any content from editor.
-		if ( have_posts() ) {
-
-			while ( have_posts() ) {
-
-				the_post();
-
-				the_content();
-
-			}
-		}
-
-
-		?>
-	</div>
-	</div>
+	</div> <!-- .cpt-content-container-->
 </article>
 
 <?php

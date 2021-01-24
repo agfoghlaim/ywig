@@ -179,10 +179,21 @@ function ywig_single_yc_project_staff( $post_id = null, $post_type ) {
 						}
 						?>
 
-
-					<a href="<?php echo esc_url( get_term_link( $value->term_id ) ); ?>">
-						<?php echo esc_html( $f_name ); ?> (<?php echo isset( $job_title ) ? esc_html( $job_title ) : ''; ?>)
-					</a>
+						<?php
+						// Do not link youthclub club_contacts, only ywig staff.
+						if ( 'project' === $post_type ) {
+							?>
+								<a href="<?php echo esc_url( get_term_link( $value->term_id ) ); ?>">
+									<?php echo esc_html( $f_name ); ?> (<?php echo isset( $job_title ) ? esc_html( $job_title ) : ''; ?>)
+								</a>
+							<?php
+						} else {
+							?>
+								<p><?php echo esc_html( $f_name ); ?></p>
+							<?php
+						}
+						?>
+	
 					<p><?php echo isset( $phone ) ? esc_html( $phone ) : ''; ?> </p>
 					<p><?php echo isset( $email ) ? esc_html( $email ) : ''; ?></p>
 				</div> <!-- ...-staff-item -->
@@ -423,7 +434,7 @@ function ywig_get_aria_labelledby_str( $terms_str ) {
  * @return string $output. html to show post preview.
  */
 function ywig_get_post_nav_preview( $ywig_post ) {
-	if( ! $ywig_post ) {
+	if ( ! $ywig_post ) {
 		return;
 	}
 	$ywig_post_title     = $ywig_post->post_title;

@@ -18,7 +18,7 @@ get_header();
 
 	<div class="<?php echo esc_attr( $post->post_type ); ?>-content-container">
 		<!-- <div class="torn-white"></div> -->
-		<div class="project-content">
+		<div class="<?php echo esc_attr( $post->post_type ); ?>-content">
 			<?php
 			//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in template-tags.php.
 			echo ywig_single_yc_project_acfs( get_the_ID(), $post->post_type );

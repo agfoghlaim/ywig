@@ -24,7 +24,6 @@
       font-size: 2.5rem;
     }
     p {
-      // margin: 1rem 0;
       margin: 0;
       font-weight: 500;
       color: $black;
@@ -52,102 +51,206 @@
     z-index: 1;
   }
 }
-.youthclub-intro {
-  padding-top: 4rem;
+// .youthclub-intro {
+//   padding-top: 4rem;
+//   display: grid;
+//   grid-auto-flow: column;
+//   grid-template-columns: 200px 1fr;
+//   grid-gap: 3rem;
+//   padding-left: 2rem;
+//   padding-right: 2rem;
+
+//   .youthclub-intro-left {
+//     display: grid;
+//     align-items: flex-start;
+//     justify-items: flex-start;
+
+//     img {
+//       max-width: 100%;
+//     }
+//   }
+//   .youthclub-intro-right {
+//     h1 {
+//       font-weight: bolder;
+//     }
+//     display: grid;
+//     grid-auto-flow: row;
+//     grid-gap: 1rem;
+//     .youthclub-address {
+//       padding: 0 0.5rem;
+     
+//     }
+//     .youthclub-intro-socials-wrap {
+//       display: grid;
+//       grid-auto-flow: column;
+//       justify-content: flex-start;
+//       grid-gap: 1.5rem;
+//       .ywig-social-btn {
+//         font-size: 1.5rem;
+//       }
+//     }
+    
+//   }
+// }
+
+// .youthclub-intro {
+//   h1 {
+//     font-size: 1.8rem;
+//   }
+// }
+// .youthclub-content-container {
+//   padding: 2rem 1rem;
+//   width: 100%;
+
+//   display: grid;
+//   grid-gap: 2rem;
+//   h2,
+//   p,
+//   div {
+//     margin: 0;
+//   }
+// }
+
+
+
+
+
+// .youthclub-staff {
+// 	.headish {
+// 		border-bottom: 0.1rem solid $light-black;
+// 		margin-bottom: 0.5rem;
+// 		h6 {
+// 			margin-left: 4.5rem; //.bodyish first column + grid-gap
+// 		}
+// 	}
+//   .bodyish {
+//     display: grid;
+//     grid-auto-flow: row;
+//     grid-gap: 0.5rem;
+//     font-size: 0.8rem;
+//     .grid-item {
+//       display: grid;
+
+//       grid-auto-flow: column;
+//       grid-template-columns: 4rem 5rem 6rem 8rem;
+//       grid-gap: 0.5rem;
+//       div,
+//       img,
+//       svg {
+//         align-items: center;
+//         display: grid;
+
+//         // justify-content: flex-start;
+//         // justify-items: flex-start;
+//       }
+//       img,
+//       svg {
+//         max-width: 90%;
+//       }
+//     }
+//   }
+// }
+
+.youthclub-content-container {
+  background: $white;
   display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: 200px 1fr;
-  grid-gap: 3rem;
-  // background: $light-green;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  grid-template-columns: 3fr 1fr;
+  position: relative;
+  padding: 0rem 2rem;
+}
 
-  .youthclub-intro-left {
-    display: grid;
-    align-items: flex-start;
-    justify-items: flex-start;
+.youthclub-content {
+  display: grid;
+  // justify-content: center;
+  justify-items: flex-start;
+  padding: 2rem;
+}
 
-    img {
-      max-width: 100%;
+.youthclub-aside {
+  display: grid;
+  grid-gap: 1rem;
+  align-content: flex-start;
+
+  .youthclub-address,
+  .youthclub-socials,
+  .youthclub-staff {
+    border-radius: 2px;
+    box-shadow: $box-shadow-small;
+    h4 {
+      color: $light-black;
+      font-size: 1.1rem;
     }
   }
-  .youthclub-intro-right {
-    h1 {
-      font-weight: bolder;
+  .youthclub-address {
+    background: $dark-white;
+    display: grid;
+    padding: 1rem;
+
+    p {
+      color: $black;
     }
+
+    svg {
+      color: $dark-white;
+      max-width: 1.2rem;
+    }
+  }
+
+  .youthclub-socials {
+    background: $dark-white;
+    padding: 1rem;
     display: grid;
     grid-auto-flow: row;
-    grid-gap: 1rem;
-    .youthclub-address {
-      padding: 0 0.5rem;
-     
-    }
-    .youthclub-intro-socials-wrap {
+
+    div {
       display: grid;
       grid-auto-flow: column;
       justify-content: flex-start;
-      grid-gap: 1.5rem;
-      .ywig-social-btn {
-        font-size: 1.5rem;
+      grid-gap: 2rem;
+      margin-top: 1rem;
+
+      a {
+        .ywig-svg-icon {
+          svg {
+            fill: $blue-alt;
+          }
+        }
+      }
+      a:hover svg, a:focus svg {
+        fill: $yellow-alt;
       }
     }
-    
   }
 }
-
-.youthclub-intro {
-  h1 {
-    font-size: 1.8rem;
-  }
-}
-.youthclub-content-container {
-  padding: 2rem 1rem;
-  width: 100%;
-
-  display: grid;
-  grid-gap: 2rem;
-  h2,
-  p,
-  div {
-    margin: 0;
-  }
-}
-
-
-
-// tableish exp
 
 .youthclub-staff {
-	.headish {
-		border-bottom: 0.1rem solid $light-black;
-		margin-bottom: 0.5rem;
-		h6 {
-			margin-left: 4.5rem; //.bodyish first column + grid-gap
-		}
-	}
-  .bodyish {
+  display: grid;
+  grid-gap: 1rem;
+  grid-auto-flow: row;
+  background: $dark-white;
+  padding: 1rem;
+
+  div {
     display: grid;
-    grid-auto-flow: row;
-    grid-gap: 0.5rem;
-    font-size: 0.8rem;
-    .grid-item {
-      display: grid;
-
-      grid-auto-flow: column;
-      grid-template-columns: 4rem 5rem 6rem 8rem;
-      grid-gap: 0.5rem;
-      div,
-      img,
-      svg {
-        align-items: center;
-        display: grid;
-
-        // justify-content: flex-start;
-        // justify-items: flex-start;
+    grid-gap: 1rem;
+    div.youthclub-staff-item {
+      background: $black;
+      padding: 1rem;
+      p {
+        color: $white;
+        margin: 0;
       }
-      img,
+      img {
+        border-radius: 2px;
+      }
       svg {
-        max-width: 90%;
+        background: #efb73e;
+        padding: 3rem;
+        border-radius: 2px;
+        // width: 10rem;
+        // height: 10rem;
+        box-sizing: border-box;
+    
       }
     }
   }
