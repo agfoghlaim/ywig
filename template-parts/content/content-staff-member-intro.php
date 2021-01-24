@@ -27,19 +27,52 @@ $projects_for_this_staff_member = get_posts(
 
 <div class="page-staff-item">
 
-	<?php if ( $is_staff_pic ) : 
+		
+	<?php 
 
 		// Show staff photo if it exists, else show default user svg.
-		?>
+		if ( $is_staff_pic ) { 
+			// is staff image has been set.
 
-		<img  
-			src="<?php echo esc_html( $staff_image_url ); ?>" 
-			alt="<?php echo esc_html( $staff_image['alt'] ); ?>" 
-			description="<?php echo esc_html( $staff_image['description'] ); ?>" 
-		/>
-		<?php 
-		else : echo ywig_get_theme_svg( 'user' );
-		endif; 
+			// link to single staff page if we are not already on it... only on /staff (page-staff.php), not on page.php.
+			if ( is_page_template( 'page-staff.php' ) ){
+				?>
+					<a href="<?php echo esc_url( get_term_link( $the_term->term_id ) ); ?>" aria-hidden="true" tabindex="-1">
+						<figure>
+							<img  
+								src="<?php echo esc_html( $staff_image_url ); ?>" 
+								alt="<?php echo esc_html( $staff_image['alt'] ); ?>" 
+								description="<?php echo esc_html( $staff_image['description'] ); ?>" 
+							/>
+						</figure>
+					</a>
+				<?php
+			} else{
+				?>
+					<figure>
+						<img  
+							src="<?php echo esc_html( $staff_image_url ); ?>" 
+							alt="<?php echo esc_html( $staff_image['alt'] ); ?>" 
+							description="<?php echo esc_html( $staff_image['description'] ); ?>" 
+						/>
+					</figure>
+				<?php 
+			} 
+		
+		}else{
+			// else if no staff image has been set.
+
+			// link to single staff page if we are not already on it... only on /staff (page-staff.php), not on page.php.
+			if ( is_page_template( 'page-staff.php' ) ) {
+				?>
+				<a href="<?php echo esc_url( get_term_link( $the_term->term_id ) ); ?>" aria-hidden="true" tabindex="-1">
+					<?php echo ywig_get_theme_svg( 'user' ); ?>
+				</a>
+				<?php 
+			}else{ 
+				echo ywig_get_theme_svg( 'user' );
+			}
+		} 
 
 		?>
 
