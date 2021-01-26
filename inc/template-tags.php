@@ -319,15 +319,9 @@ function ywig_single_yc_project_show_project_news( $post_id, $author_name ) {
 
 				<?php
 					echo '<span class="quickpost-project-span"> author:' . get_the_author() . '</span>';
+					echo ywig_post_thumbnail( 'medium' )
 				?>
-				<img style="max-width: 100%" src="
-					<?php
-					echo esc_url(
-						get_the_post_thumbnail_url()
-					);
-					?>
-					"
-					/>
+
 
 				<div class="quickpost-text">
 					<h3><?php the_title(); ?> </h3>

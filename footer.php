@@ -47,7 +47,7 @@ $youtube  = esc_url( get_option( 'youtube_link' ) );
 
 			<div class="footer-right item">
 				<a href="#" class="custom-logo-link" rel="home">
-					<img height="67" src="<?php echo esc_url( $logo ); ?>" />
+					<img height="67" src="<?php echo esc_url( $logo ); ?>" alt="ywig-logo" />
 				</a>
 				<p class=""><?php echo esc_html( $company_address_1 ); ?></p>
 				<p class=""><?php echo esc_html( $company_address_2 ); ?></p>

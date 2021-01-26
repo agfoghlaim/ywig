@@ -4,8 +4,13 @@
 // Front Page
 section.quickposts {
   position: relative;
-  padding: 4rem 3rem;
-
+  padding: 4rem 0rem;
+  display: grid;
+  .btn {
+    display: grid;
+    justify-self: center;
+    margin: 2rem;
+  }
   .quickpost-wrap {
     display: grid;
     grid-gap: 1rem;
@@ -24,7 +29,55 @@ section.quickposts {
 .quickpost-item{
 
   @include quickpost-item;
-  max-width: 300px;
-  margin: 1rem auto;
+  // max-width: 300px;
+  // margin: 1rem auto;
 }
 
+
+.quickposts-page-intro,
+.quickpost-wrap,
+#quickposts h2.twist {
+  padding-left: 12rem;
+  padding-right: 12rem;
+}
+@media only screen and (max-width: 1200px) {
+  .quickposts-page-intro,
+  .quickpost-wrap {
+    padding-left: 9rem;
+    padding-right: 9rem;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .quickposts-page-intro,
+  .quickpost-wrap,
+  #quickposts h2.twist {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .quickposts-page-intro,
+  .quickpost-wrap,
+  #quickposts h2.twist {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media only screen and (max-width: 568px) {
+  .quickposts-page-intro,
+  .quickpost-wrap,
+  #quickposts h2.twist {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+}
+@media only screen and (max-width: 320px) {
+  .quickposts-page-intro,
+  .quickpost-wrap,
+  #quickposts h2.twist {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

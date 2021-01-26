@@ -21,7 +21,7 @@ get_header();
 			// afcs
 			//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in template-tags.php.
 			echo ywig_single_yc_project_acfs( get_the_ID(), $post->post_type );
-	?>
+			?>
 			<div class="<?php echo esc_attr( $post->post_type ); ?>-row">
 				<?php
 				// Any content from editor.

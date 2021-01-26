@@ -1,7 +1,8 @@
 .page-staff-wrap {
 	display: grid;
-	
-	padding: 5rem 2rem;
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+	// padding: 5rem 2rem;
 	grid-gap: 1rem;
 	grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 
@@ -46,4 +47,47 @@
 			
 		}
 	}
+}
+
+.page-staff-wrap,
+.staff-page-intro {
+  padding-left: 12rem;
+  padding-right: 12rem;
+}
+@media only screen and (max-width: 1200px) {
+  .page-staff-wrap,
+  .staff-page-intro {
+    padding-left: 9rem;
+    padding-right: 9rem;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .page-staff-wrap,
+  .staff-page-intro {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .page-staff-wrap,
+  .staff-page-intro {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media only screen and (max-width: 568px) {
+  .page-staff-wrap,
+  .staff-page-intro {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+}
+@media only screen and (max-width: 320px) {
+  .page-staff-wrap,
+  .staff-page-intro {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }

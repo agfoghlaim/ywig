@@ -19,7 +19,7 @@
 	if ( '' !== $logo ) {
 
 		?>
-	<img style="max-width:60px" src="<?php echo esc_url( $logo ); ?>" alt="">
+	<img style="max-width:60px" src="<?php echo esc_url( $logo ); ?>" alt="logo">
 		<?php
 	} else {
 		echo '<p>Not set.</p>';
@@ -32,7 +32,7 @@
   <?php
 	if ( '' !== $footer_logo ) {
 		?>
-	  <img style="max-width:60px" src="<?php echo esc_url( $footer_logo ); ?>" alt="">
+	  <img style="max-width:60px" src="<?php echo esc_url( $footer_logo ); ?>" alt="logo">
 		<?php
 	} else {
 		echo '<p>Not set.</p>';

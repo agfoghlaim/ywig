@@ -1,16 +1,19 @@
 @import 'variables';
 // for no bootstrap
+
 .header {
-  display: grid;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 999;
-  background: $white;
+  background: #ffffff;
   width: 100%;
-  // .nav-active {
-  //   background: red;
-  // }
+  display: grid;
+  // padding: 0rem 3rem;
+  padding: 0rem;
+  align-content: center;
+  height: 7rem;
+  transition: height 0.2s ease-in-out;
   .current-menu-item {
     a {
       color: $greeny-blue-alt;
@@ -49,15 +52,12 @@
     list-style: none;
     padding: 1rem;
     margin: 0;
-    grid-gap: 3rem;
+    grid-gap: 0.5rem; // in case it runs out of 'space-between'.
+    justify-content: space-between;
 
     li {
       position: relative;
-      // padding-bottom: 1rem;
       height: 100%;
-      // overflow: hidden;
-      // text-overflow: ellipsis;
-      // white-space: nowrap;
       a {
         text-decoration: none;
         padding-left: 0;
@@ -88,8 +88,8 @@
 
     li.donate-btn {
       a {
-        background: $greeny-blue-alt;
         padding: 0.5rem 0.75rem;
+        background: $dark-white;
         box-shadow: $box-shadow-small;
       }
     }
@@ -101,12 +101,13 @@
 
   .header-left {
     display: grid;
-    grid-auto-flow: column;
-    justify-content: space-between;
     transition: all 0.2s ease-in-out;
-    padding: 1rem 3rem;
     height: 5rem;
-    // padding-bottom: 0rem;
+    grid-template-columns: 8rem 1fr 8rem;
+    max-width: 100%;
+    align-content: center;
+    grid-gap: 2rem;
+    padding: 0rem 6rem;
     .navbar-toggler {
       grid-column-start: 1; // needs to be directly before the <nav> in DOM for accessibility, keep it left visually.
       background-color: transparent;
@@ -136,6 +137,7 @@
 
     .navbar-toggler[aria-expanded='true'] {
       display: block;
+
       span.dropdown-icon.open {
         display: none;
       }
@@ -183,7 +185,7 @@
 }
 
 // Larger screens only.
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 980px) {
   // always hide button on larger screen (even if nav-open)
   .header {
     .header-left {
@@ -195,9 +197,6 @@
       ul.sub-menu {
         display: none;
         opacity: 1;
-        background: yellow;
-        // left: 90%;
-        // top: 0;
         grid-auto-flow: row;
         grid-gap: 1rem;
         position: absolute;
@@ -220,9 +219,6 @@
         ul {
           display: none;
           opacity: 1;
-
-          // left: 90%;
-          // top: 0;
           grid-auto-flow: row;
           grid-gap: 1rem;
           position: absolute;
@@ -288,175 +284,133 @@
 // between 900px and 1300px
 @media only screen and (max-width: 1300px) {
   .header {
-    padding: 1rem 0rem;
     .header-left {
-      grid-gap: 1rem;
-      grid-auto-flow: row;
-      justify-items: center;
-      position: relative;
-      justify-content: center;
+      padding: 0rem 1rem;
 
       .navbar-socials {
-        position: absolute;
-        top: 0;
-        right: 1rem;
       }
     }
   }
 }
 
-// screens smaller than 900px
-@media only screen and (max-width: 900px) {
-  .header {
+// Mobile Menu
+@media only screen and (max-width: 980px) {
+  ul#menu-main-menu {
+    li.current-menu-item a {
+      color: $yellow-alt;
+    }
+  }
+
+  // Don't change header height on scroll for mobile screens,
+  header#home.with-bg-color {
+    height: 7rem;
+  }
+
+  // Don's show .current-ancestor underline on mobile because all .sub-menus are expanded.
+  header {
     ul#menu-main-menu {
-      padding: 0rem 3rem;
-      grid-gap: 0;
+      margin-top: 2rem;
+      background: rgba(69, 66, 66, 0.98); //$black with opacity;
 
-      li {
-        padding: 0.75rem 0rem;
-
-        display: grid;
-        align-items: center;
-        align-content: center;
+      li.current-menu-ancestor {
+        border-bottom: none;
       }
-      li::before {
-        content: '';
-        width: 100%;
-        height: 0.1rem;
-        background: $dark-white;
-        position: absolute;
-        top: 0.75rem;
-        left: 0rem;
+
+      // Style .donate-btn like all other links on mobile.
+      li.donate-btn {
+        a {
+          background: none;
+          padding: 1rem;
+          box-shadow: none;
+        }
       }
     }
-    ul.sub-menu {
-      padding: 0rem 1rem;
-      grid-gap: 0;
+  }
 
-      li {
-        padding: 0.75rem 0rem;
+  .header-left {
+    .navbar-toggler {
+      position: absolute;
+      right: 1rem;
+      top: -3rem;
+    }
 
-        display: grid;
-        align-items: center;
-        align-content: center;
-      }
-      li::before {
-        content: '';
-        width: 100%;
-        height: 0.1rem;
-        background: $dark-white;
-        position: absolute;
-        top: 0.75rem;
-        left: 0rem;
-      }
-    }
-    li {
-      display: grid;
-      align-items: center;
-      align-content: center;
-    }
-    .header-left {
-      grid-auto-flow: column;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 1rem 3rem 1rem 3rem;
-      .navbar-toggler {
-        display: block;
-        position: absolute;
-        left: 3rem;
-      }
-      .navbar-socials {
-        // position: relative;
-        display: none;
-      }
+    // Don't show social media icons on mobile.
+    div.navbar-socials {
+      display: none !important;
     }
 
     #navbarSupportedContent {
       position: absolute;
-      top: 32%;
+      top: 5rem;
       width: 100%;
       z-index: 99;
-      height: 2.6rem;
+      height: 0;
+      a[href] {
+        //  text-decoration: underline;
+      }
+      a {
+        font-size: 1.25rem;
+        display: block;
+        width: 100%;
+        border-bottom: none;
+        padding: 1rem 0rem;
+        color: $white;
+      }
+      a[href]:hover,
+      a[href]:focus {
+        color: $yellow-alt; // green contrast not good enough on black
+      }
+
       ul {
         visibility: hidden;
-      }
-      ul#menu-main-menu {
-        // padding: 3rem 3rem;
-        background: $white;
-        margin-top: 4rem;
-        display: grid;
         grid-auto-flow: row;
-        padding-bottom: 1rem;
 
-        li {
-          a {
-            font-size: 1.1rem;
-            color: $black;
-          }
-          a:hover {
-            border-bottom: 0rem solid $greeny-blue-alt;
-            color: $greeny-blue-alt;
-          }
-        }
-
-        .current-menu-item {
-          a {
-            color: $greeny-blue-alt;
-            // border-bottom: 0rem solid $greeny-blue-alt;
-            border-bottom: none;
-          }
-        }
-        .current-menu-ancestor {
-          // background: $greeny-blue-alt;
-          border-bottom: none;
-        }
-        li.donate-btn {
-          // padding: 0;
-          a {
-            background: none;
-            box-shadow: none;
-            padding: 0;
-          }
-        }
-      }
-      // button.sub-menu-toggle[aria-expanded=true] ~ ul.sub-menu{
-      //   visibility: visible;
-      // }
-      button.sub-menu-toggle {
-        display: none;
-      }
-
-      // leave sub-menus open on small screens
-      ul.sub-menu {
-        display: grid;
-        visibility: hidden;
-        // padding-left: 1rem;
-        position: relative;
-
-        grid-auto-flow: row;
+        padding: 2rem 2rem;
+        grid-gap: 0rem;
         width: 100%;
+
         li {
-          border-bottom: none;
+          padding: 0rem 1rem;
+          width: 100%;
+          button {
+            display: none;
+          }
+          ul.sub-menu {
+            display: grid;
+            grid-auto-flow: row;
+            background: none;
+            // background: pink;
+            position: relative;
+            padding: 0rem;
+            li {
+              padding: 0rem 1rem;
+            }
+            ul {
+              padding: 0rem;
+              li {
+                padding: 0rem;
+              }
+            }
+          }
+        }
+        .navbar-toggler[aria-expanded='true'] ~ ul#menu-main-menu {
+          visibility: visible;
+        }
+        .navbar-toggler[aria-expanded='true'] ~ ul#menu-main-menu ul.sub-menu {
+          visibility: visible;
         }
       }
     }
-    .navbar-toggler[aria-expanded='true'] ~ ul#menu-main-menu {
-      visibility: visible;
-    }
-    .navbar-toggler[aria-expanded='true'] ~ ul#menu-main-menu ul.sub-menu {
-      visibility: visible;
-    }
-    // #navbarSupportedContent .show {
-    //   // -webkit-transform: translateX(0vw);
-    //   // transform: translateX(0vw);
+    #navbarSupportedContent.show {
+      // -webkit-transform: translateX(0vw);
+      // transform: translateX(0vw);
 
-    //   ul {
-    //     visibility: hidden;
-    //   }
-    // }
+      ul {
+        visibility: visible;
+      }
+    }
   }
 }
-
 @keyframes slidein {
   from {
     transform: translateX(-400vw);

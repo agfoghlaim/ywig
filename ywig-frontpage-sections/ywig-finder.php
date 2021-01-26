@@ -28,7 +28,7 @@ $all_ids_for_aria = join( ' ', $arr );
 
 ?>
 
-<section class="ywig-finder" id="ywig-finder">
+<section class="ywig-finder ywig-fp-section" id="ywig-finder">
 	<div class="temp"></div>
 	<h2 class="twist">Project Finder</h2>
 

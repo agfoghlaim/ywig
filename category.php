@@ -23,7 +23,7 @@ get_header(); ?>
 	}
 	get_template_part( 'template-parts/ywig-components/category-links' );
 	?>
-	<div class="category-content-wrap">
+	<div class="category-content-wrap ywig-content-wrap">
 		<?php
 
 		if ( have_posts() ) {

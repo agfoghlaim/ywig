@@ -10,7 +10,7 @@
 ?>
 <?php get_header(); ?>
 
-<article  id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
 
 	<?php get_template_part( 'template-parts/content/content-page-entry-header' ); ?>
 		<section class="resourses-intro">
@@ -147,6 +147,6 @@
 			} // foreach.
 			echo '</section>'; // end .ywig-wrap-resource-sections.
 			?>
-</article>
+
 
 <?php get_footer(); ?>

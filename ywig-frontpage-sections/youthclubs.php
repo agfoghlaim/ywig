@@ -13,7 +13,7 @@
 		$myposts = new WP_Query( $args );
 
 	?>
-	<section class="youthclubs" id="youthclubs">
+	<section class="youthclubs ywig-fp-section" id="youthclubs">
 		<div class="yc-overlay"></div>
 		<h2 class="twist">Youth Clubs</h2>
 		<p>This needs to be editable in the theme customizer under 'Youth Clubs Section'.</p>

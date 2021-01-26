@@ -13,7 +13,7 @@ $funders_image      = wp_get_attachment_url( $funders_image_id );
 $funders_image_dets = wp_prepare_attachment_for_js( $funders_image_id );
 
 ?>
-	<section class="funders-section" > 
+	<section class="funders-section ywig-fp-section" > 
 
 	<h2 class="twist"><?php echo esc_html( $funders_title ); ?></h2>
 

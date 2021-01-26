@@ -1,21 +1,14 @@
 @import 'variables';
 
-// .project-content {
-//   margin-top: 7rem;
-//   position: relative;
-// }
-
 .project-header {
   position: relative;
-  // background: linear-gradient(90deg, #9dc27c, #1482a0);
   background: $greeny-blue-alt;
   display: grid;
   padding: 0rem 2rem 4rem 22rem;
   align-content: space-between;
-  // align-items: space-between;
   justify-content: flex-start;
   justify-items: flex-start;
-  min-height: 18rem;
+  min-height: 22rem;
   
 
 
@@ -154,8 +147,6 @@
         background: #efb73e;
         padding: 3rem;
         border-radius: 2px;
-        // width: 10rem;
-        // height: 10rem;
         box-sizing: border-box;
     
       }

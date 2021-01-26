@@ -44,7 +44,7 @@ if ( is_home() ) {
 	get_template_part( 'template-parts/ywig-components/category-links' );
 }
 ?>
-			<div class="index-content-wrap">
+			<div class="index-content-wrap ywig-content-wrap">
 			<?php
 			if ( have_posts() ) {
 

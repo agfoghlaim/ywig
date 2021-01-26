@@ -21,7 +21,7 @@ $args = array(
 	<?php the_content(); ?>
 	</section>
 
-	<div class="index-content-wrap">
+	<div class="index-content-wrap ywig-content-wrap">
 		<?php
 		if ( $youth_clubs->have_posts() ) :
 

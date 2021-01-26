@@ -10,7 +10,7 @@ set_query_var( 'use_title', 'Search Results' );
 get_template_part( 'template-parts/content/content-page-entry-header-any' );
 
 ?>
-<div class="search-content-wrap">
+<div class="search-content-wrap ywig-content-wrap">
 
 	<?php
 	if ( have_posts() ) {

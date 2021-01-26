@@ -9,7 +9,7 @@ get_header();
 set_query_var( 'use_title', 'Oops - Page not found.' );
 get_template_part( 'template-parts/content/content-page-entry-header-any' );
 ?>
-<div class="four04-content-wrap">
+<div class="four04-content-wrap ywig-content-wrap">
 	<div class="intro-text">
 		<p><?php esc_html_e( 'We\'re sorry. The page you were looking for could not be found.', 'ywig' ); ?></p>
 	</div>

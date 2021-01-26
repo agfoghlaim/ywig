@@ -39,7 +39,7 @@ div.ywig-resource-wrap {
   transition: max-height 0.2s ease-in-out;
 }
 div.ywig-resource-wrap.show {
-  max-height: 1000px;
+  max-height: 10000px;
 }
 .ywig-resource-item {
   border: 0.15rem solid $white;
@@ -74,18 +74,75 @@ div.ywig-resource-wrap.show {
   }
 }
 section.ywig-wrap-resource-sections {
-  padding: 1rem 0;
-  margin: 0rem 3rem;
-
   display: grid;
   grid-auto-flow: row;
   grid-gap: 2rem;
 }
 
-section.ywig-resource-section {
+.ywig-resource-section {
   background: $dark-white;
   box-shadow: $box-shadow-regular;
   display: grid;
   align-content: center;
   padding: 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .ywig-resource-item {
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+    justify-items: flex-start;
+  }
+}
+
+.ywig-wrap-resource-sections,
+.resourses-intro {
+  padding-left: 12rem;
+  padding-right: 12rem;
+}
+@media only screen and (max-width: 1200px) {
+  .ywig-wrap-resource-sections,
+  .resourses-intro {
+    padding-left: 9rem;
+    padding-right: 9rem;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .ywig-wrap-resource-sections,
+  .resourses-intro {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .ywig-wrap-resource-sections,
+  .resourses-intro {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media only screen and (max-width: 568px) {
+  .ywig-wrap-resource-sections,
+  .resourses-intro {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  section.ywig-resource-section {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    .ywig-resource-item {
+      border: none;
+      background: $dark-white;
+      padding: 2rem;
+    }
+  }
+}
+@media only screen and (max-width: 320px) {
+  .ywig-wrap-resource-sections,
+  .resourses-intro {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }

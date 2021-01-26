@@ -21,7 +21,8 @@
 	if ( isset( $map_link[0] ) ) {
 		// Note need a both map_src & map_link TODO.
 		?>
-
+			<div class="ywig-locations-map-wrap">
+				
 				<?php
 				if ( ! empty( $latitude[0] ) && ! empty( $longitude[0] ) && ! empty( $address[0] ) ) {
 					$mapbox_key = defined( 'YWIG_MAPBOX_KEY' ) ? YWIG_MAPBOX_KEY : false;
@@ -46,6 +47,8 @@
 					<?php
 				}
 				?>
+			
+			</div><!-- .ywig-locations-map-wrap -->
 			<?php
 	}
 	?>

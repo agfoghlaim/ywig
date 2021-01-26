@@ -8,7 +8,7 @@
  */
 
 ?>
-	<section class="what-section" > 
+	<section class="what-section ywig-fp-section" > 
 
 	<?php
 

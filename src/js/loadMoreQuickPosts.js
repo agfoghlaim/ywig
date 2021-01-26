@@ -6,11 +6,11 @@ const loadMoreQuickPosts = () => {
     const postsPerPage = quickBtn.dataset.postsPerPage;
     const maxPages = quickBtn.dataset.maxPages;
     const currentPage = quickBtn.dataset.currentPage;
-    // console.log(page, '=page', postsPerPage, maxPages);
+
     //const url = `http://localhost/ywig-theme/wp-json/wp/v2/quickpost`;
     // const url = `/wp-admin/admin-ajax.php`;
     const url = `http://localhost:3000/ywig-theme/wp-admin/admin-ajax.php`;
-    console.log('clicked', url);
+    // console.log('clicked', url);
     let params = new URLSearchParams();
     params.append('action', 'load_more_posts');
     params.append('current_page', currentPage);
@@ -36,7 +36,7 @@ const loadMoreQuickPosts = () => {
       newP.appendChild(newContent);
       quickBtn.parentNode.replaceChild(newP, quickBtn);
     }
-    console.log('ans', ans);
+   
     quickPostsWrap.innerHTML += ans.data;
   }
 
@@ -48,11 +48,13 @@ const loadMoreQuickPosts = () => {
     // return if button pressed again before request completes
     if (reqOngoing) return;
     const quickPostsWrap = document.querySelector('.quickpost-wrap');
+    if( !quickPostsWrap ) return;
+
     const currentPage = quickBtn.dataset.currentPage;
+    if (! currentPage ) return;
 
     // Get localized variables set in php (see enqueue.php).
     const { api_url, api_nonce } = rest_object;
-
     const url = `${api_url}quickpost`;
     const params = new URLSearchParams();
     params.append('action', 'load_more_posts');
@@ -60,29 +62,34 @@ const loadMoreQuickPosts = () => {
 
     reqOngoing = true;
 
-    const response = await fetch(url, {
-      method: 'POST',
-      body: params,
-      headers: { 'X-WP-Nonce': api_nonce },
-    });
+    try {
 
-    const ans = await response.json();
-    reqOngoing = false;
+      const response = await fetch(url, {
+        method: 'POST',
+        body: params,
+        headers: { 'X-WP-Nonce': api_nonce },
+      });
+  
+      const ans = await response.json();
 
-    // update data attr on button
-    quickBtn.dataset.currentPage++;
-
-    // TODO pick one of these 'no more news' methods
-    if (quickBtn.dataset.currentPage > quickBtn.dataset.maxPages) {
-      const newP = document.createElement('p');
-      const newContent = document.createTextNode('No more news to load!');
-
-      // add the text node to the newly created div
-      newP.appendChild(newContent);
-      quickBtn.parentNode.replaceChild(newP, quickBtn);
+      reqOngoing = false;
+      
+      // this shouldn't happen because button should have been disabled on previous request. 
+      if(ans.data === 'No more posts') {
+        quickBtn.disabled = true;
+      }
+      // update data attr on button
+      quickBtn.dataset.currentPage++;
+  
+      // disable button if that was the last page
+      if (quickBtn.dataset.currentPage >= quickBtn.dataset.maxPages) {
+       quickBtn.disabled = true;
+      }
+  
+      quickPostsWrap.innerHTML += ans.data;
+    } catch(err) {
+      console.error('Error fetching posts.');
     }
-
-    quickPostsWrap.innerHTML += ans.data;
   }
 
   // Load more quickposts

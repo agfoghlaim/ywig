@@ -32,20 +32,23 @@
 
 @import 'mixins';
 
+@media screen and (-ms-high-contrast: active) {
+  /* All high contrast styling rules */
+  * {
+    background:black !important;
+    border-color: white !important;
+    box-shadow: white !important;
+  }
+  h1, h2, h3,h4,h5,h6,p, a,button{
+    color: white !important;
+    border-color: white !important;
+  }
+}
 
-// * {
-//   background:black !important;
-//   border-color: white !important;
-//   box-shadow: white !important;
-// }
-// h1, h2, h3,h4,h5,h6,p, a,button{
-//   color: white !important;
-//   border-color: white !important;
-// }
 
 // page header with breadcrumbs
 .ywig-entry-header {
-  height: 12rem;
+  height: 18rem;
   display: grid;
   align-content: space-between;
   padding: 2rem 3rem 0rem 3rem;
@@ -101,7 +104,11 @@ $theme-colors: (
 );
 $border-radius: 0;
 
+* {
+  box-sizing: border-box;
+}
 :root {
+  font-size: 100%;
   // font-size: 16px; // let browser handle so text size can be set by users
   --font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
@@ -123,9 +130,10 @@ Javascript related classes
 .header.with-bg-color {
   box-shadow: 1px 1px 2px $light-black;
   transition: all 0.2s ease-in-out;
+  height: 5rem;
   .header-left {
-    padding: 0rem 3rem;
-    transition: all 0.2s ease-in-out;
+    // padding: 0rem 3rem;
+    // transition: all 0.2s ease-in-out;
   }
 }
 body {
@@ -148,11 +156,12 @@ h4,
 h5,
 h6 {
   font-family: 'Montserrat', Helvetica, Arial, sans-serif;
-  font-weight: 00;
+  font-weight: 700;
   color: $black;
   margin: 1rem 0;
   padding: 0;
   line-height: 1.5;
+  
 }
 
 // h1 {
@@ -174,18 +183,10 @@ h6 {
 //   font-size: 1.2rem;
 // }
 
-.section-heading {
-  font-size: 2rem;
-  font-size: 1.8rem;
-  letter-spacing: -1px;
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  margin: 3rem 1rem;
-  transform: rotate(-2deg);
-}
+
 p {
   color: $black;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 400;
   margin: 1rem 0;
   padding: 0;
@@ -211,14 +212,14 @@ $heading-7: $smallestFontSize;
 // font exp ----------------------------------
 h1 {
   font-weight: 900;
-  font-size: $heading-1;
+  font-size: $heading-biggest;
 }
 h1.twist {
-   font-size: $heading-big;
+   font-size: $heading-biggest;
 }
 h2,
 .heading-size-2 {
-  font-size: $heading-2;
+  font-size: $heading-1;
 }
 
 h3,
@@ -229,6 +230,39 @@ h4,
 .heading-size-4 {
   font-size: $heading-4;
 }
+small {
+  font-size: 0.8rem;
+}
+// two 
+
+// body {
+//   background: white;
+
+//   // font-weight: 400;
+//   line-height: 1.75;
+
+// }
+
+// p {margin-bottom: 1rem;}
+
+// h1, h2, h3, h4, h5 {
+//   margin: 3rem 0 1.38rem;
+// }
+
+// h1 {
+//   margin-top: 0;
+//   font-size: 3.052rem;
+// }
+
+// h2 {font-size: 2.441rem;}
+
+// h3 {font-size: 1.953rem;}
+
+// h4 {font-size: 1.563rem;}
+
+// h5 {font-size: 1.25rem;}
+
+// small, .text_small {font-size: 0.8rem;}
 // end font exp ------------------------------
 a {
   color: $blue-alt;
@@ -531,7 +565,7 @@ h2.twist-smaller {
 }
 
 .ywig-pagination {
-  margin-left: 2rem;
+  // margin-left: 2rem;
   .page-numbers {
     background: $black;
     color: $white;
@@ -550,7 +584,7 @@ h2.twist-smaller {
   z-index: 1;
   height: 1.6rem;
   margin-top: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   background: $black;
   border-radius: 2px;
   padding-left: 0.5rem;
@@ -588,11 +622,21 @@ h2.twist-smaller {
   }
 }
 
+@media only screen and (max-width: 768px) {
+ 
+  .breadcrumbs {
+    ul {
+      li + li:before {
+        padding: 0.1rem;
+      }
+    }
+  }
+}
 // see template-parts/ywig-components/category-links.
 .category-links-wrap {
   display: flex;
   visibility: visible;
-  margin: 4rem 2rem 2rem 2rem;
+  margin: 4rem 0rem 2rem 0rem;
   flex-wrap: wrap;
   //grid-template-columns: repeat(auto-fill, minmax(min(12rem, 100%), 1fr));
 
@@ -612,7 +656,7 @@ h2.twist-smaller {
 .category-links-wrap-mobile {
  display: none;
 
-  margin: 1rem;
+  margin: 1rem 0rem;
   select {
     width: 100%;
     height: 4rem;
@@ -645,3 +689,70 @@ h2.twist-smaller {
     display: none;
   }
 }
+
+
+// ============================================
+// Content width
+// ============================================
+//
+// 992 = 970
+// 1200 = 1170
+// 768 = 750
+
+// Content-width 
+// Front Page - use sections horizontal padding
+// All headers (except proj/youthclub page template special headers)
+// All templates wrapped in .ywig-content-wrap.
+.ywig-fp-section,
+.ywig-content-wrap,
+.ywig-entry-header,
+.category-links-wrap,
+.category-links-wrap-mobile,
+.ywig-pagination {
+  padding-left: 12rem;
+  padding-right: 12rem;
+}
+@media only screen and (max-width: 1200px) {
+  .ywig-fp-section,
+  .ywig-content-wrap,
+  .ywig-entry-header,
+  .category-links-wrap,
+  .category-links-wrap-mobile,
+  .ywig-pagination {
+    padding-left: 9rem;
+    padding-right: 9rem;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .ywig-fp-section,
+  .ywig-content-wrap,
+  .ywig-entry-header,
+  .category-links-wrap,
+  .category-links-wrap-mobile,
+  .ywig-pagination {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .ywig-fp-section,
+  .ywig-content-wrap,
+  .ywig-entry-header,
+  .category-links-wrap,
+  .category-links-wrap-mobile,
+  .ywig-pagination {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .ywig-fp-section,
+  .ywig-content-wrap,
+  .ywig-entry-header,
+  .ywig-pagination {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+

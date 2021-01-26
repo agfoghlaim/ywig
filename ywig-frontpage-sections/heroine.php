@@ -22,7 +22,7 @@ $watermark_url = wp_get_attachment_url( get_theme_mod( 'heroine_watermark_image'
 
 			?>
 
-		<img class="heroine-watermark" src="<?php echo esc_url( $watermark_url ); ?>">
+		<img class="heroine-watermark" src="<?php echo esc_url( $watermark_url ); ?>" alt="decorative" aria-hidden="true">
 
 			<?php
 

@@ -101,7 +101,7 @@ function load_more_posts() {
 		'post_type'      => 'quickpost',
 		'post_status'    => 'publish',
 		'orderby'        => 'post_date',
-		'order'          => 'ASC',
+		'order'          => 'DESC',
 
 	);
 
@@ -127,7 +127,7 @@ add_action( 'wp_ajax_load_more_posts', 'load_more_posts' );
 function ywig_quickpost() {
 	$next_page = $_POST['current_page'] + 1;
 	$args      = array(
-		'posts_per_page' => 2, // NOTE. if this is changed button.load-more-quickposts data attribute must also be updated
+		'posts_per_page' => 6,
 		'paged'          => $next_page,
 		'post_type'      => 'quickpost',
 		'post_status'    => 'publish',
@@ -142,11 +142,15 @@ function ywig_quickpost() {
 		while ( $quickposts->have_posts() ) :
 			$quickposts->the_post();
 			get_template_part( 'template-parts/content/content', 'quickpost' );
-	endwhile;
-		wp_send_json_success( ob_get_clean() );
+		endwhile;
+		$ans = ob_get_clean();
+		if( $ans ) :
+			wp_send_json_success( $ans );
+		endif;
 	else :
 		// this is not an error though!!
-		wp_send_json_error( 'no more news!' );
+		//wp_send_json_error( mixed $data = null, int $status_code = null, int $options )
+		wp_send_json_success( 'No more posts' );
 	endif;
 }
 add_action(
