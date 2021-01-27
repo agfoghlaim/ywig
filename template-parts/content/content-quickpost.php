@@ -31,6 +31,8 @@
 			 */
 			?>
 			<?php
+			// Note: get_the_author() returns The author's display name.
+	
 			$link_to_related_project_page        = site_url( '/project/', 'http' ) . get_the_author();
 			$link_to_related_project_page_exists = urlExists( $link_to_related_project_page );
 

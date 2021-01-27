@@ -134,6 +134,7 @@ $all_ids_for_aria = join( ' ', $arr );
 		$post_args = array(
 			'post_type'   => 'project',
 			'post_status' => 'publish',
+			'posts_per_page' => 20,
 		);
 
 		// Because badly named projects-wrap also handles youth clubs... not anymore!!?.

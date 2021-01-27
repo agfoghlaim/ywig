@@ -138,6 +138,7 @@
 							</div><!-- .ywig-resource-item-->
 							<?php
 						endwhile;
+						wp_reset_postdata();
 						?>
 					</div><!-- .ywig-resource-wrap-->
 					<?php

@@ -31,6 +31,8 @@
 
 	</div>
 
-	<a class="btn btn-outline-dark" href="<?php the_permalink(); ?>">More</a>
+	<a class="btn btn-outline-dark" href="<?php the_permalink(); ?>">More
+		<span class="sr-only"><?php echo sprintf( 'More about %s', esc_html( get_the_title() ) ); ?></span>
+	</a>
 
 </div>

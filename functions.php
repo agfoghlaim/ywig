@@ -112,6 +112,7 @@ function load_more_posts() {
 			$quickposts->the_post();
 			get_template_part( 'template-parts/content/content', 'quickpost' );
 	endwhile;
+		wp_reset_postdata();
 		wp_send_json_success( ob_get_clean() );
 	else :
 		// this is not an error though!!
@@ -143,6 +144,7 @@ function ywig_quickpost() {
 			$quickposts->the_post();
 			get_template_part( 'template-parts/content/content', 'quickpost' );
 		endwhile;
+		wp_reset_postdata();
 		$ans = ob_get_clean();
 		if( $ans ) :
 			wp_send_json_success( $ans );

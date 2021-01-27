@@ -303,38 +303,21 @@ function ywig_single_yc_project_show_project_news( $post_id, $author_name ) {
 	ob_start();
 	?>
 
-	<div class="quickpost-wrap">
-		<?php
+	<?php
 
-		if ( $quickposts->have_posts() ) :
-			while ( $quickposts->have_posts() ) :
-				$quickposts->the_post();
-				// Get id (&title) of related project from meta.
-				// $stored_id = get_post_meta( $post_id, 'related_project_id', true );
-				// if ( '' !== $stored_id ) {
-				// $proj_title = get_the_title( $stored_id );
-				// }
-				?>
-			<div class="quickpost-item">
+	if ( $quickposts->have_posts() ) :
+		echo '<div class="quickpost-wrap">';
+		echo '<h4>' . esc_html( __( 'Latest Project News', 'ywig' ) ) . '</h4>';
 
-				<?php
-					echo '<span class="quickpost-project-span"> author:' . get_the_author() . '</span>';
-					echo ywig_post_thumbnail( 'medium' )
-				?>
+		while ( $quickposts->have_posts() ) :
+			$quickposts->the_post();
 
-
-				<div class="quickpost-text">
-					<h3><?php the_title(); ?> </h3>
-					<?php the_content(); ?>
-				</div>
-			</div>
-	
-				<?php
-
-			endwhile;
+			get_template_part( 'template-parts/content/content', 'quickpost' );
+					endwhile;
+			wp_reset_postdata();
+			echo '</div>'; // end .projects-wrap.
 		endif;
-		?>
-	</div><!-- end .projects-wrap -->
+	?>
 	<?php
 	$news_output = ob_get_clean();
 	if ( $news_output ) {

@@ -26,9 +26,7 @@ $quickposts = new WP_Query( $args );
 
 ?>
 <section class="quickposts ywig-fp-section" id="quickposts">
-	
-	
-	
+
 	<h2 class="twist">Project News</h2>
 	<div class="quickpost-wrap">
 	<?php
@@ -42,6 +40,7 @@ $quickposts = new WP_Query( $args );
 
 
 		endwhile;
+		wp_reset_postdata();
 		?>
 
 		<?php

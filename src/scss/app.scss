@@ -576,6 +576,7 @@ h2.twist-smaller {
     background: $blue-alt;
   }
 }
+
 .breadcrumbs {
   font-weight: 600;
   color: $white;
@@ -622,14 +623,20 @@ h2.twist-smaller {
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 568px) {
  
   .breadcrumbs {
     ul {
       li + li:before {
-        padding: 0.1rem;
+        padding: 0.1rem !important;
       }
     }
+  }
+}
+@media only screen and (max-width: 320px) {
+ 
+  .breadcrumbs {
+    display: none !important;
   }
 }
 // see template-parts/ywig-components/category-links.
@@ -756,3 +763,4 @@ h2.twist-smaller {
   }
 }
 
+//======================================================================================================
