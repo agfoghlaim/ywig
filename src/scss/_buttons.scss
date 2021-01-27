@@ -1,16 +1,18 @@
 @import 'variables';
 
-button:focus, .btn:focus, a:focus {
+button:focus,
+.btn:focus,
+a:focus {
   outline: 2px dotted;
-    outline-color: $black;
-    outline-style: dotted;
-    outline-width: 2px; 
+  outline-color: $black;
+  outline-style: dotted;
+  outline-width: 2px;
 }
 
 .btn {
   display: inline-block;
-  font-weight: 600;
-  color: $black;
+  font-weight: 500;
+  color: #444242;
   text-align: center;
   vertical-align: middle;
   -webkit-user-select: none;
@@ -19,12 +21,13 @@ button:focus, .btn:focus, a:focus {
   user-select: none;
   background-color: transparent;
   border: 0.15rem solid transparent;
-  padding: 0.3rem 0.75rem;
-  font-size: 1rem;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.9rem;
   border-radius: 2px;
   line-height: 1.5;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  text-transform: uppercase;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -103,8 +106,8 @@ fieldset:disabled a.btn {
 // .btn primary
 .btn-primary {
   color: $black;
-  background-color:$yellow-alt;
-  border-color:$yellow-alt;
+  background-color: $yellow-alt;
+  border-color: $yellow-alt;
 }
 
 .btn-primary:hover {
@@ -124,8 +127,8 @@ fieldset:disabled a.btn {
 .btn-primary.disabled,
 .btn-primary:disabled {
   color: $black;
-  background-color:$yellow-alt;
-  border-color:$yellow-alt;
+  background-color: $yellow-alt;
+  border-color: $yellow-alt;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active,

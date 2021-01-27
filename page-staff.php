@@ -11,10 +11,7 @@
 
 	<?php get_template_part( 'template-parts/content/content-page-entry-header' ); ?>
 	<section class="staff-page-intro">
-			<?php
-				the_content();
-				the_post_thumbnail();
-			?>
+			<?php the_content(); ?>
 		</section>
 
 		<div class="page-staff-wrap">

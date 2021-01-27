@@ -291,10 +291,11 @@ function ywig_single_yc_project_acfs( $post_id = null, $post_type ) {
  *  @param string $author_name Name of quickpost author. Usernames (and therefore author names) must correspond to name of 'project' cpt. ie $author_name here is post->post_title in single-project.php.
  */
 function ywig_single_yc_project_show_project_news( $post_id, $author_name ) {
+	echo 'here' . $author_name;
 	$q_args = array(
 		'post_type'   => 'quickpost',
 		'post_status' => 'publish',
-		'author_name' => $author_name,
+		'author_name' => $author_name, // author_name (string) – use ‘user_nicename‘ – NOT name. Here user_nice refers to the user's table in db. user_nicename is the username that cannot be changed in wp admin. They give us the 'display name' that can be changed but user_nicename cannot. 
 
 	);
 

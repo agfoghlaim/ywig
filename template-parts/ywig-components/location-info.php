@@ -39,6 +39,7 @@
 					?>
 						<a 	
 							target="_blank" 
+							class="btn btn-primary"
 							rel="noopener noreferrer"
 							title="Open Google Maps in new tab."
 							href="<?php echo esc_url( $map_link[0] ); ?>">

@@ -51,6 +51,8 @@ get_header();
 					//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in template-tags.php.
 
 					// TODO, the id is never used. See template-tags.php and fix.
+					//echo $post->post_slug;
+					// var_dump($post);
 					echo ywig_single_yc_project_show_project_news( get_the_ID(), $post->post_title );
 					// echo '(single-project.php) ' . $post->post_title . '...was title, id is ' . get_the_ID();
 			?>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: All Staff
+ * Template Name: Contact Page
  *
  * @package ywig-theme
  */
@@ -10,9 +10,10 @@
 <article  id="page-<?php the_title(); ?>" <?php post_class(); ?>>
 
 		<?php get_template_part( 'template-parts/content/content-page-entry-header' ); ?>
-		<section class="locations-page-intro">
+		<section class="contact-page-intro">
 			<?php the_content(); ?>
 		</section>
+
 		<div class="page-locations-wrap">
 	<?php
 

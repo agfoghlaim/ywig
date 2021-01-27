@@ -47,21 +47,21 @@ section.quickposts {
 
 .quickposts-page-intro,
 .ywig-fp-section > .quickpost-wrap,
-#quickposts h2.twist {
+#quickposts > h2.twist {
   padding-left: 12rem;
   padding-right: 12rem;
 }
 @media only screen and (max-width: 1200px) {
   .quickposts-page-intro,
-  .ywig-fp-section > .quickpost-wrap { // front page only
-    padding-left: 9rem;
+  .ywig-fp-section > .quickpost-wrap, 
+  #quickposts > h2.twist { 
     padding-right: 9rem;
   }
 }
 @media only screen and (max-width: 992px) {
   .quickposts-page-intro,
   .ywig-fp-section > .quickpost-wrap,
-  #quickposts h2.twist {
+  #quickposts > h2.twist {
     padding-left: 6rem;
     padding-right: 6rem;
   }
@@ -70,7 +70,7 @@ section.quickposts {
 @media only screen and (max-width: 768px) {
   .quickposts-page-intro,
   .ywig-fp-section > .quickpost-wrap,
-  #quickposts h2.twist {
+  #quickposts > h2.twist {
     padding-left: 2rem;
     padding-right: 2rem;
   }
@@ -78,7 +78,7 @@ section.quickposts {
 @media only screen and (max-width: 568px) {
   .quickposts-page-intro,
   .ywig-fp-section > .quickpost-wrap,
-  #quickposts h2.twist {
+  #quickposts > h2.twist {
     padding-left: 1rem;
     padding-right: 1rem;
   }

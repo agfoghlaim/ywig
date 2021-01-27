@@ -1,9 +1,30 @@
 .page-locations-wrap {
+  display: grid;
+
+  padding: 5rem 2rem;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+// eg. #pills-east-galway don't have a class, use > div.
+.page-locations-wrap > div {
+
+  background: $dark-white;
+  padding: 1rem;
+  border-radius: 2px;
+	box-shadow: $box-shadow-regular;
 	display: grid;
-	
-	padding: 5rem 2rem;
-	grid-gap: 1rem;
-	grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-
-
+    justify-content: flex-start;
+  .location-info-wrap {
+    // background: blue;
+    .location-info-right {
+      background: none;
+			display: grid;
+			padding: 1rem 0rem;
+      .ywig-locations-map-wrap {
+        display: grid;
+        grid-gap: 1rem;
+      }
+    }
+  }
 }
