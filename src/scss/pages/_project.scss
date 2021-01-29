@@ -73,9 +73,9 @@
   background: $white;
   display: grid;
   // grid-template-columns: 3fr 1fr;
-  grid-template-columns: 1fr 22rem;
+  grid-template-columns: 1fr 26rem;
   position: relative;
-  padding: 0rem 4rem;
+  margin: 0 2rem;
   grid-gap: 4rem;
 }
 
@@ -95,12 +95,22 @@
   .project-socials,
   .project-staff {
     border-radius: 2px;
-    box-shadow: $box-shadow-small;
+    // box-shadow: $box-shadow-small;
     h4 {
       color: $light-black;
-      font-size: 1.1rem;
+      // font-size: 1.1rem;
     }
   }
+
+  .project-staff,
+  .project-quickposts{
+    h4 {
+      margin-top:2rem;
+      margin-bottom: 0;
+    }
+  }
+
+
   .project-address {
     background: $dark-white;
     display: grid;
@@ -143,12 +153,13 @@
   }
 }
 
-.project-staff {
+.project-staff,
+.project-quickposts {
   display: grid;
   grid-gap: 1rem;
   grid-auto-flow: row;
-  background: $dark-white;
-  padding: 1rem;
+  // background: $dark-white;
+  padding: 0rem;
 
   div {
     display: grid;

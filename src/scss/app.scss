@@ -561,6 +561,12 @@ figure.post-thumbnail {
   padding-top: 0.5rem;
 }
 
+section.ywig-fp-section {
+  .twist {
+    font-size: $heading-big;
+    font-weight: 800;
+  }
+}
 h2.twist {
   letter-spacing: -1px;
   display: inline-block;
@@ -719,6 +725,10 @@ h2.twist-smaller {
   }
 }
 
+// Finder/Project Page
+.projects-page-intro {
+  margin: 4rem 0rem 4rem 0rem;
+}
 // ============================================
 // Content width
 // ============================================

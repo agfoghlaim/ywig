@@ -66,45 +66,18 @@ function ywig_add_quickpost_cpt_meta() {
 		'ywig_quickposts_cpt_meta_callback',
 		'quickpost'
 	);
-
-	// // temp temp temp
-	// add_meta_box(
-	// 'ywig_cpt_quickpost_meta_parent',
-	// 'PatentProject',
-	// 'ywig_quickposts_cpt_meta_parent_callback',
-	// 'quickpost',
-	// 'side',
-	// 'high'
-	// );
 }
 add_action( 'add_meta_boxes', 'ywig_add_quickpost_cpt_meta' );
 
 
-// temp temp temp
-// function ywig_quickposts_cpt_meta_parent_callback( $post ) {
-// $post_type_object = get_post_type_object( $post->post_type );
-// $pages            = wp_dropdown_pages(
-// array(
-// 'post_type'        => 'project',
-// 'selected'         => $post->post_parent,
-// 'name'             => 'parent_id',
-// 'show_option_none' => __( '(no parent)' ),
-// 'sort_column'      => 'menu_order, post_title',
-// 'echo'             => 0,
-// )
-// );
-// if ( ! empty( $pages ) ) {
-// echo $pages;
-// }
-// }
 /**
  *
  * List of meta fields used in Quickpost CPT
  */
 function ywig_util_list_used_meta_text_fields_quickposts() {
 	return array(
-		'quickpost_link'      => 'Quickpost Link',
-		'quickpost_link_text' => 'Link Text',
+		'quickpost_link' => 'Quickpost Link',
+		// 'quickpost_link_text' => 'Link Text',
 		// 'featured_media_src'  => 'Featured Image src url',
 	);
 }
@@ -150,7 +123,8 @@ function ywig_quickposts_cpt_meta_callback( $post ) {
 	wp_nonce_field( 'ywig_meta_quickposts_nonce', 'ywig_quickposts_nonce' );
 
 	$ywig_stored_meta = get_post_meta( $post->ID );
-	$meta_fields      = ywig_util_list_used_meta_text_fields_quickposts();
+
+	$meta_fields = ywig_util_list_used_meta_text_fields_quickposts();
 
 	// html output for each post meta <input />
 	foreach ( $meta_fields as $meta_field => $value ) {
@@ -158,10 +132,10 @@ function ywig_quickposts_cpt_meta_callback( $post ) {
 		?>
 
 	<div>
+
 		<p><label><?php echo esc_attr( $value ); ?></label></p>
 
 		<input type="text" name="<?php echo esc_attr( $meta_field ); ?>" value="<?php echo esc_attr( $this_meta_field ); ?>" />
-
 
 		<?php
 	}
@@ -171,8 +145,9 @@ function ywig_quickposts_cpt_meta_callback( $post ) {
 
 	// Add input for featured media.
 	?>
-		<p><label>Featured Image Url (updates automatically)</label></p>
-		<input disabled type="text" name="featured_media_src" value="<?php echo esc_attr( $saved_featured_image_url ); ?>" />
+	
+		<p ><label for="featured_media_src">Featured Image Url (updates automatically)</label></p>
+		<input disabled type="text" id="featured_media_src" name="featured_media_src" value="<?php echo esc_attr( $saved_featured_image_url ); ?>" />
 	<?php
 		// Add input (dropdown) for parent/related_project_id
 		$pages = wp_dropdown_pages(
@@ -224,25 +199,29 @@ function ywig_save_quickpost_meta( $post_id ) {
 	// Update/Save post meta.
 	$meta_fields = ywig_util_list_used_meta_text_fields_quickposts();
 
-	// Save regular meta fields
-	foreach ( $meta_fields as $meta_field => $value ) {
-		if ( isset( $_POST[ $meta_field ] ) ) {
-			update_post_meta( $post_id, $meta_field, sanitize_text_field( wp_unslash( $_POST[ $meta_field ] ) ) );
-		}
+	// NOT USED: Sanitize and save 'quickpost_link_text'.
+	// if ( isset( $_POST['quickpost_link_text'] ) ) {
+	// $safe_text = sanitize_text_field( $_POST['quickpost_link'] );
+	// update_post_meta( $post_id, 'quickpost_link', $safe_text );
+	// }
+
+	// Sanitize and save 'quickpost_link'.
+	if ( isset( $_POST['quickpost_link'] ) ) {
+		$safe_url = esc_url_raw( wp_unslash( $_POST['quickpost_link'] ) );
+		update_post_meta( $post_id, 'quickpost_link', $safe_url );
 	}
 
-	// Save featured media url
+	// Save featured media url.
 	if ( isset( $featured_media_src ) && trim( $featured_media_src ) !== '' ) {
 		update_post_meta( $post_id, 'featured_media_src', sanitize_text_field( $featured_media_src ) );
 	}
 
-	// save related project
+	// NOT USED: Save related project.
 	if ( isset( $_POST['related_project_id'] ) ) {
 		update_post_meta( $post_id, 'related_project_id', wp_unslash( $_POST['related_project_id'] ) );
 	}
 
 }
 add_action( 'save_post', 'ywig_save_quickpost_meta' );
-
 
 

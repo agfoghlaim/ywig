@@ -75,6 +75,12 @@ function ywig_about_input_fields( $wp_customize ) {
 			'default'    => 'url...',
 			'sanitize'   => 'esc_url_raw',
 		),
+		array(
+			'setting_id' => 'show_section',
+			'field_type' => 'checkbox',
+			'label'      => 'Show Section',
+			'default'    => true,
+		),
 
 	);
 

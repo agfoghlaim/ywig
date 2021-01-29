@@ -23,8 +23,8 @@ function ywig_feature_one_input_fields( $wp_customize ) {
 	$wp_customize->add_section(
 		$section,
 		array(
-			'title'       => 'Counselling Section',
-			'description' => __( 'Edit Counselling Section.' ),
+			'title'       => ' --- Counselling Item', // wp says don't generally put sections in panels, name like this to make Customiser UI clearer.
+			'description' => __( 'Edit Counselling Item.' ),
 		)
 	);
 

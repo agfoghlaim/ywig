@@ -2,10 +2,38 @@
 @import 'mixins';
 
 // Front Page
-section.quickposts {
+section#quickposts.quickposts-front{
+  background: linear-gradient(45deg, #444242, #4e4c4c);
+  padding: 6rem 0rem;
+}
+
+// .project-aside {
+//   .quickpost-wrap {
+//     max-width: 22rem;
+//   }
+// }
+section.quickposts, .project-aside {
   position: relative;
-  padding: 4rem 0rem;
+  padding: 0rem;
   display: grid;
+  
+  // z-index: -1;
+
+  display: grid;
+  .qp-over {
+    position: absolute;
+    width: 100%;
+    height: 4rem;
+    top: -1rem;
+    background: url(/ywig-theme/wp-content/themes/ywig-theme/src/img/torn_yellow_up.svg);
+    background-size: 100%;
+    background-repeat: repeat-x;
+    z-index: 0;
+  }
+  .section-tagline {
+    margin: 0rem 1rem;
+    color: $white;
+  }
   .btn {
     display: grid;
     justify-self: center;
@@ -13,16 +41,60 @@ section.quickposts {
   }
   .quickpost-wrap {
     display: grid;
-    grid-gap: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    padding: 2rem 1rem 1rem 1rem;
+    grid-gap: 0.2rem;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-auto-rows: 400px;
 
     .quickpost-item{
-
-      @include quickpost-item;
+      position: relative;
+      background: $black;
+      overflow: hidden;
+      //@include quickpost-item;
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
       
+        // max-height: 350px;
+      }
+      .quickpost-text {
+        h3 {
+          position: absolute;
+          top: 0;
+          margin: 0;
+          background: $yellow-alt;
+          border-radius: 2px;
+        }
+        p {
+          position: absolute;
+          top: 2rem;
+          font-size: 1rem;
+          max-width: 80%;
+          border-radius: 2px;
+          font-weight: 500;
+          color: $light-black;
+          
+
+          mark {
+            background: $white;
+            border-radius: 2px;
+          }
+        }
+      }
+      .quickpost-info {
+        position: absolute;
+        bottom: 1rem;
+        background: $white;
+        border-radius: 2px;
+        font-size: 0.9rem;
+        // color:$white;
+
+      }
     }
 
   }
+
 
 }
 
@@ -30,7 +102,7 @@ section.quickposts {
   .quickpost-wrap {
     display: grid;
     row-gap: 2rem;
-    padding: 1rem;
+    padding: 0rem;
     background: $dark-white;
     border-radius: 2px;
   }
@@ -39,28 +111,32 @@ section.quickposts {
 // In the loop
 .quickpost-item{
 
-  @include quickpost-item;
+ // @include quickpost-item;
   // max-width: 300px;
   // margin: 1rem auto;
 }
 
 
 .quickposts-page-intro,
-.ywig-fp-section > .quickpost-wrap,
+//.ywig-fp-section > .quickpost-wrap,
 #quickposts > h2.twist {
-  padding-left: 12rem;
-  padding-right: 12rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  color: $white;
+  font-weight: 800;
+  font-size: 2.4rem;
 }
+
 @media only screen and (max-width: 1200px) {
   .quickposts-page-intro,
-  .ywig-fp-section > .quickpost-wrap, 
+  //.ywig-fp-section > .quickpost-wrap, 
   #quickposts > h2.twist { 
     padding-right: 9rem;
   }
 }
 @media only screen and (max-width: 992px) {
   .quickposts-page-intro,
-  .ywig-fp-section > .quickpost-wrap,
+  //.ywig-fp-section > .quickpost-wrap,
   #quickposts > h2.twist {
     padding-left: 6rem;
     padding-right: 6rem;
@@ -69,7 +145,7 @@ section.quickposts {
 
 @media only screen and (max-width: 768px) {
   .quickposts-page-intro,
-  .ywig-fp-section > .quickpost-wrap,
+  //.ywig-fp-section > .quickpost-wrap,
   #quickposts > h2.twist {
     padding-left: 2rem;
     padding-right: 2rem;

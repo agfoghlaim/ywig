@@ -9,16 +9,20 @@ require get_template_directory() . '/inc/cleanup.php';
 require get_template_directory() . '/inc/function-admin.php';
 require get_template_directory() . '/inc/enqueue.php';
 require get_template_directory() . '/inc/theme-support.php';
-require get_template_directory() . '/inc/customizer/about-section.php';
 require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer/heroine-section-alt.php';
+require get_template_directory() . '/inc/customizer/about-section-alt.php';
+require get_template_directory() . '/inc/customizer/what-section.php';
+// require get_template_directory() . '/inc/customizer/about-section.php';
 require get_template_directory() . '/inc/customizer/counselling.php';
 require get_template_directory() . '/inc/customizer/projects.php';
 require get_template_directory() . '/inc/customizer/clubs.php';
 require get_template_directory() . '/inc/customizer/programmes.php';
+require get_template_directory() . '/inc/customizer/finder-section.php';
+require get_template_directory() . '/inc/customizer/youthclubs-section.php';
+require get_template_directory() . '/inc/customizer/quickposts.php';
 require get_template_directory() . '/inc/customizer/funders-section.php';
-require get_template_directory() . '/inc/customizer/about-section-alt.php';
 require get_template_directory() . '/inc/customizer/test-section.php';
 require get_template_directory() . '/inc/cpt/youth-clubs-cpt.php';
 require get_template_directory() . '/inc/cpt/projects-cpt.php';
@@ -78,7 +82,7 @@ add_filter( 'walker_nav_menu_start_el', 'ywig_add_sub_menu_toggle', 10, 4 );
  * @return boolean - true if it is out there somewhere
  */
 function urlExists( $url ) {
-	if ( ( $url == '' ) || ( $url == null ) ) {
+	if ( ( '' === $url ) || ( null === $url ) || empty( $url ) || '' ) {
 		return false; }
 	$response              = wp_remote_head( $url, array( 'timeout' => 5 ) );
 	$accepted_status_codes = array( 200, 301, 302 );
@@ -133,7 +137,7 @@ function ywig_quickpost() {
 		'post_type'      => 'quickpost',
 		'post_status'    => 'publish',
 		'orderby'        => 'post_date',
-		'order'          => 'ASC',
+		'order'          => 'DESC',
 
 	);
 

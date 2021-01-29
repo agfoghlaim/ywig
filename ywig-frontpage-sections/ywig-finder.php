@@ -8,6 +8,16 @@
  * @package ywig-theme
  */
 
+ // Theme Customizer.
+$finder_section_title = get_theme_mod( 'finder_section_title' );
+$finder_section_text  = get_theme_mod( 'finder_section_p' );
+
+if ( is_front_page() ) {
+	$is_front          = true;
+} else {
+	$is_front          = false;
+}
+
 $all_locations = get_terms(
 	array(
 		'taxonomy'   => 'location',
@@ -28,9 +38,21 @@ $all_ids_for_aria = join( ' ', $arr );
 
 ?>
 
-<section class="ywig-finder ywig-fp-section" id="ywig-finder">
+<section class="ywig-finder ywig-fp-section <?php echo $is_front ? 'finder-front-section' : null; ?>" id="ywig-finder">
 	<div class="temp"></div>
-	<h2 class="twist">Project Finder</h2>
+	<?php
+
+
+	if ( $is_front && $finder_section_title ) {
+		echo '<h2 class="twist">' . esc_html( $finder_section_title ) . '</h2>';
+	}
+	if ( $is_front && $finder_section_text ) {
+		echo '<p class="section-tagline">' . esc_html( $finder_section_text ) . '</p>';
+	}
+
+
+	?>
+
 
 
 
@@ -132,8 +154,8 @@ $all_ids_for_aria = join( ' ', $arr );
 	<?php
 		// Show projects.
 		$post_args = array(
-			'post_type'   => 'project',
-			'post_status' => 'publish',
+			'post_type'      => 'project',
+			'post_status'    => 'publish',
 			'posts_per_page' => 20,
 		);
 

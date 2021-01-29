@@ -23,8 +23,8 @@ function ywig_programmes_input_fields( $wp_customize ) {
 	$wp_customize->add_section(
 		$section,
 		array(
-			'title'       => 'Programmes Section',
-			'description' => __( 'Edit Programmes Section.' ),
+			'title'       => '--- Programmes Item',
+			'description' => __( 'Edit Programmes Item.' ),
 		)
 	);
 

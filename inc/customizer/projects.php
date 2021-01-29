@@ -23,8 +23,8 @@ function ywig_projects_input_fields( $wp_customize ) {
 	$wp_customize->add_section(
 		$section,
 		array(
-			'title'       => 'Projects Section',
-			'description' => __( 'Edit Projects Section.' ),
+			'title'       => '--- Projects Item',
+			'description' => __( 'Edit Projects Item.' ),
 		)
 	);
 

@@ -291,7 +291,7 @@ function ywig_single_yc_project_acfs( $post_id = null, $post_type ) {
  *  @param string $author_name Name of quickpost author. Usernames (and therefore author names) must correspond to name of 'project' cpt. ie $author_name here is post->post_title in single-project.php.
  */
 function ywig_single_yc_project_show_project_news( $post_id, $author_name ) {
-	echo 'here' . $author_name;
+
 	$q_args = array(
 		'post_type'   => 'quickpost',
 		'post_status' => 'publish',
@@ -303,22 +303,24 @@ function ywig_single_yc_project_show_project_news( $post_id, $author_name ) {
 
 	ob_start();
 	?>
+	<div class="project-quickposts">
 
-	<?php
+		<?php
 
-	if ( $quickposts->have_posts() ) :
-		echo '<div class="quickpost-wrap">';
-		echo '<h4>' . esc_html( __( 'Latest Project News', 'ywig' ) ) . '</h4>';
+		if ( $quickposts->have_posts() ) :
+			echo '<h4>' . esc_html( __( 'Latest Project News', 'ywig' ) ) . '</h4>';
+			echo '<div class="quickpost-wrap quickpost-wrap-sidebar">';
 
-		while ( $quickposts->have_posts() ) :
-			$quickposts->the_post();
+			while ( $quickposts->have_posts() ) :
+				$quickposts->the_post();
 
-			get_template_part( 'template-parts/content/content', 'quickpost' );
-					endwhile;
-			wp_reset_postdata();
-			echo '</div>'; // end .projects-wrap.
-		endif;
-	?>
+				get_template_part( 'template-parts/content/content', 'quickpost' );
+						endwhile;
+				wp_reset_postdata();
+				echo '</div>'; // end .projects-wrap.
+			endif;
+		?>
+	</div><!-- .project-quickposts -->
 	<?php
 	$news_output = ob_get_clean();
 	if ( $news_output ) {

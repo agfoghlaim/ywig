@@ -53,6 +53,8 @@ const loadMoreQuickPosts = () => {
     const currentPage = quickBtn.dataset.currentPage;
     if (! currentPage ) return;
 
+
+    
     // Get localized variables set in php (see enqueue.php).
     const { api_url, api_nonce } = rest_object;
     const url = `${api_url}quickpost`;

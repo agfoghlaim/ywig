@@ -4,6 +4,9 @@
  *
  * @package ywig-theme
  */
+	// Theme Customizer.
+$yc_section_title = get_theme_mod( 'youthclubs_section_title' );
+$yc_section_text  = get_theme_mod( 'youthclubs_section_p' );
 
 	$args = array(
 		'post_type'   => 'youthclub',
@@ -15,11 +18,20 @@
 	?>
 	<section class="youthclubs ywig-fp-section" id="youthclubs">
 		<div class="yc-overlay"></div>
-		<h2 class="twist">Youth Clubs</h2>
-		<p>This needs to be editable in the theme customizer under 'Youth Clubs Section'.</p>
+		<?php
+
+		if ( $yc_section_title ) {
+			echo '<h2 class="twist">' . esc_html( $yc_section_title ) . '</h2>';
+		}
+		if ( $yc_section_text ) {
+			echo '<p class="section-tagline">' . esc_html( $yc_section_text ) . '</p>';
+		}
+		?>
+	
+
 
 		<div class="<?php echo esc_attr( $args['post_type'] . 's' ); ?>-wrap">
-		<div class="over-yellow"></div>
+		<!-- <div class="over-yellow"></div> -->
 		<?php
 		if ( $myposts->have_posts() ) :
 
@@ -28,7 +40,7 @@
 				$myposts->the_post();
 
 				?>
-		<?php get_template_part( 'template-parts/content/content', 'youthclub-intro' ); ?>
+				<?php get_template_part( 'template-parts/content/content', 'youthclub-intro' ); ?>
 
 				<?php
 

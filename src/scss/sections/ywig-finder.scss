@@ -1,11 +1,19 @@
 @import 'variables';
 @import 'mixins';
 
+// bg color only on front page finder-section
+section.finder-front-section {
+
+  background: $dark-white;
+}
 section.ywig-finder {
-  padding: 0rem 6rem 8rem 6rem;
+  padding: 4rem 6rem 8rem 6rem;
   position: relative;
   min-height: calc(100vh - 7rem);
-  background: linear-gradient(180deg, #eaeaea, #ffffff);
+  // background: linear-gradient(180deg, #eaeaea, #ffffff);
+  .finder-front-wrap{
+
+  }
   .ywig-finder-wrap {
     grid-gap: 2rem;
     display: grid;

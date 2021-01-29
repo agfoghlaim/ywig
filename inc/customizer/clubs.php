@@ -23,8 +23,8 @@ function ywig_clubs_input_fields( $wp_customize ) {
 	$wp_customize->add_section(
 		$section,
 		array(
-			'title'       => 'Youth Clubs Section',
-			'description' => __( 'Edit Youth Clubs Section.' ),
+			'title'       => '--- Youth Clubs Item',
+			'description' => __( 'Edit Youth Clubs Item.' ),
 		)
 	);
 

@@ -32,12 +32,12 @@ function ywig_heroine_input_fields( $wp_customize ) {
 	$input_args = array(
 
 		// Heroine Tagline Section.
-				array(
-					'setting_id' => 'tagline_1',
-					'field_type' => 'text',
-					'label'      => 'Tagline 1',
-					'default'    => 'Empowering',
-				),
+		array(
+			'setting_id' => 'tagline_1',
+			'field_type' => 'text',
+			'label'      => 'Tagline 1',
+			'default'    => 'Empowering',
+		),
 		array(
 			'setting_id' => 'tagline_2',
 			'field_type' => 'text',
@@ -55,6 +55,12 @@ function ywig_heroine_input_fields( $wp_customize ) {
 			'field_type' => 'textarea',
 			'label'      => 'Heroine Text Content',
 			'default'    => '',
+		),
+		array(
+			'setting_id' => 'show_section',
+			'field_type' => 'checkbox',
+			'label'      => 'Show Section',
+			'default'    => true,
 		),
 
 	);
