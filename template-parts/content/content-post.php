@@ -42,8 +42,6 @@ if ( is_singular() ) {
 
 			<?php the_excerpt(); ?>
 
-			<h6>(content-post.php)</h6>
-
 		</div>
 	</div>
 

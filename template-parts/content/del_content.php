@@ -26,7 +26,7 @@ if ( is_singular() ) {
 
 		<?php if ( has_post_thumbnail() ) : ?>
 			<div class="standard-featured">
-				
+	
 				<?php the_post_thumbnail(); ?>
 			</div>
 		<?php endif; ?>

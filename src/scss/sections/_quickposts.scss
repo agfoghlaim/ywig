@@ -4,7 +4,7 @@
 // Front Page
 section#quickposts.quickposts-front{
   background: linear-gradient(45deg, #444242, #4e4c4c);
-  padding: 6rem 0rem;
+  padding: 6rem 0rem 2rem 0rem;
 }
 
 // .project-aside {
@@ -22,7 +22,7 @@ section.quickposts, .project-aside {
   display: grid;
   .qp-over {
     position: absolute;
-    width: 100%;
+    width: 150vw;
     height: 4rem;
     top: -1rem;
     background: url(/ywig-theme/wp-content/themes/ywig-theme/src/img/torn_yellow_up.svg);

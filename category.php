@@ -46,6 +46,6 @@ get_header(); ?>
 <div class="ywig-pagination">
 	<?php echo paginate_links(); ?>
 </div>
-<h1>category.php</h1>
+
 <?php
 get_footer();

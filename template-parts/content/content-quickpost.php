@@ -9,54 +9,43 @@
  * @package ywig-theme
  */
 
-// echo '<pre>';
-// echo 'site_url() : ' . site_url();
-// echo ' | get_site_url() : ' . get_site_url();
-// echo  ' | home_url( ): ' . home_url( );
-// echo '</pre>';
-
-// if ( ! empty( $key_1_value ) ) {
-// echo $key_1_value;
-// }
-
-
-// echo '<pre>';
-// var_dump( $quickpost_link );
-
-
-
 ?>
 <div class="quickpost-item">
 
-<?php
-			 // Get quick post link.....
-			 $quickpost_link = get_post_meta( get_the_ID(), 'quickpost_link' );
-if ( ! empty( $quickpost_link[0] ) && '' !== $quickpost_link[0] ) {
-	// echo 'open link';
-	// ie. there is a link & it's internal.
-	if ( strpos( $quickpost_link[0], site_url() ) !== false ) {
+	<?php
 
-						echo '<a href="' . esc_url( $quickpost_link[0] ) . '">';
-	} elseif ( strpos( $quickpost_link[0], site_url() ) === false ) {
+	// Get quick post link.....
+	$quickpost_link = get_post_meta( get_the_ID(), 'quickpost_link' );
 
-								  echo '<a target="_blank" rel="noopener noreferrer" title="external link" href="' . esc_url( $quickpost_link[0] ) . '" >';
+	// if user has entered a link wrap the post thumbnail in an <a> tag.
+	if ( ! empty( $quickpost_link[0] ) && '' !== $quickpost_link[0] ) {
+
+		// ie. there is a link & it's internal.
+		if ( strpos( $quickpost_link[0], site_url() ) !== false ) {
+
+			echo '<a title="Internal link" href="' . esc_url( $quickpost_link[0] ) . '">';
+
+		} elseif ( strpos( $quickpost_link[0], site_url() ) === false ) {
+
+			echo '<a target="_blank" rel="noopener noreferrer" title="External link" href="' . esc_url( $quickpost_link[0] ) . '" >';
+		}
 	}
-}
-	 the_post_thumbnail( 'medium_large' );
+	the_post_thumbnail( 'medium_large' );
 	// close the link if there is one.
-if ( ! empty( $quickpost_link[0] && '' !== $quickpost_link[0] ) ) {
-	echo '</a>';
-	// echo ' close link |>| ';
-}
+	if ( ! empty( $quickpost_link[0] && '' !== $quickpost_link[0] ) ) {
+		echo '</a>';
 
-?>
+	}
+
+	?>
 	<div class="quickpost-text">
-		<h3 class="heading-size-5"><?php the_title(); ?> </h3>
+		<h3 class="heading-size-5">
+			<?php //the_title(); ?> 
+			<?php echo esc_html( wp_trim_words( wp_kses( get_the_title(), array() ), 6, '' ) ); ?>
+		</h3>
 		<p><mark>
 		<?php
-		// echo get_the_content();
-		echo wp_trim_words( wp_kses( get_the_content(), array() ), 40, '' );
-
+		echo esc_html( wp_trim_words( wp_kses( get_the_content(), array() ), 40, '' ) );
 		?>
 		</mark><p>
 	</div>
@@ -76,7 +65,7 @@ if ( ! empty( $quickpost_link[0] && '' !== $quickpost_link[0] ) ) {
 			// Note: get_the_author() returns The author's display name.
 
 			$link_to_related_project_page        = site_url( '/project/', 'http' ) . get_the_author();
-			$link_to_related_project_page_exists = urlExists( $link_to_related_project_page );
+			$link_to_related_project_page_exists = ywig_url_exists( $link_to_related_project_page );
 
 			if ( $link_to_related_project_page_exists ) {
 

@@ -38,7 +38,7 @@ $about           = get_field( $the_term->taxonomy . '_about', 'term_' . $the_ter
 	// wrap to get the css classes for page-staff.php
 	?>
 
-	<div class="page-staff-wrap">
+	<div class="taxonomy-staff-wrap">
 		<?php require locate_template( 'template-parts/content/content-staff-member-intro.php', false, false ); ?>
 	</div><!-- .page-staff-wrap -->
 

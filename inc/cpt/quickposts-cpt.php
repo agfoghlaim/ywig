@@ -1,11 +1,13 @@
 <?php
-/*
-@package ywig-theme
+/**
+ * CUSTOM POST TYPE - Quick Posts
+ *
+ * @package ywig-theme
+ */
 
-CUSTOM POST TYPE - Quick Posts
-
-*/
-
+/**
+ * Register Quickpost Custom Post Type
+ */
 function ywig_quickposts_cpt() {
 	$labels = array(
 		'name'          => 'Quickposts',
@@ -93,9 +95,9 @@ $meta_args = array(
 );
 
 register_post_meta( 'quickpost', 'quickpost_link', $meta_args );
-register_post_meta( 'quickpost', 'quickpost_link_text', $meta_args );
+// register_post_meta( 'quickpost', 'quickpost_link_text', $meta_args );
 register_post_meta( 'quickpost', 'featured_media_src', $meta_args );
-register_post_meta( 'quickpost', 'related_project_id', $meta_args );
+// register_post_meta( 'quickpost', 'related_project_id', $meta_args );
 
 /**
  * Get saved Quickpost Meta values
@@ -133,7 +135,7 @@ function ywig_quickposts_cpt_meta_callback( $post ) {
 
 	<div>
 
-		<p><label><?php echo esc_attr( $value ); ?></label></p>
+		<p><label><?php echo esc_html( $value ); ?></label></p>
 
 		<input type="text" name="<?php echo esc_attr( $meta_field ); ?>" value="<?php echo esc_attr( $this_meta_field ); ?>" />
 
@@ -141,7 +143,7 @@ function ywig_quickposts_cpt_meta_callback( $post ) {
 	}
 	// End of foreach. Now add html for 'featured_media_src'.
 	$saved_featured_image_url = ywig_util_get_quickpost_meta_if_exists( $ywig_stored_meta, 'featured_media_src' );
-	$related_project_id       = ywig_util_get_quickpost_meta_if_exists( $ywig_stored_meta, 'related_project_id' );
+	// $related_project_id       = ywig_util_get_quickpost_meta_if_exists( $ywig_stored_meta, 'related_project_id' );
 
 	// Add input for featured media.
 	?>
@@ -150,19 +152,19 @@ function ywig_quickposts_cpt_meta_callback( $post ) {
 		<input disabled type="text" id="featured_media_src" name="featured_media_src" value="<?php echo esc_attr( $saved_featured_image_url ); ?>" />
 	<?php
 		// Add input (dropdown) for parent/related_project_id
-		$pages = wp_dropdown_pages(
-			array(
-				'post_type'        => 'project',
-				'selected'         => $post->post_parent,
-				'name'             => 'related_project_id',
-				'show_option_none' => __( '(no related proect)' ),
-				'sort_column'      => 'menu_order, post_title',
-				'echo'             => 0,
-			)
-		);
-	if ( ! empty( $pages ) ) {
-		echo $pages;
-	}
+	// $pages = wp_dropdown_pages(
+	// array(
+	// 'post_type'        => 'project',
+	// 'selected'         => $post->post_parent,
+	// 'name'             => 'related_project_id',
+	// 'show_option_none' => __( '(no related proect)' ),
+	// 'sort_column'      => 'menu_order, post_title',
+	// 'echo'             => 0,
+	// )
+	// );
+	// if ( ! empty( $pages ) ) {
+	// echo $pages;
+	// }
 	?>
 		
 	</div>
@@ -217,10 +219,9 @@ function ywig_save_quickpost_meta( $post_id ) {
 	}
 
 	// NOT USED: Save related project.
-	if ( isset( $_POST['related_project_id'] ) ) {
-		update_post_meta( $post_id, 'related_project_id', wp_unslash( $_POST['related_project_id'] ) );
-	}
-
+	// if ( isset( $_POST['related_project_id'] ) ) {
+	// update_post_meta( $post_id, 'related_project_id', wp_unslash( $_POST['related_project_id'] ) );
+	// }
 }
 add_action( 'save_post', 'ywig_save_quickpost_meta' );
 

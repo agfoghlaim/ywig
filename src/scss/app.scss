@@ -81,7 +81,7 @@
 
 .torn-white {
   position: absolute;
-  width: 100%;
+  width: 150vw;
   height: 4rem;
   bottom: -1rem;
   // -webkit-transform: scaleY(-1);
@@ -831,3 +831,14 @@ h2.twist-smaller {
 }
 
 //======================================================================================================
+/*
+Required wp classes
+*/
+.wp-caption {}
+.wp-caption-text {}
+.sticky {}
+.gallery-caption {}
+.bypostauthor {}
+.alignright {}
+.alignleft {}
+.aligncenter {}

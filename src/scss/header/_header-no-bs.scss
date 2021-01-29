@@ -71,7 +71,7 @@
         word-wrap: break-word;
         white-space: nowrap;
       }
-
+      
       a:hover {
         border-bottom: 0.2rem solid $greeny-blue-alt;
       }
@@ -90,7 +90,14 @@
       a {
         padding: 0.5rem 0.75rem;
         background: $dark-white;
-        box-shadow: $box-shadow-small;
+        // box-shadow: $box-shadow-small;
+      }
+      a:hover {
+        border-bottom: none;
+        // box-shadow: none;
+        color: $greeny-blue-alt;
+        background: $black;
+        transition: all 0.2s linear;
       }
     }
   }

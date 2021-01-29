@@ -81,8 +81,8 @@ add_filter( 'walker_nav_menu_start_el', 'ywig_add_sub_menu_toggle', 10, 4 );
  * @param string $url - preferably a fully qualified URL
  * @return boolean - true if it is out there somewhere
  */
-function urlExists( $url ) {
-	if ( ( '' === $url ) || ( null === $url ) || empty( $url ) || '' ) {
+function ywig_url_exists( $url ) {
+	if ( ( '' === $url ) || ( null === $url ) || empty( $url ) ) {
 		return false; }
 	$response              = wp_remote_head( $url, array( 'timeout' => 5 ) );
 	$accepted_status_codes = array( 200, 301, 302 );
@@ -279,7 +279,7 @@ if ( ! function_exists( 'ywig_breadcrumbs' ) ) {
 				$this_term_name = $term->name; // eg 'Galway City'.
 
 				$link_to_parent_tax_page             = site_url( $taxonomy_name, 'http' ); // TODO https.
-				$link_to_parent_taxonomy_page_exists = urlExists( $link_to_parent_tax_page );
+				$link_to_parent_taxonomy_page_exists = ywig_url_exists( $link_to_parent_tax_page );
 
 				// check that parent link exists. eg for url <site-url>/location/galway, check <site-url>/location exists. Don't think this is necesserary though.
 				if ( $link_to_parent_taxonomy_page_exists ) {

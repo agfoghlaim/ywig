@@ -21,32 +21,27 @@ $args = array(
 	<?php the_content(); ?>
 	</section>
 
-	<div class="index-content-wrap ywig-content-wrap">
+	<div class="ywig-content-wrap">
 		<?php
 		if ( $youth_clubs->have_posts() ) :
+			?>
+			<div class="youthclubs-wrap">
+				<?php
+				while ( $youth_clubs->have_posts() ) :
 
-			while ( $youth_clubs->have_posts() ) : 
-				?>
-				<article  id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-					<div class="youthclubs-wrap">
-					<?php
 
 					$youth_clubs->the_post();
 
-					?>
+					get_template_part( 'template-parts/content/content', 'youthclub-intro' ); 
 
-					<?php get_template_part( 'template-parts/content/content', 'youthclub-intro' ); ?>
+				endwhile;
 
-					</div>
-				</article>
-				<?php
-
-			endwhile;
-
-			wp_reset_postdata();
-
+				wp_reset_postdata();
+				?>
+			</div>
+			<?php
 		endif;
 
 		?>
-
+	</div>
 <?php get_footer(); ?>

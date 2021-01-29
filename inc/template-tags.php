@@ -171,7 +171,7 @@ function ywig_single_yc_project_staff( $post_id = null, $post_type ) {
 						<?php
 						if ( $is_staff_pic ) {
 							?>
-							<img  src="<?php echo esc_url( $staff_image_url ); ?>" alt="<?php echo esc_attr( $staff_image['alt'] ); ?>" description="<?php echo esc_html( $staff_image['description'] ); ?>" />
+							<img src="<?php echo esc_url( $staff_image_url ); ?>" alt="<?php echo esc_attr( $staff_image['alt'] ); ?>" description="<?php echo esc_html( $staff_image['description'] ); ?>" />
 							<?php
 						} else {
 							echo ywig_get_theme_svg( 'user' );

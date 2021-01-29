@@ -39,7 +39,7 @@ if ( is_singular() ) {
 
 </div>
 
-	<span>content-single.php</span>
+
 	</footer>
 </article>
 

@@ -16,7 +16,6 @@
 
 	?>
 </div>
-page.php
 
 <?php
 get_footer();

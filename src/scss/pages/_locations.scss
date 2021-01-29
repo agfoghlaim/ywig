@@ -12,7 +12,7 @@
   background: $dark-white;
   padding: 1rem;
   border-radius: 2px;
-	box-shadow: $box-shadow-regular;
+	// box-shadow: $box-shadow-regular;
 	display: grid;
     justify-content: flex-start;
   .location-info-wrap {
@@ -20,7 +20,8 @@
     .location-info-right {
       background: none;
 			display: grid;
-			padding: 1rem 0rem;
+      padding: 1rem 0rem;
+      
       .ywig-locations-map-wrap {
         display: grid;
         grid-gap: 1rem;
@@ -28,3 +29,5 @@
     }
   }
 }
+
+

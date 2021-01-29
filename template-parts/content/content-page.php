@@ -16,6 +16,6 @@ if ( is_singular() ) {
 
 	<div class="entry-content">
 			<?php the_content(); ?>
-			content-page.php
+		
 	</div>
 </article>

@@ -8,11 +8,11 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<!-- <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>> -->
 
 	<?php
 	set_query_var( 'terms_taxonomy', 'location' );
 	get_template_part( 'template-parts/content/content', 'project-intro' );
 	?>
 
-</article>
+<!-- </article> -->
