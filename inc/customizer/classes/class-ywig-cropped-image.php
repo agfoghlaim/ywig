@@ -37,8 +37,10 @@ if ( ! class_exists( 'YWIG_Cropped_Image' ) ) {
 			$wp_customize->add_setting(
 				$this->section . '_' . $this->id,
 				array(
-					'type'       => $this->type,
-					'capability' => $this->capability,
+					'type'              => $this->type,
+					'capability'        => $this->capability,
+					'sanitize_callback' => 'sanitize_text_field',
+
 				)
 			);
 
@@ -56,7 +58,28 @@ if ( ! class_exists( 'YWIG_Cropped_Image' ) ) {
 				)
 			);
 		}
+
+			/**
+			 * Make sure file is an image.
+			 *
+			 * @param mixed $maybe_image Hopefully an image.
+			 */
+		private function ywig_sanitize_image( $maybe_image ) {
+			// return empty string instead of $maybe_image.
+			$confirmed_img_or_empty_string = '';
+
+			// get mime type.
+			$filetype = wp_check_filetype( $maybe_image );
+			$mime     = $filetype['type'];
+
+			// check mime type is an image
+			if ( strpos( $mime, 'image' ) !== false ) {
+					$output = $maybe_image;
+			}
+
+			return $confirmed_img_or_empty_string;
+		}
+
 	}
 
 }
-

@@ -295,7 +295,7 @@ function ywig_single_yc_project_show_project_news( $post_id, $author_name ) {
 	$q_args = array(
 		'post_type'   => 'quickpost',
 		'post_status' => 'publish',
-		'author_name' => $author_name, // author_name (string) – use ‘user_nicename‘ – NOT name. Here user_nice refers to the user's table in db. user_nicename is the username that cannot be changed in wp admin. They give us the 'display name' that can be changed but user_nicename cannot. 
+		'author_name' => $author_name, // author_name (string) – use ‘user_nicename‘ – NOT name. Here user_nice refers to the user's table in db. user_nicename is the username that cannot be changed in wp admin. They give us the 'display name' that can be changed but user_nicename cannot.
 
 	);
 
@@ -436,8 +436,9 @@ function ywig_get_post_nav_preview( $ywig_post ) {
 					echo get_the_post_thumbnail( $ywig_post_id, 'thumb' );
 
 				} else {
+
 					?>
-						<img style="max-width: 150px;" src="<?php bloginfo( 'template_directory' ); ?>/src/img/looking_at_the_sea.jpg" alt="<?php echo esc_attr( $ywig_post_title ); ?>" />
+						<img style="max-width: 150px;" src="<?php echo esc_url( get_template_directory_uri() ); ?>/src/img/looking_at_the_sea.jpg" alt="<?php echo esc_attr( $ywig_post_title ); ?>" />
 						<?php
 				}
 				?>

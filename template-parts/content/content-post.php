@@ -35,7 +35,7 @@ if ( is_singular() ) {
 				?>
 				<a href="<?php the_permalink(); ?>">
 
-					<figure class="post-thumbnail"  style="width: 150px; height: 150px; background:url(	<?php echo bloginfo( 'template_directory' ) . '/src/img/looking_at_the_sea.jpg);'; ?>); background-repeat:no-repeat; background-size: cover;background-position: center;"></figure>
+					<figure class="post-thumbnail"  style="width: 150px; height: 150px; background:url(	<?php echo esc_url( get_template_directory_uri() ) . '/src/img/looking_at_the_sea.jpg);'; ?>); background-repeat:no-repeat; background-size: cover;background-position: center;"></figure>
 				</a>
 				<?php
 			}
