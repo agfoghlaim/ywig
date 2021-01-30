@@ -32,7 +32,7 @@ a:focus {
   justify-self: flex-start; // temp.
   margin-top: 1rem; // temp.
   border-radius: 0.2rem;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   // padding: 0.1rem 0.4rem;
   border: 0.14rem solid transparent;
   border-radius: 0.2rem;
@@ -303,7 +303,7 @@ fieldset:disabled a.btn {
 
 
 // link-secondary (green)
-
+.wrap-tag-links > a,
 .link-secondary {
   color: $darker-black;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
@@ -311,13 +311,13 @@ fieldset:disabled a.btn {
   text-decoration: underline;
 
 }
-
+.wrap-tag-links > a:hover,
 .link-secondary:hover {
   color: $black;
   background: $greeny-blue-alt;
   text-decoration: none;
 }
-
+.wrap-tag-links > a:focus,
 .link-secondary:focus,
 .link-secondary.focus {
   color: $black;
@@ -354,6 +354,7 @@ fieldset:disabled a.btn {
 // end link-primary
 
 // link-light
+
 .link-light {
   color: $white;
   text-decoration: underline;
@@ -372,6 +373,7 @@ fieldset:disabled a.btn {
 }
 
 // end link-light
+.wrap-tag-links > a,
 .wrap-cat-links > a,
 .link-tiny {
   display: grid; 

@@ -55,9 +55,28 @@ if ( is_singular() ) {
 				<?php the_time( 'F jS, Y' ); ?>
 			</span>
 
-			<span class="entry-meta-category wrap-cat-links">
-				<?php the_category( ' ' ); ?>
-			</span>
+			<div class="entry-meta-category wrap-cat-links">
+				<span class="cat-span">Categories</span>
+					<?php the_category( ' ' ); ?>
+
+			</div>
+			<div class="entry-meta-category wrap-tag-links">
+
+				<?php
+					echo wp_kses(
+						get_the_tag_list( '<span class="tag-span">Tags</span>', '', '' ),
+						array(
+							'span' => array(
+								'class' => array(),
+							),
+							'a'    => array(
+								'href' => array(),
+								'rel'  => array(),
+							),
+						),
+					);
+					?>
+			</div>
 
 		</a>
 

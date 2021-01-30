@@ -105,9 +105,10 @@ class YWIG_Heroine_Box {
 		$wp_customize->add_control(
 			'ywig-heroine-section-' . $this->ywig_id . '-h',
 			array(
-				'label'    => $this->heading_text,
-				'section'  => 'ywig-heroine-section',
-				'settings' => 'ywig-heroine-section-' . $this->ywig_id . '-h',
+				'label'             => $this->heading_text,
+				'section'           => 'ywig-heroine-section',
+				'settings'          => 'ywig-heroine-section-' . $this->ywig_id . '-h',
+				'sanitize_callback' => 'sanitize_text_field',
 			)
 		);
 	}
@@ -116,8 +117,9 @@ class YWIG_Heroine_Box {
 		$wp_customize->add_setting(
 			'ywig-heroine-section-' . $this->ywig_id,
 			array(
-				'type'       => 'theme_mod',
-				'capability' => 'edit_theme_options',
+				'type'              => 'theme_mod',
+				'capability'        => 'edit_theme_options',
+	
 			)
 		);
 

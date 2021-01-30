@@ -541,7 +541,32 @@ article {
       }
       .wrap-cat-links {
         display: flex;
-        align-items: flex-start;
+        align-items: center;
+        display: grid;
+        grid-auto-flow: column;
+        align-items: center;
+
+        justify-content: flex-start;
+        span {
+          font-size: 0.8rem;
+          font-weight: 700;
+          margin-right: 0.5rem;
+        }
+      }
+      .wrap-tag-links {
+        display: flex;
+        align-items: center;
+        display: grid;
+        grid-auto-flow: column;
+        align-items: center;
+
+        justify-content: flex-start;
+        span {
+          font-size: 0.8rem;
+          font-weight: 700;
+          margin-right: 0.5rem;
+   
+        }
       }
       a.btn-dark {
         display: grid;
