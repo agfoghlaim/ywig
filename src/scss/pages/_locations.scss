@@ -1,18 +1,17 @@
 .page-locations-wrap {
   display: grid;
-
   padding: 5rem 2rem;
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
+// Locations page.
 // eg. #pills-east-galway don't have a class, use > div.
 .page-locations-wrap > div {
 
   background: $dark-white;
   padding: 1rem;
   border-radius: 2px;
-	// box-shadow: $box-shadow-regular;
 	display: grid;
     justify-content: flex-start;
   .location-info-wrap {

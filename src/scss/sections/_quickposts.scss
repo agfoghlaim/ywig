@@ -1,34 +1,23 @@
 @import 'variables';
 @import 'mixins';
+// Quickposts are in 3 places. 1. Front-page section. 2. Project News Page. 3.Project single sidebar.
 
-// Front Page
-section#quickposts.quickposts-front{
+// Front Page Specific
+section#quickposts.quickposts-front {
   background: linear-gradient(45deg, #444242, #4e4c4c);
   padding: 6rem 0rem 2rem 0rem;
 }
 
-// .project-aside {
-//   .quickpost-wrap {
-//     max-width: 22rem;
-//   }
-// }
-section.quickposts, .project-aside {
+section.quickposts,
+.project-aside {
   position: relative;
   padding: 0rem;
   display: grid;
-  
-  // z-index: -1;
 
-  display: grid;
   .qp-over {
-    position: absolute;
-    width: 150vw;
-    height: 4rem;
-    top: -1rem;
+    @include torn-overlay;
+    top: -1rem !important; // !important just to be on the safe side.
     background: url(/ywig-theme/wp-content/themes/ywig-theme/src/img/torn_yellow_up.svg);
-    background-size: 100%;
-    background-repeat: repeat-x;
-    z-index: 0;
   }
   .section-tagline {
     margin: 0rem 1rem;
@@ -46,16 +35,16 @@ section.quickposts, .project-aside {
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     grid-auto-rows: 400px;
 
-    .quickpost-item{
+    .quickpost-item {
       position: relative;
       background: $black;
       overflow: hidden;
-      //@include quickpost-item;
+
       img {
         object-fit: cover;
         width: 100%;
         height: 100%;
-      
+
         // max-height: 350px;
       }
       .quickpost-text {
@@ -74,7 +63,6 @@ section.quickposts, .project-aside {
           border-radius: 2px;
           font-weight: 500;
           color: $light-black;
-          
 
           mark {
             background: $white;
@@ -89,15 +77,12 @@ section.quickposts, .project-aside {
         border-radius: 2px;
         font-size: 0.9rem;
         // color:$white;
-
       }
     }
-
   }
-
-
 }
 
+// Project Page Sidebar Specific
 .project-aside {
   .quickpost-wrap {
     display: grid;
@@ -108,17 +93,7 @@ section.quickposts, .project-aside {
   }
 }
 
-// In the loop
-.quickpost-item{
-
- // @include quickpost-item;
-  // max-width: 300px;
-  // margin: 1rem auto;
-}
-
-
 .quickposts-page-intro,
-//.ywig-fp-section > .quickpost-wrap,
 #quickposts > h2.twist {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -130,7 +105,7 @@ section.quickposts, .project-aside {
 @media only screen and (max-width: 1200px) {
   .quickposts-page-intro,
   //.ywig-fp-section > .quickpost-wrap, 
-  #quickposts > h2.twist { 
+  #quickposts > h2.twist {
     padding-right: 9rem;
   }
 }
@@ -158,7 +133,6 @@ section.quickposts, .project-aside {
     padding-left: 1rem;
     padding-right: 1rem;
   }
-  
 }
 @media only screen and (max-width: 320px) {
   .quickposts-page-intro,

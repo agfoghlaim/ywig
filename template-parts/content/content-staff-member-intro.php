@@ -86,17 +86,19 @@ $projects_for_this_staff_member = get_posts(
 		<?php echo isset( $staff_fname ) && ! empty( $projects_for_this_staff_member ) ? '<p class="ywig-staff-projects">' . esc_html( $staff_fname ) . ' works at ' : null; ?> 
 		<?php
 		if ( isset( $projects_for_this_staff_member ) ) {
+			?>
+			<div class="wrap-links">
+			<?php
 			foreach ( $projects_for_this_staff_member as $key => $value ) {
-				if ( 0 === $key ) {
-					echo '<a href="' . $value->guid . '">';
+			
+					echo '<a class="link-secondary link-tiny" href="' . $value->guid . '">';
 					echo esc_html( $value->post_title );
 					echo '</a>';
-				} else {
-					echo '<a href="' . $value->guid . '">';
-					echo esc_html( ', ' . $value->post_title );
-					echo '</a>';
-				}
+
 			}
+			?>
+			</div>
+		<?php	
 		}
 
 		?>

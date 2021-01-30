@@ -1,6 +1,6 @@
 @mixin page-staff-item {
-	background: white;
-	padding: 2rem 1rem;
+
+	padding: 2rem;
 	p  {
 		margin: 0;
 	}
@@ -23,6 +23,12 @@
 	}
 	p.ywig-staff-bio {
 		margin: 1rem 0rem;
+
+		.wrap-links {
+			display: flex;
+			align-items: flex-start;
+		
+		}
 	}
 	img {
 		width: 10rem;
@@ -39,6 +45,7 @@
 	}
 }
 
+// Staff Page - (all staff)
 .page-staff-wrap {
 	display: grid;
 	padding-top: 5rem;
@@ -46,16 +53,22 @@
 	// padding: 5rem 2rem;
 	grid-gap: 1rem;
 	grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-
+	
 	.page-staff-item {
-		box-shadow: $box-shadow-regular;
+
+		background: $dark-white;
+		// box-shadow: $box-shadow-regular;
+		// background: #eaeaea;
+    display: grid;
+    justify-content: flex-start;
+    align-content: baseline;
 		@include page-staff-item;
 	}
 	
 }
 
 
-// don't put items in carts on the single staff member page.
+// Single Staff Member -don't put items in cards on the single staff member page.
 .taxonomy-staff-wrap {
 	display: grid;
 	padding-top: 5rem;
@@ -63,6 +76,7 @@
 	grid-gap: 1rem;
 
 	.page-staff-item {
+		background: $white;
 		@include page-staff-item;
 	}
 }

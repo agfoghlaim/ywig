@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'mixins';
 
 .about-2 {
   position: relative;
@@ -6,14 +7,11 @@
   display: grid;
   align-items: flex-start;
   align-content: flex-start;
+ 
+
   .over {
-    position: absolute;
-    width: 150vw;
-    height: 4rem;
-    top: -4rem;
+    @include torn-overlay;
     background: url(/ywig-theme/wp-content/themes/ywig-theme/src/img/torn_white.svg);
-    background-size: 100%;
-    background-repeat: repeat-x;
   }
 
   .about-what {
@@ -37,17 +35,3 @@
     display: grid;
   }
 }
-
-// .about-2::before {
-//   content: '';
-//   width: 100%;
-//   height: 100%;
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   background: url(/ywig-theme/wp-content/themes/ywig-theme/src/img/torn.jpg);
-//   background-repeat: repeat;
-//   background-size: 100%;
-//   background-position: top;
-//   z-index: -1;
-// }

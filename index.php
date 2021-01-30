@@ -69,6 +69,6 @@ if ( is_home() ) {
 	echo paginate_links(); 
 	?>
 </div>
-<h1>index.php</h1>
+
 <?php
 get_footer();

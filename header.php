@@ -21,7 +21,7 @@
 	<?php endif; ?>
 	<?php wp_head(); ?>
 	<meta name="description" content="<?php bloginfo( 'description' ); ?>">
-	</meta>
+
 </head>
 
 <body <?php body_class(); ?>>

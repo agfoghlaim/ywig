@@ -56,15 +56,15 @@ if ( is_array( $term_obj_list ) || is_object( $term_obj_list ) ) {
 
 				?>
 
-				<span class="location-tag">
+				<!-- <span class="location-tag"> -->
 
-					<a href="<?php echo esc_attr( get_term_link( $loc->term_id ) ); ?>">
+					<a title=" Go to <?php echo esc_html( $loc->name ); ?> location page." class="link-primary link-tiny" href="<?php echo esc_attr( get_term_link( $loc->term_id ) ); ?>">
 
 						<?php echo esc_html( $loc->name ); ?>
 
 					</a>
 
-				</span>
+				<!-- </span> -->
 
 					<?php
 

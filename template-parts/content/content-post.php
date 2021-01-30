@@ -21,53 +21,43 @@ if ( is_singular() ) {
 
 ?>
 <article  id="post-<?php the_ID(); ?>" <?php post_class( $ywig_class ); ?>>
+	<a href="<?php the_permalink(); ?>">
+		<?php the_title( '<h2 class="twist-smaller">', '</h2>' ); ?>
+	</a>
+
 	<div class="entry-wrap">
 
 		<div class="entry-header">
-
-			<?php the_title( '<h2 class="twist-smaller">', '</h2>' ); ?>
-
 			<?php
 			if ( has_post_thumbnail() ) {
-					ywig_post_thumbnail( 'medium' );
+					ywig_post_thumbnail( 'thumb' );
 			} else {
 				?>
-					<img src="<?php bloginfo( 'template_directory' ); ?>/src/img/looking_at_the_sea.jpg" alt="<?php the_title(); ?>" />
-					<?php
+				<a href="<?php the_permalink(); ?>">
+
+					<figure class="post-thumbnail"  style="width: 150px; height: 150px; background:url(	<?php echo bloginfo( 'template_directory' ) . '/src/img/looking_at_the_sea.jpg);'; ?>); background-repeat:no-repeat; background-size: cover;background-position: center;"></figure>
+				</a>
+				<?php
 			}
 			?>
 		</div>
 
 		<div class="entry-content">
-
 			<?php the_excerpt(); ?>
-
 		</div>
+
 	</div>
 
 	<footer class="entry-footer">
-		<div class="entry-meta">
+
 
 			<span class="entry-meta-date">
 				<?php the_time( 'F jS, Y' ); ?>
 			</span>
 
-			<span class="entry-meta-category">
-				<?php the_category( ', ' ); ?>
+			<span class="entry-meta-category wrap-cat-links">
+				<?php the_category( ' ' ); ?>
 			</span>
-
-		</div>
-
-		<a 
-			href="<?php the_permalink(); ?>" 
-			class="btn btn-dark"
-		>
-
-			<span class="sr-only">
-				Read More about <?php echo esc_html( get_the_title() ); ?>
-			</span>
-
-			<span><?php esc_html_e( 'More' ); ?></span>
 
 		</a>
 
