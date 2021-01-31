@@ -11,7 +11,7 @@
 
 <?php
 
-$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+$pgd = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
 // Theme Customizer.
 $fp_section_title = get_theme_mod( 'quickposts_section_title' );
@@ -22,13 +22,13 @@ if ( is_front_page() ) {
 	$num_posts_to_show = 6;
 	$is_front          = true;
 } else {
-	$num_posts_to_show = 10;
+	$num_posts_to_show = 18;
 	$is_front          = false;
 }
 
 $args = array(
-	'posts_per_page' => $num_posts_to_show, // NOTE. if this is changed button.load-more-quickposts data attribute must also be updated.
-	'paged'          => $paged,
+	'posts_per_page' => $num_posts_to_show, // NOTE: Related to data- attr in button.load-more-quickposts btn.
+	'paged'          => $pgd,
 	'post_type'      => 'quickpost',
 	'post_status'    => 'publish',
 	'orderby'        => 'post_date',
@@ -86,8 +86,8 @@ if ( is_front_page() ) {
 
 <button 
 class="btn btn-dark load-more-quickposts" 
-data-current-page="<?php echo esc_attr( $paged ); ?>"
-data-posts-per-page="6"
+data-current-page="<?php echo esc_attr( $pgd ); ?>"
+data-posts-per-page="<?php echo esc_attr( $num_posts_to_show ); ?>"
 data-max-pages="<?php echo esc_attr( $quickposts->max_num_pages ); ?>"
 >Load More </button>
 		<?php

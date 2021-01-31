@@ -4,6 +4,7 @@
  *
  * @package ywig-theme
  */
+
 	// Theme Customizer.
 $yc_section_title = get_theme_mod( 'youthclubs_section_title' );
 $yc_section_text  = get_theme_mod( 'youthclubs_section_p' );
@@ -27,8 +28,6 @@ $yc_section_text  = get_theme_mod( 'youthclubs_section_p' );
 			echo '<p class="section-tagline">' . esc_html( $yc_section_text ) . '</p>';
 		}
 		?>
-	
-
 
 		<div class="<?php echo esc_attr( $args['post_type'] . 's' ); ?>-wrap">
 		<!-- <div class="over-yellow"></div> -->

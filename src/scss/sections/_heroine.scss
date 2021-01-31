@@ -3,9 +3,7 @@
 .heroine-alt-3 {
   display: grid;
   grid-template-columns: 3fr 2fr;
-  min-height: calc(
-    90vh - 5rem
-  );
+  min-height: calc(90vh - 5rem);
 
   .heroine-left {
     background: linear-gradient(90deg, $light-green, $blue-alt);
@@ -122,6 +120,50 @@
     grid-template-columns: 1fr;
     .heroine-right {
       display: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .heroine-alt-3 {
+    .heroine-left {
+      .text {
+        grid-template-columns: 1fr;
+        grid-gap: 1rem;
+        grid-auto-flow: row;
+        .heroine-watermark {
+          justify-self: flex-start;
+          width: 9rem;
+          margin-left: 2rem;
+        }
+        .text-content {
+          justify-items: center;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  .heroine-alt-3 {
+    .heroine-left {
+      .text {
+        .heroine-watermark {
+          width: 9rem;
+        }
+        .text-content {
+          justify-items: center;
+          // justify-items: center;
+          h1 {
+            font-size: 3rem;
+            line-height: 3rem;
+            span {
+              font-size: 2.5rem;
+              line-height: 3rem;
+            }
+          }
+        }
+      }
     }
   }
 }

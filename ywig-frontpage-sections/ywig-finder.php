@@ -8,14 +8,14 @@
  * @package ywig-theme
  */
 
- // Theme Customizer.
+// Theme Customizer.
 $finder_section_title = get_theme_mod( 'finder_section_title' );
 $finder_section_text  = get_theme_mod( 'finder_section_p' );
 
 if ( is_front_page() ) {
-	$is_front          = true;
+	$is_front = true;
 } else {
-	$is_front          = false;
+	$is_front = false;
 }
 
 $all_locations = get_terms(
@@ -31,8 +31,8 @@ $all_locations = get_terms(
 // NOTE TODO There is an accessibility issue here because the pills control two things - the location-info and the list of projects. The location-infos have an aria-labeled-by but the pills do not refer to the location-info (only the project-info).
 $all_ids = wp_list_pluck( $all_locations, 'slug' );
 $arr     = array();
-foreach ( $all_ids as $id ) {
-	array_push( $arr, sprintf( 'pills-%s', $id ) );
+foreach ( $all_ids as $one_id ) {
+	array_push( $arr, sprintf( 'pills-%s', $one_id ) );
 }
 $all_ids_for_aria = join( ' ', $arr );
 

@@ -30,6 +30,9 @@ $youtube  = esc_url( get_option( 'youtube_link' ) );
 
 			<div class="footer-center item">
 
+				<a href="#" class="custom-logo-link" rel="home">
+				<img height="67" src="<?php echo esc_url( $logo ); ?>" alt="ywig-logo" />
+			</a>
 				<?php
 				if ( ( ! empty( $twitter ) ) || ( ! empty( $facebook ) ) || ( ! empty( $youtube ) ) ) {
 					?>
@@ -43,18 +46,22 @@ $youtube  = esc_url( get_option( 'youtube_link' ) );
 				}
 
 				?>
+				<p class="ywig-copyright">&copy;<?php bloginfo( 'name' ); ?> <?php echo esc_html( date( 'Y' ) ); ?></p>
 			</div>
 
 			<div class="footer-right item">
-				<a href="#" class="custom-logo-link" rel="home">
-					<img height="67" src="<?php echo esc_url( $logo ); ?>" alt="ywig-logo" />
-				</a>
-				<p class=""><?php echo esc_html( $company_address_1 ); ?></p>
-				<p class=""><?php echo esc_html( $company_address_2 ); ?></p>
-				<p class=""><?php echo esc_html( $company_address_3 ); ?></p>
-				<p class=""><?php echo esc_html( $chy_no ); ?></p>
-				<p class=""><?php echo esc_html( $charity_reg ); ?></p>
-				<p class=""><?php echo esc_html( $company_reg ); ?></p>
+	
+				<div class="footer-address-wrap">
+					<p class=""><?php echo esc_html( $company_address_1 ); ?></p>
+					<p class=""><?php echo esc_html( $company_address_2 ); ?></p>
+					<p class=""><?php echo esc_html( $company_address_3 ); ?></p>
+					<p>Landline (todo)</p>
+				</div>
+				<div class="footer-nums-wrap">
+					<p class=""><?php echo esc_html( $chy_no ); ?></p>
+					<p class=""><?php echo esc_html( $charity_reg ); ?></p>
+					<p class=""><?php echo esc_html( $company_reg ); ?></p>
+				</div>
 			</div>
 		</footer>
 
