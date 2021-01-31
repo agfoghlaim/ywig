@@ -37,7 +37,7 @@ $projects_for_this_staff_member = get_posts(
 			// link to single staff page if we are not already on it... only on /staff (page-staff.php), not on page.php.
 			if ( is_page_template( 'page-staff.php' ) ){
 				?>
-					<a href="<?php echo esc_url( get_term_link( $the_term->term_id ) ); ?>" aria-hidden="true" tabindex="-1">
+					<a href="<?php echo esc_url( get_term_link( $the_term->term_id ) ); ?>">
 						<figure>
 							<img  
 								src="<?php echo esc_html( $staff_image_url ); ?>" 
@@ -65,7 +65,7 @@ $projects_for_this_staff_member = get_posts(
 			// link to single staff page if we are not already on it... only on /staff (page-staff.php), not on page.php.
 			if ( is_page_template( 'page-staff.php' ) ) {
 				?>
-				<a href="<?php echo esc_url( get_term_link( $the_term->term_id ) ); ?>" aria-hidden="true" tabindex="-1">
+				<a href="<?php echo esc_url( get_term_link( $the_term->term_id ) ); ?>">
 					<?php echo ywig_get_theme_svg( 'user' ); ?>
 				</a>
 				<?php 

@@ -45,13 +45,14 @@ if ( is_home() ) {
 }
 ?>
 			<div class="index-content-wrap ywig-content-wrap">
+
 			<?php
 			if ( have_posts() ) {
 
 				while ( have_posts() ) {
 					the_post();
-
 					get_template_part( 'template-parts/content/content', get_post_type() );
+
 				}
 			} else {
 
@@ -66,7 +67,7 @@ if ( is_home() ) {
 <div class="ywig-pagination">
 	<?php
 	// TODO check this is all escaped properly in template-tags before phpcs ignoring it.
-	echo paginate_links(); 
+	echo paginate_links();
 	?>
 </div>
 

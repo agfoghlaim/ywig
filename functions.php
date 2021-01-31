@@ -437,12 +437,12 @@ if ( ! function_exists( 'ywig_breadcrumbs' ) ) {
 					ywig_wrap_in_li_span( 'active', '', get_the_title() );
 			} elseif ( is_page() && $post->post_parent ) {
 				$parent_id = $post->post_parent;
-				$page      = get_post( $parent_id );
+				$pg      = get_post( $parent_id );
 
 				// For pages with a parent page.
 
 				// Eg. '/resources/vacancies', this renders <a>resources</a>.
-				ywig_wrap_in_li_span( '', get_permalink( $page->ID ), get_the_title( $page->ID ) );
+				ywig_wrap_in_li_span( '', get_permalink( $pg->ID ), get_the_title( $pg->ID ) );
 
 				// Eg. '/resources/vacancies', this renders <span>vacancies<span>.
 				ywig_wrap_in_li_span( 'active', '', get_the_title() );

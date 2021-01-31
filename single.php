@@ -12,7 +12,14 @@
 
 		<div class="single-content-wrap ywig-content-wrap">
 	<?php
-	get_template_part( 'template-parts/content/content-single' );
+	if ( have_posts() ) {
+
+		while ( have_posts() ) {
+			the_post();
+			get_template_part( 'template-parts/content/content-single' );
+
+		}
+	} 
 
 	?>
 
@@ -20,8 +27,6 @@
 
 <?php
 	get_template_part( 'template-parts/ywig-components/post-preview-navigation' );
-
-
 
 get_footer();
 

@@ -21,9 +21,8 @@ if ( is_singular() ) {
 	<div class="entry-content">
 
 			<?php the_content(); ?>
-
+			<?php wp_link_pages(); ?>
 	</div>
-
 	<footer class="entry-footer">
 	<div class="entry-meta">
 
@@ -36,7 +35,6 @@ if ( is_singular() ) {
 	<span class="entry-meta-category">
 		<?php the_category( ', ' ); ?>
 	</span>
-
 </div>
 
 
