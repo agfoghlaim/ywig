@@ -565,7 +565,6 @@ article {
           font-size: 0.8rem;
           font-weight: 700;
           margin-right: 0.5rem;
-   
         }
       }
       a.btn-dark {
@@ -809,6 +808,7 @@ h2.twist-smaller {
 // All headers (except proj/youthclub page template special headers)
 // All templates wrapped in .ywig-content-wrap.
 // Bascially templates that don't use the special proj/youthclub header.
+.ywig-comments-wrap,
 .locations-page-intro,
 .contact-page-intro,
 .projects-page-intro,
@@ -826,6 +826,7 @@ h2.twist-smaller {
   padding-right: 12rem;
 }
 @media only screen and (max-width: 1200px) {
+  .ywig-comments-wrap,
   .locations-page-intro,
   .contact-page-intro,
   .projects-page-intro,
@@ -844,6 +845,7 @@ h2.twist-smaller {
   }
 }
 @media only screen and (max-width: 992px) {
+  .ywig-comments-wrap,
   .locations-page-intro,
   .contact-page-intro,
   .projects-page-intro,
@@ -863,6 +865,7 @@ h2.twist-smaller {
 }
 
 @media only screen and (max-width: 768px) {
+  .ywig-comments-wrap,
   .locations-page-intro,
   .contact-page-intro,
   .projects-page-intro,
@@ -881,6 +884,7 @@ h2.twist-smaller {
   }
 }
 @media only screen and (max-width: 320px) {
+  .ywig-comments-wrap,
   .locations-page-intro,
   .contact-page-intro,
   .projects-page-intro,
@@ -897,6 +901,53 @@ h2.twist-smaller {
   }
 }
 
+//================================
+/*
+Comments.
+
+*/
+.ywig-comments-wrap {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+
+  background: $dark-white;
+  h2 {
+    font-size: $heading-3;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    li {
+      margin-top: 1rem;
+      border-radius: 0.2rem;
+      .comment-body {
+        background: $white;
+        padding: 1rem;
+      }
+    }
+  }
+  .ywig-pagination {
+    display: grid;
+    padding: 0;
+    margin: 3rem;
+  }
+  @media only screen and (max-width: 568px) {
+    .ywig-pagination {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+  .comment-respond {
+    form {
+      textarea {
+        border-radius: 0.2rem;
+      }
+      .comment-form-comment {
+        display: grid;
+      }
+    }
+  }
+}
 //======================================================================================================
 /*
 Required wp classes

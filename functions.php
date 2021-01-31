@@ -36,11 +36,23 @@ require get_template_directory() . '/inc/svg-icons.php';
  add_theme_support( 'post-thumbnails' );
 
 /*
+	* Required by wp:
 	* Let WordPress manage the document title.
 	* This theme does not use a hard-coded <title> tag in the document head,
 	* WordPress will provide it for us.
 	*/
 add_theme_support( 'title-tag' );
+
+
+// Required by wp: Add default posts and comments RSS feed links to head.
+add_theme_support( 'automatic-feed-links' );
+
+
+// Required by wp: Threaded comment reply styles.
+if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+	wp_enqueue_script( 'comment-reply' );
+}
+
 
 // temp, does this allow editors to upload files via rest-api? yes
 // temp, does it stop admin having capability? No it doesn't.
@@ -150,12 +162,12 @@ function ywig_quickpost() {
 		endwhile;
 		wp_reset_postdata();
 		$ans = ob_get_clean();
-		if( $ans ) :
+		if ( $ans ) :
 			wp_send_json_success( $ans );
 		endif;
 	else :
 		// this is not an error though!!
-		//wp_send_json_error( mixed $data = null, int $status_code = null, int $options )
+		// wp_send_json_error( mixed $data = null, int $status_code = null, int $options )
 		wp_send_json_success( 'No more posts' );
 	endif;
 }
@@ -437,7 +449,7 @@ if ( ! function_exists( 'ywig_breadcrumbs' ) ) {
 					ywig_wrap_in_li_span( 'active', '', get_the_title() );
 			} elseif ( is_page() && $post->post_parent ) {
 				$parent_id = $post->post_parent;
-				$pg      = get_post( $parent_id );
+				$pg        = get_post( $parent_id );
 
 				// For pages with a parent page.
 
