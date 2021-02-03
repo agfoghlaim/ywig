@@ -17,7 +17,8 @@ section.quickposts,
   .qp-over {
     @include torn-overlay;
     top: -1rem !important; // !important just to be on the safe side.
-    background: url(/ywig-theme/wp-content/themes/ywig-theme/src/img/torn_blue_up.svg);
+    // background: url(/ywig-theme/wp-content/themes/ywig-theme/src/img/torn_blue_up.svg);
+    background: url(/wp-content/themes/ywig-theme/src/img/torn_blue_up.svg);
   }
   .section-tagline {
     margin: 0rem 1rem;

@@ -25,7 +25,6 @@ $socials  = array( $twitter, $facebook, $youtube );
 		<img src="<?php echo esc_url( $logo ); ?>" alt="Youth Work Ireland Galway Logo" />
 	</a>
 	<!-- class="collapse navbar-collapse navbar-fixed-top" -->
-	<nav id="navbarSupportedContent" >
 	<button 
 	class="navbar-toggler" 
 			data-toggle="collapse" 
@@ -41,6 +40,7 @@ $socials  = array( $twitter, $facebook, $youtube );
 				<?php echo ywig_get_theme_svg( 'close_menu' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 			</span>
 		</button><!-- #primary-mobile-menu -->
+	<nav id="navbarSupportedContent" >
 		<!-- <button 
 			class="navbar-toggler" 
 			data-toggle="collapse" 

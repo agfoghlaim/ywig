@@ -32,7 +32,7 @@ if ( ! function_exists( 'ywig_get_theme_svg' ) ) {
 
 		// Make sure that only our allowed tags and attributes are included.
 		$svg = wp_kses(
-			TwentyTwenty_SVG_Icons::get_svg( $svg_name, $group, $color ),
+			YWIG_SVG_Icons::get_svg( $svg_name, $group, $color ),
 			array(
 				'svg'     => array(
 					'class'       => true,

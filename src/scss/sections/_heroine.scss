@@ -15,7 +15,7 @@
     position: relative;
 
     .heroine-watermark {
-      width: 12rem;
+      width: 9rem;
       margin-right: -1rem;
       filter: drop-shadow(1px 1px 2px $black);
       display: grid;
@@ -83,7 +83,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: url(/ywig-theme/wp-content/themes/ywig-theme/src/img/texture_comp.png);
+    //background: url(/ywig-theme/wp-content/themes/ywig-theme/src/img/texture_comp.png);
+    background: url(/wp-content/themes/ywig-theme/src/img/texture_comp.png);
     opacity: 0.4;
     background-repeat: no-repeat;
     background-size: cover;

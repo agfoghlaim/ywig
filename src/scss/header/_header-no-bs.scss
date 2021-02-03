@@ -67,7 +67,7 @@
         word-wrap: break-word;
         white-space: nowrap;
       }
-      
+
       a:hover {
         border-bottom: 0.2rem solid $greeny-blue-alt;
       }
@@ -108,7 +108,8 @@
     grid-gap: 2rem;
     padding: 0rem 6rem;
     .navbar-toggler {
-      grid-column-start: 1; // needs to be directly before the <nav> in DOM for accessibility, keep it left visually.
+      // grid-column-start: 1;
+      // needs to be directly before the <nav> in DOM for accessibility, keep it left visually.
       background-color: transparent;
       border: 1px solid transparent;
       align-items: center;
@@ -117,6 +118,7 @@
       height: 3rem;
       background: $white;
       cursor: pointer;
+      justify-self: flex-end;
       padding-bottom: 4px;
 
       span.dropdown-icon.open {
@@ -151,6 +153,9 @@
       align-self: center;
       img {
         width: 10rem;
+        display: grid;
+        justify-self: center;
+        transition: all 0.1s ease;
       }
     }
     .navbar-socials {
@@ -174,6 +179,7 @@
     align-self: flex-end;
     .sub-menu-toggle {
       background: none;
+
       border: none;
       svg {
         fill: $black;
@@ -306,9 +312,6 @@
   // Don's show .current-ancestor underline on mobile because all .sub-menus are expanded.
   header {
     ul#menu-main-menu {
-      margin-top: 2rem;
-      background: rgba(69, 66, 66, 0.98); //$black with opacity;
-
       li.current-menu-ancestor {
         border-bottom: none;
       }
@@ -324,12 +327,12 @@
     }
   }
 
-  .header-left {
-    .navbar-toggler {
-      position: absolute;
-      right: 1rem;
-      top: -3rem;
-    }
+  .header .header-left {
+    padding: 0 1rem;
+    grid-auto-flow: column;
+    grid-template-columns: 8rem 8rem; //logo &
+    justify-content: space-between;
+    align-items: center;
 
     // Don't show social media icons on mobile.
     div.navbar-socials {
@@ -337,14 +340,15 @@
     }
 
     #navbarSupportedContent {
-      position: absolute;
-      top: 5rem;
+      top: 7rem;
       width: 100%;
-      z-index: 99;
-      height: 0;
-      a[href] {
-        //  text-decoration: underline;
-      }
+      height: 100%;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      width: 0;
+      // transition: width 0.3s linear;
+      overflow-x: hidden;
       a {
         font-size: 1.25rem;
         display: block;
@@ -376,7 +380,6 @@
             display: grid;
             grid-auto-flow: row;
             background: none;
-            // background: pink;
             position: relative;
             padding: 0rem;
             li {
@@ -399,7 +402,9 @@
       }
     }
     #navbarSupportedContent.show {
-
+      background: $black;
+      background: rgba(69, 66, 66, 0.98);
+      width: 100%;
       // transform: translateX(0vw);
 
       ul {

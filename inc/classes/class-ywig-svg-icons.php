@@ -5,12 +5,12 @@
  * @package ywig-theme
  */
 
-if ( ! class_exists( 'TwentyTwenty_SVG_Icons' ) ) {
+if ( ! class_exists( 'YWIG_SVG_Icons' ) ) {
 	/**
 	 * SVG ICONS CLASS
 	 * Retrieve the SVG code for the specified icon. Based on a solution in Twenty Nineteen.
 	 */
-	class TwentyTwenty_SVG_Icons {
+	class YWIG_SVG_Icons {
 		/**
 		 * GET SVG CODE
 		 * Get the SVG code for the specified icon

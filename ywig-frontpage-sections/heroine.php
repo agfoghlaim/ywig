@@ -62,7 +62,7 @@ $watermark_url = wp_get_attachment_url( get_theme_mod( 'heroine_watermark_image'
 				}
 
 				?>
-			<a href="#">More</a>
+			<!-- <a href="#a">More</a> -->
 			</div>
 	</div>
 

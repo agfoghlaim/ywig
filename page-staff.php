@@ -35,8 +35,12 @@
 		$staff_image     = get_field( $the_term->taxonomy . '_pic', 'term_' . $the_term->term_id );
 		$job             = get_field( $the_term->taxonomy . '_job_title', 'term_' . $the_term->term_id );
 		$about           = get_field( $the_term->taxonomy . '_about', 'term_' . $the_term->term_id );
-		$staff_image_url = $staff_image['sizes']['thumbnail'];
+		// $staff_image_url = $staff_image['sizes']['thumbnail'];
 
+		if ( is_array( $staff_image ) || is_object( $staff_image ) ) {
+			$staff_image_url = $staff_image['sizes']['thumbnail'];
+		} 
+	
 		if ( ! empty( $staff_image['url'] ) ) {
 			$is_staff_pic = true;
 		} else {
