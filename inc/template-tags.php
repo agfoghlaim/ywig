@@ -72,7 +72,7 @@ function ywig_single_yc_project_socials( $post_id = null ) {
 				<a href="<?php echo esc_url( $facebook ); ?>"target="_blank" rel="noopener noreferrer" title="Facebook" class="ywig-social-btn">
 					<!-- <span class="ywig-icon-sidebar ywig-icon ywig-facebook"></span> -->
 					<span class="ywig-icon-sidebar ywig-svg-icon">
-					<?php echo ywig_get_theme_svg( 'facebook' ); ?>
+					<?php ywig_the_theme_svg( 'facebook' ); ?>
 					</span>
 					<span class="sr-only">Visit <?php echo esc_html( get_the_title() ); ?>'s Facebook</span></a>
 				<?php
@@ -82,7 +82,7 @@ function ywig_single_yc_project_socials( $post_id = null ) {
 				<a href="<?php echo esc_url( $twitter ); ?>"target="_blank" rel="noopener noreferrer" title="Twitter" class="ywig-social-btn">
 					<!-- <span class="ywig-icon-sidebar ywig-icon ywig-twitter"></span> -->
 					<span class="ywig-icon-sidebar ywig-svg-icon">
-					<?php echo ywig_get_theme_svg( 'twitter', 'social' ); ?>
+					<?php ywig_the_theme_svg( 'twitter' ); ?>
 					</span>
 					<span class="sr-only">Visit <?php echo esc_html( get_the_title() ); ?>'s Twitter</span></a>
 				<?php
@@ -92,7 +92,7 @@ function ywig_single_yc_project_socials( $post_id = null ) {
 				<a href="<?php echo esc_url( $instagram ); ?>"target="_blank" rel="noopener noreferrer" title="Instagram" class="ywig-social-btn">
 					<!-- <span class="ywig-icon-sidebar ywig-icon ywig-instagram"></span> -->
 					<span class="ywig-icon-sidebar ywig-svg-icon">
-					<?php echo ywig_get_theme_svg( 'instagram', 'social' ); ?>
+					<?php ywig_the_theme_svg( 'instagram' ); ?>
 					</span>
 					<span class="sr-only">Visit <?php echo esc_html( get_the_title() ); ?>'s Instagram</span></a>
 				<?php
@@ -173,7 +173,7 @@ function ywig_single_yc_project_staff( $post_id = null, $post_type ) {
 							<img src="<?php echo esc_url( $staff_image_url ); ?>" alt="<?php echo esc_attr( $staff_image['alt'] ); ?>" description="<?php echo esc_html( $staff_image['description'] ); ?>" />
 							<?php
 						} else {
-							echo ywig_get_theme_svg( 'user' );
+							ywig_the_theme_svg( 'user' );
 						}
 						?>
 
@@ -344,7 +344,7 @@ function ywig_render_socials( $twitter, $facebook, $youtube ) {
 	<a href="<?php echo esc_url( $twitter ); ?>" target="_blank" rel="noopener noreferrer" title="Twitter" class="ywig-social-btn">
 	<!-- <span class="ywig-icon-sidebar ywig-icon ywig-twitter"></span> -->
 	<span class="ywig-icon-sidebar ywig-svg-icon">
-		<?php echo ywig_get_theme_svg( 'twitter', 'social' ); ?>
+		<?php ywig_the_theme_svg( 'twitter' ); ?>
 
 
 	</span>
@@ -356,7 +356,7 @@ function ywig_render_socials( $twitter, $facebook, $youtube ) {
 	<a href="<?php echo esc_url( $facebook ); ?>" target="_blank" rel="noopener noreferrer" title="Facebook" class="ywig-social-btn">
 	<!-- <span class="ywig-icon-sidebar ywig-icon ywig-facebook"></span> -->
 	<span class="ywig-icon-sidebar ywig-svg-icon">
-		<?php echo ywig_get_theme_svg( 'facebook', 'social' ); ?>
+		<?php ywig_the_theme_svg( 'facebook' ); ?>
 	</span>
 	<span class="sr-only">Visit our Facebook</span></a>
 		<?php
@@ -366,7 +366,7 @@ function ywig_render_socials( $twitter, $facebook, $youtube ) {
 	<a href="<?php echo esc_url( $youtube ); ?>" target="_blank" rel="noopener noreferrer" title="YouTube" class="ywig-social-btn">
 	<!-- <span class="ywig-icon-sidebar ywig-icon ywig-youtube"></span> -->
 	<span class="ywig-icon-sidebar ywig-svg-icon">
-		<?php echo ywig_get_theme_svg( 'youtube', 'social' ); ?>
+		<?php ywig_the_theme_svg( 'youtube' ); ?>
 	</span>
 	<span class="sr-only">Visit our Youtube</span></a>
 		<?php

@@ -32,7 +32,7 @@ $args = array(
 
 					$youth_clubs->the_post();
 
-					get_template_part( 'template-parts/content/content', 'youthclub-intro' ); 
+					get_template_part( 'template-parts/content/content', 'youthclub-intro' );
 
 				endwhile;
 

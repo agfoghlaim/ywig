@@ -47,7 +47,7 @@ function ywig_load_scripts() {
 
 	}
 
-	// Dec 2020 for rest endpoint (load more quickposts).
+	// Dec 2020 nonce for rest endpoint (load more quickposts).
 	wp_localize_script(
 		'main',
 		'rest_object',

@@ -18,7 +18,8 @@ get_header();
 			<div class="<?php echo esc_attr( $post->post_type ); ?>-content">
 
 			<?php
-			// afcs
+
+			// afcs.
 			//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in template-tags.php.
 			echo ywig_single_yc_project_acfs( get_the_ID(), $post->post_type );
 			?>
@@ -39,7 +40,7 @@ get_header();
 			</div>
 			</div>
 
-	
+
 			<aside class="<?php echo esc_attr( $post->post_type ); ?>-aside">
 			<?php
 			//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in template-tags.php.
@@ -50,7 +51,7 @@ get_header();
 			echo ywig_single_yc_project_staff( get_the_ID(), $post->post_type );
 			?>
 			</aside>
-	
+
 
 	</div> <!-- .cpt-content-container-->
 </article>

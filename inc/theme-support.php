@@ -23,3 +23,18 @@ function wptp_add_categories_to_attachments() {
 	register_taxonomy_for_object_type( 'category', 'attachment' );
 }
 add_action( 'init', 'wptp_add_categories_to_attachments' );
+
+
+add_theme_support( 'post-thumbnails' );
+
+/*
+	* Required by wp:
+	* Let WordPress manage the document title.
+	* This theme does not use a hard-coded <title> tag in the document head,
+	* WordPress will provide it for us.
+	*/
+add_theme_support( 'title-tag' );
+
+
+// Required by wp: Add default posts and comments RSS feed links to head.
+add_theme_support( 'automatic-feed-links' );

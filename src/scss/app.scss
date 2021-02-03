@@ -197,6 +197,9 @@ p {
   line-height: 150%;
 }
 
+span.ywig-error-text {
+  color: $red-alt;
+}
 // end fonts ----------------------------------
 /* Font Sizes */
 $baseFontSize: 1rem;

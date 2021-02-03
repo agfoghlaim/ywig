@@ -11,8 +11,6 @@
 
 ?>
 
-
-
 	<?php
 	if ( $myposts->have_posts() ) :
 

@@ -24,7 +24,7 @@ $socials  = array( $twitter, $facebook, $youtube );
 	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="custom-logo-link" rel="home">
 		<img src="<?php echo esc_url( $logo ); ?>" alt="Youth Work Ireland Galway Logo" />
 	</a>
-	<!-- class="collapse navbar-collapse navbar-fixed-top" -->
+
 	<button 
 	class="navbar-toggler" 
 			data-toggle="collapse" 
@@ -64,29 +64,10 @@ $socials  = array( $twitter, $facebook, $youtube );
 					'container'      => false,
 					'menu_class'     => 'navbar-nav',
 					'fallback_cb'    => false,
-					// 'walker'          => new WP_Bootstrap_Navwalker(),
 				)
 			);
 			?>
 	</nav>
-
-	<?php
-		// wp_nav_menu(
-		// array(
-
-		// 'theme_location'  => 'main',
-		// 'depth'           => 0, // 1 = no dropdowns, 2 = with dropdowns.
-		// 'container'       => 'nav',
-		// 'show_toggles'    => true,
-		// 'container_class' => 'collapse navbar-collapse navbar-fixed-top',
-		// 'container_id'    => 'navbarSupportedContent',
-		// 'menu_class'      => 'navbar-nav',
-		// 'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
-		// 'walker'          => new WP_Bootstrap_Navwalker(),
-		// )
-		// );
-	?>
-
 
 	<div class="navbar-socials">
 		<?php

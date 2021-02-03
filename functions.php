@@ -5,16 +5,22 @@
  * @package ywig-theme
  */
 
+/**
+ * Required Files.
+ */
 require get_template_directory() . '/inc/cleanup.php';
 require get_template_directory() . '/inc/function-admin.php';
 require get_template_directory() . '/inc/enqueue.php';
 require get_template_directory() . '/inc/theme-support.php';
 require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/template-functions.php';
+
+/**
+ * Required Files for Theme Customizer.
+ */
 require get_template_directory() . '/inc/customizer/heroine-section-alt.php';
 require get_template_directory() . '/inc/customizer/about-section-alt.php';
 require get_template_directory() . '/inc/customizer/what-section.php';
-// require get_template_directory() . '/inc/customizer/about-section.php';
 require get_template_directory() . '/inc/customizer/counselling.php';
 require get_template_directory() . '/inc/customizer/projects.php';
 require get_template_directory() . '/inc/customizer/clubs.php';
@@ -24,28 +30,20 @@ require get_template_directory() . '/inc/customizer/youthclubs-section.php';
 require get_template_directory() . '/inc/customizer/quickposts.php';
 require get_template_directory() . '/inc/customizer/funders-section.php';
 
+
+/**
+ * Required Files - Custom Post Types.
+ */
 require get_template_directory() . '/inc/cpt/youth-clubs-cpt.php';
 require get_template_directory() . '/inc/cpt/projects-cpt.php';
 require get_template_directory() . '/inc/cpt/quickposts-cpt.php';
 
-// Handle SVG icons.
+/**
+ * Required Files - Handle svgs.
+ */
 require get_template_directory() . '/inc/classes/class-ywig-svg-icons.php';
 require get_template_directory() . '/inc/svg-icons.php';
 
-
- add_theme_support( 'post-thumbnails' );
-
-/*
-	* Required by wp:
-	* Let WordPress manage the document title.
-	* This theme does not use a hard-coded <title> tag in the document head,
-	* WordPress will provide it for us.
-	*/
-add_theme_support( 'title-tag' );
-
-
-// Required by wp: Add default posts and comments RSS feed links to head.
-add_theme_support( 'automatic-feed-links' );
 
 
 // Required by wp: Threaded comment reply styles.
@@ -72,11 +70,10 @@ $edit_admin->add_cap( 'unfiltered_upload' );
  * @return string Nav menu item start element.
  */
 function ywig_add_sub_menu_toggle( $output, $item, $depth, $args ) {
-	// if ( 0 === $depth && in_array( 'menu-item-has-children', $item->classes, true ) ) {
+
 	if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
 
 		// Add toggle button.
-		// $output .= '<button class="sub-menu-toggle" aria-expanded="false" onClick="twentytwentyoneExpandSubMenu(this)">';
 		$output .= '<button class="sub-menu-toggle" aria-expanded="false">';
 		$output .= '<span class="icon-plus">' . ywig_get_theme_svg( 'plus' ) . '</span>';
 		$output .= '<span class="icon-minus">' . ywig_get_theme_svg( 'minus' ) . '</span>';
@@ -90,7 +87,7 @@ add_filter( 'walker_nav_menu_start_el', 'ywig_add_sub_menu_toggle', 10, 4 );
 /**
  * Check if an item exists. Should be in some sort of util file.
  *
- * @param string $url - preferably a fully qualified URL
+ * @param string $url - preferably a fully qualified URL.
  * @return boolean - true if it is out there somewhere
  */
 function ywig_url_exists( $url ) {
@@ -104,46 +101,29 @@ function ywig_url_exists( $url ) {
 	return false;
 }
 
-
-
-// Load more quickposts ajax
-
-function load_more_posts() {
-
-	$next_page = $_POST['current_page'] + 1;
-	$args      = array(
-		'posts_per_page' => 2, // NOTE. if this is changed button.load-more-quickposts data attribute must also be updated
-		'paged'          => $next_page,
-		'post_type'      => 'quickpost',
-		'post_status'    => 'publish',
-		'orderby'        => 'post_date',
-		'order'          => 'DESC',
-
-	);
-
-	$quickposts = new WP_Query( $args );
-	if ( $quickposts->have_posts() ) :
-		ob_start();
-		while ( $quickposts->have_posts() ) :
-			$quickposts->the_post();
-			get_template_part( 'template-parts/content/content', 'quickpost' );
-	endwhile;
-		wp_reset_postdata();
-		wp_send_json_success( ob_get_clean() );
-	else :
-		// this is not an error though!!
-		wp_send_json_error( 'no more news!' );
-	endif;
-
-}
-add_action( 'wp_ajax_nopriv_load_more_posts', 'load_more_posts' );
-add_action( 'wp_ajax_load_more_posts', 'load_more_posts' );
-
-// this goesin a plugin
-
+/**
+ *
+ * Query for more quickposts and send to front in json.
+ *
+ * NOTE: phpcs error on $_POST['current_page']. 'Processing form data without nonce verification.phpcs'.
+ *
+ * nonce is verified in the register_rest_route permission_callback? (almost certain).
+ *
+ * https://developer.wordpress.org/rest-api/extending-the-rest-api/adding-custom-endpoints/#permissions-callback..."Once you register a permission_callback, you will need to authenticate your requests (for example by including a nonce parameter) or you will receive a rest_forbidden error."
+ */
 function ywig_quickpost() {
-	$next_page = $_POST['current_page'] + 1;
-	$args      = array(
+	$current_page = wp_unslash( $_POST['current_page'] );
+
+	if ( isset( $current_page ) && is_numeric( $current_page ) ) {
+
+		$next_page = $current_page + 1;
+
+	} else {
+
+		wp_send_json_error( 'Missing Page Number' );
+
+	}
+	$args = array(
 		'posts_per_page' => 6,
 		'paged'          => $next_page,
 		'post_type'      => 'quickpost',
@@ -166,8 +146,6 @@ function ywig_quickpost() {
 			wp_send_json_success( $ans );
 		endif;
 	else :
-		// this is not an error though!!
-		// wp_send_json_error( mixed $data = null, int $status_code = null, int $options )
 		wp_send_json_success( 'No more posts' );
 	endif;
 }
@@ -181,6 +159,7 @@ add_action(
 				'methods'             => 'POST',
 				'callback'            => 'ywig_quickpost',
 				'permission_callback' => function () {
+
 					// always return true because anyone can read posts.
 					// having this ensures the wp_rest nonce is checked though.
 					// will send 'rest_cookie_invalid_nonce' if no valid nonce.
@@ -212,7 +191,7 @@ function ywig_wrap_in_li_span( $active = '', $link = '', $txt ) {
 
 	// If $active is set, add 'class="active" as well as 'aria-current="page"' to the <li> attributes.
 	if ( '' !== $active ) {
-		$active = ' class="' . $active . '"' . ' aria-current="page"';
+		$active = ' class="' . $active . '" aria-current="page"';
 	}
 
 	$open_li_span  = '<li itemtype="https://schema.org/ListItem"' . $active . '><span>';
@@ -378,7 +357,7 @@ if ( ! function_exists( 'ywig_breadcrumbs' ) ) {
 					ywig_wrap_in_li_span( 'active', '', get_the_time( 'Y' ) );
 			} elseif ( is_single() && ! is_attachment() ) {
 
-				if ( get_post_type() != 'post' ) {
+				if ( get_post_type() !== 'post' ) {
 
 					// Eg. 'home/project(cpt)/shout. Because no categories for cpts.
 					$post_type      = get_post_type_object( get_post_type() );
@@ -426,7 +405,7 @@ if ( ! function_exists( 'ywig_breadcrumbs' ) ) {
 					// ie. No <a> tag on News page... 'Home / News'.
 					ywig_wrap_in_li_span( 'active', '', 'News' );
 				}
-			} elseif ( ! is_single() && ! is_page() && get_post_type() != 'post' && ! is_404() && ! is_search() ) {
+			} elseif ( ! is_single() && ! is_page() && get_post_type() !== 'post' && ! is_404() && ! is_search() ) {
 
 					// This one is a post type archive. Eg. '/project(cpt)', '/youthclub(cpt)'.
 					$post_type = get_post_type_object( get_post_type() );
@@ -442,7 +421,7 @@ if ( ! function_exists( 'ywig_breadcrumbs' ) ) {
 					}
 				}
 
-					echo '<li class="active" aria-current="page"><span>' . get_the_title() . '</span></li>';
+					echo '<li class="active" aria-current="page"><span>' . esc_html( get_the_title() ) . '</span></li>';
 			} elseif ( is_page() && ! $post->post_parent ) {
 
 				// Regular page with no parent. Eg. '/resources'.

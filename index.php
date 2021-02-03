@@ -65,10 +65,9 @@ if ( is_home() ) {
 	</div>
 </div>
 <div class="ywig-pagination">
-	<?php
-	// TODO check this is all escaped properly in template-tags before phpcs ignoring it.
-	echo paginate_links();
-	?>
+
+	<?php echo wp_kses_post( paginate_links() ); ?>
+
 </div>
 
 <?php

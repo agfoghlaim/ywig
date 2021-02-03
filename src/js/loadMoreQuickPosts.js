@@ -61,6 +61,7 @@ const loadMoreQuickPosts = () => {
     const params = new URLSearchParams();
     params.append('action', 'load_more_posts');
     params.append('current_page', currentPage);
+    //params.append('current_page', null);
 
     reqOngoing = true;
 
@@ -73,9 +74,11 @@ const loadMoreQuickPosts = () => {
       });
   
       const ans = await response.json();
-
+      // console.log("ans", ans);
       reqOngoing = false;
-      
+      if( !ans.success ) {
+        throw new Error();
+      }
       // this shouldn't happen because button should have been disabled on previous request. 
       if(ans.data === 'No more posts') {
         quickBtn.disabled = true;
@@ -91,6 +94,7 @@ const loadMoreQuickPosts = () => {
       quickPostsWrap.innerHTML += ans.data;
     } catch(err) {
       console.error('Error fetching posts.');
+      quickPostsWrap.innerHTML += '<span class="ywig-error-text">Sorry, something went wrong while getting the posts. </span>';
     }
   }
 

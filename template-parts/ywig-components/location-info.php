@@ -22,17 +22,16 @@
 		// Note need a both map_src & map_link TODO.
 		?>
 			<div class="ywig-locations-map-wrap">
-				
-				<?php
-				if ( ! empty( $latitude[0] ) && ! empty( $longitude[0] ) && ! empty( $address[0] ) ) {
-					$mapbox_key = defined( 'YWIG_MAPBOX_KEY' ) ? YWIG_MAPBOX_KEY : false;
-					?>
+		<?php
+		if ( ! empty( $latitude[0] ) && ! empty( $longitude[0] ) && ! empty( $address[0] ) ) {
+			$mapbox_key = defined( 'YWIG_MAPBOX_KEY' ) ? YWIG_MAPBOX_KEY : false;
+			?>
 						<img 
 						src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s-y+000(<?php echo esc_html( $longitude[0] ); ?>,<?php echo esc_html( $latitude[0] ); ?>)/<?php echo esc_html( $longitude[0] ); ?>,<?php echo esc_html( $latitude[0] ); ?>,14/200x200?access_token=<?php echo esc_attr( $mapbox_key ); ?>" 
 						alt="Map preview for <?php echo esc_html( $address[0] ); ?>.">
 					<?php
-				}
-				?>
+		}
+		?>
 
 				<?php
 				if ( ! empty( esc_url( $map_link[0] ) ) ) {
@@ -48,7 +47,7 @@
 					<?php
 				}
 				?>
-			
+
 			</div><!-- .ywig-locations-map-wrap -->
 			<?php
 	}

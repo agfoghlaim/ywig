@@ -46,11 +46,11 @@ $youtube  = esc_url( get_option( 'youtube_link' ) );
 				}
 
 				?>
-				<p class="ywig-copyright">&copy;<?php bloginfo( 'name' ); ?> <?php echo esc_html( date( 'Y' ) ); ?></p>
+				<p class="ywig-copyright">&copy;<?php bloginfo( 'name' ); ?> <?php echo esc_html( gmdate( 'Y' ) ); ?></p>
 			</div>
 
 			<div class="footer-right item">
-	
+
 				<div class="footer-address-wrap">
 					<p class=""><?php echo esc_html( $company_address_1 ); ?></p>
 					<p class=""><?php echo esc_html( $company_address_2 ); ?></p>

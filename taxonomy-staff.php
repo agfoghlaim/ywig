@@ -35,7 +35,7 @@ $about           = get_field( $the_term->taxonomy . '_about', 'term_' . $the_ter
 		$is_staff_pic = false;
 	}
 
-	// wrap to get the css classes for page-staff.php
+	// wrap to get the css classes for page-staff.php.
 	?>
 
 	<div class="taxonomy-staff-wrap">
@@ -50,7 +50,7 @@ $about           = get_field( $the_term->taxonomy . '_about', 'term_' . $the_ter
 
 		// Get projects or youthclubs where this staff member works.
 		$post_args = array(
-			'post_type'   => $this_taxonomys_associated_post_type, // 'project' or 'youthclub'.
+			'post_type'   => $this_taxonomys_associated_post_type, // either 'project' or 'youthclub'.
 			'post_status' => 'publish',
 			// @codingStandardsIgnoreStart WordPress.VIP.SlowDBQuery.slow_db_query
 			'tax_query'   => array(

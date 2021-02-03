@@ -14,7 +14,9 @@ $previous_post = get_previous_post();
 	<div class="ywig-post-nav">
 
 	<?php
+	//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped --Escaped in function
 	echo ywig_get_post_nav_preview( $next_post );
+	//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped --Escaped in function
 	echo ywig_get_post_nav_preview( $previous_post );
 	?>
 	</div>

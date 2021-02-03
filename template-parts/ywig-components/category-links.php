@@ -14,33 +14,29 @@
 echo '<div class="category-links-wrap">';
 
 	// get all categories (ignores unused categories by default).
-	$kats = get_categories(
-		// array(
-		// 'parent' => 0, // only top level categories
-		// )
+	$kats = get_categories();
+
+foreach ( $kats as $kat ) {
+
+	// get this category url.
+	$kat_link = get_category_link( $kat->term_id );
+
+	// prepare link html.
+	$category_link = sprintf(
+		'<a class="btn btn-primary" href="%1$s" alt="%2$s">%3$s</a>',
+		esc_url( $kat_link ),
+		/* translators: %s: category name. */
+		esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $kat->name ) ),
+		esc_html( $kat->name ) . '<span> (' . esc_html( $kat->category_count ) . ')</span>'
 	);
 
-	foreach ( $kats as $kat ) {
-
-		// get this category url.
-		$kat_link = get_category_link( $kat->term_id );
-
-		// prepare link html.
-		$category_link = sprintf(
-			'<a class="btn btn-primary" href="%1$s" alt="%2$s">%3$s</a>',
-			esc_url( $kat_link ),
-			/* translators: %s: category name. */
-			esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $kat->name ) ),
-			esc_html( $kat->name ) . '<span> (' . esc_html( $kat->category_count ) . ')</span>'
-		);
-
-		// phpcs:ignore WordPress.Security.EscapeOutput
-		echo $category_link;
-	}
+	// phpcs:ignore WordPress.Security.EscapeOutput
+	echo $category_link;
+}
 	echo '</div>';
 
 	// for mobile?.
-	?>
+?>
 	<div class="category-links-wrap-mobile">
 
 	<form id="category-select" class="category-select" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
@@ -58,7 +54,10 @@ echo '<div class="category-links-wrap">';
 		<?php $replace = "<select$1 onchange='return this.form.submit()'>"; ?>
 		<?php $select = preg_replace( '#<select([^>]*)>#', $replace, $select ); ?>
 
-		<?php echo $select; ?>
+		<?php
+		// TODO. Handle this properly in a js file.
+		echo $select;
+		?>
 
 		<noscript>
 			<input type="submit" value="View" />

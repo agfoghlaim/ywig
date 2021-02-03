@@ -12,7 +12,7 @@
 <?php
 			set_query_var( 'taxonomy_loc_term', $this_term );
 			get_template_part( 'template-parts/content/content-taxonomy-entry-header' );
-			?>
+?>
 		<div class="location-taxonomy-content-wrap">
 			<section class="section-location-info">
 				<?php
@@ -23,7 +23,7 @@
 		<aside class="section-location-projects">
 			<?php
 			if ( have_posts() ) :
-				 echo '<h3>Projects in ' . esc_html( $this_term->name ) . '<h3>';
+				echo '<h3>Projects in ' . esc_html( $this_term->name ) . '<h3>';
 				?>
 				<div class="location-tax-project-wrap">	
 				<?php

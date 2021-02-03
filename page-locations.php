@@ -27,9 +27,7 @@
 	if ( is_wp_error( $all_locations ) ) {
 		return;
 	}
-	// echo '<pre>';
-	// var_dump( $all_locations );
-	// echo '</pre>';
+
 	foreach ( $all_locations as $location => $value ) {
 
 		$html_id   = sprintf( 'pills-%s-tab', $value->slug );

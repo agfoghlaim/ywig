@@ -175,10 +175,13 @@
       }
       svg {
         background: #efb73e;
-        padding: 3rem;
+        padding: 2rem;
         border-radius: 2px;
         box-sizing: border-box;
-    
+        width: 8rem;
+        height: 8rem;
+        fill: $black;
+  
       }
     }
   }

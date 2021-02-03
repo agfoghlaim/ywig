@@ -5,7 +5,6 @@
  * @package ywig-theme
  */
 
-
 ?>
 
 <!DOCTYPE html>

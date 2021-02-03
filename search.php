@@ -40,7 +40,7 @@ get_template_part( 'template-parts/content/content-page-entry-header-any' );
 					<div class="search-result" >
 						<?php the_post_thumbnail( 'thumb' ); ?>
 						<?php the_excerpt(); ?>
-						<span class="sr-only"><?php echo 'Read more about ' . esc_html__( the_title() ); ?></span>
+						<span class="sr-only"><?php echo 'Read more about ' . esc_html( the_title() ); ?></span>
 						<a class="btn btn-dark" href="<?php echo esc_url( get_permalink() ); ?>">More</a>
 					</div>
 				</div>
@@ -56,9 +56,8 @@ get_template_part( 'template-parts/content/content-page-entry-header-any' );
 	?>
 </div>
 <div class="ywig-pagination">
-	<?php echo paginate_links(); ?>
+	<?php echo wp_kses_post( paginate_links() ); ?>
 </div>
-<h1>search.php</h1>
 
 <?php
 get_footer();

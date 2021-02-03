@@ -40,7 +40,6 @@
 	?>
 	<div class="quickpost-text">
 		<h3 class="heading-size-5">
-			<?php //the_title(); ?> 
 			<?php echo esc_html( wp_trim_words( wp_kses( get_the_title(), array() ), 6, '' ) ); ?>
 		</h3>
 		<p><mark>

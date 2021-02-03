@@ -16,7 +16,6 @@ get_header(); ?>
 
 	if ( ! empty( $the_cat ) ) {
 
-		// set_query_var( 'use_title', $the_cat);
 		$t = 'News - ' . $the_cat;
 		set_query_var( 'use_title', $t );
 		get_template_part( 'template-parts/content/content-page-entry-header-any' );
@@ -44,7 +43,7 @@ get_header(); ?>
 	</div>
 </div>
 <div class="ywig-pagination">
-	<?php echo paginate_links(); ?>
+	<?php echo wp_kses_post( paginate_links() ); ?>
 </div>
 
 <?php

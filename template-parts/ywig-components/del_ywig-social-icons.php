@@ -3,9 +3,7 @@
  * Displays social icons. Used in footer.
  *
  * @package ywig-theme
- * 
  */
-
 
 $facebook = get_option( 'facebook_link' );
 $youtube  = get_option( 'youtube_link' );

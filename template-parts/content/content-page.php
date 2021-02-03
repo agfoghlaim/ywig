@@ -15,7 +15,6 @@ if ( is_singular() ) {
 <article  id="post-<?php the_ID(); ?>" <?php post_class( $ywig_class ); ?>>
 
 	<div class="entry-content">
-			<?php the_content(); ?>
-		
+			<?php the_content(); ?>	
 	</div>
 </article>

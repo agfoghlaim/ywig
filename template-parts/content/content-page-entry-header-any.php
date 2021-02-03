@@ -5,6 +5,7 @@
  *
  * @package ywig-theme
  */
+
 $use_title = get_query_var( 'use_title' );
 
 
