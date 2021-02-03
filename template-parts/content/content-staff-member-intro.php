@@ -80,7 +80,8 @@ $projects_for_this_staff_member = get_posts(
 		<?php echo isset( $job ) ? '<p class="ywig-staff-subtext">' . esc_html( $job ) . '<p>' : null; ?> 
 		<?php echo isset( $email ) ? '<span>' . esc_html( $email ) . '</span>' : null; ?> 
 		<?php echo isset( $phone ) ? '<span>' . esc_html( $phone ) . '</span>' : null; ?> 
-		<?php echo isset( $about ) ? '<p class="ywig-staff-bio">' . esc_html( $about ) . '</p>' : null; ?> 
+		<?php //echo isset( $about ) ? '<p class="ywig-staff-bio">' . esc_html( $about ) . '</p>' : null; ?> 
+		<?php echo isset( $about ) ? '<p class="ywig-staff-bio">' . esc_html( wp_trim_words(  $about, 60, '...' ) ) . '</p>' : null; ?> 
 
 
 		<?php echo isset( $staff_fname ) && ! empty( $projects_for_this_staff_member ) ? '<p class="ywig-staff-projects">' . esc_html( $staff_fname ) . ' works at ' : null; ?> 
