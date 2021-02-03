@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Add Youth Clubs Section to Theme Customizer.
  *
@@ -8,6 +7,9 @@
  *  @package ywig-theme
  */
 
+/**
+ * Require class.
+ */
 require_once __DIR__ . '/classes/class-ywig-input.php';
 
 /**

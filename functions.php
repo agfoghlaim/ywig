@@ -23,7 +23,7 @@ require get_template_directory() . '/inc/customizer/finder-section.php';
 require get_template_directory() . '/inc/customizer/youthclubs-section.php';
 require get_template_directory() . '/inc/customizer/quickposts.php';
 require get_template_directory() . '/inc/customizer/funders-section.php';
-require get_template_directory() . '/inc/customizer/test-section.php';
+
 require get_template_directory() . '/inc/cpt/youth-clubs-cpt.php';
 require get_template_directory() . '/inc/cpt/projects-cpt.php';
 require get_template_directory() . '/inc/cpt/quickposts-cpt.php';

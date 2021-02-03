@@ -1,13 +1,13 @@
 <?php
-
 /**
- * Add Feature 2 (Youth Clubs) section to Customizer.
- *
- * CUSTOMIZER
+ * CUSTOMIZER - Youth Clubs ITEM (homepage)
  *
  *  @package ywig-theme
  */
 
+/**
+ * Require classes.
+ */
 require_once __DIR__ . '/classes/class-ywig-input.php';
 require_once __DIR__ . '/classes/class-ywig-cropped-image.php';
 

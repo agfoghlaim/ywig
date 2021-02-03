@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Display Upload/select cropped image.
  *
@@ -72,7 +71,7 @@ if ( ! class_exists( 'YWIG_Cropped_Image' ) ) {
 			$filetype = wp_check_filetype( $maybe_image );
 			$mime     = $filetype['type'];
 
-			// check mime type is an image
+			// check mime type is an image.
 			if ( strpos( $mime, 'image' ) !== false ) {
 					$output = $maybe_image;
 			}

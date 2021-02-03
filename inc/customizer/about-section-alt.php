@@ -1,13 +1,13 @@
 <?php
-
 /**
- * Add new section to Customizer.
- *
  * CUSTOMIZER - About SECTION (homepage)
  *
- *  @package ywig-theme
+ * @package ywig
  */
 
+/**
+ * Require classes.
+ */
 require_once __DIR__ . '/classes/class-ywig-input.php';
 require_once __DIR__ . '/classes/class-ywig-cropped-image.php';
 

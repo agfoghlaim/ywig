@@ -1,25 +1,29 @@
 <?php
+/**
+ *
+ * ADMIN ENQUEUE
+ *
+ * @package ywig
+ */
 
-/*
-@package ywig-theme
+/**
+ * Load Admin scripts.
+ *
+ * Note: Loads css and js from the /dist folder. admin.css is currently empty but I think it makes sense to still load it.
+ *
+ *  @param string $name_of_current_admin_page Name of current admin page. Passed by admin_enqueue_scripts.
+ */
+function ywig_load_admin_scripts( $name_of_current_admin_page ) {
 
-ADMIN ENQUEUE
-
-*/
-
-function ywig_load_admin_scripts( $hook ) {
-	// echo $hook; => 'toplevel_page_moh_ywig'
-	echo '(enqueue.php)--------------------------------------------------------------------------------' . $hook;
-	if ( 'toplevel_page_moh_ywig' == $hook ) {
+	if ( 'toplevel_page_moh_ywig' === $name_of_current_admin_page ) {
 
 		wp_register_style( 'ywig_admin', get_template_directory_uri() . '/dist/css/admin.css', array(), '1.0.0', 'all' );
 
 		wp_enqueue_style( 'ywig_admin' );
 
-		// Use media uploader
+		// Use media uploader.
 		wp_enqueue_media();
 
-		// wp_register_script( 'ywig-admin-script', get_template_directory_uri() . '/dist/js/admin.js', array( 'jquery' ), '1.0.0', true );
 		wp_register_script( 'ywig-admin-script', get_template_directory_uri() . '/dist/js/admin.js', array( 'jquery' ), '1.0.0', true );
 
 		wp_enqueue_script( 'ywig-admin-script' );
@@ -29,20 +33,13 @@ function ywig_load_admin_scripts( $hook ) {
 add_action( 'admin_enqueue_scripts', 'ywig_load_admin_scripts' );
 
 
-/*
-FRONT END ENQUEUE FUNCTIONS
-*/
-
+/**
+ * Load Front end scripts.
+ */
 function ywig_load_scripts() {
-
-	// wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '4.4.1', 'all' );
 
 	wp_enqueue_style( 'ywig-theme', get_template_directory_uri() . '/dist/css/app.css', array(), '1.0.0', 'all' );
 
-	// fonts
-	// wp_enqueue_style( 'montserrat_lato', 'https://fonts.googleapis.com/css?family=Lato:300i,300,400,400i,700|Montserrat:400,500,600,700,800,900&display=swap" rel="stylesheet"> ' );
-
-	// wp_enqueue_script( 'bootstrap', get_template_directory_uri() . './js/bootstrap.min.js', array( 'jquery' ), '4.4.1', true );
 	wp_enqueue_script( 'main', get_template_directory_uri() . '/dist/js/app.js', null, '1.0.0', true );
 
 	if ( is_front_page() ) {
@@ -50,7 +47,7 @@ function ywig_load_scripts() {
 
 	}
 
-	// Dec 2020 for rest endpoint (load more quickposts)
+	// Dec 2020 for rest endpoint (load more quickposts).
 	wp_localize_script(
 		'main',
 		'rest_object',
@@ -62,10 +59,3 @@ function ywig_load_scripts() {
 
 }
 add_action( 'wp_enqueue_scripts', 'ywig_load_scripts' );
-
-// jQuery in footer (so)
-function starter_scripts() {
-	 //wp_deregister_script( 'jquery' );
-
-}
-//add_action( 'wp_enqueue_scripts', 'starter_scripts' );

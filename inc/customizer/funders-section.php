@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Add Funders Section to Theme Customizer.
  *
@@ -8,6 +7,9 @@
  *  @package ywig-theme
  */
 
+/**
+ * Require classes.
+ */
 require_once __DIR__ . '/classes/class-ywig-input.php';
 require_once __DIR__ . '/classes/class-ywig-cropped-image.php';
 
@@ -54,12 +56,12 @@ function ywig_funders_input_fields( $wp_customize ) {
 	// Define Image Inputs.
 	$img_args = array(
 		array(
-			'setting_id' => 'section_image',
-			'label'      => 'Funders Section Image',
+			'setting_id'  => 'section_image',
+			'label'       => 'Funders Section Image',
 			'flex_width'  => false, // Allow any width, making the specified value recommended. False by default.
 			'flex_height' => true,
-			'width'      => 1700,
-			'height'     => 400,
+			'width'       => 1700,
+			'height'      => 400,
 		),
 	);
 

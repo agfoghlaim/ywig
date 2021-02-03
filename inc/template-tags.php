@@ -72,7 +72,7 @@ function ywig_single_yc_project_socials( $post_id = null ) {
 				<a href="<?php echo esc_url( $facebook ); ?>"target="_blank" rel="noopener noreferrer" title="Facebook" class="ywig-social-btn">
 					<!-- <span class="ywig-icon-sidebar ywig-icon ywig-facebook"></span> -->
 					<span class="ywig-icon-sidebar ywig-svg-icon">
-					<?php echo ywig_get_theme_svg( 'facebook', 'social' ); ?>
+					<?php echo ywig_get_theme_svg( 'facebook' ); ?>
 					</span>
 					<span class="sr-only">Visit <?php echo esc_html( get_the_title() ); ?>'s Facebook</span></a>
 				<?php
@@ -142,22 +142,19 @@ function ywig_single_yc_project_staff( $post_id = null, $post_type ) {
 				}
 
 				if ( taxonomy_exists( $tax_name ) ) {
-					// echo $tax_name;
-					// echo sprintf( '%s_first_name', $tax_name, true );
 					$staff_at_this_project = wp_get_post_terms( $post_id, $tax_name, array( 'fields' => 'all' ) );
 
 					foreach ( $staff_at_this_project as $member => $value ) {
 						$f_name = get_field( sprintf( '%s_first_name', $tax_name, true ), 'term_' . $value->term_id );
 
-						// $s_name          = get_field( sprintf( '%s_surname', $tax_name, true ), 'term_' . $value->term_id );
-						$job_title       = get_field( sprintf( '%s_job_title', $tax_name, true ), 'term_' . $value->term_id );
-						$email           = get_field( sprintf( '%s_email', $tax_name, true ), 'term_' . $value->term_id );
-						$phone           = get_field( sprintf( '%s_phone', $tax_name, true ), 'term_' . $value->term_id );
-						$staff_image     = get_field( sprintf( '%s_pic', $tax_name, true ), 'term_' . $value->term_id );
-						//$staff_image_url = $staff_image['sizes']['thumbnail'];
+						$job_title   = get_field( sprintf( '%s_job_title', $tax_name, true ), 'term_' . $value->term_id );
+						$email       = get_field( sprintf( '%s_email', $tax_name, true ), 'term_' . $value->term_id );
+						$phone       = get_field( sprintf( '%s_phone', $tax_name, true ), 'term_' . $value->term_id );
+						$staff_image = get_field( sprintf( '%s_pic', $tax_name, true ), 'term_' . $value->term_id );
+
 						if ( is_array( $staff_image ) || is_object( $staff_image ) ) {
 							$staff_image_url = $staff_image['sizes']['thumbnail'];
-						} 
+						}
 						if ( ! empty( $staff_image['url'] ) ) {
 
 							$is_staff_pic = true;
@@ -177,7 +174,6 @@ function ywig_single_yc_project_staff( $post_id = null, $post_type ) {
 							<?php
 						} else {
 							echo ywig_get_theme_svg( 'user' );
-							// get_template_part( 'template-parts/svgs/svg-user' );
 						}
 						?>
 
@@ -195,7 +191,7 @@ function ywig_single_yc_project_staff( $post_id = null, $post_type ) {
 							<?php
 						}
 						?>
-	
+
 					<p><?php echo isset( $phone ) ? esc_html( $phone ) : ''; ?> </p>
 					<p><?php echo isset( $email ) ? esc_html( $email ) : ''; ?></p>
 				</div> <!-- ...-staff-item -->
@@ -331,7 +327,7 @@ function ywig_single_yc_project_show_project_news( $post_id, $author_name ) {
 }
 
 /**
- * Social Icons
+ * Social Icons on header/footer
  */
 /**
  * Renders individual social icons  & links.
@@ -349,6 +345,8 @@ function ywig_render_socials( $twitter, $facebook, $youtube ) {
 	<!-- <span class="ywig-icon-sidebar ywig-icon ywig-twitter"></span> -->
 	<span class="ywig-icon-sidebar ywig-svg-icon">
 		<?php echo ywig_get_theme_svg( 'twitter', 'social' ); ?>
+
+
 	</span>
 	<span class="sr-only">Visit our Twitter</span></a>
 		<?php

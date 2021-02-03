@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Add Feature 1 section to Customizer.
  *
@@ -8,6 +7,9 @@
  *  @package ywig-theme
  */
 
+/**
+ * Require classe.
+ */
 require_once __DIR__ . '/classes/class-ywig-input.php';
 require_once __DIR__ . '/classes/class-ywig-cropped-image.php';
 
