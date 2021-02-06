@@ -21,7 +21,7 @@
 		// Use <h2> unless it's front page, ie club titles are second most important on /youthclub but not front-page.
 		?>
 		<?php if ( is_front_page() ) : ?>
-			<h4><?php the_title(); ?></h4>
+			<h3><?php the_title(); ?></h3>
 		<?php else : ?>
 			<h2 class="twist-smaller"><?php the_title(); ?></h2>
 		<?php endif; ?>

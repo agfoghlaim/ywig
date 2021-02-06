@@ -11,8 +11,8 @@
 
   .over {
     @include torn-overlay;
-    //background: url(/ywig-theme/wp-content/themes/ywig-theme/src/img/torn_white.svg);
-   background: url(/wp-content/themes/ywig-theme/src/img/torn_white.svg);
+    background: url(/ywig-theme/wp-content/themes/ywig-theme/src/img/torn_white.svg);
+   //background: url(/wp-content/themes/ywig-theme/src/img/torn_white.svg);
     //background: url(ywig-theme/wp-content/themes/ywig-theme/src/img/torn_white.svg);
     // background: url('../../img/torn_white.svg');
   }

@@ -51,11 +51,22 @@ if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 	wp_enqueue_script( 'comment-reply' );
 }
 
-
+// TODO. THis is dodge
 // temp, does this allow editors to upload files via rest-api? yes
 // temp, does it stop admin having capability? No it doesn't.
 $edit_admin = get_role( 'editor' );
 $edit_admin->add_cap( 'unfiltered_upload' );
+
+
+/**
+ * WP requires this to be set.
+ * Related to limiting image width in post content.
+*/
+if ( ! isset( $content_width ) ) {
+	$content_width = 900;
+}
+
+
 
 /**
  * Add a button to top-level menu items that has sub-menus.

@@ -49,6 +49,25 @@ $box-shadow-small: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
 $box-shadow-more: 0 4px 5px 0 rgba(0, 0, 0, 0.14),
   0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
 
+
+	/* Font Sizes */
+$baseFontSize: 1rem;
+$baseNavSize: 0.64rem;
+$smallFontSize: 0.8rem;
+$smallestFontSize: 0.512rem;
+
+$heading-biggest: 3.052rem;
+$heading-big: 2.441rem;
+$heading-1: 1.953rem;
+$heading-2: 1.563rem;
+$heading-3: 1.25rem;
+$heading-4: $baseFontSize;
+$heading-5: $smallFontSize;
+$heading-6: 0.64rem;
+$heading-7: $smallestFontSize;
+// font exp ----------------------------------
+
+
 // Buttons
 //
 // For each of Bootstrap's buttons, define text, background, and border color.

@@ -67,33 +67,6 @@
     border-top: 0.1rem solid rgba(255, 255, 255, 0.22);
     padding-top: 1rem;
     align-items: center;
-    span {
-      border: 0.05rem solid $yellow-alt;
-
-      border-radius: 0.2rem;
-      align-content: center;
-      line-height: 0.65rem;
-      padding: 0.25rem 0.3rem 0.4rem 0.3rem;
-      align-items: center;
-      white-space: nowrap;
-
-      background: $yellow-alt;
-
-      a {
-        color: $darker-black;
-        font-weight: 600;
-        font-size: 0.65rem;
-        text-transform: uppercase;
-      }
-    }
-    span:hover,
-    span:focus {
-      background: $white;
-      a {
-        color: $darker-black;
-        text-decoration: none;
-      }
-    }
   }
 }
 @mixin project-info-hover-focus {
