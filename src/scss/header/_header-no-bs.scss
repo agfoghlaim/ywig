@@ -13,11 +13,11 @@
   align-content: center;
   height: 7rem;
   transition: height 0.2s ease-in-out;
-  .current-menu-item {
-    a {
+  .current-menu-item > a {
+    // a {
       color: $greeny-blue-alt;
       border-bottom: 0.2rem solid $greeny-blue-alt;
-    }
+    // }
   }
   .current-menu-ancestor {
     border-bottom: 0.2rem solid $greeny-blue-alt;

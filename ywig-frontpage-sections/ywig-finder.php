@@ -25,6 +25,11 @@ $all_locations = get_terms(
 	)
 );
 
+// Return if there is no locations taxonomy.
+if ( is_wp_error( $all_locations ) || ! is_array( $all_locations ) ) {
+	return;
+}
+
 // The first pill (All Projects) controls every .project-info-all
 // Get a string something like ('pills-whateverid, pills-whateverid ...') to use for aria-controls.
 // The other pills will just have aria-controls="pills-whatever".
